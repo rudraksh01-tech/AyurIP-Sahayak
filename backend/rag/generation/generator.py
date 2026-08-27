@@ -1,12 +1,20 @@
-from google import genai
+﻿from google import genai
 from dotenv import load_dotenv
+from pathlib import Path
 import os
 
-load_dotenv()
+# Load project root .env
+BASE_DIR = Path(__file__).resolve().parents[3]
+load_dotenv(BASE_DIR / ".env")
 
-client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
+api_key = os.getenv("GEMINI_API_KEY")
+
+if not api_key:
+    raise RuntimeError(
+        "GEMINI_API_KEY not found in D:\\Projects\\AyurIP-Sahayak\\.env"
+    )
+
+client = genai.Client(api_key=api_key)
 
 
 def generate_answer(query, retrieved_chunks):
