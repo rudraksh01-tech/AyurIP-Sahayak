@@ -1,29 +1,55 @@
-from rag.retrieval.retrieval import retrieve
+﻿from rag.retrieval.retriever import retrieve
 from rag.generation.generator import generate_answer
 
 
-def ask(question, top_k=5):
+def ask_rag(query, top_k=5):
+    print("\n[1] Retrieving relevant chunks...")
 
-    print("\nRetrieving relevant documents...")
+    retrieved_chunks = retrieve(query, top_k=top_k)
 
-    chunks = retrieve(question, top_k=top_k)
+    print(f"[2] Retrieved {len(retrieved_chunks)} chunks")
 
-    print(f"Retrieved {len(chunks)} chunks.")
+    print("[3] Generating answer with Gemini...")
 
-    print("\nGenerating answer...")
+    answer = generate_answer(
+        query,
+        retrieved_chunks
+    )
 
-    answer = generate_answer(question, chunks)
+    sources = [
+        {
+            "source": chunk["source"],
+            "chunk_id": chunk["chunk_id"],
+            "score": round(chunk["score"], 4)
+        }
+        for chunk in retrieved_chunks
+    ]
 
-    return answer
+    return {
+        "answer": answer,
+        "sources": sources
+    }
 
 
 if __name__ == "__main__":
 
-    question = input("\nAsk your question: ")
+    query = input("\nAsk AyurIP-Sahayak: ")
 
-    answer = ask(question)
+    result = ask_rag(query)
 
-    print("\n" + "=" * 60)
+    print("\n" + "=" * 80)
     print("FINAL ANSWER")
-    print("=" * 60)
-    print(answer)
+    print("=" * 80)
+    print(result["answer"])
+
+    print("\nSOURCES")
+    print("=" * 80)
+
+    for source in result["sources"]:
+        print(
+            f"{source['source']} | "
+            f"Chunk {source['chunk_id']} | "
+            f"Score {source['score']}"
+        )
+
+    print("=" * 80)

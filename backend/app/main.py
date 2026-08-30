@@ -1,8 +1,8 @@
-from fastapi import FastAPI
+﻿from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from rag.rag_pipeline import ask
+from rag.rag_pipeline import ask_rag
 
 
 app = FastAPI(
@@ -17,6 +17,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://localhost:5174",
+        "http://localhost:5175",
+        "http://localhost:5177",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -44,9 +46,10 @@ def health_check():
 
 @app.post("/api/ask")
 def ask_question(request: QuestionRequest):
-    answer = ask(request.question)
+    result = ask_rag(request.question)
 
     return {
         "question": request.question,
-        "answer": answer,
+        "answer": result["answer"],
+        "sources": result["sources"],
     }

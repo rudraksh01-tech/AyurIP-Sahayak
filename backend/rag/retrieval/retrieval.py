@@ -1,49 +1,104 @@
 ﻿import json
+import math
+import re
+from collections import Counter
 from pathlib import Path
-from sentence_transformers import SentenceTransformer
-import numpy as np
 
 EMBEDDINGS_PATH = Path("data/processed/embeddings.json")
-MODEL_NAME = "all-MiniLM-L6-v2"
 
-print("Loading embeddings...")
+print("Loading knowledge base...")
 
 with open(EMBEDDINGS_PATH, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 print(f"Total chunks loaded: {len(data)}")
 
-print("Loading embedding model...")
-model = SentenceTransformer(MODEL_NAME)
+
+def tokenize(text):
+    return re.findall(r"\b[a-zA-Z0-9]+\b", text.lower())
+
+
+# Build a lightweight TF-IDF index.
+documents = [tokenize(item["text"]) for item in data]
+
+document_frequency = Counter()
+
+for tokens in documents:
+    for token in set(tokens):
+        document_frequency[token] += 1
+
+total_documents = len(documents)
+
+
+def tfidf_score(query_tokens, document_tokens):
+    if not query_tokens or not document_tokens:
+        return 0.0
+
+    document_counts = Counter(document_tokens)
+
+    query_counts = Counter(query_tokens)
+
+    score = 0.0
+
+    for token, query_tf in query_counts.items():
+
+        if token not in document_counts:
+            continue
+
+        df = document_frequency.get(token, 0)
+
+        if df == 0:
+            continue
+
+        idf = math.log(
+            (total_documents + 1) / (df + 1)
+        ) + 1
+
+        document_tf = document_counts[token]
+
+        score += (
+            (1 + math.log(query_tf))
+            * (1 + math.log(document_tf))
+            * (idf ** 2)
+        )
+
+    return score
 
 
 def retrieve(query, top_k=5):
 
     print(f"\nQuery: {query}")
 
-    query_embedding = model.encode(
-        query,
-        normalize_embeddings=True
+    query_tokens = tokenize(query)
+
+    scored = []
+
+    for index, document_tokens in enumerate(documents):
+
+        score = tfidf_score(
+            query_tokens,
+            document_tokens
+        )
+
+        scored.append((score, index))
+
+    scored.sort(
+        key=lambda item: item[0],
+        reverse=True
     )
-
-    embeddings = np.array([
-        item["embedding"]
-        for item in data
-    ])
-
-    similarities = embeddings @ query_embedding
-
-    top_indices = np.argsort(similarities)[::-1][:top_k]
 
     results = []
 
-    for rank, index in enumerate(top_indices, start=1):
+    for rank, (score, index) in enumerate(
+        scored[:top_k],
+        start=1
+    ):
 
         item = data[index]
 
         results.append({
             "rank": rank,
-            "score": float(similarities[index]),
+            "score": float(score),
             "chunk_id": item["chunk_id"],
             "source": item["source"],
             "text": item["text"]
@@ -54,7 +109,7 @@ def retrieve(query, top_k=5):
 
 if __name__ == "__main__":
 
-    query = "What is Traditional Knowledge Digital Library (TKDL)?"
+    query = "What is Traditional Knowledge Digital Library TKDL?"
 
     results = retrieve(query, top_k=5)
 
