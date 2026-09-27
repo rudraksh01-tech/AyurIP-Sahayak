@@ -14,7 +14,7 @@
 [![Gemini](https://img.shields.io/badge/Google%20Gemini-LLM%20%2B%20Embeddings-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
 [![RAG](https://img.shields.io/badge/AI-RAG-8E44AD?style=for-the-badge)](#-how-it-works)
 
-**Live demo:** _add your Vercel URL here after deploying (see [Deploy for free](#-deploy-for-free-on-vercel))_
+### 🔗 [Live demo → ayur-ip-sahayak.vercel.app](https://ayur-ip-sahayak.vercel.app)
 
 </div>
 
