@@ -17,7 +17,8 @@ class GeminiConfigError(RuntimeError):
 
 @lru_cache(maxsize=1)
 def get_client():
-    api_key = os.getenv("GEMINI_API_KEY")
+    # Pasting a key into a hosting dashboard easily adds a stray space or newline
+    api_key = (os.getenv("GEMINI_API_KEY") or "").strip()
 
     if not api_key:
         raise GeminiConfigError(
