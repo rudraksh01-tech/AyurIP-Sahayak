@@ -1,5 +1,8 @@
-﻿import { useState } from "react";
+﻿import { useEffect, useState } from "react";
 import "./App.css";
+
+// Override with VITE_API_URL in frontend/.env if the backend runs elsewhere
+const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8001";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -7,6 +10,15 @@ function App() {
   const [sources, setSources] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [backendStatus, setBackendStatus] = useState("checking");
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/health`)
+      .then((response) =>
+        setBackendStatus(response.ok ? "online" : "offline")
+      )
+      .catch(() => setBackendStatus("offline"));
+  }, []);
 
   const askQuestion = async () => {
     if (!question.trim() || loading) return;
@@ -17,7 +29,7 @@ function App() {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1:8001/api/ask", {
+      const response = await fetch(`${API_URL}/api/ask`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -27,19 +39,31 @@ function App() {
         }),
       });
 
-      const data = await response.json();
+      setBackendStatus("online");
+
+      // Error responses are not always JSON (e.g. a plain-text 500)
+      const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        throw new Error(data.detail || "Something went wrong");
+        throw new Error(
+          data.detail || `Server error (${response.status}). Please try again.`
+        );
       }
 
       setAnswer(data.answer || "No answer received.");
       setSources(data.sources || []);
     } catch (err) {
       console.error(err);
-      setError(
-        "Could not connect to AyurIP Sahayak. Please make sure the backend is running on port 8001."
-      );
+
+      // fetch() throws a TypeError when the server can't be reached at all
+      if (err instanceof TypeError) {
+        setBackendStatus("offline");
+        setError(
+          `Could not connect to AyurIP Sahayak. Please make sure the backend is running at ${API_URL}.`
+        );
+      } else {
+        setError(err.message);
+      }
     } finally {
       setLoading(false);
     }
@@ -77,9 +101,15 @@ function App() {
           </div>
         </div>
 
-        <div className="status">
+        <div className={`status status-${backendStatus}`}>
           <span className="status-dot"></span>
-          <span>Online</span>
+          <span>
+            {backendStatus === "online"
+              ? "Online"
+              : backendStatus === "offline"
+                ? "Offline"
+                : "Connecting..."}
+          </span>
         </div>
       </header>
 
@@ -233,7 +263,7 @@ function App() {
               <div className="answer-icon">!</div>
 
               <div>
-                <span>CONNECTION ERROR</span>
+                <span>ERROR</span>
                 <h3>Unable to get an answer</h3>
               </div>
             </div>

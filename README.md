@@ -136,8 +136,7 @@ AyurIP-Sahayak/
 │   │   ├── raw/
 │   │   └── processed/
 │   │
-│   ├── requirements.txt
-│   └── .env
+│   └── requirements.txt
 │
 ├── frontend/
 │   ├── src/
@@ -150,8 +149,7 @@ AyurIP-Sahayak/
 │   ├── package.json
 │   └── vite.config.js
 │
-├── docs/
-│
+├── .env.example
 ├── .gitignore
 └── README.md
 ```
@@ -187,9 +185,7 @@ cd backend
 pip install -r requirements.txt
 ```
 
-Create a `.env` file inside `backend/` and add your API configuration.
-
-Example:
+Copy `.env.example` to `.env` in the **project root** (next to this README) and add your Gemini API key:
 
 ```env
 GEMINI_API_KEY=your_api_key_here
@@ -197,26 +193,26 @@ GEMINI_API_KEY=your_api_key_here
 
 **Never commit your real API key to GitHub.**
 
-Start the backend:
+Start the backend (from inside `backend/`):
 
 ```powershell
-uvicorn app.main:app --reload
+uvicorn app.main:app --reload --port 8001
 ```
 
-Backend will normally be available at:
+Backend will be available at:
 
 ```text
-http://127.0.0.1:8000
+http://127.0.0.1:8001
 ```
 
 ---
 
 ## 💻 Frontend Setup
 
-Open another terminal:
+Open another terminal in the project root:
 
 ```powershell
-cd D:\Projects\AyurIP-Sahayak\frontend
+cd frontend
 npm install
 npm run dev
 ```
@@ -227,7 +223,28 @@ The Vite development server will provide a local URL such as:
 http://localhost:5173/
 ```
 
-Open that URL in your browser.
+Open that URL in your browser. The header shows **Online** once the frontend can reach the backend.
+
+The frontend calls the backend at `http://127.0.0.1:8001` by default. If you run the backend somewhere else, create `frontend/.env` with:
+
+```env
+VITE_API_URL=http://127.0.0.1:8000
+```
+
+---
+
+## 🩺 Troubleshooting
+
+**`ImportError: DLL load failed ... An Application Control policy has blocked this file`**
+
+Windows **Smart App Control** is blocking PyTorch/SciPy DLLs, so the embedding model cannot load. Options:
+
+* Run the backend inside **WSL** (Windows Subsystem for Linux), or
+* Turn Smart App Control off in *Windows Security → App & browser control → Smart App Control settings*. Note that it cannot be turned back on without resetting Windows.
+
+**Frontend says "Could not connect"**
+
+Make sure the backend is running on port `8001` (or that `VITE_API_URL` points to where it is running).
 
 ---
 

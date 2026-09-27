@@ -5,13 +5,15 @@ import os
 
 # Load project root .env
 BASE_DIR = Path(__file__).resolve().parents[3]
-load_dotenv(BASE_DIR / ".env")
+ENV_PATH = BASE_DIR / ".env"
+load_dotenv(ENV_PATH)
 
 api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
     raise RuntimeError(
-        "GEMINI_API_KEY not found in D:\\Projects\\AyurIP-Sahayak\\.env"
+        f"GEMINI_API_KEY not found. Add it to {ENV_PATH} "
+        "(see .env.example)."
     )
 
 client = genai.Client(api_key=api_key)

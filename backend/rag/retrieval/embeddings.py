@@ -2,8 +2,10 @@
 from pathlib import Path
 from sentence_transformers import SentenceTransformer
 
-CHUNKS_PATH = Path("data/processed/chunks.json")
-OUTPUT_PATH = Path("data/processed/embeddings.json")
+BASE_DIR = Path(__file__).resolve().parents[2]
+
+CHUNKS_PATH = BASE_DIR / "data" / "processed" / "chunks.json"
+OUTPUT_PATH = BASE_DIR / "data" / "processed" / "embeddings.json"
 
 MODEL_NAME = "all-MiniLM-L6-v2"
 

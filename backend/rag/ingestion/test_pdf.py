@@ -3,7 +3,8 @@ from pypdf import PdfReader
 
 
 # PDF file  location
-PDF_PATH = Path("backend/data/raw/ayurveda.pdf.pdf")
+BASE_DIR = Path(__file__).resolve().parents[2]
+PDF_PATH = BASE_DIR / "data" / "raw" / "ayurveda-ipr-traditional-knowledge.pdf"
 
 
 def read_pdf(pdf_path):

@@ -5,11 +5,13 @@ from pypdf import PdfReader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 
+BASE_DIR = Path(__file__).resolve().parents[2]
+
 # Input PDF folder
-PDF_DIR = Path("data/raw")
+PDF_DIR = BASE_DIR / "data" / "raw"
 
 # Output folder
-OUTPUT_DIR = Path("data/processed")
+OUTPUT_DIR = BASE_DIR / "data" / "processed"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 

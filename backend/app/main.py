@@ -1,8 +1,13 @@
-﻿from fastapi import FastAPI
+import logging
+
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from rag.rag_pipeline import ask_rag
+
+
+logger = logging.getLogger("uvicorn.error")
 
 
 app = FastAPI(
@@ -12,14 +17,10 @@ app = FastAPI(
 )
 
 
+# Allow the Vite dev server on any local port (localhost or 127.0.0.1)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "http://localhost:5175",
-        "http://localhost:5177",
-    ],
+    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -46,7 +47,15 @@ def health_check():
 
 @app.post("/api/ask")
 def ask_question(request: QuestionRequest):
-    result = ask_rag(request.question)
+    try:
+        result = ask_rag(request.question)
+    except Exception as error:
+        logger.exception("RAG pipeline failed")
+
+        raise HTTPException(
+            status_code=500,
+            detail="Sahayak could not generate an answer right now. Please try again.",
+        ) from error
 
     return {
         "question": request.question,
