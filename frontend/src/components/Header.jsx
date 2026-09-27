@@ -1,6 +1,5 @@
-import { GitHubIcon, LeafIcon, PlusIcon } from "./Icons.jsx";
-
-const GITHUB_URL = "https://github.com/rudraksh01-tech/AyurIP-Sahayak";
+import { GITHUB_URL } from "../links.js";
+import { GitHubIcon, LeafIcon, MoonIcon, PlusIcon, SunIcon } from "./Icons.jsx";
 
 const STATUS_LABELS = {
   checking: "Connecting…",
@@ -8,13 +7,13 @@ const STATUS_LABELS = {
   offline: "Offline",
 };
 
-export default function Header({ health, hasMessages, onNewChat }) {
+export default function Header({ health, hasMessages, onNewChat, theme, onToggleTheme }) {
   return (
     <header className="header">
       <div className="header-inner">
         <button className="brand" onClick={onNewChat} aria-label="AyurIP Sahayak home">
           <span className="brand-logo">
-            <LeafIcon size={20} />
+            <LeafIcon size={19} />
           </span>
           <span className="brand-text">
             <span className="brand-name">AyurIP Sahayak</span>
@@ -32,14 +31,23 @@ export default function Header({ health, hasMessages, onNewChat }) {
           </span>
 
           {hasMessages && (
-            <button className="button button-ghost" onClick={onNewChat}>
+            <button className="button" onClick={onNewChat}>
               <PlusIcon size={16} />
               <span className="hide-mobile">New chat</span>
             </button>
           )}
 
+          <button
+            className="icon-button"
+            onClick={onToggleTheme}
+            aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+            title={theme === "dark" ? "Light theme" : "Dark theme"}
+          >
+            {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+          </button>
+
           <a
-            className="icon-link"
+            className="icon-button"
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"

@@ -10,7 +10,17 @@
       name="description"
       content="Ask questions about Ayurveda, Traditional Knowledge, TKDL and Intellectual Property Rights. Answers are grounded in a curated knowledge base and cite the exact page."
     />
-    <meta name="theme-color" content="#2f5c3b" />
+    <meta name="theme-color" content="#f6f3ea" />
+
+    <script>
+      // Apply a saved theme before first paint to avoid a light/dark flash
+      try {
+        var savedTheme = localStorage.getItem("ayurip-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {}
+    </script>
 
     <meta property="og:title" content="AyurIP Sahayak — Ayurveda & IP research assistant" />
     <meta
@@ -22,7 +32,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
   </head>

@@ -1,97 +1,192 @@
-const EXAMPLES = [
+import { SUGGESTIONS, TOPICS } from "../topics.js";
+import {
+  ArrowRightIcon,
+  BookIcon,
+  FileIcon,
+  GlobeIcon,
+  LandmarkIcon,
+  LanguagesIcon,
+  LeafIcon,
+  QuoteIcon,
+  ScaleIcon,
+  SearchIcon,
+  ShieldIcon,
+  SparkleIcon,
+} from "./Icons.jsx";
+
+const TOPIC_ICONS = {
+  leaf: LeafIcon,
+  book: BookIcon,
+  scale: ScaleIcon,
+  landmark: LandmarkIcon,
+  globe: GlobeIcon,
+  search: SearchIcon,
+};
+
+const PROMISES = [
   {
-    icon: "📚",
-    title: "What is TKDL?",
-    subtitle: "Traditional Knowledge Digital Library",
-    question: "What is the Traditional Knowledge Digital Library (TKDL) and how does it prevent wrongful patents?",
+    icon: QuoteIcon,
+    title: "Page-level citations",
+    text: "Every claim links to the document, page and section it came from.",
   },
   {
-    icon: "⚖️",
-    title: "The turmeric patent case",
-    subtitle: "A landmark biopiracy dispute",
-    question: "What happened in the turmeric patent case?",
+    icon: ShieldIcon,
+    title: "No guessing",
+    text: "If the sources don't cover a question, Sahayak says so instead of inventing an answer.",
   },
   {
-    icon: "🛡️",
-    title: "Defensive vs positive protection",
-    subtitle: "Two ways to protect traditional knowledge",
-    question: "What is the difference between defensive and positive protection of traditional knowledge?",
-  },
-  {
-    icon: "अ",
-    title: "आयुर्वेद में तीन दोष कौन से हैं?",
-    subtitle: "Ask in Hindi or Hinglish too",
-    question: "आयुर्वेद में तीन दोष कौन से हैं?",
+    icon: LanguagesIcon,
+    title: "English, हिन्दी, Hinglish",
+    text: "Ask in the language you think in; the answer comes back in the same one.",
   },
 ];
 
-const STEPS = [
-  { title: "Understand", text: "Your question is embedded with Gemini, in English or Hindi." },
-  { title: "Retrieve", text: "The closest passages are found by semantic search." },
-  { title: "Answer", text: "Gemini writes an answer only from those passages." },
-  { title: "Verify", text: "Click a citation to see the exact page it came from." },
-];
-
-function knowledgeBaseSummary(health) {
+function Stats({ health }) {
   if (health.status !== "online" || !health.documents) {
     return null;
   }
 
   const pages = health.documents.reduce((total, document) => total + document.pages, 0);
 
-  return `${health.documents.length} documents · ${pages} pages · ${health.chunks} passages`;
-}
-
-export default function EmptyState({ health, onAsk }) {
-  const summary = knowledgeBaseSummary(health);
+  const stats = [
+    [health.documents.length, "curated sources"],
+    [pages, "pages indexed"],
+    [health.chunks, "searchable passages"],
+  ];
 
   return (
-    <section className="empty-state">
-      <div className="hero">
-        <span className="eyebrow">AI research assistant</span>
+    <dl className="stats">
+      {stats.map(([value, label]) => (
+        <div key={label}>
+          <dt>{label}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function TopicCard({ topic, onAsk }) {
+  const Icon = TOPIC_ICONS[topic.icon];
+
+  return (
+    <article className="topic-card glass">
+      <div className="topic-head">
+        <span className={`topic-icon topic-icon-${topic.id}`}>
+          <Icon size={20} />
+        </span>
+        <div>
+          <h3>{topic.title}</h3>
+          <p>{topic.description}</p>
+        </div>
+      </div>
+
+      <ul className="topic-questions">
+        {topic.questions.map((question) => (
+          <li key={question}>
+            <button onClick={() => onAsk(question)}>
+              <span>{question}</span>
+              <ArrowRightIcon size={15} />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </article>
+  );
+}
+
+function SourceDocuments({ health }) {
+  if (health.status !== "online" || !health.documents) {
+    return null;
+  }
+
+  return (
+    <div className="doc-list">
+      {health.documents.map((document) => (
+        <article key={document.title} className="doc-card glass">
+          <span className="doc-icon">
+            <FileIcon size={20} />
+          </span>
+          <div>
+            <h3>{document.full_title || document.title}</h3>
+            {document.author && <p className="doc-author">{document.author}</p>}
+            <p className="doc-meta">
+              {document.pages} pages · {document.chunks} passages
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+export default function EmptyState({ health, onAsk, composer }) {
+  return (
+    <div className="home">
+      <section className="hero">
+        <span className="eyebrow glass">
+          <SparkleIcon size={14} />
+          AI research assistant for Indian knowledge &amp; IP
+        </span>
 
         <h1>
-          Ask about Ayurveda &amp; IP.
-          <br />
-          <span>Get answers with sources.</span>
+          Research Ayurveda &amp; IP law
+          <span className="gradient-text"> with answers you can verify.</span>
         </h1>
 
         <p className="hero-text">
-          Answers are grounded in a curated knowledge base on Ayurveda,
-          Traditional Knowledge, TKDL and Intellectual Property Rights, and
-          every claim links back to the page it came from.
+          Ask in English, हिन्दी or Hinglish. Sahayak searches a curated knowledge
+          base and cites the exact page behind every claim.
         </p>
 
-        {summary && <p className="kb-summary">{summary}</p>}
-      </div>
+        <div className="hero-composer">{composer}</div>
 
-      <div className="example-grid">
-        {EXAMPLES.map((example) => (
-          <button
-            key={example.title}
-            className="example-card"
-            onClick={() => onAsk(example.question)}
-          >
-            <span className="example-icon" aria-hidden="true">{example.icon}</span>
-            <span>
-              <strong>{example.title}</strong>
-              <small>{example.subtitle}</small>
-            </span>
-          </button>
-        ))}
-      </div>
+        <div className="suggestions" aria-label="Suggested questions">
+          {SUGGESTIONS.map((question) => (
+            <button key={question} className="chip glass" onClick={() => onAsk(question)}>
+              {question}
+            </button>
+          ))}
+        </div>
 
-      <ol className="steps">
-        {STEPS.map((step, index) => (
-          <li key={step.title}>
-            <span className="step-number">{index + 1}</span>
-            <span>
-              <strong>{step.title}</strong>
-              <small>{step.text}</small>
-            </span>
-          </li>
-        ))}
-      </ol>
-    </section>
+        <Stats health={health} />
+      </section>
+
+      <section className="section" aria-labelledby="topics-heading">
+        <div className="section-head">
+          <span className="kicker">Explore</span>
+          <h2 id="topics-heading">Start from a topic</h2>
+          <p>Pick a question to see how Sahayak answers. Every topic is covered by the sources.</p>
+        </div>
+
+        <div className="topic-grid">
+          {TOPICS.map((topic) => (
+            <TopicCard key={topic.id} topic={topic} onAsk={onAsk} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="sources-heading">
+        <div className="section-head">
+          <span className="kicker">Trust</span>
+          <h2 id="sources-heading">Grounded in real sources</h2>
+          <p>Answers are written only from these documents, never from the model's memory.</p>
+        </div>
+
+        <SourceDocuments health={health} />
+
+        <div className="promise-grid">
+          {PROMISES.map(({ icon: Icon, title, text }) => (
+            <div key={title} className="promise glass">
+              <span className="promise-icon">
+                <Icon size={18} />
+              </span>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }

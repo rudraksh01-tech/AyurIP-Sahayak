@@ -5,7 +5,9 @@ import { fetchHealth, streamAnswer } from "./api.js";
 import ChatMessage from "./components/ChatMessage.jsx";
 import Composer from "./components/Composer.jsx";
 import EmptyState from "./components/EmptyState.jsx";
+import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
+import { useTheme } from "./useTheme.js";
 
 // Earlier turns sent along so follow-up questions ("and neem?") make sense
 const HISTORY_TURNS = 6;
@@ -21,6 +23,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [health, setHealth] = useState({ status: "checking" });
+  const [theme, toggleTheme] = useTheme();
   const controllerRef = useRef(null);
   const endRef = useRef(null);
   const followRef = useRef(true);
@@ -131,6 +134,7 @@ function App() {
     stop();
     setMessages([]);
     setInput("");
+    window.scrollTo({ top: 0 });
   };
 
   const retry = (assistantId) => {
@@ -140,13 +144,39 @@ function App() {
     ask(question.content, messages.slice(0, index - 1));
   };
 
+  const isHome = messages.length === 0;
+
+  const composer = (
+    <Composer
+      value={input}
+      onChange={setInput}
+      onSubmit={() => ask(input)}
+      onStop={stop}
+      busy={busy}
+      variant={isHome ? "hero" : "dock"}
+    />
+  );
+
   return (
     <div className="app">
-      <Header health={health} hasMessages={messages.length > 0} onNewChat={newChat} />
+      <div className="backdrop" aria-hidden="true">
+        <span className="orb orb-1" />
+        <span className="orb orb-2" />
+        <span className="orb orb-3" />
+        <span className="grid-pattern" />
+      </div>
 
-      <main className="main">
-        {messages.length === 0 ? (
-          <EmptyState health={health} onAsk={(question) => ask(question)} />
+      <Header
+        health={health}
+        hasMessages={!isHome}
+        onNewChat={newChat}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
+
+      <main className={`main ${isHome ? "main-home" : "main-chat"}`}>
+        {isHome ? (
+          <EmptyState health={health} onAsk={(question) => ask(question)} composer={composer} />
         ) : (
           <div className="conversation">
             {messages.map((message) => (
@@ -161,13 +191,7 @@ function App() {
         )}
       </main>
 
-      <Composer
-        value={input}
-        onChange={setInput}
-        onSubmit={() => ask(input)}
-        onStop={stop}
-        busy={busy}
-      />
+      {isHome ? <Footer /> : composer}
     </div>
   );
 }

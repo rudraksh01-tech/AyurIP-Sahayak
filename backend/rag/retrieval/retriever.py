@@ -120,6 +120,8 @@ class Retriever:
             "documents": [
                 {
                     "title": document["short_title"],
+                    "full_title": document.get("title"),
+                    "author": document.get("author"),
                     "pages": document["pages"],
                     "chunks": document["chunks"],
                 }

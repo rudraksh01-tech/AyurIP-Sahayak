@@ -20,7 +20,7 @@
 
 Ask a question in English, Hindi or Hinglish and get a streamed answer where every claim cites the exact page it came from.
 
-![Answer with clickable citations and page-level sources](docs/screenshot-answer.png)
+![Streamed answer with clickable citations, in dark mode](docs/screenshot-answer.png)
 
 ---
 
@@ -30,11 +30,13 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 - **Streaming.** The first words appear in about 3 seconds; sources show up after about 1 second, before the answer is written.
 - **English, Hindi and Hinglish.** Multilingual embeddings retrieve English passages for Hindi questions, and the answer comes back in the question's language.
 - **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
+- **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
+- **Polished interface.** Glassmorphism cards over an emerald-and-gold palette, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
 - **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#-retrieval-evaluation)).
 - **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 39 tests, CI, and a one-click free deployment.
 
 <p align="center">
-  <img src="docs/screenshot-home.png" alt="Home screen with example questions" width="64%" />
+  <img src="docs/screenshot-home.png" alt="Home screen with search, suggestions and knowledge-base stats" width="64%" />
   &nbsp;
   <img src="docs/screenshot-mobile-dark.png" alt="Hindi question answered on mobile in dark mode" width="26%" />
 </p>
@@ -155,7 +157,7 @@ python -m backend.eval.evaluate
 
 | Layer | Tools |
 |---|---|
-| Frontend | React 19, Vite, `react-markdown`, plain CSS with light/dark themes |
+| Frontend | React 19, Vite, `react-markdown`, hand-written CSS design system (tokens, glassmorphism, light/dark) |
 | Backend | Python 3.12, FastAPI, streaming NDJSON responses |
 | AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
 | Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |

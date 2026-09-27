@@ -1,24 +1,49 @@
+/* ---------- Design tokens ---------- */
+
 :root {
-  --bg: #f4f7f2;
-  --bg-glow: rgba(94, 130, 82, 0.14);
-  --surface: #ffffff;
-  --surface-muted: #f1f6ef;
-  --border: #dde7da;
-  --border-strong: #c5d5c1;
-  --text: #1d2b22;
-  --text-muted: #56655a;
-  --text-faint: #86928a;
-  --primary: #2f5c3b;
-  --primary-hover: #234a2e;
+  --bg: #f6f3ea;
+  --text: #10231a;
+  --text-muted: #4b5d52;
+  --text-faint: #7b8a80;
+
+  --primary: #0d6b4e;
+  --primary-strong: #0a553e;
+  --gold: #b7852a;
   --on-primary: #ffffff;
-  --primary-soft: #e4efe1;
-  --accent: #5f9366;
-  --cite-bg: #dcebd8;
-  --cite-text: #24502f;
-  --danger: #b4534c;
-  --danger-soft: #fbeceb;
-  --shadow: 0 12px 40px rgba(35, 70, 45, 0.08);
-  --shadow-sm: 0 2px 8px rgba(35, 70, 45, 0.06);
+
+  --brand-gradient: linear-gradient(135deg, #0d6b4e 0%, #129368 55%, #c99a3a 100%);
+  --text-gradient: linear-gradient(100deg, #0d6b4e 0%, #139a6c 45%, #c18a26 100%);
+  --user-bubble: linear-gradient(135deg, #0d6b4e 0%, #13875f 100%);
+  --user-bubble-text: #ffffff;
+
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-edge: rgba(16, 60, 40, 0.09);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --surface-inset: rgba(255, 255, 255, 0.6);
+
+  --shadow-sm: 0 1px 2px rgba(16, 40, 28, 0.05), 0 2px 8px rgba(16, 40, 28, 0.05);
+  --shadow-md: 0 12px 32px -12px rgba(16, 50, 34, 0.2);
+  --shadow-lg: 0 28px 64px -20px rgba(16, 50, 34, 0.3);
+  --ring: rgba(19, 154, 108, 0.28);
+
+  --orb-1: rgba(52, 195, 143, 0.34);
+  --orb-2: rgba(230, 180, 80, 0.34);
+  --orb-3: rgba(56, 160, 190, 0.2);
+  --grid-line: rgba(16, 60, 40, 0.055);
+
+  --cite-bg: rgba(201, 154, 58, 0.17);
+  --cite-text: #7c5714;
+  --danger: #b4443c;
+  --danger-soft: rgba(180, 68, 60, 0.08);
+
+  --tint-emerald: #0f8a60;
+  --tint-teal: #0f7f8c;
+  --tint-gold: #b07d1c;
+  --tint-copper: #b4602d;
+  --tint-blue: #2f6fb3;
+  --tint-violet: #6a55b5;
 
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
@@ -26,32 +51,107 @@
   color-scheme: light;
 }
 
+/* Dark tokens: used when the visitor picked dark, or when the system is dark
+   and no choice was saved. Keep both blocks identical. */
+:root[data-theme="dark"] {
+  --bg: #06110c;
+  --text: #e9f0ea;
+  --text-muted: #a2b2a7;
+  --text-faint: #6c7d72;
+
+  --primary: #3fd19b;
+  --primary-strong: #6ee7b7;
+  --gold: #e8bb5c;
+  --on-primary: #04130c;
+
+  --brand-gradient: linear-gradient(135deg, #1fae7c 0%, #3fd19b 50%, #e8bb5c 100%);
+  --text-gradient: linear-gradient(100deg, #7befc0 0%, #3fd19b 40%, #f2c86b 100%);
+  --user-bubble: linear-gradient(135deg, #137a56 0%, #1c9a6d 100%);
+  --user-bubble-text: #f2fbf6;
+
+  --glass-bg: rgba(255, 255, 255, 0.045);
+  --glass-bg-strong: rgba(16, 30, 23, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-edge: rgba(255, 255, 255, 0.07);
+  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --surface-inset: rgba(255, 255, 255, 0.035);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 14px 36px -14px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 30px 70px -20px rgba(0, 0, 0, 0.75);
+  --ring: rgba(63, 209, 155, 0.3);
+
+  --orb-1: rgba(22, 170, 115, 0.3);
+  --orb-2: rgba(226, 170, 70, 0.16);
+  --orb-3: rgba(40, 110, 170, 0.22);
+  --grid-line: rgba(255, 255, 255, 0.035);
+
+  --cite-bg: rgba(232, 187, 92, 0.14);
+  --cite-text: #f3cf82;
+  --danger: #f08a80;
+  --danger-soft: rgba(240, 138, 128, 0.1);
+
+  --tint-emerald: #4fd8a4;
+  --tint-teal: #4cc6d4;
+  --tint-gold: #eec46a;
+  --tint-copper: #f09a64;
+  --tint-blue: #7fb2f0;
+  --tint-violet: #a897f2;
+
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0e1510;
-    --bg-glow: rgba(95, 147, 102, 0.12);
-    --surface: #151f18;
-    --surface-muted: #1a261d;
-    --border: #26362a;
-    --border-strong: #35493a;
-    --text: #e3ebe4;
-    --text-muted: #a4b2a7;
-    --text-faint: #75837a;
-    --primary: #86c092;
-    --primary-hover: #9dd0a8;
-    --on-primary: #0e1510;
-    --primary-soft: #1d3223;
-    --accent: #86c092;
-    --cite-bg: #24402c;
-    --cite-text: #bfe3c6;
-    --danger: #e38b83;
-    --danger-soft: #36201e;
-    --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  :root:not([data-theme="light"]) {
+    --bg: #06110c;
+    --text: #e9f0ea;
+    --text-muted: #a2b2a7;
+    --text-faint: #6c7d72;
+
+    --primary: #3fd19b;
+    --primary-strong: #6ee7b7;
+    --gold: #e8bb5c;
+    --on-primary: #04130c;
+
+    --brand-gradient: linear-gradient(135deg, #1fae7c 0%, #3fd19b 50%, #e8bb5c 100%);
+    --text-gradient: linear-gradient(100deg, #7befc0 0%, #3fd19b 40%, #f2c86b 100%);
+    --user-bubble: linear-gradient(135deg, #137a56 0%, #1c9a6d 100%);
+    --user-bubble-text: #f2fbf6;
+
+    --glass-bg: rgba(255, 255, 255, 0.045);
+    --glass-bg-strong: rgba(16, 30, 23, 0.72);
+    --glass-border: rgba(255, 255, 255, 0.09);
+    --glass-edge: rgba(255, 255, 255, 0.07);
+    --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    --surface-inset: rgba(255, 255, 255, 0.035);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 14px 36px -14px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 30px 70px -20px rgba(0, 0, 0, 0.75);
+    --ring: rgba(63, 209, 155, 0.3);
+
+    --orb-1: rgba(22, 170, 115, 0.3);
+    --orb-2: rgba(226, 170, 70, 0.16);
+    --orb-3: rgba(40, 110, 170, 0.22);
+    --grid-line: rgba(255, 255, 255, 0.035);
+
+    --cite-bg: rgba(232, 187, 92, 0.14);
+    --cite-text: #f3cf82;
+    --danger: #f08a80;
+    --danger-soft: rgba(240, 138, 128, 0.1);
+
+    --tint-emerald: #4fd8a4;
+    --tint-teal: #4cc6d4;
+    --tint-gold: #eec46a;
+    --tint-copper: #f09a64;
+    --tint-blue: #7fb2f0;
+    --tint-violet: #a897f2;
 
     color-scheme: dark;
   }
 }
+
+/* ---------- Base ---------- */
 
 *,
 *::before,
@@ -72,6 +172,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 button,
@@ -84,7 +185,21 @@ button {
   cursor: pointer;
 }
 
+::selection {
+  background: var(--cite-bg);
+}
+
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
