@@ -121,7 +121,9 @@ def describe_error(error):
         if error.code == 429:
             return 429, "The AI service is busy (free-tier limit reached). Please try again in a minute."
 
-        return 502, "The AI service returned an error. Please try again."
+        # The status name (e.g. "PERMISSION_DENIED") is safe to show and
+        # tells the site owner what to fix without digging through logs.
+        return 502, f"The AI service returned an error (Gemini {error.code} {error.status}). Please try again."
 
     return 500, "Sahayak could not generate an answer right now. Please try again."
 
