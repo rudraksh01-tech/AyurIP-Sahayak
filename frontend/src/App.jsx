@@ -38,7 +38,7 @@ function App() {
     } catch (err) {
       console.error(err);
       setError(
-        "Could not connect to AyurIP Sahayak. Make sure the FastAPI backend is running."
+        "Could not connect to AyurIP Sahayak. Please make sure the backend is running on port 8001."
       );
     } finally {
       setLoading(false);
@@ -79,7 +79,7 @@ function App() {
 
         <div className="status">
           <span className="status-dot"></span>
-          
+          <span>Online</span>
         </div>
       </header>
 
@@ -105,6 +105,7 @@ function App() {
           <div className="card-top">
             <div>
               <h3>What would you like to know?</h3>
+
               <p>
                 Ask a question about Ayurveda, TKDL, patents, IPR or
                 traditional knowledge.
@@ -129,7 +130,9 @@ function App() {
             />
 
             <div className="input-bottom">
-              <span>Press Enter to ask • Shift + Enter for a new line</span>
+              <span>
+                Press Enter to ask • Shift + Enter for a new line
+              </span>
 
               <button
                 className="ask-btn"
@@ -165,6 +168,7 @@ function App() {
                 }
               >
                 <span>📚</span>
+
                 <div>
                   <strong>What is TKDL?</strong>
                   <small>Traditional Knowledge Digital Library</small>
@@ -179,6 +183,7 @@ function App() {
                 }
               >
                 <span>🛡️</span>
+
                 <div>
                   <strong>What is defensive protection?</strong>
                   <small>Traditional knowledge & IPR</small>
@@ -193,6 +198,7 @@ function App() {
                 }
               >
                 <span>⚖️</span>
+
                 <div>
                   <strong>TK and patents</strong>
                   <small>Prior art & patent protection</small>
@@ -205,7 +211,7 @@ function App() {
         {loading && (
           <section className="answer-card loading-card">
             <div className="answer-header">
-              <div className="answer-icon">✦</div>
+              <div className="answer-icon">🔎</div>
 
               <div>
                 <span>AYURIP SAHAYAK</span>
@@ -239,7 +245,7 @@ function App() {
         {answer && !loading && (
           <section className="answer-card">
             <div className="answer-header">
-              <div className="answer-icon">✦</div>
+              <div className="answer-icon">💡</div>
 
               <div>
                 <span>AYURIP SAHAYAK</span>
@@ -261,7 +267,7 @@ function App() {
             {sources.length > 0 && (
               <div className="sources-section">
                 <div className="sources-heading">
-                  <span className="sources-icon">📚</span>
+                  <span className="sources-icon">📖</span>
 
                   <div>
                     <h3>Sources</h3>
@@ -273,7 +279,10 @@ function App() {
 
                 <div className="sources-list">
                   {sources.map((source, index) => (
-                    <div className="source-item" key={`${source.source}-${index}`}>
+                    <div
+                      className="source-item"
+                      key={`${source.source}-${index}`}
+                    >
                       <div className="source-number">{index + 1}</div>
 
                       <div className="source-info">
@@ -282,7 +291,9 @@ function App() {
                         <div className="source-meta">
                           <span>Chunk {source.chunk_id}</span>
                           <span>•</span>
-                          <span>Relevance {source.score}</span>
+                          <span>
+                            Relevance {Number(source.score).toFixed(4)}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -304,5 +315,3 @@ function App() {
 }
 
 export default App;
-
-
