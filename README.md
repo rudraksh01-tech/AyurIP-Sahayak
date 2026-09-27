@@ -1,359 +1,214 @@
-# 🌿 AyurIP-Sahayak
+# 🌿 AyurIP Sahayak
 
-## AI Assistant for Ayurveda, Traditional Knowledge & Intellectual Property Rights
+**A retrieval-augmented (RAG) research assistant for Ayurveda, Traditional Knowledge and Intellectual Property Rights.** Ask a question in English, Hindi or Hinglish; get a streamed answer where every claim cites the exact page it came from.
 
-**AyurIP-Sahayak** is an AI-powered research assistant that helps users explore **Ayurveda, Traditional Knowledge, TKDL, and Intellectual Property Rights (IPR)** using a Retrieval-Augmented Generation (RAG) pipeline.
+[![CI](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml/badge.svg)](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml)
 
-The system retrieves relevant information from a curated knowledge base and uses an AI model to generate clear, contextual answers.
+**Live demo:** _add your Vercel URL here after deploying (see [Deploy for free](#-deploy-for-free-on-vercel))_
 
----
-
-## 🚀 Features
-
-* 🔎 Semantic search over Ayurveda and IPR documents
-* 🤖 AI-powered question answering
-* 📚 Source-aware responses
-* 🌿 Ayurveda and Traditional Knowledge focused knowledge base
-* ⚖️ Intellectual Property Rights (IPR) research support
-* 📖 TKDL-related information
-* ⚡ FastAPI backend
-* 💻 React + Vite frontend
-* 🔗 Retrieval-Augmented Generation (RAG) architecture
-* 🔐 API keys managed using environment variables
+![Answer with clickable citations and page-level sources](docs/screenshot-answer.png)
 
 ---
 
-## 🧠 How It Works
+## ✨ Features
 
-AyurIP-Sahayak follows a **RAG (Retrieval-Augmented Generation)** approach.
+- **Cited answers.** Every statement links to a numbered source; clicking `[2]` opens the passage with its document, page number and section heading.
+- **Streaming.** The first words appear in about 3 seconds; sources show up after about 1 second, before the answer is written.
+- **English, Hindi and Hinglish.** Multilingual embeddings retrieve English passages for Hindi questions, and the answer comes back in the question's language.
+- **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
+- **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#-retrieval-evaluation)).
+- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 39 tests, CI, and a one-click free deployment.
 
-```text
-User Question
-      ↓
-Question Processing
-      ↓
-Semantic Retrieval
-      ↓
-Relevant Knowledge Chunks
-      ↓
-AI Generation
-      ↓
-Answer + Sources
+<p align="center">
+  <img src="docs/screenshot-home.png" alt="Home screen with example questions" width="64%" />
+  &nbsp;
+  <img src="docs/screenshot-mobile-dark.png" alt="Hindi question answered on mobile in dark mode" width="26%" />
+</p>
+
+---
+
+## 🧠 How it works
+
+```mermaid
+flowchart LR
+    subgraph Build["Index build (run once)"]
+        A[PDFs] --> B[Clean text<br/>drop running headers]
+        B --> C[Section-aware chunks<br/>page + heading metadata]
+        C --> D[Gemini embeddings<br/>768-d]
+        D --> E[(index.json<br/>embeddings.npy)]
+    end
+
+    subgraph Ask["Every question"]
+        Q[Question + recent turns] --> F[Embed query]
+        F --> G[Cosine search<br/>top 6 passages]
+        E --> G
+        G --> H[Numbered context prompt]
+        H --> I[Gemini flash-lite<br/>streamed]
+        I --> J[Answer with<br/>clickable citations]
+    end
 ```
 
-Instead of asking the AI to answer only from its general knowledge, the system first retrieves relevant information from the project's knowledge base.
-
-This helps produce answers that are more relevant to the provided Ayurveda, Traditional Knowledge, and IPR documents.
+1. **Ingestion** (`backend/rag/ingestion/`): text is extracted page by page with `pypdf`. Lines that repeat on most pages (journal headers, "425 | Page" footers) are removed automatically. Section headings such as `3.5 How TKDL Helps Prevent Wrongful Patent Claims` are detected and attached to every chunk. Chunks are packed from whole sentences (up to 1,000 characters, overlapping by about 150), never cross a page boundary, and skip bibliographies.
+2. **Embedding**: each chunk is embedded with `gemini-embedding-001` (task type `RETRIEVAL_DOCUMENT`, with the document title and section heading as context) and stored as a normalised `float32` matrix of about 0.7 MB.
+3. **Retrieval** (`backend/rag/retrieval/`): the question is embedded (`RETRIEVAL_QUERY`) and matched by cosine similarity. BM25 and a hybrid BM25 + embeddings mode (Reciprocal Rank Fusion) are also implemented and evaluated.
+4. **Generation** (`backend/rag/generation/`): the top 6 passages are numbered and sent to Gemini with instructions to answer only from them, cite as `[n]`, and reply in the user's language. The answer streams to the browser as newline-delimited JSON.
 
 ---
 
-## 🏗️ Architecture
+## 📊 Retrieval evaluation
 
-```text
-                  ┌──────────────────┐
-                  │      User        │
-                  └────────┬─────────┘
-                           │
-                           ▼
-                  ┌──────────────────┐
-                  │ React + Vite UI  │
-                  └────────┬─────────┘
-                           │ HTTP
-                           ▼
-                  ┌──────────────────┐
-                  │ FastAPI Backend  │
-                  └────────┬─────────┘
-                           │
-                           ▼
-                  ┌──────────────────┐
-                  │   RAG Pipeline   │
-                  └───────┬───┬──────┘
-                          │   │
-             ┌────────────┘   └────────────┐
-             ▼                             ▼
-      ┌──────────────┐              ┌──────────────┐
-      │  Retrieval   │              │ AI Generation│
-      └──────┬───────┘              └──────┬───────┘
-             │                             │
-             ▼                             ▼
-      Knowledge Base                Generated Answer
-             │                             │
-             └─────────────┬───────────────┘
-                           ▼
-                    Answer + Sources
+`backend/eval/questions.json` holds 33 questions, each labelled with the knowledge-base sections that answer it: 24 general questions, 4 in Hindi or Hinglish, and 5 exact-identifier queries such as patent numbers and "Section 3(p)". A hit means a passage from a correct section is in the top k.
+
+| Retriever | Hit@1 | Hit@3 | Hit@6 | MRR |
+|---|---|---|---|---|
+| **Dense (Gemini embeddings)** | **0.97** | **1.00** | **1.00** | **0.98** |
+| Hybrid (BM25 + dense, RRF) | 0.88 | 1.00 | 1.00 | 0.93 |
+| BM25 (keywords) | 0.52 | 0.76 | 0.91 | 0.66 |
+
+By question type (MRR):
+
+| Retriever | General (24) | Hindi/Hinglish (4) | Identifiers (5) |
+|---|---|---|---|
+| Dense | 0.98 | 1.00 | 1.00 |
+| Hybrid | 0.95 | 1.00 | 0.80 |
+| BM25 | 0.72 | 0.25 | 0.67 |
+
+**Decision:** dense retrieval is the default. Hybrid search is often recommended for exact terms, but on this corpus Gemini embeddings already rank patent numbers and statute sections first, and fusing in BM25 only pushed correct passages from rank 1 to rank 2 or 3. BM25 cannot match Hindi questions against English documents at all. `RETRIEVAL_MODE=hybrid` switches modes; re-run the evaluation whenever the documents change.
+
+```bash
+python -m backend.eval.evaluate
 ```
 
 ---
 
-## 🛠️ Technology Stack
+## 🛠️ Tech stack
 
-### Frontend
-
-* React
-* Vite
-* JavaScript
-* CSS
-
-### Backend
-
-* Python
-* FastAPI
-* Uvicorn
-
-### RAG / AI
-
-* Retrieval-Augmented Generation
-* Sentence Transformers
-* `all-MiniLM-L6-v2`
-* Vector embeddings
-* Semantic similarity search
-* Google Gemini API
-
-### Data
-
-* PDF/document-based knowledge
-* Processed text chunks
-* Embedding-based retrieval
+| Layer | Tools |
+|---|---|
+| Frontend | React 19, Vite, `react-markdown`, plain CSS with light/dark themes |
+| Backend | Python 3.12, FastAPI, streaming NDJSON responses |
+| AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
+| Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
+| Quality | pytest (39 tests), ESLint, GitHub Actions CI, retrieval evaluation harness |
+| Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---
 
-## 📂 Project Structure
+## 📂 Project structure
 
 ```text
 AyurIP-Sahayak/
-│
 ├── backend/
-│   ├── app/
-│   │   └── main.py
-│   │
+│   ├── app/main.py              # FastAPI app: /api/health, /api/ask, /api/ask/stream
 │   ├── rag/
-│   │   ├── ingestion/
-│   │   ├── retrieval/
-│   │   ├── generation/
-│   │   └── rag_pipeline.py
-│   │
+│   │   ├── config.py            # models, paths, retrieval settings
+│   │   ├── gemini_client.py     # embeddings + streamed generation
+│   │   ├── ingestion/           # PDF cleaning, chunking, build_index.py
+│   │   ├── retrieval/           # dense / BM25 / hybrid retriever
+│   │   ├── generation/          # prompt + citation parsing
+│   │   └── rag_pipeline.py      # retrieval -> generation -> events
 │   ├── data/
-│   │   ├── raw/
-│   │   └── processed/
-│   │
-│   └── requirements.txt
-│
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── App.css
-│   │   ├── index.css
-│   │   └── main.jsx
-│   │
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
-│
-├── .env.example
-├── .gitignore
-└── README.md
+│   │   ├── raw/                 # source PDFs + sources.json (titles)
+│   │   └── processed/           # index.json + embeddings.npy
+│   ├── eval/                    # labelled questions + evaluate.py
+│   └── tests/
+├── frontend/                    # React + Vite chat UI
+├── pyproject.toml               # runtime deps + Vercel entrypoint
+├── requirements.txt             # same runtime deps, for pip
+├── requirements-dev.txt         # + pypdf, pytest
+└── vercel.json
 ```
 
 ---
 
-## ⚙️ Setup
+## ⚙️ Run locally
 
-### 1. Clone the repository
+You need Python 3.12+, Node.js 22+ and a free Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey).
 
 ```bash
 git clone https://github.com/rudraksh01-tech/AyurIP-Sahayak.git
 cd AyurIP-Sahayak
-```
 
----
-
-## 🐍 Backend Setup
-
-Create and activate a virtual environment:
-
-### Windows PowerShell
-
-```powershell
+# Backend
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+# Windows: .\.venv\Scripts\Activate.ps1    macOS/Linux: source .venv/bin/activate
+pip install -r requirements-dev.txt
+
+cp .env.example .env        # Windows: copy .env.example .env
+# then put your key in .env: GEMINI_API_KEY=...
+
+uvicorn backend.app.main:app --reload --port 8001
 ```
 
-Install dependencies:
+In a second terminal:
 
-```powershell
-cd backend
-pip install -r requirements.txt
-```
-
-Copy `.env.example` to `.env` in the **project root** (next to this README) and add your Gemini API key:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-**Never commit your real API key to GitHub.**
-
-Start the backend (from inside `backend/`):
-
-```powershell
-uvicorn app.main:app --reload --port 8001
-```
-
-Backend will be available at:
-
-```text
-http://127.0.0.1:8001
-```
-
----
-
-## 💻 Frontend Setup
-
-Open another terminal in the project root:
-
-```powershell
+```bash
 cd frontend
 npm install
-npm run dev
+npm run dev                 # http://localhost:5173 (proxies /api to port 8001)
 ```
 
-The Vite development server will provide a local URL such as:
+To try the production setup instead, run `npm run build` in `frontend/`; FastAPI then serves the built app at http://127.0.0.1:8001.
 
-```text
-http://localhost:5173/
+### Rebuild the knowledge base
+
+Put PDFs in `backend/data/raw/`, optionally add their titles to `sources.json`, then:
+
+```bash
+python -m backend.rag.ingestion.build_index --dry-run   # preview chunks, no API calls
+python -m backend.rag.ingestion.build_index             # chunk + embed
 ```
 
-Open that URL in your browser. The header shows **Online** once the frontend can reach the backend.
+### Tests
 
-The frontend calls the backend at `http://127.0.0.1:8001` by default. If you run the backend somewhere else, create `frontend/.env` with:
-
-```env
-VITE_API_URL=http://127.0.0.1:8000
+```bash
+pytest                        # backend (no API key needed)
+cd frontend && npm run lint   # frontend
 ```
 
 ---
 
-## 🩺 Troubleshooting
+## 🚀 Deploy for free on Vercel
 
-**`ImportError: DLL load failed ... An Application Control policy has blocked this file`**
+The whole app (React build and FastAPI API) deploys as one Vercel project on the free Hobby plan. `pyproject.toml` tells Vercel where the FastAPI app is, `vercel.json` builds the frontend, and FastAPI serves it from the same domain, so no CORS setup is needed.
 
-Windows **Smart App Control** is blocking PyTorch/SciPy DLLs, so the embedding model cannot load. Options:
+1. Push this repository to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new), sign in with GitHub and import the repository. Keep the root directory as the project root; Vercel should detect **FastAPI**.
+3. Under **Environment Variables**, add `GEMINI_API_KEY` (the free-tier key is enough).
+4. Click **Deploy**. Open the URL and ask a question.
 
-* Run the backend inside **WSL** (Windows Subsystem for Linux), or
-* Turn Smart App Control off in *Windows Security → App & browser control → Smart App Control settings*. Note that it cannot be turned back on without resetting Windows.
-
-**Frontend says "Could not connect"**
-
-Make sure the backend is running on port `8001` (or that `VITE_API_URL` points to where it is running).
+> Use an API key from a Google Cloud project **without billing enabled**. Then a public demo can hit the free-tier limit at worst; it can never cost money. The app also limits each visitor to 10 questions per minute.
 
 ---
 
-## 💬 Example Questions
+## 🔌 API
 
-You can ask questions such as:
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/api/health` | Status, model name and knowledge-base stats |
+| `POST` | `/api/ask` | `{"question": "...", "history": [...]}` → full answer, sources, timings |
+| `POST` | `/api/ask/stream` | Same input; streams NDJSON events: `sources`, `delta` (repeated), `done` |
 
-* What is TKDL?
-* What is Traditional Knowledge?
-* What is defensive protection of traditional knowledge?
-* How does traditional knowledge affect patents?
-* What is the relationship between Ayurveda and IPR?
-* How can traditional knowledge be protected?
+Interactive docs are available at `/docs` when the server is running.
 
----
+## 🔧 Configuration
 
-## 🔄 RAG Pipeline
-
-The project follows these major stages:
-
-### 1. Document Ingestion
-
-Source documents are collected and processed.
-
-### 2. Text Extraction
-
-Useful text is extracted from the documents.
-
-### 3. Chunking
-
-Large documents are divided into smaller meaningful chunks.
-
-### 4. Embedding Generation
-
-Each chunk is converted into a numerical vector using:
-
-```text
-all-MiniLM-L6-v2
-```
-
-### 5. Retrieval
-
-When a user asks a question, the system converts the question into an embedding and compares it with stored document embeddings.
-
-The most relevant chunks are selected.
-
-### 6. Generation
-
-The retrieved information is passed to the AI generation layer to produce the final answer.
-
-### 7. Sources
-
-Relevant retrieved documents/chunks are displayed along with the generated answer.
+| Variable | Default | Purpose |
+|---|---|---|
+| `GEMINI_API_KEY` | (required) | Gemini API key |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Answer model (`gemini-3.6-flash` is more capable but about 3× slower) |
+| `GEMINI_THINKING_LEVEL` | `minimal` | `minimal`, `low`, `medium` or `high` |
+| `RETRIEVAL_MODE` | `dense` | `dense`, `hybrid` or `bm25` |
+| `RATE_LIMIT_PER_MINUTE` | `10` | Questions per visitor per minute |
 
 ---
 
-## 🎯 Project Goal
+## 🧭 Limitations and next steps
 
-The goal of AyurIP-Sahayak is to make research around **Ayurveda, Traditional Knowledge, TKDL, and Intellectual Property Rights** easier and more accessible through an AI-assisted interface.
-
-The project demonstrates how modern **RAG architecture** can be applied to domain-specific research.
-
----
-
-## 🔒 Security
-
-Sensitive configuration such as API keys should be stored in environment variables.
-
-The repository ignores environment files using `.gitignore`.
-
-```text
-.env
-.env.*
-!.env.example
-```
-
-Do not upload API keys, passwords, or other secrets to GitHub.
-
----
-
-## 🚧 Current Status
-
-**Working prototype**
-
-The current version includes:
-
-* ✅ React frontend
-* ✅ FastAPI backend
-* ✅ RAG pipeline
-* ✅ Semantic retrieval
-* ✅ Embedding-based search
-* ✅ Gemini API integration
-* ✅ Source display
-* ✅ Local frontend/backend integration
-* ✅ GitHub repository
-
----
-
-## 🔮 Future Improvements
-
-* 🌐 Hindi and multilingual question answering
-* 📊 Better retrieval evaluation
-* 🔍 Improved citation and source display
-* 📚 Larger government/document knowledge base
-* ☁️ Production deployment
-* 🔐 Authentication and user management
-* 📈 RAG evaluation metrics
-* 🗂️ Better document management
-* 💾 Conversation history
+- The knowledge base is two documents (54 pages). Adding sources such as WIPO and CGPDTM documents is mostly a matter of dropping PDFs in and re-running `build_index`.
+- The rate limiter is in memory, so each serverless instance counts separately. A shared store such as Redis or Upstash would make it global.
+- Retrieval is evaluated; answer quality (faithfulness, citation accuracy) is not yet. An LLM-as-judge evaluation is the natural next step.
+- The journal PDF uses two columns, so some of its section labels are approximate. Page numbers are exact.
 
 ---
 
@@ -361,10 +216,6 @@ The current version includes:
 
 **Rudra Pratap Singh**
 
-AyurIP-Sahayak is developed as an AI/RAG project focused on applying Generative AI to Ayurveda, Traditional Knowledge, and Intellectual Property research.
-
----
-
 ## 📄 License
 
-This project is intended for educational and research purposes.
+For educational and research purposes. The answers are informational and are not legal or medical advice.

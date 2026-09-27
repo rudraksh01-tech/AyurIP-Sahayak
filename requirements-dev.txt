@@ -1,0 +1,8 @@
+-r requirements.txt
+
+# Rebuilding the index from the PDFs
+pypdf==6.16.2
+
+# Tests
+pytest==9.1.1
+httpx2==2.13.1

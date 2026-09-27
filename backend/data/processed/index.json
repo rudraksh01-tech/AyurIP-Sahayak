@@ -1,0 +1,1629 @@
+{
+ "embedding_model": "gemini-embedding-001",
+ "dimensions": 768,
+ "chunk_size": 1000,
+ "chunk_overlap": 150,
+ "documents": [
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "title": "AyurIP Sahayak Knowledge Base: Ayurveda, Traditional Knowledge & Intellectual Property",
+   "short_title": "AyurIP Knowledge Base",
+   "author": "Rudra Pratap Singh",
+   "pages": 47,
+   "chunks": 199
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "title": "Integrating Intellectual Property Rights, Traditional Knowledge Systems, and the Evolution of Ayurveda",
+   "short_title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+   "author": "Priyanka Jadhavar, Ganesh Nale",
+   "pages": 7,
+   "chunks": 30
+  }
+ ],
+ "chunks": [
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 1,
+   "section": null,
+   "text": "AyurIP Sahayak — Ayurveda, Traditional Knowledge & Intellectual Property Knowledge Base Table of Contents AyurIP Sahayak — Ayurveda, Traditional Knowledge & Intellectual Property Knowledge Base A structured reference document for an AI-powered research assistant on Ayurveda, Traditional Knowledge (TK), and Intellectual Property (IP) protection in India. Document type: RAG (Retrieval-Augmented Generation) knowledge-base source Scope: Educational and legal-awareness reference. Not legal advice. Not medical advice. Verification notice: Wherever this document states a law, rule, statistic, or institutional fact, it should be re-checked against the current official source before being relied upon, because legal provisions, fees, procedures, and institutional details change over time. How to use this document This document is organized into twelve numbered sections, each self-contained so that a retrieval system can return an individual section or sub-section as a complete answer unit.",
+   "id": 0
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 1,
+   "section": null,
+   "text": "Each section ends with a short factual summary and a “Sources / Further Reading” list. A consolidated glossary of over 100 terms appears at the end (Section 12). Throughout this document: • [VERIFY] marks a fact that is time-sensitive, numeric, or otherwise likely to change, and that should be confirmed against an official source before use. • Traditional claim marks a statement describing what Ayurvedic texts or practice say, without asserting that modern science has confirmed it. • Scientific evidence marks a statement about what peer-reviewed or regulatory scientific evaluation has found.",
+   "id": 1
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 2,
+   "section": "1.1 What is Ayurveda?",
+   "text": "Ayurveda (from Sanskrit āyus, “life” or “longevity,” and veda, “knowledge” or “science”) is one of the world’s oldest documented systems of medicine and wellbeing, originating on the Indian subcontinent. It is recognized in India as one of the officially supported Indian Systems of Medicine, alongside Yoga, Unani, Siddha, Sowa-Rigpa, and Homoeopathy, collectively administered under the Ministry of AYUSH. Traditional claim: Ayurveda describes itself as a comprehensive system covering diet, lifestyle, herbal and mineral formulations, detoxification and rejuvenation procedures (Panchakarma), surgery (as historically described in the Sushruta Samhita), and preventive and promotive health practices, aimed at maintaining balance between mind, body, and environment. Scientific evidence: Modern biomedical science evaluates Ayurvedic concepts and formulations using its own separate frameworks (pharmacology, clinical trials, toxicology).",
+   "id": 2
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 2,
+   "section": "1.1 What is Ayurveda?",
+   "text": "Modern biomedical science evaluates Ayurvedic concepts and formulations using its own separate frameworks (pharmacology, clinical trials, toxicology). Some individual Ayurvedic herbs and formulations have been studied using modern scientific methods with mixed and formulation-specific results; Ayurveda as a whole system has not been validated or invalidated as a single unit by modern science, because its foundational concepts (doshas, dhatus) are not framework-equivalent to biomedical categories. Claims of efficacy for any specific condition should be verified against current peer-reviewed literature and regulatory assessments rather than assumed from tradition alone.",
+   "id": 3
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 2,
+   "section": "1.2 Historical Background",
+   "text": "• Ayurvedic concepts are traceable to ancient Sanskrit textual traditions, with foundational compilations conventionally dated to roughly the first millennium BCE through the early centuries CE, though exact dating of oral- to-written transmission is debated among historians. • Ayurveda developed alongside other Indian intellectual traditions (philosophy, surgery, chemistry/alchemy known as Rasashastra) and was transmitted through teacher-student (guru-shishya) lineages, temple and monastic institutions, and family/community practice. • During the colonial period, institutional support for Ayurveda in India declined relative to Western biomedicine; post-independence India took steps to formally recognize and regulate Ayurveda through dedicated statutes, education boards, and eventually a dedicated ministry (Ministry of AYUSH, elevated to a full ministry in 2014 [VERIFY]).",
+   "id": 4
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 2,
+   "section": "1.2 Historical Background",
+   "text": "• Today Ayurveda is practiced in India under statutory regulation (registered practitioners, accredited colleges) and has also spread internationally as a complementary/alternative medicine system, subject to the medical-practice and product-safety laws of each country.",
+   "id": 5
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 3,
+   "section": "1.3 Major Classical Ayurveda Texts",
+   "text": "Text Traditional attribution Traditional subject focus Charaka Samhita Associated with the sage/physician Charaka (redactor of an earlier Agnivesha Tantra) Internal medicine (Kayachikitsa), physiology, pharmacology, ethics of practice Sushruta Samhita Associated with the sage/physician Sushruta Surgery (Shalya Tantra), anatomy, surgical instruments and procedures, ophthalmology Ashtanga Hridaya Compiled by Vagbhata A concise synthesis of the Charaka and Sushruta traditions, covering all eight traditional branches of Ayurveda (Ashtanga Ayurveda) These three texts are together often referred to as the “Brihat Trayi” (the “Great Triad”) of classical Ayurvedic literature. A number of other texts (e.g., Madhava Nidana, Sharangadhara Samhita, Bhava Prakasha) are also considered important classical sources, particularly for diagnosis, formulation methods ( Bhaishajya Kalpana), and later systematizations. Relevance to IP and TK work:",
+   "id": 6
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 3,
+   "section": "1.3 Major Classical Ayurveda Texts",
+   "text": "Relevance to IP and TK work: These texts, along with regional and vernacular Ayurvedic literature, are the single most important category of documentary evidence used to demonstrate that a given herb, formulation, or use is traditional knowledge and therefore prior art for patent purposes (see Section 3 on TKDL and Section 5 on Patents).",
+   "id": 7
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 3,
+   "section": "1.4 Basic Concepts of Ayurveda",
+   "text": "The following are traditional Ayurvedic concepts. They are described here as they appear in Ayurvedic theory; they are not biomedical diagnostic categories.",
+   "id": 8
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 3,
+   "section": "1.4.1 Doshas: Vata, Pitta, Kapha",
+   "text": "Traditional claim: Ayurveda describes three fundamental physiological principles called doshas, said to govern bodily and mental functions: • Vata — associated with movement, the nervous system, circulation, and elimination; traditionally linked to the elements air and space/ether. • Pitta — associated with metabolism, digestion, and transformation; traditionally linked to the elements fire and water. • Kapha — associated with structure, lubrication, and stability; traditionally linked to the elements earth and water. Ayurvedic theory holds that each individual has a unique baseline proportion of the three doshas and that disease arises from imbalance among them. This is a traditional explanatory framework, not a scientifically validated physiological model in the biomedical sense.",
+   "id": 9
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 4,
+   "section": "1.4.2 Dhatus",
+   "text": "Traditional claim: Dhatus are the seven traditional “tissues” said to sustain the body: Rasa (plasma/nutrient fluid), Rakta (blood), Mamsa (muscle), Meda (fat), Asthi (bone), Majja (marrow/nervous tissue), and Shukra (reproductive tissue).",
+   "id": 10
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 4,
+   "section": "1.4.3 Malas",
+   "text": "Traditional claim: Malas are the traditional waste products of metabolism — principally Purisha (feces), Mutra (urine), and Sweda (sweat) — whose proper elimination is considered necessary for health.",
+   "id": 11
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 4,
+   "section": "1.4.4 Prakriti",
+   "text": "Traditional claim: Prakriti refers to an individual’s inherent constitutional type, determined (according to Ayurvedic theory) at conception by the relative proportion of the three doshas, and considered relatively fixed for life. Ayurvedic practice traditionally uses assessment of Prakriti to guide individualized dietary and lifestyle recommendations. This is a traditional classificatory concept and is distinct from, and should not be confused with, genetic or genomic classification in modern biology.",
+   "id": 12
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 4,
+   "section": "1.5 Ayurvedic Herbs and Medicinal Plants",
+   "text": "Ayurveda traditionally uses a very large number of plant, mineral, and animal- derived substances. Examples of commonly referenced medicinal plants include (botanical name in parentheses):",
+   "id": 13
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 4,
+   "section": "1.5 Ayurvedic Herbs and Medicinal Plants",
+   "text": "Examples of commonly referenced medicinal plants include (botanical name in parentheses): Common/Sanskrit name Botanical name Traditional use category (as described in classical/ethnobotanical literature) Turmeric / Haridra Curcuma longa Traditionally used topically and internally for wound care and as a general household remedy Neem / Nimba Azadirachta indica Traditionally used for skin conditions and as an antimicrobial/antifungal agent Ashwagandha Withania somnifera Traditionally classified as a Rasayana (rejuvenative) Tulsi / Holy Basil Ocimum tenuiflorum Traditionally used for respiratory and general wellness purposes Amla / Indian Gooseberry Phyllanthus emblica Traditionally used as a Rasayana and source of Vitamin C in the diet Guduchi / Giloy Tinospora cordifolia Traditionally used as an immunomodulator/Rasayana Brahmi Bacopa monnieri Traditionally associated with cognitive/nervine support Arjuna Terminalia Traditionally associated with cardiac support",
+   "id": 14
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 5,
+   "section": "1.5 Ayurvedic Herbs and Medicinal Plants",
+   "text": "Common/Sanskrit name Botanical name Traditional use category (as described in classical/ethnobotanical literature) arjuna Important note: This table lists traditional classifications only. It is not a treatment recommendation, dosage guide, or claim of proven efficacy for any medical condition. Any specific pharmacological or clinical claim about a plant should be checked against current peer-reviewed literature and, where a medicinal product is involved, against Ministry of AYUSH/regulatory approvals.",
+   "id": 15
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 5,
+   "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation",
+   "text": "Methods Ayurvedic pharmaceutics (Bhaishajya Kalpana) traditionally classifies preparations by method, including (illustrative, non-exhaustive): • Churna — fine herbal powder. • Kwatha/Kashaya — decoction, prepared by boiling herbal material in water. • Arishta/Asava — fermented liquid preparations. • Ghrita — medicated clarified butter (ghee) preparations. • Taila — medicated oil preparations. • Vati/Gutika — tablets or pills. • Bhasma — a category of processed mineral/metal preparations subjected to specific traditional purification (Shodhana) and incineration (Marana) processes; because these can involve heavy metals (e.g., mercury, lead), they are subject to specific quality-control and regulatory scrutiny in modern manufacture, and safety depends heavily on correct processing and regulatory compliance. Distinguishing traditional knowledge from modern scientific evidence (general principle for this entire document):",
+   "id": 16
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 5,
+   "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation",
+   "text": "Distinguishing traditional knowledge from modern scientific evidence (general principle for this entire document): A traditional preparation method or use being centuries old does not, by itself, establish that the preparation is safe, effective, or free of contamination by modern regulatory standards. Conversely, a preparation being traditional does not mean it lacks value — it means the claim should be evaluated on its own evidentiary merits (toxicology, clinical data, regulatory approval) rather than by appeal to tradition or by dismissal of tradition. This distinction is central to Sections 2–5 of this document, which examine how traditional use interacts with patent law (as prior art) rather than with medical claims.",
+   "id": 17
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 5,
+   "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation",
+   "text": "Section 1 Summary Ayurveda is a traditional Indian medical system documented primarily in the Charaka Samhita, Sushruta Samhita, and Ashtanga Hridaya, built on the traditional concepts of dosha, dhatu, mala, and prakriti, and using herbal, mineral, and formulation-based interventions prepared by defined traditional methods.",
+   "id": 18
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 6,
+   "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation",
+   "text": "Traditional description and modern scientific validation are distinct categories of claim and must not be conflated. Sources / Further Reading (Section 1) • Ministry of AYUSH, Government of India — official portal on Ayurveda: https://ayush.gov.in • National Institutes of Health, National Center for Complementary and Integrative Health — overview of Ayurvedic medicine (for a Western regulatory/scientific perspective) • Classical texts: Charaka Samhita, Sushruta Samhita, Ashtanga Hridaya (multiple scholarly translations exist; consult a peer-reviewed or institutionally published translation for citation purposes) • World Health Organization — Traditional Medicine Strategy documents",
+   "id": 19
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 6,
+   "section": "2.1 Definition of Traditional Knowledge",
+   "text": "“Traditional Knowledge” (TK) does not have one single, universally binding legal definition, but it is generally understood — including in WIPO’s work — as knowledge, know-how, skills, and practices that are developed, sustained, and passed down from generation to generation within a community, often forming part of its cultural or spiritual identity. TK can relate to agriculture, the environment, healthcare (including Ayurveda and other traditional medicine systems), biodiversity-related knowledge, and traditional/cultural expressions. [VERIFY] Because there is no single global treaty definition of TK currently in force (as opposed to ongoing negotiations — see Section 9), the precise legal scope of “traditional knowledge” can differ between national laws and international discussions. Any project relying on a specific legal definition should identify which law or instrument’s definition is being used.",
+   "id": 20
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 6,
+   "section": "2.2 Traditional Knowledge Associated with Biological Resources",
+   "text": "A large share of TK relevant to Ayurveda is TK associated with genetic/biological resources — i.e., knowledge about the properties or uses of a specific plant, animal, or microorganism (for example, that a particular plant’s leaves can be used for a particular purpose). This category is significant because: • It sits at the intersection of two international frameworks: intellectual property law (patents) and biodiversity law (access and benefit-sharing, discussed in Section 9). • It is the category most often implicated in “biopiracy” disputes, because a patent claim on a plant-based invention can be undermined or supported by evidence of pre-existing traditional use.",
+   "id": 21
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 7,
+   "section": "2.3 Traditional Medicinal Knowledge",
+   "text": "Traditional medicinal knowledge specifically encompasses documented and undocumented knowledge of diagnostic methods, treatments, formulations, and health practices originating in traditional medicine systems (in India, principally Ayurveda, Unani, Siddha, and Sowa-Rigpa, alongside Yoga). It exists in two broad forms: 1. Documented traditional knowledge — recorded in classical texts, manuscripts, government publications, or scholarly compilations. This is generally easier to use as documentary prior art in a patent proceeding because it has an identifiable publication date and source. 2. Oral/undocumented traditional knowledge — held within communities, families, or individual practitioners without a formal written record.",
+   "id": 22
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 7,
+   "section": "2.3 Traditional Medicinal Knowledge",
+   "text": "2. Oral/undocumented traditional knowledge — held within communities, families, or individual practitioners without a formal written record. This is traditionally harder to use as patent prior art because patent law in most jurisdictions requires evidence of what was “publicly known” or “publicly used” as of a certain date, and undocumented oral knowledge can be difficult to prove or date with the evidentiary certainty patent offices require.",
+   "id": 23
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 7,
+   "section": "2.4 Community Knowledge",
+   "text": "Community knowledge refers to TK held collectively by an identifiable community (e.g., an indigenous or tribal community, or a defined local/traditional occupational group) rather than by an individual inventor. This collective character creates specific legal and ethical challenges: • Conventional IP law (patents, copyright) is generally built around identifiable individual or corporate authorship/inventorship and a fixed term of protection, which fits awkwardly with knowledge that is collectively held, continuously evolving, and intended to be perpetual rather than time-limited. • This mismatch is a central reason why specialized “sui generis” (custom-built) legal approaches to protecting TK have been proposed and, in some countries, adopted, rather than relying solely on existing IP categories (see Section 9).",
+   "id": 24
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 7,
+   "section": "2.5 Oral and Documented Traditional Knowledge — Why the Distinction",
+   "text": "Matters for IP The oral/documented distinction (introduced in 2.3) has direct legal consequences: • For defensive protection (stopping wrongful patents), documented TK is far more useful because it can be cited as prior art with a verifiable date and source (this is the entire logic behind TKDL — see Section 3). • For positive protection (giving TK holders enforceable rights over their own knowledge), documentation can sometimes cut both ways — it makes the knowledge easier to prove, but publishing knowledge that was previously restricted or sacred can also mean giving up practical control over it, since",
+   "id": 25
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 8,
+   "section": "2.5 Oral and Documented Traditional Knowledge — Why the Distinction",
+   "text": "published information generally cannot later be “taken back” into confidentiality.",
+   "id": 26
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 8,
+   "section": "2.6.1 Biopiracy",
+   "text": "“Biopiracy” is a widely used but legally informal term (it does not appear as a defined term in most national statutes) referring to situations where biological resources and/or associated traditional knowledge are accessed, used, or patented — typically by a foreign company, research institution, or government — without adequate prior informed consent from, or benefit-sharing with, the country or community that is the source of the resource or knowledge. Common features cited in biopiracy disputes include: • Patents claiming a “new” use, extract, or method that closely tracks a pre- existing traditional use. • Access to biological material or associated knowledge without the consent required under applicable biodiversity-access law. • Commercialization proceeding without any agreed benefit-sharing arrangement with the country of origin or knowledge-holding community.",
+   "id": 27
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 8,
+   "section": "2.6.2 Misappropriation of Traditional Knowledge",
+   "text": "“Misappropriation” in this context generally refers to the unauthorized taking, use, or commercial exploitation of TK contrary to the customary norms of the community that holds it, or without the legally required consent/benefit-sharing where such requirements exist. Whether a specific instance amounts to misappropriation as a matter of law depends on the applicable jurisdiction’s rules (e.g., India’s Biological Diversity Act — see Section 6) and on the facts of the case; the term is used loosely in policy debate as well as more precisely in specific statutes.",
+   "id": 28
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 8,
+   "section": "2.7 Examples of Traditional Knowledge-Related Disputes",
+   "text": "The following are widely discussed as illustrative examples; detailed treatment of the best-documented cases appears in Section 10 (Case Studies). This list only names disputes and does not restate contested details: • The 1995 U.S. patent on the wound-healing use of turmeric (revoked 1997) — see Case Study, Section 10. • The European Patent Office patent on a neem-based fungicide (revoked after opposition, final appeal decision 2005) — see Case Study, Section 10. • The 1997 U.S. patent granted to RiceTec Inc. relating to “Basmati” rice lines (several claims later withdrawn/cancelled) — see Case Study, Section 10.",
+   "id": 29
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 9,
+   "section": "2.7 Examples of Traditional Knowledge-Related Disputes",
+   "text": "• The Kani tribe / Jeevani (TBGRI) benefit-sharing arrangement in Kerala, India — an example often cited for both its innovative benefit-sharing model and its later implementation difficulties — see Case Study, Section 10. • The Hoodia gordonii / San peoples benefit-sharing agreement in South Africa — an international (non-Ayurvedic) example of a TK-related access and benefit-sharing dispute and settlement — see Case Study, Section 10. Section 2 Summary Traditional Knowledge is generation-to-generation knowledge without one single binding global legal definition; it includes TK associated with biological resources and traditional medicinal knowledge, held either in documented or oral form, individually or by communities. Unauthorized commercialization of TK-related resources without consent or benefit-sharing is commonly termed biopiracy or misappropriation, and several well-known disputes (detailed in Section 10) have shaped international and Indian policy responses.",
+   "id": 30
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 9,
+   "section": "2.7 Examples of Traditional Knowledge-Related Disputes",
+   "text": "Sources / Further Reading (Section 2) • WIPO Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore (IGC) — background documents: https://www.wipo.int/tk/en/ • Convention on Biological Diversity Secretariat — traditional knowledge and Article 8(j): https://www.cbd.int • Government of India, Ministry of AYUSH and CSIR publications on traditional knowledge protection # SECTION 3 — TRADITIONAL KNOWLEDGE DIGITAL LIBRARY (TKDL)",
+   "id": 31
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 9,
+   "section": "3.1 What is TKDL?",
+   "text": "The Traditional Knowledge Digital Library (TKDL) is a digital, structured database of publicly available traditional knowledge relating to Indian systems of medicine, created and maintained by India’s Council of Scientific and Industrial Research (CSIR) in collaboration with the Ministry of AYUSH. It converts information from classical and other public-domain texts on Ayurveda, Unani, Siddha, Sowa-Rigpa, and Yoga into a searchable digital format, classified using a purpose-built classification system (the Traditional Knowledge Resource Classification, TKRC) and translated into multiple languages (English, French, German, Spanish, and Japanese) so that patent examiners in other countries can search and understand it.",
+   "id": 32
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 9,
+   "section": "3.2 Why TKDL Was Created",
+   "text": "TKDL was created in direct response to a recurring problem: patent applications were being filed and, in some cases, granted in other countries for uses of Indian medicinal plants (such as turmeric and neem) that already existed as traditional knowledge in India, but that traditional knowledge had not been accessible to patent examiners in a form they could search — because it existed mainly in Sanskrit, Hindi, Urdu, Arabic, Tamil, and other languages, in texts not indexed in the patent",
+   "id": 33
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 10,
+   "section": "3.2 Why TKDL Was Created",
+   "text": "classification systems examiners normally use. TKDL was designed to close this “language and format” gap so that genuine prior art could be found before a patent is granted, rather than only after (which requires expensive opposition or re- examination proceedings, as happened in the turmeric and neem cases described in Section 10).",
+   "id": 34
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 10,
+   "section": "3.3 History and Purpose",
+   "text": "• TKDL was established in 2001 by CSIR in collaboration with (what is now) the Ministry of AYUSH. • Its stated core objective is defensive protection: to prevent the wrongful grant of patents on inventions that are, in substance, already part of India’s traditional knowledge, by making that knowledge available as searchable prior art to patent examiners worldwide. • Over time, TKDL has entered into TKDL Access (Non-Disclosure) Agreements with patent offices in multiple countries and regions, allowing examiners at those offices to search the TKDL database (subject to confidentiality restrictions) during examination of relevant applications. • [VERIFY] The exact number of patent offices with TKDL access, and the exact number of formulations/pages digitized, change over time as the collaboration expands; current figures should be obtained from CSIR/TKDL’s own published materials rather than assumed from any single secondary source.",
+   "id": 35
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 10,
+   "section": "3.4 How Traditional Knowledge is Documented in TKDL",
+   "text": "TKDL’s methodology, at a general level, involves: 1. Identifying source texts already in the public domain (classical Ayurveda, Unani, Siddha, and Sowa-Rigpa texts, and Yoga-related texts). 2. Extracting discrete “shlokas”/formulations/statements of use from those texts. 3. Structuring each entry with standardized fields (e.g., ingredient, disease/use category, method of preparation) using the Traditional Knowledge Resource Classification (TKRC), a classification system created specifically because existing international patent classification systems (like the IPC) did not have adequate categories for traditional medicine subject matter. 4. Translating entries into the five languages listed above. 5. Making the database available to partner patent offices under non-disclosure terms (to prevent the underlying traditional knowledge itself from being taken and misused, while still letting examiners use it to identify lack of novelty).",
+   "id": 36
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 10,
+   "section": "3.5 How TKDL Helps Prevent Wrongful Patent Claims",
+   "text": "TKDL operates as a form of defensive protection (a concept discussed generally in Section 9): rather than seeking to grant TK holders new exclusive rights, it works by",
+   "id": 37
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 11,
+   "section": "3.5 How TKDL Helps Prevent Wrongful Patent Claims",
+   "text": "ensuring that patent examiners can find pre-existing traditional knowledge as prior art during the routine examination of a patent application. If an examiner finds that the “invention” being claimed is already described in a TKDL entry, that finding can be used to reject the application for lack of novelty or inventive step (see Section 5 on patentability requirements), ideally before a patent is ever granted — avoiding the need for the costly, multi-year opposition or re-examination proceedings that were required in cases like the turmeric and neem patents.",
+   "id": 38
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 11,
+   "section": "3.6 Relationship Between TKDL and Patent Examination",
+   "text": "• TKDL is a search and reference tool for examiners , not a legal register of ownership and not itself a form of intellectual property protection for the TK it documents. • TKDL does not, by itself, stop a patent office from granting a patent; it depends on the examiner actually searching and correctly applying the TKDL prior art during examination, or on affected parties citing TKDL material during opposition. • Access is generally structured under confidentiality agreements to strike a balance: examiners can use the content to assess novelty, but the traditional knowledge itself (much of which is culturally significant and, in some communities’ view, should not be freely commercially exploited) is not thereby placed in an unrestricted public database beyond what is already public domain.",
+   "id": 39
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 11,
+   "section": "3.7 International Significance of TKDL",
+   "text": "TKDL is frequently cited internationally, including in WIPO’s Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore (IGC), as a model for defensive protection of traditional knowledge, and has influenced discussions in other countries considering similar national TK databases. [VERIFY] Specific claims about numbers of patent applications withdrawn or amended as a direct result of TKDL citations should be sourced from CSIR/TKDL’s own reporting, as such statistics are updated periodically.",
+   "id": 40
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 11,
+   "section": "3.8 Major Categories of Traditional Knowledge Documented in TKDL",
+   "text": "TKDL’s documented content is generally organized around the traditional Indian systems of medicine and related practice: Category System Formulations, therapies, and use-of- herb/mineral/animal-product entries Ayurveda Formulations and therapeutic knowledge Unani Formulations and therapeutic knowledge Siddha Formulations and therapeutic knowledge Sowa-Rigpa (Tibetan-influenced traditional medicine practiced in parts",
+   "id": 41
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 12,
+   "section": "3.8 Major Categories of Traditional Knowledge Documented in TKDL",
+   "text": "Category System of India) Postures, breathing techniques, and related practice knowledge Yoga Section 3 Summary TKDL is a CSIR/Ministry-of-AYUSH database (established 2001) that digitizes public-domain traditional-medicine texts, classifies them via the purpose-built TKRC system, translates them into five languages, and makes them searchable by partner patent offices under confidentiality agreements — functioning as a defensive prior- art tool to help prevent the wrongful patenting of Indian traditional knowledge, most famously following the turmeric and neem patent disputes. Sources / Further Reading (Section 3) • CSIR — “India’s Traditional Knowledge and the role of CSIR’s TKDL”: https://www.csir.res.in • CSIR TKDL Unit official page: https://www.csir.res.in/en/documents/tkdl • Ministry of AYUSH, Government of India: https://ayush.gov.in • WIPO IGC background materials on defensive protection databases: https://www.wipo.int/tk/en/",
+   "id": 42
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 12,
+   "section": "4.1 What is Intellectual Property?",
+   "text": "Intellectual Property (IP) refers to a category of legally recognized rights over creations of the mind — inventions, literary and artistic works, designs, symbols, names, and certain confidential information — that allow the rights-holder to control specific uses of that creation for a defined period (or, for some categories such as trade secrets and some trademarks, potentially indefinitely provided conditions are maintained). IP rights are territorial (granted and enforced on a country-by-country or region-by-region basis, subject to international treaties that harmonize certain minimum standards).",
+   "id": 43
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 12,
+   "section": "4.2.1 Patents",
+   "text": "Exclusive rights granted for an invention that is new, involves an inventive step, and is capable of industrial application, in exchange for public disclosure of how the invention works. Patents are time-limited (20 years from filing in most jurisdictions including India, subject to renewal-fee payment).",
+   "id": 44
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.2.2 Trademarks",
+   "text": "Signs (words, logos, sounds, etc. depending on the jurisdiction) capable of distinguishing the goods or services of one enterprise from those of others. Trademarks can, in principle, be renewed indefinitely as long as they remain in use and renewal fees are paid.",
+   "id": 45
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.2.3 Copyright",
+   "text": "Rights automatically arising (in most jurisdictions, without registration) over original literary, artistic, musical, and certain other creative works, protecting the expression of an idea (not the underlying idea, fact, or method itself) for the life of the author plus a further statutory term (commonly 60 years after death in India [VERIFY]).",
+   "id": 46
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.2.4 Geographical Indications (GIs)",
+   "text": "A sign used on products that originate from a specific geographical location and possess qualities, reputation, or characteristics essentially attributable to that origin (e.g., a specific region’s traditional agricultural product or handicraft). In India, GIs are protected under a dedicated statute rather than as ordinary trademarks (see Section 6).",
+   "id": 47
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.2.5 Trade Secrets",
+   "text": "Confidential business information (formulas, processes, methods) that derives commercial value from not being generally known, protected for as long as secrecy is maintained through reasonable protective measures, rather than through registration.",
+   "id": 48
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.2.6 Industrial Designs",
+   "text": "Protection for the visual/ornamental appearance of a product (shape, configuration, pattern, or ornamentation), as distinct from its functional or technical features (which would instead be the domain of patents).",
+   "id": 49
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.2.7 Plant Variety Protection",
+   "text": "A specialized (sui generis) form of IP protecting new plant varieties bred by identifiable breeders, distinct from patents, and in India governed by a dedicated statute (see Section 6) that also recognizes farmers’ rights.",
+   "id": 50
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 13,
+   "section": "4.3 Comparison Table: Forms of Intellectual Property",
+   "text": "IP Type What It Protects Typical Requirement Example Relevant Indian Framework Patent New inventions (products or Novelty, inventive step, industrial applicability, A new drug- delivery mechanism Patents Act, 1970 (as amended)",
+   "id": 51
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 14,
+   "section": "4.3 Comparison Table: Forms of Intellectual Property",
+   "text": "IP Type What It Protects Typical Requirement Example Relevant Indian Framework processes) sufficient disclosure for an herbal extract and Patents Rules Trademark Brand names, logos, and other source- identifying signs Distinctiveness; not identical/confusin gly similar to existing marks; not deceptive or generic A specific brand name for an Ayurvedic product line Trade Marks Act, 1999 Copyright Original literary, artistic, musical, dramatic, and certain other works; software Originality and fixation in a tangible form A textbook on Ayurvedic pharmacolog y; a database compilation (as a “literary work” in Indian law, subject to conditions) Copyright Act, 1957 (as amended) Geographic al Indication (GI) Products whose qualities/reputati on are linked to a specific geographic origin Link between the product’s characteristics and its geographical origin; typically applied for by an association/produ cer group, not an individual A regionally specific Ayurvedic product tied to a locality’s",
+   "id": 52
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 14,
+   "section": "4.3 Comparison Table: Forms of Intellectual Property",
+   "text": "traditional production method (subject to meeting GI criteria) Geographica l Indications of Goods (Registratio n and Protection) Act, 1999 Trade Secret Confidential, commercially valuable information Secrecy maintained through reasonable protective steps; not independently discoverable An undisclosed proprietary manufacturi ng process for a formulation No single dedicated Indian statute; protected via contract law, the Indian Contract",
+   "id": 53
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 15,
+   "section": "4.3 Comparison Table: Forms of Intellectual Property",
+   "text": "IP Type What It Protects Typical Requirement Example Relevant Indian Framework Act, 1872, and common- law confidentiali ty principles [VERIFY current position, as India has discussed but not enacted a dedicated trade secrets law] Industrial Design Visual/ornament al appearance of an article Novelty and originality of visual appearance; not dictated solely by function The distinctive shape of a proprietary medicine bottle or packaging Designs Act, 2000 Plant Variety Protection New, distinct, uniform, and stable plant varieties; also recognizes farmers’ rights Novelty, distinctiveness, uniformity, stability (the “DUS” criteria) A newly bred, registered variety of a medicinal plant used in Ayurvedic formulations Protection of Plant Varieties and Farmers’ Rights Act, 2001",
+   "id": 54
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 15,
+   "section": "4.4 Key Differences Between Forms of IP",
+   "text": "• Subject matter difference: Patents protect functional/technical inventions; copyright protects expressive works; trademarks protect source-identifying signs; designs protect appearance; GIs protect a place-linked reputation; trade secrets protect confidential information itself; plant variety protection protects a specific bred plant variety. • Term difference: Patents and designs are fixed-term and expire; copyright lasts for the author’s life plus a fixed period; trademarks and (properly",
+   "id": 55
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 16,
+   "section": "4.4 Key Differences Between Forms of IP",
+   "text": "maintained) trade secrets can in principle continue indefinitely; GIs generally continue as long as the product/place link and registration are maintained. • Disclosure difference: Patents require public disclosure of the invention in exchange for the monopoly; trade secrets require the opposite — continued non-disclosure — to remain protected. • Relevance to TK: None of these conventional categories was originally designed with collectively held, generationally transmitted, often undocumented traditional knowledge in mind, which is why TK protection often relies on a combination of defensive tools (like TKDL), existing categories used creatively (like GIs for TK-linked regional products), and proposed sui generis systems (see Section 9).",
+   "id": 56
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 16,
+   "section": "4.4 Key Differences Between Forms of IP",
+   "text": "Section 4 Summary Intellectual Property comprises several distinct legal categories — patents, trademarks, copyright, geographical indications, trade secrets, industrial designs, and plant variety protection — each protecting a different kind of subject matter under different requirements and for different durations. Understanding these differences is essential before assessing how (or whether) any given piece of Ayurveda-related traditional knowledge can be protected, and by which tool. Sources / Further Reading (Section 4) • World Intellectual Property Organization (WIPO) — “What is Intellectual Property?”: https://www.wipo.int • Government of India, Department for Promotion of Industry and Internal Trade (DPIIT) — IP statutes portal: https://ipindia.gov.in • Patents Act, 1970; Trade Marks Act, 1999; Copyright Act, 1957; Geographical Indications of Goods (Registration and Protection) Act, 1999; Designs Act, 2000;",
+   "id": 57
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 16,
+   "section": "4.4 Key Differences Between Forms of IP",
+   "text": "Trade Marks Act, 1999; Copyright Act, 1957; Geographical Indications of Goods (Registration and Protection) Act, 1999; Designs Act, 2000; Protection of Plant Varieties and Farmers’ Rights Act, 2001 (Government of India, Bare Acts — verify current amended text on https://ipindia.gov.in or https://www.indiacode.nic.in) # SECTION 5 —",
+   "id": 58
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 16,
+   "section": "5.1 What is a Patent? (Simple explanation)",
+   "text": "In simple terms: a patent is a deal between an inventor and the government. The inventor tells the world exactly how their invention works (full public disclosure), and in exchange, the government gives the inventor the exclusive right to stop others from making, using, selling, or importing that invention for a limited time (in India, 20 years from the filing date, subject to renewal fees).",
+   "id": 59
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 16,
+   "section": "5.2 What is a Patent? (Technical explanation)",
+   "text": "A patent is a statutory, territorial, negative right — it does not itself grant the patentee a positive right to practice the invention (which may still be restricted by other laws), but it grants the right to exclude others from making, using, selling, offering for sale, or importing the patented invention without authorization, within",
+   "id": 60
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.2 What is a Patent? (Technical explanation)",
+   "text": "the jurisdiction that granted the patent, for the statutory term, provided renewal (maintenance) fees are paid.",
+   "id": 61
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.3 Patentability Requirements",
+   "text": "For an invention to be patentable in most jurisdictions, including India, it generally must satisfy three core requirements plus a sufficiency-of-disclosure requirement:",
+   "id": 62
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.3.1 Novelty",
+   "text": "The invention must not have been disclosed to the public, anywhere in the world, in any form (written, oral, use, or otherwise) before the patent application’s filing date (or valid priority date). Existing disclosures that defeat novelty are called prior art.",
+   "id": 63
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.3.2 Inventive Step (Non-Obviousness)",
+   "text": "The invention must not be obvious to a “person skilled in the art” (a hypothetical knowledgeable-but-not-inventive practitioner in the relevant technical field) in light of the prior art existing at the relevant date. A small, predictable modification of something already known typically fails this requirement.",
+   "id": 64
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.3.3 Industrial Applicability (Utility)",
+   "text": "The invention must be capable of being made or used in some kind of industry, i.e., it must have a practical, working application rather than being purely theoretical or non-functional.",
+   "id": 65
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.3.4 Sufficiency of Disclosure",
+   "text": "The patent application must describe the invention clearly and completely enough that a person skilled in the art could reproduce it, and must include claims that define the precise scope of protection sought.",
+   "id": 66
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 17,
+   "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)",
+   "text": "Section 3 of India’s Patents Act, 1970 lists categories of subject matter that are not considered “inventions” for patent purposes. Provisions particularly relevant to Ayurveda and traditional knowledge include (paraphrased; the exact statutory wording should be checked in the current Act): • Section 3(p): An invention which, in effect, is traditional knowledge or which is an aggregation or duplication of known properties of a traditionally known component or components, is excluded from patentability. • Section 3(e) (in substance): A mere admixture resulting only in the aggregation of the known properties of its components (e.g., simply combining two known substances without a new synergistic or unexpected effect) is generally excluded. • Section 3(d): Restricts patents on the mere discovery of a new form of a known substance that does not result in enhanced efficacy, and on the mere",
+   "id": 67
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 18,
+   "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)",
+   "text": "discovery of a new use for a known substance or of a mere new property of a known substance — a provision frequently discussed in the pharmaceutical patenting context generally, and relevant whenever a “new” use is claimed for an already-known (including traditionally known) natural substance. [VERIFY current text — Section 3(d) has been the subject of significant litigation and interpretation, most notably in pharmaceutical-patent case law, and its precise application should be checked against current judicial interpretation.] These provisions mean that, under Indian law, simply “rediscovering” or scientifically re-describing an already-known traditional use of a plant, without adding something genuinely new (such as a novel extraction method producing an unexpected technical effect, a new synergistic combination, or a new industrially useful form), is unlikely to be patentable in India.",
+   "id": 68
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 18,
+   "section": "5.5 Why Traditional Knowledge Can Create Problems for Novelty",
+   "text": "Traditional knowledge often exists as unwritten, geographically dispersed, or non- English-language public knowledge. This creates a structural problem for patent examination: • Patent examiners generally search structured, indexed databases (patent literature, indexed scientific journals) using keyword and classification searches. • If a traditional use is real prior art but exists only in a Sanskrit manuscript, a regional-language ethnobotanical survey, or undocumented community practice, an examiner using only conventional search tools may not find it — leading to a patent being granted on subject matter that, in substance, was not novel. • This is precisely the gap that resources like TKDL (Section 3) are designed to close, and precisely what happened, before TKDL access agreements matured, in the turmeric and neem cases (Section 10).",
+   "id": 69
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 18,
+   "section": "5.6 Prior Art",
+   "text": "“Prior art” is the body of all information that has been made available to the public, in any form, anywhere, before the relevant filing/priority date of a patent application, and that is therefore usable to assess whether a claimed invention is novel and/or inventive. Prior art can include earlier patents and patent applications, scientific journal articles, books (including classical texts such as the Charaka Samhita where genuinely publicly available before the relevant date), conference presentations, product sales, and — depending on jurisdiction and evidentiary standard — sufficiently documented public use or oral disclosure.",
+   "id": 70
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 19,
+   "section": "5.7 Patent Examination",
+   "text": "Patent examination is the process by which a patent office’s examiner reviews a filed application against the legal requirements (Section 5.3) and against prior art (Section 5.6) to decide whether to grant, reject, or require amendment of the application. Examination typically includes: • A formal check (fees paid, required documents present, formalities complete). • A prior art search (see Section 5.8) conducted by the examiner using patent databases, scientific literature databases, and, where relevant and accessible, specialized resources like TKDL. • Issuance of an examination report (sometimes called a First Examination Report, or FER, in India) raising objections, if any. • An opportunity for the applicant to respond, amend claims, or argue against objections. • A final decision to grant or refuse, which may itself be subject to opposition (Section 5.11) or appeal.",
+   "id": 71
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 19,
+   "section": "5.8 Patent Search",
+   "text": "A patent search is a structured search of patent and non-patent literature conducted to identify existing disclosures relevant to a given invention — done by applicants (before filing, to assess patentability and avoid infringing others’ rights), by examiners (during examination), and by third parties (to oppose a granted or pending patent, or to assess “freedom to operate”). Patent search methodology is discussed in detail in Section 7 (Ayurveda-specific workflow) and Section 8 (general search concepts).",
+   "id": 72
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 19,
+   "section": "5.9 Patent Application Process in India (Simple Overview)",
+   "text": "1. Drafting the application (description, claims, abstract, drawings if applicable). 2. Filing with the Indian Patent Office (with a specified filing fee, which differs by applicant category — natural person, startup, small entity, or large entity [VERIFY current fee schedule]). 3. Publication of the application (ordinarily 18 months after filing/priority date, unless early publication is requested). 4. Request for examination (must be filed within a statutory period after the filing/priority date [VERIFY current period under the Patents Rules] ). 5. Examination and response to objections (Section 5.7). 6. Pre-grant opposition window (any person may oppose before grant, under Section 25(1) of the Patents Act). 7. Grant of the patent, followed by a post-grant opposition window (available to “any person interested,” under Section 25(2), for a statutory period after grant [VERIFY current period]). 8.",
+   "id": 73
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 19,
+   "section": "5.9 Patent Application Process in India (Simple Overview)",
+   "text": "8. Payment of periodic renewal (maintenance) fees to keep the patent in force for its full term.",
+   "id": 74
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 20,
+   "section": "5.10 Patent Opposition",
+   "text": "Opposition is a formal legal mechanism by which a third party can challenge a patent application (pre-grant) or a granted patent (post-grant) before the patent office, typically on grounds such as lack of novelty, lack of inventive step, insufficient disclosure, or — specifically relevant to this document — that the claimed invention falls within an exclusion such as Section 3(p) of the Indian Patents Act (traditional knowledge) or is anticipated by traditional-knowledge prior art. Outside India, similar mechanisms exist under different names (e.g., “opposition” at the European Patent Office, “re-examination” historically and “post-grant/inter partes review” currently at the USPTO [VERIFY current U.S. procedural names, as U.S. post- grant challenge mechanisms have changed over time, e.g., under the America Invents Act]).",
+   "id": 75
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 20,
+   "section": "5.11 Patent Infringement Basics",
+   "text": "Patent infringement occurs when a party, without authorization from the patentee, makes, uses, sells, offers to sell, or imports the patented invention within the territory where the patent is in force, during its term. Infringement analysis in most systems involves comparing the accused product/process against the specific claims of the patent (the numbered statements at the end of the patent document that legally define its scope), not against the patent’s general description. Available remedies typically include injunctions, damages, or an account of profits, subject to the applicable law and court’s discretion. Section 5 Summary A patent requires novelty, inventive step, and industrial applicability, plus adequate disclosure. Indian patent law specifically excludes traditional-knowledge-based “inventions” and mere discoveries of new uses/forms of known substances from patentability (Sections 3(p), 3(e), and 3(d) of the Patents Act, 1970).",
+   "id": 76
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 20,
+   "section": "5.11 Patent Infringement Basics",
+   "text": "Traditional knowledge poses a distinctive novelty-search challenge because it is often undocumented or documented outside conventional patent-searchable formats — the exact gap TKDL was built to close. Sources / Further Reading (Section 5) • The Patents Act, 1970 (as amended) and the Patents Rules, 2003 (as amended) — Government of India: https://ipindia.gov.in • Office of the Controller General of Patents, Designs & Trade Marks — Manual of Patent Office Practice and Procedure • WIPO — general patent basics: https://www.wipo.int/patents/en/",
+   "id": 77
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 21,
+   "section": "6.1 Indian Patent Office",
+   "text": "The Indian Patent Office (a constituent office under the Office of the Controller General of Patents, Designs & Trade Marks) is responsible for receiving, examining, and granting or refusing patent applications in India, under the Patents Act, 1970 and the Patents Rules. It operates through patent offices located in Delhi, Mumbai, Kolkata, and Chennai, each with defined territorial jurisdiction. [VERIFY current office locations/jurisdictional rules, as administrative details can change.]",
+   "id": 78
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 21,
+   "section": "6.2 Controller General of Patents, Designs & Trade Marks (CGPDTM)",
+   "text": "The CGPDTM is the senior administrative authority overseeing India’s patent, design, trademark, and (through affiliated offices) geographical indication registries, functioning under the Department for Promotion of Industry and Internal Trade (DPIIT), Ministry of Commerce and Industry. The CGPDTM issues practice manuals, guidelines (including guidelines specifically addressing examination of biotechnology and traditional-knowledge-related applications), and administers the overall IP registration infrastructure.",
+   "id": 79
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 21,
+   "section": "6.3 Patents Act, 1970 (as amended)",
+   "text": "India’s principal patent statute. It has been substantively amended several times, most significantly in 2005 (to introduce product patent protection for pharmaceuticals, food, and chemicals, in compliance with India’s TRIPS obligations — see Section 9). It contains the core patentability criteria, the exclusions in Section 3 (including the TK-relevant exclusions discussed in Section 5.4), and the procedural framework for application, examination, opposition, and enforcement.",
+   "id": 80
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 21,
+   "section": "6.4 Patents Rules",
+   "text": "The Patents Rules (currently the Patents Rules, 2003, as periodically amended) set out the detailed procedural requirements under the Patents Act — forms, fees, timelines, and administrative procedures. [VERIFY current rules, as procedural amendments (e.g., relating to fees, timelines, or startup/small-entity concessions) occur periodically and should be checked on the official IP India website.]",
+   "id": 81
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 21,
+   "section": "6.5 Biological Diversity Act (and Current Biodiversity Legislation)",
+   "text": "India’s biodiversity-access law is the Biological Diversity Act, 2002, as amended by the Biological Diversity (Amendment) Act, 2023 (notified via Gazette publication in August 2023). Its stated objectives are conservation of biological diversity, sustainable use of its components, and fair and equitable sharing of benefits from the use of biological resources and associated traditional knowledge.",
+   "id": 82
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 22,
+   "section": "6.5 Biological Diversity Act (and Current Biodiversity Legislation)",
+   "text": "Key features, including as modified by the 2023 amendment, include (subject to verification of current rules made under the amended Act): • A requirement that certain categories of persons (in particular, foreign individuals/entities, and non-resident Indians, and entities not qualifying as Indian companies under the Companies Act, 2013 definition) obtain prior approval from the National Biodiversity Authority (NBA) before accessing Indian biological resources or associated traditional knowledge for research, commercial use, bio-survey, or bio-utilization. • Under the 2023 amendment, Indian entities/nationals covered under the relevant provision (Section 7 of the Act) generally need only register with the NBA (rather than obtain full prior approval) before obtaining an intellectual property right based on Indian biological resources or associated TK, though prior approval remains required before commercialization of that IP.",
+   "id": 83
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 22,
+   "section": "6.5 Biological Diversity Act (and Current Biodiversity Legislation)",
+   "text": "• The 2023 amendment also introduced decriminalization of most offences under the Act (replacing certain criminal penalties with monetary penalties), an exemption for codified traditional knowledge and its practitioners (e.g., registered AYUSH practitioners) from certain access-approval requirements, simplified compliance for Indian systems of medicine industry participants (including AYUSH-sector companies, startups, and MSMEs), and coverage of Digital Sequence Information (DSI) under access and benefit-sharing obligations. [VERIFY current implementing rules, since the amendment’s practical effect depends heavily on rules and notifications issued under it, which continue to be developed/updated.]",
+   "id": 84
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 22,
+   "section": "6.6 National Biodiversity Authority (NBA)",
+   "text": "The NBA is the statutory body established under the Biological Diversity Act, 2002, responsible for regulating access to Indian biological resources and associated traditional knowledge, approving (where required) access and benefit-sharing arrangements, and advising the Central Government on biodiversity-related matters, including matters relating to intellectual property rights over inventions based on Indian biological resources or associated traditional knowledge. It works alongside State Biodiversity Boards (SBBs) and local Biodiversity Management Committees (BMCs).",
+   "id": 85
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 22,
+   "section": "6.7 Ministry of AYUSH",
+   "text": "The Ministry of AYUSH is the Government of India ministry (a separate ministry since 2014 [VERIFY], having earlier existed as the Department of Indian Systems of Medicine and Homoeopathy, and later the Department of AYUSH) responsible for the development, education, standardization, quality control, and research promotion of Ayurveda, Yoga and Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homoeopathy. It collaborates with CSIR on TKDL and separately supports Ayurvedic pharmacopoeia standardization, licensing frameworks for Ayurvedic",
+   "id": 86
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 23,
+   "section": "6.7 Ministry of AYUSH",
+   "text": "drug manufacturing, and research bodies such as the Central Council for Research in Ayurvedic Sciences (CCRAS).",
+   "id": 87
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 23,
+   "section": "6.8 Council of Scientific and Industrial Research (CSIR)",
+   "text": "CSIR is India’s premier chain of national industrial research and development laboratories/institutions, functioning as an autonomous body under the (nominal) chairmanship of the Prime Minister of India, with a Director-General as executive head, administratively linked to the Ministry of Science and Technology. CSIR has played the lead technical role in creating and maintaining TKDL, and has historically been the institution that filed prior-art challenges in landmark cases such as the turmeric patent re-examination (Section 10).",
+   "id": 88
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 23,
+   "section": "6.9 TKDL",
+   "text": "(Cross-reference: see Section 3 for full treatment.) TKDL is jointly run by CSIR and the Ministry of AYUSH as a defensive prior-art database of Indian traditional medicinal knowledge.",
+   "id": 89
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 23,
+   "section": "6.10 WIPO",
+   "text": "The World Intellectual Property Organization (WIPO) is a specialized agency of the United Nations, headquartered in Geneva, responsible for administering a number of international IP treaties (e.g., the Paris Convention, the Berne Convention, the Patent Cooperation Treaty), promoting international IP policy cooperation, and — of direct relevance to this document — hosting the Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore (IGC), which has for many years been negotiating possible international instrument(s) on the protection of traditional knowledge, traditional cultural expressions, and genetic resources (see Section 9).",
+   "id": 90
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 23,
+   "section": "6.10 WIPO",
+   "text": "Section 6 Summary India’s Ayurveda/TK/IP-relevant institutional framework runs through the Indian Patent Office and CGPDTM (patents, under the Patents Act, 1970 and Patents Rules), the National Biodiversity Authority (biological-resource access, under the Biological Diversity Act, 2002, as amended in 2023), the Ministry of AYUSH (traditional- medicine regulation and standardization), CSIR (research and TKDL), and, internationally, WIPO (treaty administration and ongoing TK-protection negotiations). Sources / Further Reading (Section 6) • Office of the Controller General of Patents, Designs & Trade Marks: https://ipindia.gov.in • National Biodiversity Authority: http://nbaindia.org • Ministry of AYUSH: https://ayush.gov.in • Council of Scientific and Industrial Research: https://www.csir.res.in",
+   "id": 91
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "6.10 WIPO",
+   "text": "• World Intellectual Property Organization: https://www.wipo.int • The Biological Diversity Act, 2002 and the Biological Diversity (Amendment) Act, 2023 (Gazette of India, Ministry of Law and Justice) — https://egazette.gov.in # SECTION 7 — AYURVEDA AND PATENT",
+   "id": 92
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "SEARCHING",
+   "text": "This section describes a general research workflow a researcher can use to investigate whether an Ayurvedic formulation or traditional practice may already exist as prior art. It is written as a practical, step-by-step method. All examples below are hypothetical and are labelled as such; they do not describe any real formulation, product, or patent.",
+   "id": 93
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "7.1 Step 1 — Define the Invention",
+   "text": "Write a precise, technical description of exactly what is being investigated: what is the active ingredient or combination, what form is it in (powder, extract, oil, tablet), what is the claimed use, and what (if anything) is claimed to be new about it (a specific extraction ratio, a specific delivery method, a specific combination). Hypothetical example: “A proposed formulation combining an aqueous extract of Plant X with an aqueous extract of Plant Y, in a 3:1 ratio, delivered as an oral tablet, claimed to be useful for supporting joint comfort.”",
+   "id": 94
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "7.2 Step 2 — Identify Ingredients",
+   "text": "List every active and inactive ingredient by both common/vernacular name and, where possible, botanical (Latin binomial) or chemical name, since patent and traditional-knowledge literature may use different naming conventions.",
+   "id": 95
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "7.3 Step 3 — Identify Traditional Uses",
+   "text": "For each ingredient, research how it has traditionally been used, in which traditional medicine system(s), for what purpose, and in what form, using classical texts, TKDL (where accessible), and published ethnobotanical/ethnopharmacological literature.",
+   "id": 96
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "7.4 Step 4 — Search Synonyms",
+   "text": "Compile a list of all known synonyms for each ingredient and use-concept: Sanskrit, Hindi, regional-language names, older/obsolete botanical names (plant taxonomy is periodically revised, so an old scientific name may appear in older literature), and common English descriptive terms.",
+   "id": 97
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 24,
+   "section": "7.5 Step 5 — Search Scientific Names of Plants",
+   "text": "Search using the currently accepted botanical name and any historically used synonymous botanical names, since prior-art documents may predate a taxonomic reclassification.",
+   "id": 98
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.6 Step 6 — Search Formulation Names",
+   "text": "If the traditional formulation has a classical or market name (e.g., a named classical Ayurvedic compound formulation), search for that name specifically, as well as for its individual ingredients, since the named formulation itself may appear directly in patent or TKDL prior art.",
+   "id": 99
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.7 Step 7 — Search Patent Databases",
+   "text": "Search patent databases (see Section 8 for detailed search-concept guidance) using the ingredient names, synonyms, use-terms, and relevant classification codes (IPC/CPC), across multiple jurisdictions (India, USPTO, EPO, WIPO’s PATENTSCOPE, and others as relevant), since a relevant patent may be filed in a jurisdiction other than India.",
+   "id": 100
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.8 Step 8 — Search Traditional Knowledge Databases",
+   "text": "Where accessible, search TKDL (Section 3) and any other relevant public traditional-knowledge or ethnobotanical databases, using the same ingredient/synonym/use-term list developed in Steps 2–6.",
+   "id": 101
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.9 Step 9 — Analyze Prior Art",
+   "text": "For every document found, record: what exactly is disclosed, in what form, using what ingredient(s) and use-claim, and the disclosure’s date. Assess how closely the disclosed subject matter matches the invention being investigated (Step 1).",
+   "id": 102
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.10 Step 10 — Record Evidence",
+   "text": "Keep a structured, dated record of every search performed (search terms, databases used, date of search, and results), and archive copies of every relevant prior-art document found, with full bibliographic/publication details. This record is essential if the research is later used to support or oppose a patent application.",
+   "id": 103
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.11 Step 11 — Evaluate Novelty",
+   "text": "Compare the closest prior art found against the specific claims of the invention being investigated (not just its general subject area), and assess whether the invention as claimed would likely be considered new and non-obvious in light of that prior art — bearing in mind the Indian-law exclusions discussed in Section 5.4 (e.g., Sections 3(d), 3(e), and 3(p) of the Patents Act) if the analysis concerns patentability in India specifically.",
+   "id": 104
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 25,
+   "section": "7.12 Step 12 — Consult a Qualified Patent Professional When Necessary",
+   "text": "This workflow supports preliminary research and does not replace professional advice. Any decision to file a patent application, oppose someone else’s application,",
+   "id": 105
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 26,
+   "section": "7.12 Step 12 — Consult a Qualified Patent Professional When Necessary",
+   "text": "or rely on a novelty assessment for a commercial decision should involve a registered patent agent/attorney qualified in the relevant jurisdiction(s). Section 7 Summary A structured, twelve-step workflow — from precisely defining the invention through ingredient/synonym/name searches across both patent and traditional- knowledge databases, to recorded, dated evidence and professional consultation — supports a defensible assessment of whether an Ayurvedic formulation or practice may already exist as prior art. All worked examples in this section are hypothetical. Sources / Further Reading (Section 7) • WIPO — Patent search guidance and PATENTSCOPE: https://patentscope.wipo.int • Indian Patent Office — InPASS (Indian Patent Advanced Search System): https://ipindiaservices.gov.in • CSIR-TKDL Unit: https://www.csir.res.in/en/documents/tkdl",
+   "id": 106
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 26,
+   "section": "8.1 Keywords",
+   "text": "The specific words or phrases used to search a database — should include technical, common, and traditional/vernacular terms relevant to the subject matter.",
+   "id": 107
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 26,
+   "section": "8.2 Synonyms",
+   "text": "Alternative words or names with the same or closely related meaning (e.g., different regional names for the same plant); a thorough search always tests multiple synonyms, since indexing and terminology vary by source and era.",
+   "id": 108
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 26,
+   "section": "8.3 Boolean Search",
+   "text": "A search technique using logical operators to combine or exclude keywords precisely.",
+   "id": 109
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 26,
+   "section": "8.4 AND / OR / NOT",
+   "text": "• AND — narrows results to documents containing all specified terms (e.g., “turmeric AND wound”). • OR — broadens results to documents containing any of the specified terms (e.g., “turmeric OR Curcuma longa”). • NOT — excludes documents containing a specified term (e.g., “neem NOT cosmetic,” to exclude a particular use category).",
+   "id": 110
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.5 Classification Codes",
+   "text": "Standardized alphanumeric codes assigned to patent documents describing their technical subject matter, allowing searches by technology area rather than only by text/keyword — important because keyword searches can miss relevant documents that use different terminology for the same concept.",
+   "id": 111
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.6 IPC (International Patent Classification)",
+   "text": "A hierarchical, internationally standardized classification system (administered under a WIPO-linked international agreement) used by most patent offices worldwide, organizing all technology into sections, classes, subclasses, groups, and subgroups.",
+   "id": 112
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.7 CPC (Cooperative Patent Classification)",
+   "text": "A more granular classification system jointly developed by the European Patent Office and the USPTO, based on the IPC but with additional subdivisions, now used by a number of major patent offices in addition to or instead of pure IPC coding.",
+   "id": 113
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.8 Assignee Search",
+   "text": "Searching for patents by the name of the company or institution that owns (or will own) the patent rights, useful for tracking a specific competitor’s or research institution’s patent portfolio.",
+   "id": 114
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.9 Inventor Search",
+   "text": "Searching for patents by the name(s) of the individual(s) credited as inventor, useful for tracking a specific researcher’s body of patented work.",
+   "id": 115
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.10 Patent Family",
+   "text": "The set of related patent applications/patents filed in multiple countries for the same underlying invention (typically via the Paris Convention priority route or the Patent Cooperation Treaty, PCT), sharing a common priority claim; useful because the same invention’s protection status can differ country by country.",
+   "id": 116
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.11 Publication Number",
+   "text": "The unique identifier assigned to a patent application or granted patent when it is officially published by a patent office (distinct from the application number and, once granted, from the grant/patent number in some jurisdictions).",
+   "id": 117
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 27,
+   "section": "8.12 Application Number",
+   "text": "The unique identifier assigned to a patent application at the time of filing, used to track it through the examination process.",
+   "id": 118
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.13 Priority Date",
+   "text": "The earliest filing date that an applicant is entitled to claim for assessing novelty and inventive step — typically the filing date of the first application for the same invention in any Paris Convention member country, which subsequent applications (filed within the priority period, typically 12 months for patents) can claim the benefit of.",
+   "id": 119
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.14 Filing Date",
+   "text": "The actual date on which a specific patent application was filed at a specific patent office.",
+   "id": 120
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.15 Publication Date",
+   "text": "The date on which a patent application (or, separately, a granted patent) is made publicly available by the patent office — commonly around 18 months after the priority date for applications, unless earlier/later publication rules apply.",
+   "id": 121
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.16 Grant Date",
+   "text": "The date on which a patent office formally grants the patent, after which enforceable exclusive rights generally begin (subject to jurisdiction-specific rules on provisional/interim rights between publication and grant).",
+   "id": 122
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.17 Legal Status",
+   "text": "The current standing of a patent application or patent (e.g., pending, granted, refused, withdrawn, lapsed for non-payment of renewal fees, revoked following opposition) — an essential thing to check, since an expired, lapsed, or revoked patent generally no longer restricts use of the invention (though the underlying disclosure remains valid prior art for other purposes).",
+   "id": 123
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.18 Claims",
+   "text": "The numbered statements at the end of a patent document that legally define the precise scope of the exclusive right being sought or granted; these — not the general description or the abstract — are what is compared against an accused product/process in an infringement analysis, and what is compared against prior art in a novelty/inventive-step analysis.",
+   "id": 124
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 28,
+   "section": "8.19 Description",
+   "text": "The detailed technical explanation in a patent document of what the invention is, how it works, and (per the sufficiency-of-disclosure requirement, Section 5.3.4) how to make and use it.",
+   "id": 125
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 29,
+   "section": "8.20 Abstract",
+   "text": "A short summary (typically around 150 words, subject to jurisdiction-specific limits) at the start of a patent document, intended for quick technical orientation; the abstract itself does not define legal claim scope.",
+   "id": 126
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 29,
+   "section": "8.21 Prior-Art Documents",
+   "text": "Any documents (patents, scientific articles, books, and other public disclosures) predating the relevant priority/filing date that are relevant to assessing novelty and inventive step, as introduced in Section 5.6. Section 8 Summary Effective patent searching relies on combining precise keywords and synonyms with Boolean logic (AND/OR/NOT), classification-code searching (IPC/CPC) to catch documents using different terminology, and targeted assignee/inventor/family searches — while correctly reading bibliographic data (application/publication/priority/filing/grant dates and legal status) and focusing substantive comparison on the patent’s claims rather than its abstract or description alone. Sources / Further Reading (Section 8) • WIPO — IPC guide: https://www.wipo.int/classifications/ipc/en/ • Cooperative Patent Classification (CPC): https://www.cooperativepatentclassification.org • Indian Patent Office — InPASS search portal: https://ipindiaservices.gov.in",
+   "id": 127
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 29,
+   "section": "SECTION 9 — INTERNATIONAL FRAMEWORK 9.1 WIPO",
+   "text": "(Cross-reference Section 6.10.) WIPO administers major IP treaties and hosts ongoing negotiations specifically relevant to TK — the Intergovernmental Committee on Intellectual Property and Genetic Resources, Traditional Knowledge and Folklore (IGC). [VERIFY — recent development] In May 2024, WIPO member states adopted the WIPO Treaty on Intellectual Property, Genetic Resources and Associated Traditional Knowledge — a treaty requiring patent applicants to disclose the country of origin (or source) of genetic resources, and of associated traditional knowledge, used in an invention, where the claimed invention is materially based on such resources/knowledge. As with any treaty, its practical effect depends on the number and identity of ratifying countries and on national implementing legislation;",
+   "id": 128
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 30,
+   "section": "SECTION 9 — INTERNATIONAL FRAMEWORK 9.1 WIPO",
+   "text": "current ratification status should be checked on WIPO’s official treaty-status page before being relied upon.",
+   "id": 129
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 30,
+   "section": "9.2 TRIPS (Agreement on Trade-Related Aspects of Intellectual Property",
+   "text": "Rights) A World Trade Organization (WTO) agreement (in force since 1995) setting minimum standards for IP protection and enforcement that WTO member countries must implement in their national law, including minimum patent-term (20 years from filing) and patentable-subject-matter standards. TRIPS itself does not contain a dedicated regime for traditional knowledge protection, which is part of why TK protection has instead been pursued through separate instruments and negotiations (this section) and through defensive national tools like TKDL (Section 3).",
+   "id": 130
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 30,
+   "section": "9.3 Convention on Biological Diversity (CBD)",
+   "text": "A multilateral environmental treaty (opened for signature 1992, in force since 1993) with three main objectives: conservation of biological diversity, sustainable use of its components, and fair and equitable sharing of the benefits arising from the use of genetic resources — including, under Article 8(j), a specific call for parties to respect, preserve, and maintain the knowledge, innovations, and practices of indigenous and local communities relevant to biodiversity conservation, and to encourage equitable sharing of benefits from their utilization.",
+   "id": 131
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 30,
+   "section": "9.4 Nagoya Protocol",
+   "text": "A supplementary agreement to the CBD (adopted 2010, in force since 2014) that provides a more detailed legal framework for the effective implementation of the CBD’s access and benefit-sharing (ABS) objective, requiring parties to establish clear domestic measures on prior informed consent, mutually agreed terms, and benefit- sharing for access to genetic resources and associated traditional knowledge. [VERIFY India’s specific implementing measures and any updates, as domestic ABS rules are refined periodically — see Section 6.5 on the Biological Diversity Act framework, which is India’s principal domestic implementation route.]",
+   "id": 132
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 30,
+   "section": "9.5 Traditional Knowledge Protection Discussions",
+   "text": "Beyond the CBD/Nagoya (biodiversity-access) track, a separate but related international discussion — centered in WIPO’s IGC — has for many years explored whether and how to create dedicated international legal instrument(s) specifically protecting traditional knowledge and traditional cultural expressions as IP-like subject matter (as opposed to only regulating access to associated biological resources). As of this document’s preparation, this IGC process has produced the 2024 WIPO treaty noted in 9.1 (on disclosure obligations); broader substantive protection of TK and traditional cultural expressions themselves remains under continued negotiation. [VERIFY current status, as this is an active, evolving negotiation.]",
+   "id": 133
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 31,
+   "section": "9.6 Access and Benefit Sharing (ABS)",
+   "text": "The principle and set of legal mechanisms (rooted in the CBD and elaborated by the Nagoya Protocol) requiring that access to genetic resources and associated traditional knowledge be subject to prior informed consent from the providing country/community and mutually agreed terms, and that benefits arising from subsequent use (monetary — e.g., royalties — and non-monetary — e.g., capacity building, technology transfer) be shared fairly with the resource/knowledge provider.",
+   "id": 134
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 31,
+   "section": "9.7 Defensive Protection",
+   "text": "Legal and administrative measures designed to prevent third parties from obtaining IP rights (typically patents) over subject matter that is not genuinely novel because it is already traditional knowledge — without necessarily creating any new proprietary right for the TK holder. TKDL (Section 3) is the paradigm example of a defensive-protection tool; the WIPO 2024 treaty’s disclosure-of-origin requirement (9.1) is a defensive measure operating at the international treaty level.",
+   "id": 135
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 31,
+   "section": "9.8 Positive Protection",
+   "text": "Legal measures that go further than defensive protection by creating actual enforceable rights for traditional knowledge holders/communities themselves — for example, requiring benefit-sharing agreements as a legal precondition for use (as under the Biological Diversity Act and Nagoya-type ABS frameworks), or (in some countries, though not comprehensively in India as of this document) dedicated sui generis statutory rights specifically for TK holders analogous to conventional IP rights. Positive protection is generally considered legally and institutionally harder to design than defensive protection, given the collective, often-oral, and continuously-evolving nature of much TK (see Section 2.4).",
+   "id": 136
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 31,
+   "section": "9.9 How These Concepts Relate to Traditional Medicinal Knowledge",
+   "text": "For Ayurveda specifically, the practical interaction of these frameworks is: • CBD/Nagoya + India’s Biological Diversity Act govern access to the biological resource (the plant/organism itself) and associated TK for research or commercial use, and require benefit-sharing. • TRIPS + national patent law (India’s Patents Act) govern whether a resulting invention can be patented, and Indian law specifically excludes bare traditional-knowledge “inventions” (Section 5.4). • WIPO’s IGC process and the 2024 disclosure-of-origin treaty operate at the international patent-procedure level, aiming to make sure patent offices worldwide are told where a claimed invention’s genetic resources/TK came from, supporting both defensive challenge and benefit-sharing enforcement.",
+   "id": 137
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 32,
+   "section": "9.9 How These Concepts Relate to Traditional Medicinal Knowledge",
+   "text": "• TKDL operates as a practical, searchable, defensive tool sitting underneath all of the above, helping ensure that patent examiners can actually find the relevant traditional-knowledge prior art in practice. Section 9 Summary International protection of TK associated with Ayurveda involves at least three separate legal tracks: biodiversity-access law (CBD, Nagoya Protocol, India’s Biological Diversity Act), conventional IP/trade law (TRIPS, national patent law and its TK-specific exclusions), and a still-developing dedicated TK-protection track at WIPO (culminating so far in the 2024 disclosure-of-origin treaty), with defensive tools like TKDL providing the practical, on-the-ground mechanism that connects TK documentation to real-world patent examination.",
+   "id": 138
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 32,
+   "section": "9.9 How These Concepts Relate to Traditional Medicinal Knowledge",
+   "text": "Sources / Further Reading (Section 9) • WIPO — IGC and the 2024 WIPO Treaty on Intellectual Property, Genetic Resources and Associated Traditional Knowledge: https://www.wipo.int/tk/en/ • WTO — TRIPS Agreement full text: https://www.wto.org/english/tratop_e/trips_e/trips_e.htm • Convention on Biological Diversity Secretariat: https://www.cbd.int • Nagoya Protocol official text and status: https://www.cbd.int/abs/ #",
+   "id": 139
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 32,
+   "section": "SECTION 10 — CASE STUDIES",
+   "text": "The following cases are widely documented in secondary legal and policy literature (law firm publications, WIPO materials, peer-reviewed articles, and contemporaneous news reporting). Dates and figures below are drawn from multiple concurring public sources but, per this document’s accuracy rules, should be independently verified against primary/official records (patent office decisions, official gazettes) before being used in any formal or legal context.",
+   "id": 140
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 32,
+   "section": "10.1 Case Study — The Turmeric Patent Case",
+   "text": "• Case name: University of Mississippi Medical Center — U.S. Patent No. 5,401,504, “Use of Turmeric in Wound Healing” • Country: United States (dispute originated from India’s challenge) • Approximate year: Patent granted 1995; re-examination requested 1996; patent revoked 1997 • Traditional knowledge involved: The use of turmeric (Curcuma longa) powder, administered both orally and topically, for wound healing — a use widely documented as traditional practice in Indian households and in Ayurvedic and other traditional literature. • IP issue: Novelty and obviousness — whether a patent claim on an already- traditionally-known use can be valid. • What was claimed: A patent (granted March 1995) covering a method of promoting wound healing by administering turmeric to a patient, orally and/or topically, along with associated exclusive commercial rights.",
+   "id": 141
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 33,
+   "section": "10.1 Case Study — The Turmeric Patent Case",
+   "text": "• What happened: India’s Council of Scientific and Industrial Research (CSIR) filed a request for re-examination with the USPTO in 1996, submitting documentary prior art — reported to include roughly 32 references in Sanskrit, Hindi/Urdu, and other sources, along with a 1953 paper in the Journal of Indian Medical Association — demonstrating that turmeric’s wound-healing use was long-standing traditional and documented knowledge, not a new invention. • Final outcome: The USPTO rejected all claims on re-examination and formally revoked the patent (order dated in late 1997), on the ground that the claimed use was anticipated by prior art and therefore not novel/was obvious. • Why the case is important:",
+   "id": 142
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 33,
+   "section": "10.1 Case Study — The Turmeric Patent Case",
+   "text": "• Why the case is important: It is the most frequently cited example demonstrating that Indian traditional knowledge, if properly documented and presented as prior art, can defeat a wrongly granted patent — and it was the direct catalyst, along with the neem case below, for the creation of TKDL (Section 3), since it showed the cost and difficulty of fighting such patents after grant rather than preventing them beforehand.",
+   "id": 143
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 33,
+   "section": "10.2 Case Study — The Neem Patent Case",
+   "text": "• Case name: European Patent No. 0436257 (US Department of Agriculture / W.R. Grace & Co., later assigned to Thermo Trilogy) — neem-seed-derived fungicide • Country: Europe (European Patent Office, Munich); dispute involved U.S. and Indian parties/campaigners • Approximate year: Patent granted 1994/1995; opposition filed 1995; revoked by EPO Opposition Division in 2000; final appeal decision 2005 • Traditional knowledge involved: The use of neem (Azadirachta indica) seed-derived extracts as an antifungal/pesticidal agent — a use widely documented in Ayurvedic literature and long-standing Indian agricultural and medicinal practice. • IP issue: Whether the claimed invention (a specific method of controlling fungi on plants using a neem-oil formulation with defined hydrophobic- extract content) was novel and involved an inventive step, given the traditional and prior scientific record of neem’s antifungal use. • What was claimed:",
+   "id": 144
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 33,
+   "section": "10.2 Case Study — The Neem Patent Case",
+   "text": "• What was claimed: A patent covering a method of controlling fungi on plants by contacting the fungi with a neem-oil formulation containing a specified percentage range of a hydrophobic extract. • What happened: A legal opposition was filed in 1995 by environmentalist Vandana Shiva’s Research Foundation for Science, Technology and Ecology, together with the International Federation of Organic Agriculture Movements (IFOAM) and Magda Aelvoet (then a Member of the European Parliament), arguing the patent was not a genuine invention because neem’s fungicidal properties had been used in India for centuries; evidence included",
+   "id": 145
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 34,
+   "section": "10.2 Case Study — The Neem Patent Case",
+   "text": "ancient Ayurvedic textual references and testimony/prior scientific publications on neem’s antifungal effects. • Final outcome: The EPO’s Opposition Division revoked the patent in May 2000, finding it lacked novelty and inventive step; the patentees appealed, and the EPO’s Technical Board of Appeal dismissed the appeal in March 2005, upholding the revocation of the patent in its entirety. • Why the case is important: Widely described as the first case in which a patent was revoked at the EPO on grounds directly connected to biopiracy/traditional-knowledge prior art; it is cited internationally, alongside the turmeric case, as a foundational example motivating TKDL’s creation and broader international attention to defensive TK protection.",
+   "id": 146
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 34,
+   "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute",
+   "text": "• Case name: RiceTec Inc. — U.S. Patent No. 5,663,484, “Basmati Rice Lines and Grains” • Country: United States (dispute involved India as the objecting/affected country; Pakistan also has a strong interest in Basmati as a shared-origin product) • Approximate year: Patent granted September 1997; formal objection by India (via the Agricultural and Processed Food Products Export Development Authority, APEDA) around 2000; claims narrowed thereafter • Traditional knowledge involved:",
+   "id": 147
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 34,
+   "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute",
+   "text": "Basmati is a long-grain aromatic rice traditionally grown for generations in specific regions of India and Pakistan (the Indo-Gangetic plain/foothills of the Himalayas), and traditionally bred/selected by farmers in that region; the case is often discussed alongside TK cases because it involves a claim over a name and rice lines closely tied to traditional regional agricultural knowledge and practice, though it is more precisely framed as a geographical-indication and plant-related patent dispute than a medicinal-TK dispute. • IP issue: Whether a U.S. company could obtain patent rights over rice lines bred by cross-breeding traditional Basmati varieties with an American long- grain variety, including claims broad enough to potentially extend the “Basmati” name/characteristics to rice grown outside the traditional region, raising both patent-novelty and geographical-indication concerns. • What was claimed:",
+   "id": 148
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 34,
+   "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute",
+   "text": "• What was claimed: The original patent, as granted, included 20 claims covering rice lines and grains, some of which were broad enough to be read as covering “basmati” hybrid rice grown anywhere in the Western Hemisphere. • What happened: Following objections raised by the Indian government and public pressure/protest in India, and after India submitted supporting material, RiceTec voluntarily withdrew a substantial number of claims, and a U.S. Patent and Trademark Office re-examination certificate cancelled a number of the remaining claims relating specifically to rice matching the traditional Basmati description.",
+   "id": 149
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 35,
+   "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute",
+   "text": "• Final outcome: RiceTec was left holding a narrower patent covering only its own specifically bred rice lines/hybrids (commonly referenced varietal names include Bas867, RT1117, and RT1121), and the patent’s title was correspondingly narrowed; RiceTec was not permitted to claim general rights over rice simply because it was marketed using the term “Basmati” in a manner that misappropriated the geographic term’s traditional meaning. • Why the case is important: It is one of the most cited examples of how a poorly scrutinized patent claim can threaten a country’s traditional agricultural export identity, and it strongly informed India’s subsequent push to strengthen its Geographical Indications of Goods (Registration and Protection) Act, 1999, and to register Basmati and other traditional products as GIs domestically and, where possible, internationally.",
+   "id": 150
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 35,
+   "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model",
+   "text": "(TBGRI) • Case name: Tropical Botanic Garden and Research Institute (TBGRI) / Kani tribe — “Jeevani” formulation and benefit-sharing trust • Country: India (Kerala) • Approximate year: Traditional-knowledge collaboration began in 1987; product (“Jeevani”) developed and ready to market by around 1994–1996; benefit-sharing trust established mid-1990s; later difficulties documented through the 2000s • Traditional knowledge involved: Knowledge of the Kani tribe (an indigenous community of the Western Ghats/Agasthya Hills region) regarding the anti-fatigue and restorative properties of the Arogyapacha plant (Trichopus zeylanicus), traditionally consumed by Kani guides during long forest journeys. • IP issue:",
+   "id": 151
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 35,
+   "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model",
+   "text": "• IP issue: Whether and how a research institute could commercialize a formulation derived from tribal traditional knowledge, and how to structure a fair benefit-sharing arrangement with the source community, in a period (research began before the 1993 entry into force of the CBD) predating most formal ABS legal frameworks. • What was claimed: TBGRI researchers, guided by Kani informants, identified and studied the plant’s properties over roughly eight years of research, ultimately developing “Jeevani,” a polyherbal formulation combining Arogyapacha with three other traditionally used plants (ashwagandha, Piper longum, and Evolvulus alsinoides). • What happened: TBGRI licensed the manufacturing/marketing rights to the Arya Vaidya Pharmacy (AVP) of Coimbatore in exchange for a license fee (commonly reported as approximately Rs.",
+   "id": 152
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 35,
+   "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model",
+   "text": "10 lakh) and a royalty (commonly reported as approximately 2% of ex-factory sales), and TBGRI agreed to share these proceeds equally with the Kani community through a dedicated trust. Implementation later encountered significant difficulties: disputes arose over raw-material collection rights (because Arogyapacha was not",
+   "id": 153
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 36,
+   "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model",
+   "text": "classified as a “minor forest produce” that the Kani could legally collect and sell, leading to conflicts with the forest department and, per some reports, cases against tribal collectors), and separately, an unrelated U.S. distributor of AVP products registered “Jeevani” as a trademark in the United States in 1999 without the involvement of TBGRI or the Kani community. • Final outcome: The arrangement is widely described as a pioneering, internationally cited early model of benefit-sharing predating most formal legal ABS requirements, but subsequent reporting (including from the 2000s) documented that the underlying trust fund became financially strained over time and that practical benefits to the Kani community were more limited and harder to sustain than initially envisioned, illustrating the real-world implementation challenges of benefit-sharing arrangements even when well- intentioned at the outset. • Why the case is important:",
+   "id": 154
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 36,
+   "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model",
+   "text": "• Why the case is important: It is commonly presented as both (a) a positive, early example of a research institution proactively sharing commercial benefits with a traditional-knowledge-holding community, and (b) a cautionary illustration that a benefit-sharing agreement’s practical success depends heavily on complementary legal clarity (e.g., forest/resource-access law) and long-term institutional follow-through, not just the initial agreement.",
+   "id": 155
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 36,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "Agreement • Case name: South African San Council / Working Group of Indigenous Minorities in Southern Africa (WIMSA) — CSIR (South Africa) Hoodia Benefit- Sharing Agreement • Country: South Africa (with regional relevance to San communities in Namibia, Botswana, Angola, and Zambia) • Approximate year: CSIR (South Africa) research and patenting activity from the 1990s; benefit-sharing agreement signed March 2003 • Traditional knowledge involved: Traditional knowledge of the San peoples of the Kalahari Desert regarding the use of the Hoodia gordonii plant to suppress hunger and thirst on long hunting trips, and for other traditional purposes (including for stomach pain and eye infections). • IP issue:",
+   "id": 156
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 36,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "• IP issue: South Africa’s Council for Scientific and Industrial Research (CSIR — a different institution from India’s CSIR, sharing only the acronym) isolated an appetite-suppressing compound (referred to as “P57”) from Hoodia and pursued patent protection and commercial licensing (to Phytopharm, a UK firm, which in turn licensed rights to Pfizer for further development) without initially involving, informing, or compensating the San, despite the underlying discovery relying directly on San traditional knowledge of the plant’s properties. • What was claimed: CSIR (South Africa) filed a patent application (national filing in South Africa in 1997, followed by a PCT international filing in 1998)",
+   "id": 157
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 37,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "covering pharmaceutical compositions extracted from Hoodia with appetite- suppressant activity. • What happened: After the San learned of the commercialization and patenting activity — reportedly including a moment in which the licensee’s representatives believed the San no longer existed as a people — the South African San Council, supported by WIMSA and non-governmental organizations, asserted the community’s traditional-knowledge rights and entered into negotiations with CSIR, citing South Africa’s obligations under the CBD and (then-emerging) international benefit-sharing norms. • Final outcome:",
+   "id": 158
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 37,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "• Final outcome: After roughly three years of negotiation, CSIR and the South African San Council signed a benefit-sharing agreement in March 2003, under which the San would receive a share of royalties (commonly reported as 6% of royalties received by CSIR from Phytopharm) and a share of milestone payments (commonly reported as 8% of certain milestone payments), paid into a trust established for community development purposes (education, training, and related upliftment programs) and intended to benefit San communities across the wider Southern African region, not only in South Africa. • Why the case is important:",
+   "id": 159
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 37,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "• Why the case is important: It is one of the most widely cited early examples of a formal, negotiated access and benefit-sharing agreement reached after a patent had already been filed/commercialized, illustrating both that meaningful benefit-sharing remedies are achievable even after the fact, and the structural limitation that such after-the-fact remedies typically capture only a fraction of the value generated, reinforcing the case for prior- informed-consent requirements (as later strengthened by the Nagoya Protocol — Section 9.4) rather than only after-the-fact negotiation.",
+   "id": 160
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 37,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "Section 10 Summary Five well-documented cases illustrate the recurring dynamics of traditional- knowledge-related IP disputes: two successful defensive challenges to wrongly granted patents (turmeric, neem); one dispute over a traditional agricultural name and its patent/geographical-indication implications (Basmati/RiceTec); and two benefit-sharing arrangements with a traditional-knowledge-holding community, one negotiated proactively before major commercialization (Kani/Jeevani) and one negotiated reactively after commercialization had already begun (Hoodia/San). All five cases directly informed the development of defensive protection tools (TKDL) and access/benefit-sharing law (CBD, Nagoya Protocol, and India’s Biological Diversity Act). Sources / Further Reading (Section 10) • WIPO — “The Use of Turmeric in Wound Healing” case documentation: https://www.wipo.int/tk/en/databases/traditionalknowledge/ • Nature (1997) — “US patent office withdraws patent on Indian herb”;",
+   "id": 161
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 37,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "Nature (2000) — “Greens persuade Europe to revoke patent on neem tree”",
+   "id": 162
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 38,
+   "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing",
+   "text": "• GRAIN — “EPO upholds decision to revoke neem patent” (2005 press materials): https://grain.org • S.S. Rana & Co., Mondaq, and IIPRD legal-commentary summaries of the turmeric and neem cases (secondary sources; verify against primary USPTO/EPO decisions) • Science|Business and multiple Indian legal-journal summaries of the RiceTec/Basmati dispute (verify against USPTO re-examination certificate for Patent No. 5,663,484) • C.R. Bijoy, “Access and Benefit Sharing from the Indigenous Peoples’ Perspective: The TBGRI-Kani ‘Model’,” Law, Environment and Development Journal (2007) • WIPO IP Advantage — “Leveraging Economic Growth through Benefit Sharing” (Hoodia/CSIR/San case); Cultural Survival Quarterly reporting on the Hoodia benefit-sharing agreement # SECTION 11 — RESEARCH",
+   "id": 163
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 38,
+   "section": "WORKFLOW FOR AYURIP SAHAYAK",
+   "text": "This section describes the intended end-to-end workflow for the AyurIP Sahayak AI research assistant, from a user’s question to a sourced answer.",
+   "id": 164
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 38,
+   "section": "11.1 Workflow Overview",
+   "text": "User Query → Query Understanding → Keyword/Synonym Expansion → Knowledge Base Retrieval → Patent/Traditional Knowledge Retrieval → Evidence Ranking → Context Construction → LLM Response → Source/Citation Display",
+   "id": 165
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 38,
+   "section": "11.2 Stage 1 — User Query",
+   "text": "The process begins with a natural-language question or request from the user (e.g., a researcher, student, patent professional, or Ayurveda practitioner), which may be broad (“What is TKDL?”) or specific (“Is a formulation combining ingredients A and B for use C likely to face novelty objections in India?”).",
+   "id": 166
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 38,
+   "section": "11.3 Stage 2 — Query Understanding",
+   "text": "The system analyzes the query to determine: the query’s intent category (definitional/conceptual question, procedural/how-to question, case-law/precedent question, or novelty-assessment-support question); the specific entities mentioned (plant names, formulation names, legal provisions, institutions); and any ambiguity requiring clarification before proceeding (e.g., “Ayurveda” used generically vs. a specific classical formulation name).",
+   "id": 167
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 39,
+   "section": "11.4 Stage 3 — Keyword/Synonym Expansion",
+   "text": "Using the principles in Section 7 (Steps 2–6) and Section 8, the system expands the query’s key entities into a broader search-term set: botanical synonyms, vernacular- language names, alternative transliterations, related legal-provision references, and related classification codes — to avoid missing relevant material due to terminology mismatch, which (as discussed in Section 5.5) is precisely the structural problem that historically allowed wrongful patents to be granted.",
+   "id": 168
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 39,
+   "section": "11.5 Stage 4 — Knowledge Base Retrieval",
+   "text": "The system retrieves the most relevant sections/chunks of this knowledge-base document (and any other configured internal knowledge sources) using the expanded term set, prioritizing self-contained sections (as this document is structured to support — see Section 12) so that retrieved chunks make sense on their own.",
+   "id": 169
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 39,
+   "section": "11.6 Stage 5 — Patent/Traditional Knowledge Retrieval",
+   "text": "Where the query concerns a specific prior-art or novelty question, the system separately queries external/connected patent-search and traditional-knowledge resources (e.g., patent-office search portals, TKDL where access is available, scientific literature databases), following the step-by-step methodology in Section 7.",
+   "id": 170
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 39,
+   "section": "11.7 Stage 6 — Evidence Ranking",
+   "text": "Retrieved material (from both Stage 4 and Stage 5) is ranked by relevance to the specific query and, where applicable, by authoritativeness of source (e.g., an official Patents Act provision or a primary patent-office decision should be weighted above a secondary blog summary), and by recency where the query concerns current legal rules (per this document’s general verification approach — see the Important Accuracy Rules in the document introduction).",
+   "id": 171
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 39,
+   "section": "11.8 Stage 7 — Context Construction",
+   "text": "The system assembles the highest-ranked, most relevant evidence into a coherent context for the underlying language model, structured to make clear which statements are: (a) traditional claims, (b) scientifically established facts, (c) current legal rules (with a verification flag where appropriate), and (d) case-study historical facts — mirroring the labeling conventions used throughout this document.",
+   "id": 172
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 39,
+   "section": "11.9 Stage 8 — LLM Response",
+   "text": "The underlying language model generates a response strictly grounded in the assembled context, following this document’s core accuracy rules: no fabrication of laws, cases, statistics, organizations, patents, or dates; clear distinction between traditional claims and scientific evidence; no medical diagnosis, treatment",
+   "id": 173
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 40,
+   "section": "11.9 Stage 8 — LLM Response",
+   "text": "instruction, or unsupported disease-cure claims; and explicit flagging of any point requiring independent verification.",
+   "id": 174
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 40,
+   "section": "11.10 Stage 9 — Source/Citation Display",
+   "text": "The final response is presented to the user together with clear citations back to the specific source section/document/provision relied upon, so the user can independently verify any point before relying on it — consistent with this document’s overall design purpose as a RAG source that supports, rather than replaces, professional legal and scientific verification. Section 11 Summary AyurIP Sahayak’s workflow moves from raw user query through query understanding and synonym/keyword expansion, to parallel retrieval from this knowledge base and from external patent/TK databases, through evidence ranking and carefully labeled context construction, to a grounded LLM response that always displays its sources — designed throughout to prevent fabrication and to keep traditional, scientific, and legal claims clearly distinguished.",
+   "id": 175
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 40,
+   "section": "12.1 Design Principles Used in This Document",
+   "text": "This document has been structured specifically to support retrieval-augmented generation: • Clear section titles and numbered subsections allow precise citation and chunk-level retrieval. • Definitions are stated explicitly (e.g., “Traditional Knowledge” in 2.1, “Prior Art” in 5.6) rather than left implicit, so a retrieval system can answer definitional queries directly from a single chunk. • Important entities (institutions, statutes, plants, cases) are named consistently throughout, using their full name at first mention in each section, to support entity-based retrieval and cross-referencing. • Synonyms and terminology variants are called out explicitly where relevant (e.g., Section 1.4 for classical-text terms, Section 7.4 for search- relevant synonym practice). • Frequently used terminology is consolidated in the Glossary (12.3) for fast lookup.",
+   "id": 176
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 40,
+   "section": "12.1 Design Principles Used in This Document",
+   "text": "• Frequently used terminology is consolidated in the Glossary (12.3) for fast lookup. • Question-answer style facts are embedded throughout via the labeled Section Summaries, which restate each section’s core facts in compact form.",
+   "id": 177
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 41,
+   "section": "12.1 Design Principles Used in This Document",
+   "text": "• Relationships between concepts are made explicit (e.g., Section 9.9 explicitly maps how CBD/Nagoya, TRIPS/patent law, WIPO’s IGC process, and TKDL relate to one another for Ayurveda specifically). • Common misconceptions are addressed directly (Section 12.2). • Short factual summaries appear after every major section (the “Section N Summary” blocks).",
+   "id": 178
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 41,
+   "section": "12.2 Common Misconceptions Addressed",
+   "text": "Misconception Clarification “Ayurveda has been scientifically proven as a complete system.” Modern science evaluates specific claims/formulations individually; Ayurveda as a whole system is a traditional framework, not a single scientifically validated model (Section 1.1). “TKDL itself stops patents from being granted.” TKDL is a search/reference tool for examiners; it does not automatically block a grant — it depends on examiners searching it and applying it correctly, or on it being cited in opposition (Section 3.6). “Any traditional use automatically makes a related patent invalid anywhere in the world.” Patentability exclusions and prior-art rules differ by jurisdiction; India’s Patents Act has specific TK-related exclusions (Section 5.4), but other countries’ laws and standards of evidence differ. “Biopiracy” is a precisely defined legal term with the same meaning in every law.",
+   "id": 179
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 41,
+   "section": "12.2 Common Misconceptions Addressed",
+   "text": "“Biopiracy” is a precisely defined legal term with the same meaning in every law. It is a widely used policy/advocacy term without one uniform statutory definition; specific legal consequences depend on the applicable statute (e.g., India’s Biological Diversity Act) and facts (Section 2.6). “A patent search only needs to check Indian patent databases for an Ayurveda-related invention.” Relevant prior art or conflicting patents can exist in any jurisdiction; effective searching is intentionally multi-jurisdictional (Sections 7.7, 8). “Once traditional knowledge is documented (e.g., in TKDL), the community that originated it automatically owns an enforceable IP right in it.” Documentation for defensive purposes (preventing wrongful patents) is legally distinct from creating a new positive ownership right for the community; these are different protection strategies (Section 9.7–9.8).",
+   "id": 180
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 41,
+   "section": "12.2 Common Misconceptions Addressed",
+   "text": "“GI registration and patent protection are the same kind of right.” They protect fundamentally different things (place-linked reputation vs. a new invention) and follow entirely different registration criteria and statutes (Section 4.3–4.4).",
+   "id": 181
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 42,
+   "section": "12.2 Common Misconceptions Addressed",
+   "text": "Section 12 Summary (Design Notes) This document is deliberately structured — through numbered self-contained sections, explicit definitions, consistent entity naming, an integrated glossary, embedded Q/A-style summaries, explicit concept-relationship mapping, and a dedicated misconceptions table — to function effectively as a chunkable, retrievable source document for the AyurIP Sahayak RAG system.",
+   "id": 182
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 42,
+   "section": "GLOSSARY",
+   "text": "(Consolidated reference of key terms used throughout this document — Ayurveda, Traditional Knowledge, Intellectual Property, Patents, and RAG-research terminology. Terms are also defined in context in their originating section; this glossary consolidates them for fast lookup.) 1. Abstract — Short summary at the start of a patent document (Section 8.20). 2. Access and Benefit Sharing (ABS) — Principle requiring consent and fair sharing of benefits for use of genetic resources/TK (Section 9.6). 3. Ashtanga Hridaya — Classical Ayurvedic text compiled by Vagbhata (Section 1.3). 4. Assignee — The entity that owns or will own patent rights. 5. Assignee Search — Searching patents by owning entity (Section 8.8). 6. AYUSH — Ayurveda, Yoga & Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homoeopathy; also the name of the relevant Indian government ministry (Section 6.7). 7. Bhasma — Traditional Ayurvedic processed mineral/metal preparation (Section 1.6). 8.",
+   "id": 183
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 42,
+   "section": "GLOSSARY",
+   "text": "7. Bhasma — Traditional Ayurvedic processed mineral/metal preparation (Section 1.6). 8. Biodiversity Management Committee (BMC) — Local-level body under India’s biodiversity law (Section 6.6). 9. Biological Diversity Act, 2002 — India’s principal biodiversity-access statute, as amended in 2023 (Section 6.5). 10. Biopiracy — Informal term for unauthorized commercial use of biological resources/TK without consent/benefit-sharing (Section 2.6.1). 11. Bhaishajya Kalpana — Ayurvedic pharmaceutics/formulation science (Section 1.6). 12. Boolean Search — Search technique using AND/OR/NOT logic (Section 8.3– 8.4). 13. CBD (Convention on Biological Diversity) — International biodiversity treaty (Section 9.3). 14. CGPDTM — Controller General of Patents, Designs & Trade Marks (Section 6.2).",
+   "id": 184
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 43,
+   "section": "GLOSSARY",
+   "text": "15. Charaka Samhita — Classical Ayurvedic text on internal medicine (Section 1.3). 16. Claims — Numbered statements defining a patent’s legal scope (Section 8.18). 17. Classification Codes — Codes categorizing patent subject matter (Section 8.5). 18. Community Knowledge — TK held collectively by an identifiable community (Section 2.4). 19. Copyright — IP right over original literary/artistic/other creative works (Section 4.2.3). 20. CPC (Cooperative Patent Classification) — Joint EPO/USPTO patent classification system (Section 8.7). 21. CSIR — Council of Scientific and Industrial Research, India (Section 6.8). 22. Defensive Protection — Measures preventing wrongful IP grants over TK, without creating new rights for TK holders (Section 9.7). 23. Dhatus — The seven traditional Ayurvedic “tissues” (Section 1.4.2). 24. Digital Sequence Information (DSI) — Genetic-sequence data now covered under India’s amended biodiversity ABS obligations (Section 6.5). 25.",
+   "id": 185
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 43,
+   "section": "GLOSSARY",
+   "text": "24. Digital Sequence Information (DSI) — Genetic-sequence data now covered under India’s amended biodiversity ABS obligations (Section 6.5). 25. Disclosure of Origin — Requirement to state the source of genetic resources/TK used in an invention (Section 9.1). 26. Documented Traditional Knowledge — TK recorded in texts/publications (Section 2.3). 27. Doshas — Vata, Pitta, Kapha; traditional Ayurvedic physiological principles (Section 1.4.1). 28. Filing Date — Date a patent application is filed (Section 8.14). 29. Geographical Indication (GI) — IP right protecting place-linked product reputation (Section 4.2.4). 30. Grant Date — Date a patent is formally granted (Section 8.16). 31. Ghrita — Medicated ghee preparation in Ayurveda (Section 1.6). 32. Industrial Applicability — Patentability requirement that an invention have a practical, working use (Section 5.3.3). 33. Industrial Design — IP right protecting a product’s visual/ornamental appearance (Section 4.2.6). 34.",
+   "id": 186
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 43,
+   "section": "GLOSSARY",
+   "text": "33. Industrial Design — IP right protecting a product’s visual/ornamental appearance (Section 4.2.6). 34. Inventive Step — Patentability requirement that an invention not be obvious (Section 5.3.2). 35. Inventor Search — Searching patents by the named inventor (Section 8.9). 36. IPC (International Patent Classification) — Internationally standardized patent classification system (Section 8.6). 37. Kani Tribe — Indigenous community in Kerala, India, associated with the Jeevani/Arogyapacha case (Section 10.4). 38. Kwatha/Kashaya — Traditional Ayurvedic decoction (Section 1.6).",
+   "id": 187
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 44,
+   "section": "GLOSSARY",
+   "text": "39. Legal Status (Patent) — Current standing of a patent/application (Section 8.17). 40. Malas — Traditional Ayurvedic waste products (urine, feces, sweat) (Section 1.4.3). 41. Ministry of AYUSH — Government of India ministry overseeing Indian traditional-medicine systems (Section 6.7). 42. Misappropriation — Unauthorized taking/use of TK contrary to community norms or legal requirements (Section 2.6.2). 43. Nagoya Protocol — 2010 supplementary agreement to the CBD detailing ABS implementation (Section 9.4). 44. National Biodiversity Authority (NBA) — Statutory Indian body regulating biological-resource access (Section 6.6). 45. Novelty — Patentability requirement that an invention not already be publicly disclosed (Section 5.3.1). 46. Oral Traditional Knowledge — Undocumented TK held within communities/families (Section 2.3). 47. Patent — Exclusive, time-limited right over an invention, granted in exchange for public disclosure (Section 4.2.1, 5.1–5.2). 48.",
+   "id": 188
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 44,
+   "section": "GLOSSARY",
+   "text": "47. Patent — Exclusive, time-limited right over an invention, granted in exchange for public disclosure (Section 4.2.1, 5.1–5.2). 48. Patent Application Number — Identifier assigned to an application at filing (Section 8.12). 49. Patent Examination — The process of reviewing an application against legal requirements and prior art (Section 5.7). 50. Patent Family — Related applications/patents for the same invention across multiple countries (Section 8.10). 51. Patent Infringement — Unauthorized making/using/selling/importing of a patented invention (Section 5.11). 52. Patent Office — Government body examining and granting patents (e.g., Indian Patent Office, USPTO, EPO) (Section 6.1). 53. Patent Opposition — Formal challenge to a patent application/grant (Section 5.10). 54. Patent Search — Structured search for relevant prior art (Section 5.8, Section 7). 55. Patents Act, 1970 — India’s principal patent statute (Section 6.3). 56.",
+   "id": 189
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 44,
+   "section": "GLOSSARY",
+   "text": "55. Patents Act, 1970 — India’s principal patent statute (Section 6.3). 56. Patents Rules — Detailed procedural rules under India’s Patents Act (Section 6.4). 57. Plant Variety Protection — Sui generis IP right for new, bred plant varieties, with farmers’ rights (Section 4.2.7). 58. Positive Protection — Measures creating enforceable rights for TK holders themselves (Section 9.8). 59. Prakriti — Individual constitutional type in Ayurvedic theory (Section 1.4.4). 60. Priority Date — Earliest filing date an applicant can claim for novelty/inventive-step assessment (Section 8.13).",
+   "id": 190
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 45,
+   "section": "GLOSSARY",
+   "text": "61. Prior Art — All public disclosures before a patent’s priority/filing date, relevant to novelty/inventive step (Section 5.6, 8.21). 62. Publication Date — Date a patent application/patent is made public (Section 8.15). 63. Publication Number — Identifier assigned when a patent document is published (Section 8.11). 64. RAG (Retrieval-Augmented Generation) — AI architecture retrieving relevant source content to ground a generated response. 65. Rasashastra — Traditional Ayurvedic branch dealing with mineral/metal- based preparations. 66. Rasayana — Traditional Ayurvedic classification for rejuvenative substances (Section 1.5). 67. RiceTec Case — Dispute over U.S. Patent No. 5,663,484 relating to “Basmati” rice lines (Section 10.3). 68. Section 3(d), Patents Act — Indian provision restricting patents on new forms/uses of known substances absent enhanced efficacy (Section 5.4). 69.",
+   "id": 191
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 45,
+   "section": "GLOSSARY",
+   "text": "68. Section 3(d), Patents Act — Indian provision restricting patents on new forms/uses of known substances absent enhanced efficacy (Section 5.4). 69. Section 3(e), Patents Act — Indian provision excluding mere admixtures with only aggregated known properties (Section 5.4). 70. Section 3(p), Patents Act — Indian provision excluding inventions that are, in effect, traditional knowledge (Section 5.4). 71. Sowa-Rigpa — A traditional medicine system recognized under India’s AYUSH framework (Section 1.1, 3.8). 72. Sufficiency of Disclosure — Patentability requirement that an invention be described clearly enough to be reproduced (Section 5.3.4). 73. Sui Generis Protection — A specially designed, custom legal regime (as opposed to using existing IP categories) (Section 2.4, 9.8). 74. Sushruta Samhita — Classical Ayurvedic text on surgery (Section 1.3). 75. Synonyms (Search) — Alternative terms for the same concept, used to broaden a search (Section 8.2). 76.",
+   "id": 192
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 45,
+   "section": "GLOSSARY",
+   "text": "75. Synonyms (Search) — Alternative terms for the same concept, used to broaden a search (Section 8.2). 76. Taila — Medicated oil preparation in Ayurveda (Section 1.6). 77. TKDL (Traditional Knowledge Digital Library) — CSIR/Ministry-of- AYUSH database of documented traditional medicinal knowledge (Section 3). 78. TKRC (Traditional Knowledge Resource Classification) — Classification system created for TKDL content (Section 3.4). 79. Trade Secret — Confidential, commercially valuable information protected by secrecy rather than registration (Section 4.2.5). 80. Trademark — Sign distinguishing the goods/services of one enterprise from another’s (Section 4.2.2). 81. Traditional Knowledge (TK) — Knowledge, know-how, and practices developed and passed down within a community (Section 2.1). 82. Traditional Knowledge Associated with Biological Resources — TK about properties/uses of a specific organism (Section 2.2).",
+   "id": 193
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 46,
+   "section": "GLOSSARY",
+   "text": "83. Traditional Medicinal Knowledge — TK specifically about diagnosis, treatment, and formulations in traditional medicine systems (Section 2.3). 84. TRIPS Agreement — WTO agreement setting minimum global IP standards (Section 9.2). 85. Vati/Gutika — Tablet/pill form of Ayurvedic preparation (Section 1.6). 86. WIPO — World Intellectual Property Organization (Section 6.10, 9.1). 87. WIPO IGC — Intergovernmental Committee on IP and Genetic Resources, Traditional Knowledge and Folklore (Section 6.10, 9.1, 9.5). 88. WIPO Treaty on IP, Genetic Resources and Associated TK (2024) — Treaty requiring disclosure of origin of genetic resources/TK in patent applications (Section 9.1). 89. Arishta/Asava — Fermented Ayurvedic liquid preparations (Section 1.6). 90. Churna — Fine Ayurvedic herbal powder preparation (Section 1.6). 91. Person Skilled in the Art — Hypothetical knowledgeable practitioner used as the legal benchmark for obviousness (Section 5.3.2). 92.",
+   "id": 194
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 46,
+   "section": "GLOSSARY",
+   "text": "91. Person Skilled in the Art — Hypothetical knowledgeable practitioner used as the legal benchmark for obviousness (Section 5.3.2). 92. Prior Informed Consent (PIC) — Requirement to obtain consent from the resource/knowledge provider before access (Section 9.4, 9.6). 93. Mutually Agreed Terms (MAT) — Negotiated terms governing access to and use of a genetic resource/TK under ABS frameworks (Section 9.4). 94. State Biodiversity Board (SBB) — State-level body under India’s Biological Diversity Act (Section 6.6). 95. Novelty-Destroying Disclosure — A prior disclosure sufficient to defeat the novelty of a later patent claim (Section 5.3.1, 5.6). 96. Re-Examination — A procedure allowing a granted patent to be reviewed again against newly submitted prior art (Section 10.1). 97. Utility (Patent Law) — See Industrial Applicability (Section 5.3.3). 98.",
+   "id": 195
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 46,
+   "section": "GLOSSARY",
+   "text": "97. Utility (Patent Law) — See Industrial Applicability (Section 5.3.3). 98. Value-Added Product — Under India’s amended Biological Diversity Act, a product containing biological material in an unrecognizable, physically inseparable form, generally outside the Act’s direct scope (Section 6.5). 99. Panchakarma — Traditional Ayurvedic detoxification and rejuvenation procedures (Section 1.1). 100. Ethnobotany/Ethnopharmacology — Scientific study of traditional plant use and its pharmacological basis, relevant evidentiary source for both TK documentation and modern scientific evaluation (Sections 1.6, 7.3). 101. Hoodia Case — Access/benefit-sharing dispute and agreement involving South Africa’s CSIR and the San peoples (Section 10.5). 102. Jeevani — Polyherbal formulation developed by TBGRI from Kani traditional knowledge of Arogyapacha (Section 10.4).",
+   "id": 196
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 47,
+   "section": "DOCUMENT NOTES",
+   "text": "• This knowledge base was compiled from publicly available secondary and primary sources current as of its preparation date. Time-sensitive items (fee schedules, current office locations, exact ratification/implementation status of recent treaties and rules, and current statistics) are flagged [VERIFY] throughout and should be re-checked against the official sources listed in each section’s “Sources / Further Reading” list before being relied upon for any legal, medical, commercial, or academic decision. • This document does not constitute legal advice, medical advice, or an official statement of any Indian government body, and should not be treated as a substitute for consultation with a registered patent agent/attorney, a qualified medical professional, or the relevant government authority.",
+   "id": 197
+  },
+  {
+   "file": "ayurveda-ipr-traditional-knowledge.pdf",
+   "page": 47,
+   "section": "DOCUMENT NOTES",
+   "text": "• Nothing in this document should be read as asserting that any specific Ayurvedic treatment cures any specific disease; where traditional and scientific claims are both discussed, they are explicitly and separately labeled as such throughout.",
+   "id": 198
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 1,
+   "section": null,
+   "text": "Open access peer-reviewed Journal www.jpharmsci.com [ISSN: 1520-601x] Relevant conflicts of interest/financial disclosures: The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest. Integrating Intellectual Property Rights, Traditional Knowledge Systems, And the Evolution of Ayurveda: A Multidisciplinary Examination Priyanka Jadhavar1, Ganesh Nale2 1Assistant Professor, Department of Law Shivaji University, Kolhapur, Maharashtra, India 2Department of Sociology, Central University of Haryana, Mahendragarh – 123031, Haryana, India",
+   "id": 199
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 1,
+   "section": "INTRODUCTION",
+   "text": "Intellectual Property Rights (IPR), Traditional Knowledge Systems (TKS), and the classical science of Ayurveda form important pillars of India’s cultural heritage, scientific capability, and legal frameworks. In an era of globalization and expanding commer cial interest in biological resources and indigenous knowledge, the protection of TKS and the development of robust IPR mechanisms have become urgent national priorities. Simultaneously, the evolution of Ayurveda—from its Vedic origins to its modern instit utionalization—shows the continuity and transformation of Indian knowledge systems. This article presents a comprehensive academic analysis integrating IPR, TKS, and Ayurveda along with essential components of criminal law, human rights, and procedural sys tems relevant to justice administration in India.",
+   "id": 200
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 1,
+   "section": "INTRODUCTION",
+   "text": "Written in heading–paragraph format, it explores the conceptual foundations, legal frameworks, institutional mechanisms, historical developments, and contemporary relevance of these intersecting fields.",
+   "id": 201
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 1,
+   "section": "I: Intellectual Property Rights (IPR)",
+   "text": "Concept and Meaning of Intellectual Property Intellectual Property refers to creations of the human intellect that carry commercial, moral, scientific, or cultural value. Unlike physical property, IP is intangible and exists in forms such as literary works, inventions, artistic expressions, industria l designs, and brand identifiers. These creations are protected through legal rights that grant exclusive control to the creator or owner for a specified time. Intellectual Property Rights therefore function as mechanisms that recognize and reward human creativity, allowing societies to encourage innovation, scientific advancement, and artistic production. Types of Intellectual Property",
+   "id": 202
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 1,
+   "section": "ABSTRACT",
+   "text": "Intellectual Property Rights (IPR) have emerged as one of the most critical tools for safeguarding creativity, innovation, and cultural heritage. The protection of Traditional Knowledge Systems (TKS), especially India’s rich Ayurvedic tradition, has assume d importance in the context of global patent races, rising bio-piracy, and increased commercial exploitation of indigenous resources. This article presents a comprehensive analysis of the concepts, legal frameworks, institutional structures, and databases designed to safeguard TKS. It also examines the Vedic origins, textual foundations, philosophical frameworks, and contemporary relevance of Ayurveda. The article further links IPR and Ayurveda within broader legal, procedural, and human-rights contexts relevant to criminology, jurisprudence, and public administration. This multidisciplinary article integrates law, intellectual property management, biodiversity governance, Indian traditional medicine, and criminal justice systems.",
+   "id": 203
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 1,
+   "section": "ABSTRACT",
+   "text": "Keywords: Intellectual Property Rights (IPR), Traditional Knowledge Systems (TKS), Ayurveda, Bio-piracy, Access and Benefit Sharing (ABS), Criminal Justice System, Human Rights, Patent Protection, A ṣṭāṅga Ayurveda, Evidence and Procedure Law.",
+   "id": 204
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 2,
+   "section": "ABSTRACT",
+   "text": "Intellectual Property is categorized into several forms based on the nature of the creation. Patents protect inventions that demonstrate novelty, inventive steps, and industrial applicability. Copyright safeguards literary, artistic, musical, and digital w orks. Trademarks protect unique signs, symbols, logos, or names used to identify goods and services. Industrial designs preserve the aesthetic features of manufactured products. Geographical Indications protect goods associated with specific regions. Plant variety protection ensures rights over new plant breeds. Trade secrets safeguard undisclosed commercial information. Together, these forms of protection constitute a comprehensive system of IP governance. Origin and Nature of Intellectual Property Rights The philosophical and historical roots of IPR can be traced to early European statutes such as the Venetian Patent Act of 1474 and the Statute of Anne of 1710, which introduced fundamental concepts of authorship and inventorship.",
+   "id": 205
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 2,
+   "section": "ABSTRACT",
+   "text": "The nature of IPR is terri torial, time-bound, and based on the principle of incentivizing creativity. It grants temporary monopolies to innovators in exchange for public disclosure of knowledge. The balance between exclusive rights and public interest forms the foundation of modern IPR jurisprudence. Philosophy and Importance of IPR The philosophy of IPR rests on encouraging innovation by ensuring that creators receive due recognition and reward. From an economic perspective, IPR stimulates industrial growth, technology transfer, and competitive markets. From a cultural standpoint, it preserves artistic and literary expressions. In developing countries like India, IPR is crucial for protecting traditional knowledge, preventing bio-piracy, and strengthening indigenous industries such as Ayurveda, handicrafts, and agriculture. The increasing relevance of IPR in trade, innovation ecosystems, and digital markets underscores its global significance.",
+   "id": 206
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 2,
+   "section": "ABSTRACT",
+   "text": "The increasing relevance of IPR in trade, innovation ecosystems, and digital markets underscores its global significance. Current Best Practices in IPR Management Contemporary IPR management emphasizes transparency, global collaboration, digital tools, and community engagement. Best practices include digitizing patent databases, training stakeholders, implementing strong examination processes, establishing community knowledge registers, and enhancing coordination with international organizations like the Wor ld Intellectual Property Organization (WIPO). India has adopted improved patent examination guidelines, streamlined filing systems, and special measures to addres s traditional knowledge-related patent claims. Legal Framework of IPR in India India has developed a comprehensive legal framework aligned with international standards while safeguarding national interests. The Patents Act of 1970 established modern patent law and was amended in 2005 to comply with TRIPS requirements.",
+   "id": 207
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 2,
+   "section": "ABSTRACT",
+   "text": "The Patents Act of 1970 established modern patent law and was amended in 2005 to comply with TRIPS requirements. The Copyright Act of 1957 protects creative works, while the Trade Marks Act of 1999 modernized trademark registration. The Geographical Indications of Goods (Registration and Protection) Act of 1999 introduced GI protection. The Protection of Plant Varieties and Farmers’ Rights Act of 2001 safeguarded both breeders’ and farmers’ interests. The Biological Diversity Act of 2002 created mechanisms to regulate access to biological resources and ensure benefit - sharing. These laws collectively form the backbone of India’s IPR framework.",
+   "id": 208
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 2,
+   "section": "II: Traditional Knowledge Systems (TKS)",
+   "text": "Concept and Importance of Traditional Knowledge Traditional Knowledge refers to the long-standing practices, innovations, and cultural wisdom of indigenous and local communities. Passed orally across generations, TKS encompasses medicinal systems, agriculture, biodiversity conservation, and ecological m anagement. It represents a holistic worldview that integrates natural resources, community well-being, and sustainable living. Protecting TKS is essential for preserving cultural identity, economic independence, and ecological balance. Protection of Traditional Knowledge and Prevention of Bio-piracy",
+   "id": 209
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 3,
+   "section": "II: Traditional Knowledge Systems (TKS)",
+   "text": "Bio-piracy occurs when corporations or institutions exploit biological resources or traditional knowledge without permission or benefit-sharing. Famous cases such as the unauthorized patents on turmeric, neem, and basmati rice highlighted global vulnerabil ities. India’s response includes legal reforms, community rights, and the creation of defensive databases such as the Traditional Knowledge Digital Library (TKDL). Preventing bio-piracy promotes ethical research, supports indigenous livelihoods, and ensures national sovereignty over biological resources. Benefits of TKS Protection to the National Economy Traditional Knowledge contributes significantly to India’s national economy through sectors such as Ayurveda, handicrafts, agriculture, nutraceuticals, and biodiversity-based industries. Protecting TK enhances the credibility and global market value of Indian products. Sustainable harvesting practices and community participation further promote rural development and employment.",
+   "id": 210
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 3,
+   "section": "II: Traditional Knowledge Systems (TKS)",
+   "text": "Sustainable harvesting practices and community participation further promote rural development and employment. TKS-based innovation also strengthens India’s soft power and global competitiveness. TKS and Environmental Conservation Traditional knowledge systems promote ecological harmony through practices such as organic farming, water conservation, herbal medicine, and biodiversity protection. Indigenous communities have historically acted as custodians of forests, medicinal plants, and soil ecosystems. Integrating TKS into national conservation strategies supports climate resilience and biodiversity preservation. TKS and Innovation in Indian Medicine Ayurveda and other traditional medical systems continuously evolve by integrating empirical observations, herbal formulations, and experiential knowledge. TKS serves as a foundation for pharmaceutical research, nutraceutical development, and holistic healt h approaches.",
+   "id": 211
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 3,
+   "section": "II: Traditional Knowledge Systems (TKS)",
+   "text": "TKS serves as a foundation for pharmaceutical research, nutraceutical development, and holistic healt h approaches. Innovation grounded in TKS enhances accessibility, affordability, and cultural acceptance of healthcare solutions.",
+   "id": 212
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 3,
+   "section": "III: Institutional Mechanisms for the Protection of",
+   "text": "TKS The Indian Patent Office and TK Protection The Indian Patent Office plays a critical role in preventing the misappropriation of traditional knowledge. Patent examiners are trained to identify TK-related claims and compare them with existing evidence in TKDL. The IPO also collaborates with global patent offices to ensure that TK is considered “prior art” in patent examinations. This institutional mechanism strengthens defensive protection for India’s indigenous heritage. National Biodiversity Authority and Access and Benefit Sharing The National Biodiversity Authority (NBA), established under the Biological Diversity Act of 2002, regulates access to biological resources and associated knowledge. Its primary function is to ensure fair and equitable sharing of benefits arising from thei r use. NBA safeguards community rights, approves research involving biological resources, and promotes sustainable utilization.",
+   "id": 213
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 3,
+   "section": "III: Institutional Mechanisms for the Protection of",
+   "text": "NBA safeguards community rights, approves research involving biological resources, and promotes sustainable utilization. State Biodiversity Boards and local committees support implementation at decentralized levels. Indian Legislation Relevant to TKS The Patents Act excludes traditional knowledge from patentability. The Biological Diversity Act governs access, conservation, and benefit sharing. The Convention on Biological Diversity recognizes sovereign rights over natural resources. The Protection of Plant Varieties and Farmers' Rights Act safeguards both breeders and cultivators. The Geographical Indications Act protects region-specific products that embody traditional craftsmanship. These legislative measures collectively strengthen the protection of TKS in India.",
+   "id": 214
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 3,
+   "section": "IV: Databases and Registers for Protecting TKS",
+   "text": "Traditional Knowledge Digital Library (TKDL) The Traditional Knowledge Digital Library is one of India’s most significant innovations in defensive protection. It documents over 300,000 formulations from Ayurveda, Unani, Siddha, and Yoga in multiple languages. TKDL serves as prior art for patent offices globally, preventing the wrongful grant of patents on",
+   "id": 215
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 4,
+   "section": "IV: Databases and Registers for Protecting TKS",
+   "text": "knowledge already present in classical Indian texts. Through partnerships with WIPO and major patent offices, TKDL has become an international model for safeguarding indigenous knowledge through digital innovations.",
+   "id": 216
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 4,
+   "section": "V: International Agreements and Institutions",
+   "text": "WTO and TRIPS Agreement The World Trade Organization’s TRIPS Agreement established global standards for IPR protection. While TRIPS strengthens patent regimes, it also allows members to adopt measures for protecting public interest and preventing bio-piracy. India used TRIPS flexibilities to safeguard public health and indigenous knowledge. The agreement remains central to global IPR governance. World Intellectual Property Organization WIPO plays a leading role in harmonizing international IP laws, administering global treaties, and facilitating patent cooperation. It also supports member states in protecting traditional knowledge through policy development, capacity building, and documentation projects. Convention on Biological Diversity and the Nagoya Protocol The Convention on Biological Diversity recognizes national sovereignty over biodiversity. The Nagoya Protocol provides a legal framework for access and benefit sharing between resource users and providers.",
+   "id": 217
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 4,
+   "section": "V: International Agreements and Institutions",
+   "text": "The Nagoya Protocol provides a legal framework for access and benefit sharing between resource users and providers. Both instruments support the protection of TKS by ensuring ethical and equitable use of biological resources. FAO and Indigenous Rights The Food and Agriculture Organization promotes farmers’ rights, sustainable agriculture, and conservation of genetic resources. Its initiatives complement national efforts to protect agricultural knowledge and biodiversity.",
+   "id": 218
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 4,
+   "section": "VI: Ayurveda —Origin, Evolution, and Textual",
+   "text": "Foundations Vedic Origin and Chronological Development of Ayurveda Ayurveda originates from the Vedic corpus, particularly the Atharvaveda, where early concepts of health, herbs, and disease appear. The evolution of Ayurveda progressed from Vedic hymns to the systematic compilations of the Samhita period, followed by extensive commentarial traditions during the classical and medieval eras. Contemporary developments include scientific validation, institutional research, and integration into national health systems. Ayurvedic Schools and Their Contributions Two foundational schools shaped classical Ayurveda: the Atreya school, emphasizing internal medicine, and the Dhanvantari school, focusing on surgery. Each school contributed to specific branches such as toxicology, psychiatry, obstetrics, and rejuvenation therapies. Their systematic teachings laid the foundation for organized medical education in ancient India.",
+   "id": 219
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 4,
+   "section": "VI: Ayurveda —Origin, Evolution, and Textual",
+   "text": "Their systematic teachings laid the foundation for organized medical education in ancient India. Relevance of Aṣṭāṅga Ayurveda Aṣṭāṅga Ayurveda comprises eight branches representing a comprehensive medical system: internal medicine, surgery, ENT and ophthalmology, paediatrics, toxicology, rejuvenation, aphrodisiac therapy, and mental health. These branches reflect Ayurveda’s holistic understanding of body, mind, and environment. Their relevance continues today in integrative healthcare, public health strategies, and wellness industries. Basic Texts and Classical Commentaries The classical foundation of Ayurveda rests on the Bṛhattrayī—Charaka Saṃhitā, Suśruta Sa ṃhitā, and Aṣṭāṅga H ṛdaya. These texts present detailed information on diagnostics, therapeutics, anatomy, surgery, pharmacology, and ethics. The Laghutrayī— Mādhava Nidāna, Śār ṅgadhara Sa ṃhitā, and Bhāvaprakāśa—further elaborate clinical features, formulations, and pharmacognosy.",
+   "id": 220
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 4,
+   "section": "VI: Ayurveda —Origin, Evolution, and Textual",
+   "text": "The Laghutrayī— Mādhava Nidāna, Śār ṅgadhara Sa ṃhitā, and Bhāvaprakāśa—further elaborate clinical features, formulations, and pharmacognosy. Commentators such as Chakrapani, Dalhan, and Arunadatta enriched Ayurvedic scholarship through interpretive insights and systematic exegesis.",
+   "id": 221
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 5,
+   "section": "VI: Ayurveda —Origin, Evolution, and Textual",
+   "text": "Nighaṇṭus and Kośa in Ayurvedic Literature Nighaṇṭus are lexicons describing medicinal plants, minerals, and formulations. They function as essential references for identifying materia medica. Ayurvedic Kośas compile terminologies and classifications critical for clinical and research contexts. These works preserve linguistic, botanical, and therapeutic knowledge across centuries. Contemporary Developments in Ayurveda Modern Ayurveda benefits from advancements in pharmacology, clinical research, digital documentation, and global recognition. Research councils under the Ministry of AYUSH promote scientific studies, clinical trials, and standardization of medicines. Globa l interest in Ayurveda is increasing due to its preventive approach, personalized treatment, and wellness orientation. Government Initiatives for the Promotion of Ayurveda The Ministry of AYUSH coordinates policies supporting education, research, drug development, and global collaborations.",
+   "id": 222
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 5,
+   "section": "VI: Ayurveda —Origin, Evolution, and Textual",
+   "text": "Initiatives such as the National AYUSH Mission, Pharmacopoeial standards, and the WHO Global Centre for Traditional Medicine in Jamnagar strengthen institutional infrastructure. These efforts aim to integrate Ayurveda into mainstream health systems while preserving its classical authenticity.",
+   "id": 223
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 5,
+   "section": "VII: Legal Approaches, Criminal Law, and",
+   "text": "Human Rights Accusatorial and Inquisitorial Legal Systems Legal systems can broadly be categorized as accusatorial, where the burden of proof lies on the prosecution and the judge acts as a neutral arbiter, and inquisitorial, where the judge actively investigates the case. India follows the accusatorial model, en suring procedural fairness and protecting individual rights. Substantive and Procedural Laws Substantive law defines offences, rights, and liabilities, while procedural law outlines the processes for enforcing those rights. The Indian Penal Code represents substantive criminal law, whereas the Criminal Procedure Code governs the investigation, arrest, trial, and sentencing processes. Criminal Liability and Strict Liability Criminal liability requires both a guilty act and a guilty mind. Strict liability offences do not require proof of intent and are often applied in public health, environmental, and regulatory contexts.",
+   "id": 224
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 5,
+   "section": "VII: Legal Approaches, Criminal Law, and",
+   "text": "Strict liability offences do not require proof of intent and are often applied in public health, environmental, and regulatory contexts. These principles serve public welfare by creating accountability without requiring complex mental - state analysis. Categorization of Offences Offences in India are classified as cognizable or non- cognizable, bailable or non-bailable, and compoundable or non-compoundable. These classifications determine the authority of police to arrest, the individual’s right to bail, and whether disputes can be settled outside the court. Such distinctions play a critical role in efficient justice delivery. Investigation Processes: Complaint, FIR, Arrest, Search, and Bail Criminal investigation begins with a complaint or the registration of a First Information Report. Police may arrest suspects, conduct searches, seize evidence, and seek judicial custody. Bail decisions balance personal liberty with societal interests.",
+   "id": 225
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 5,
+   "section": "VII: Legal Approaches, Criminal Law, and",
+   "text": "Bail decisions balance personal liberty with societal interests. Judi cial oversight ensures fairness and protection from abuse of power. Types of Evidence and Admissibility Evidence includes oral, documentary, electronic, and material forms. The Indian Evidence Act governs admissibility and relevance. Confessions made to police officers are generally inadmissible unless made before a magistrate. Dying declarations are accepte d due to their exceptional reliability. These principles maintain fairness and accuracy in judicial proceedings. Human Rights of Accused Persons, Victims, and Prisoners The Indian Constitution guarantees fundamental rights to all citizens, including accused persons.",
+   "id": 226
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 6,
+   "section": "VII: Legal Approaches, Criminal Law, and",
+   "text": "Rights such as legal representation, protection from torture, speedy trial, and humane treatment safeguard individual dignity. Victims have rights to compensation, participation in trials, and protection from intimidation. Prisoners are entitled to basic human rights, healthcare, and rehabilitation. Landmark judgments of the Supreme Court have strengthened these protections, reinforcing democratic values. Protection of Children from Sexual Offences (POCSO) Act The POCSO Act provides a comprehensive legal framework to protect children from sexual abuse, harassment, and pornography. It establishes child - friendly procedures, mandatory reporting obligations, special courts, and stringent punishments. Its focus on the best interests of the child reflects India’s commitment to child rights and international conventions.",
+   "id": 227
+  },
+  {
+   "file": "traditional-knowledge-ipr.pdf",
+   "page": 6,
+   "section": "CONCLUSION",
+   "text": "This article integrates Intellectual Property Rights, Traditional Knowledge Systems, and Ayurvedic heritage within a broad legal and social framework. IPR emerges as a vital tool for safeguarding creativity, innovation, and cultural resources. The protecti on of TKS is indispensable for preventing bio-piracy, promoting equitable benefit sharing, supporting indigenous communities, and strengthening the national economy. Ayurveda, rooted in ancient wisdom yet continually evolving, represents India’s profound contribution to global health traditions. The analysis of criminal law and human rights underscores the importance of fairness, justice, and dignity in modern governance. Together, these domains reflect the interdisciplinary nature of law, culture, science, and society in contemporary India. A holistic approach to these areas can support sustainable development, cultural preservation, and a robust justice system.",
+   "id": 228
+  }
+ ]
+}

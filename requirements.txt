@@ -1,0 +1,7 @@
+# Runtime dependencies for local setup. Vercel installs the same list from
+# pyproject.toml; keep both in sync (checked by backend/tests/test_dependencies.py).
+fastapi==0.141.1
+uvicorn==0.52.4
+google-genai==2.20.0
+numpy==2.5.2
+python-dotenv==1.2.3

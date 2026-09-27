@@ -1,117 +1,134 @@
-﻿import json
-from pathlib import Path
+"""Retriever over the chunk index with three modes:
+
+- dense:  cosine similarity of Gemini embeddings (default)
+- bm25:   keyword scoring
+- hybrid: both rankings combined with Reciprocal Rank Fusion (RRF)
+
+backend/eval/evaluate.py compares them on a labelled question set."""
+
+import json
+from functools import lru_cache
 
 import numpy as np
-from sentence_transformers import SentenceTransformer
+
+from backend.rag import config
+from backend.rag.gemini_client import embed_texts
+from backend.rag.ingestion.chunking import searchable_text
+from backend.rag.retrieval.bm25 import BM25, tokenize
 
 
-# ---------------------------------------------------------
-# PATHS
-# ---------------------------------------------------------
-
-BASE_DIR = Path(__file__).resolve().parents[2]
-
-EMBEDDINGS_PATH = (
-    BASE_DIR
-    / "data"
-    / "processed"
-    / "embeddings.json"
-)
-
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODES = ("hybrid", "dense", "bm25")
 
 
-# ---------------------------------------------------------
-# LOAD EMBEDDINGS
-# ---------------------------------------------------------
+def reciprocal_rank_fusion(rankings, k=config.RRF_K):
+    """Fuse ranked lists of chunk indices (best first) into {index: score}.
 
-print("Loading embeddings...")
-print(f"Embeddings path: {EMBEDDINGS_PATH}")
+    Each list contributes 1 / (k + rank), so a chunk ranked well by both
+    retrievers beats one ranked first by only one of them.
+    """
+    fused = {}
 
-if not EMBEDDINGS_PATH.exists():
-    raise FileNotFoundError(
-        f"Embeddings file not found: {EMBEDDINGS_PATH}"
-    )
+    for ranking in rankings:
+        for rank, index in enumerate(ranking, start=1):
+            fused[index] = fused.get(index, 0.0) + 1.0 / (k + rank)
 
-with open(EMBEDDINGS_PATH, "r", encoding="utf-8") as f:
-    data = json.load(f)
-
-print(f"Total embeddings: {len(data)}")
+    return fused
 
 
-# ---------------------------------------------------------
-# LOAD EMBEDDING MODEL
-# ---------------------------------------------------------
+class Retriever:
+    def __init__(self, chunks, embeddings, documents):
+        self.chunks = chunks
+        self.embeddings = embeddings
+        self.documents = {document["file"]: document for document in documents}
+        self.bm25 = BM25([tokenize(searchable_text(chunk)) for chunk in chunks])
 
-print("Loading embedding model...")
+    @classmethod
+    def load(cls, index_path=config.INDEX_PATH, embeddings_path=config.EMBEDDINGS_PATH):
+        if not index_path.exists() or not embeddings_path.exists():
+            raise FileNotFoundError(
+                "Retrieval index not found. Build it with: "
+                "python -m backend.rag.ingestion.build_index"
+            )
 
-model = SentenceTransformer(MODEL_NAME)
+        index = json.loads(index_path.read_text(encoding="utf-8"))
+        embeddings = np.load(embeddings_path)
 
-print("Embedding model loaded successfully.")
+        if index["embedding_model"] != config.EMBEDDING_MODEL:
+            raise RuntimeError(
+                f"Index was built with {index['embedding_model']} but the app "
+                f"uses {config.EMBEDDING_MODEL}. Rebuild the index."
+            )
+
+        if len(index["chunks"]) != len(embeddings):
+            raise RuntimeError("index.json and embeddings.npy are out of sync. Rebuild the index.")
+
+        return cls(index["chunks"], embeddings, index["documents"])
+
+    def search(self, query, top_k=config.TOP_K, mode=config.RETRIEVAL_MODE, query_embedding=None):
+        """Return the top_k chunks for a query.
+
+        mode: "dense", "bm25" or "hybrid" (see module docstring).
+        query_embedding can be passed in to skip the embedding API call.
+        """
+        if mode not in MODES:
+            raise ValueError(f"mode must be one of {MODES}")
+
+        similarity = None
+
+        if mode in ("hybrid", "dense"):
+            if query_embedding is None:
+                query_embedding = embed_texts([query], "RETRIEVAL_QUERY")[0]
+
+            # Rows are normalised, so the dot product is cosine similarity
+            similarity = self.embeddings @ query_embedding
+
+        if mode == "dense":
+            order = np.argsort(-similarity)[:top_k]
+        else:
+            keyword_scores = np.asarray(self.bm25.scores(tokenize(query)))
+            keyword_ranking = [
+                index
+                for index in np.argsort(-keyword_scores)[:config.FUSION_CANDIDATES]
+                if keyword_scores[index] > 0
+            ]
+
+            if mode == "bm25":
+                order = keyword_ranking[:top_k]
+            else:
+                dense_ranking = np.argsort(-similarity)[:config.FUSION_CANDIDATES]
+                fused = reciprocal_rank_fusion([dense_ranking, keyword_ranking])
+                order = sorted(fused, key=fused.get, reverse=True)[:top_k]
+
+        return [self._to_result(int(index), similarity) for index in order]
+
+    def _to_result(self, index, similarity):
+        chunk = self.chunks[index]
+        document = self.documents[chunk["file"]]
+
+        return {
+            "chunk_id": chunk["id"],
+            "file": chunk["file"],
+            "title": document["short_title"],
+            "page": chunk["page"],
+            "section": chunk.get("section"),
+            "text": chunk["text"],
+            "similarity": None if similarity is None else round(float(similarity[index]), 4),
+        }
+
+    def stats(self):
+        return {
+            "documents": [
+                {
+                    "title": document["short_title"],
+                    "pages": document["pages"],
+                    "chunks": document["chunks"],
+                }
+                for document in self.documents.values()
+            ],
+            "chunks": len(self.chunks),
+        }
 
 
-# ---------------------------------------------------------
-# RETRIEVAL FUNCTION
-# ---------------------------------------------------------
-
-def retrieve(query, top_k=5):
-
-    query_embedding = model.encode(
-        [query],
-        normalize_embeddings=True
-    )[0]
-
-    scores = []
-
-    for item in data:
-
-        chunk_embedding = np.array(
-            item["embedding"]
-        )
-
-        similarity = np.dot(
-            query_embedding,
-            chunk_embedding
-        )
-
-        scores.append({
-            "score": float(similarity),
-            "chunk_id": item["chunk_id"],
-            "source": item["source"],
-            "text": item["text"]
-        })
-
-    scores.sort(
-        key=lambda x: x["score"],
-        reverse=True
-    )
-
-    return scores[:top_k]
-
-
-# ---------------------------------------------------------
-# DIRECT TEST
-# ---------------------------------------------------------
-
-if __name__ == "__main__":
-
-    query = input("\nEnter your question: ")
-
-    results = retrieve(
-        query,
-        top_k=5
-    )
-
-    print("\n" + "=" * 80)
-    print("TOP RESULTS")
-    print("=" * 80)
-
-    for i, result in enumerate(results, start=1):
-
-        print(f"\n#{i}")
-        print(f"Score: {result['score']:.4f}")
-        print(f"Chunk ID: {result['chunk_id']}")
-        print(f"Source: {result['source']}")
-        print(f"Text:\n{result['text']}")
-
-    print("\n" + "=" * 80)
+@lru_cache(maxsize=1)
+def get_retriever():
+    return Retriever.load()

@@ -1,345 +1,173 @@
-﻿import { useEffect, useState } from "react";
-import "./App.css";
+import { useEffect, useRef, useState } from "react";
 
-// Override with VITE_API_URL in frontend/.env if the backend runs elsewhere
-const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8001";
+import "./App.css";
+import { fetchHealth, streamAnswer } from "./api.js";
+import ChatMessage from "./components/ChatMessage.jsx";
+import Composer from "./components/Composer.jsx";
+import EmptyState from "./components/EmptyState.jsx";
+import Header from "./components/Header.jsx";
+
+// Earlier turns sent along so follow-up questions ("and neem?") make sense
+const HISTORY_TURNS = 6;
+
+let nextId = 0;
+const newId = () => `m${++nextId}`;
+
+function isNearBottom() {
+  return window.innerHeight + window.scrollY >= document.body.scrollHeight - 160;
+}
 
 function App() {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("");
-  const [sources, setSources] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [backendStatus, setBackendStatus] = useState("checking");
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [health, setHealth] = useState({ status: "checking" });
+  const controllerRef = useRef(null);
+  const endRef = useRef(null);
+  const followRef = useRef(true);
+
+  const busy = messages.some(
+    (message) => message.status === "searching" || message.status === "streaming"
+  );
 
   useEffect(() => {
-    fetch(`${API_URL}/api/health`)
-      .then((response) =>
-        setBackendStatus(response.ok ? "online" : "offline")
-      )
-      .catch(() => setBackendStatus("offline"));
+    fetchHealth()
+      // The API's own "status": "healthy" must not replace ours
+      .then((data) => setHealth({ ...data, status: "online" }))
+      .catch(() => setHealth({ status: "offline" }));
   }, []);
 
-  const askQuestion = async () => {
-    if (!question.trim() || loading) return;
+  // Keep the newest text in view while streaming, unless the user scrolled up
+  useEffect(() => {
+    if (followRef.current) {
+      endRef.current?.scrollIntoView({ block: "end" });
+    }
+  }, [messages]);
 
-    setLoading(true);
-    setAnswer("");
-    setSources([]);
-    setError("");
+  useEffect(() => {
+    const onScroll = () => {
+      followRef.current = isNearBottom();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const updateMessage = (id, update) => {
+    setMessages((previous) =>
+      previous.map((message) =>
+        message.id === id
+          ? { ...message, ...(typeof update === "function" ? update(message) : update) }
+          : message
+      )
+    );
+  };
+
+  const ask = async (text, earlierMessages = messages) => {
+    const question = text.trim();
+
+    if (!question || busy) {
+      return;
+    }
+
+    const history = earlierMessages
+      .filter((message) => message.role === "user" || message.status === "done")
+      .slice(-HISTORY_TURNS)
+      .map(({ role, content }) => ({ role, content }));
+
+    const assistantId = newId();
+
+    setMessages([
+      ...earlierMessages,
+      { id: newId(), role: "user", content: question },
+      { id: assistantId, role: "assistant", content: "", sources: [], cited: [], status: "searching" },
+    ]);
+    setInput("");
+    followRef.current = true;
+
+    const controller = new AbortController();
+    controllerRef.current = controller;
+
+    const handleEvent = (event) => {
+      if (event.type === "sources") {
+        updateMessage(assistantId, {
+          sources: event.sources,
+          retrievalMs: event.retrieval_ms,
+          status: "streaming",
+        });
+      } else if (event.type === "delta") {
+        updateMessage(assistantId, (message) => ({ content: message.content + event.text }));
+      } else if (event.type === "done") {
+        updateMessage(assistantId, {
+          cited: event.cited,
+          generationMs: event.generation_ms,
+          status: "done",
+        });
+      } else if (event.type === "error") {
+        updateMessage(assistantId, { status: "error", error: event.message });
+      }
+    };
 
     try {
-      const response = await fetch(`${API_URL}/api/ask`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          question: question.trim(),
-        }),
-      });
-
-      setBackendStatus("online");
-
-      // Error responses are not always JSON (e.g. a plain-text 500)
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(
-          data.detail || `Server error (${response.status}). Please try again.`
-        );
-      }
-
-      setAnswer(data.answer || "No answer received.");
-      setSources(data.sources || []);
-    } catch (err) {
-      console.error(err);
-
-      // fetch() throws a TypeError when the server can't be reached at all
-      if (err instanceof TypeError) {
-        setBackendStatus("offline");
-        setError(
-          `Could not connect to AyurIP Sahayak. Please make sure the backend is running at ${API_URL}.`
-        );
+      await streamAnswer({ question, history, signal: controller.signal, onEvent: handleEvent });
+      setHealth((current) => (current.status === "offline" ? { ...current, status: "online" } : current));
+    } catch (error) {
+      if (error.name === "AbortError") {
+        updateMessage(assistantId, (message) => ({ status: message.content ? "done" : "stopped" }));
       } else {
-        setError(err.message);
+        updateMessage(assistantId, { status: "error", error: error.message });
       }
     } finally {
-      setLoading(false);
+      // A dropped connection can end the stream without a "done" event
+      updateMessage(assistantId, (message) =>
+        message.status === "searching" || message.status === "streaming" ? { status: "done" } : {}
+      );
+      controllerRef.current = null;
     }
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-      askQuestion();
-    }
+  const stop = () => controllerRef.current?.abort();
+
+  const newChat = () => {
+    stop();
+    setMessages([]);
+    setInput("");
   };
 
-  const clearChat = () => {
-    setQuestion("");
-    setAnswer("");
-    setSources([]);
-    setError("");
-  };
+  const retry = (assistantId) => {
+    const index = messages.findIndex((message) => message.id === assistantId);
+    const question = messages[index - 1];
 
-  const askExample = (text) => {
-    setQuestion(text);
+    ask(question.content, messages.slice(0, index - 1));
   };
 
   return (
     <div className="app">
-      <header className="header">
-        <div className="brand">
-          <div className="logo">🌿</div>
-
-          <div>
-            <h1>AyurIP Sahayak</h1>
-            <p>
-              AI-powered Ayurveda & Intellectual Property Research Assistant
-            </p>
-          </div>
-        </div>
-
-        <div className={`status status-${backendStatus}`}>
-          <span className="status-dot"></span>
-          <span>
-            {backendStatus === "online"
-              ? "Online"
-              : backendStatus === "offline"
-                ? "Offline"
-                : "Connecting..."}
-          </span>
-        </div>
-      </header>
+      <Header health={health} hasMessages={messages.length > 0} onNewChat={newChat} />
 
       <main className="main">
-        <section className="hero">
-          <span className="eyebrow">
-            AYURVEDA • TRADITIONAL KNOWLEDGE • IPR
-          </span>
-
-          <h2>
-            Ask questions.
-            <br />
-            <span>Discover knowledge.</span>
-          </h2>
-
-          <p className="hero-text">
-            Search your Ayurveda and Traditional Knowledge documents using
-            semantic retrieval and AI-powered answers.
-          </p>
-        </section>
-
-        <section className="search-card">
-          <div className="card-top">
-            <div>
-              <h3>What would you like to know?</h3>
-
-              <p>
-                Ask a question about Ayurveda, TKDL, patents, IPR or
-                traditional knowledge.
-              </p>
-            </div>
-
-            {(answer || error) && (
-              <button className="clear-btn" onClick={clearChat}>
-                Clear
-              </button>
-            )}
+        {messages.length === 0 ? (
+          <EmptyState health={health} onAsk={(question) => ask(question)} />
+        ) : (
+          <div className="conversation">
+            {messages.map((message) => (
+              <ChatMessage
+                key={message.id}
+                message={message}
+                onRetry={() => retry(message.id)}
+              />
+            ))}
+            <div ref={endRef} />
           </div>
-
-          <div className="input-wrapper">
-            <textarea
-              value={question}
-              onChange={(event) => setQuestion(event.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Example: What is TKDL?"
-              rows="4"
-              disabled={loading}
-            />
-
-            <div className="input-bottom">
-              <span>
-                Press Enter to ask • Shift + Enter for a new line
-              </span>
-
-              <button
-                className="ask-btn"
-                onClick={askQuestion}
-                disabled={loading || !question.trim()}
-              >
-                {loading ? (
-                  <>
-                    <span className="spinner"></span>
-                    Searching...
-                  </>
-                ) : (
-                  <>
-                    Ask Sahayak
-                    <span>→</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {!answer && !error && !loading && (
-          <section className="examples">
-            <p className="examples-title">Try asking</p>
-
-            <div className="example-grid">
-              <button
-                onClick={() =>
-                  askExample(
-                    "What is Traditional Knowledge Digital Library (TKDL)?"
-                  )
-                }
-              >
-                <span>📚</span>
-
-                <div>
-                  <strong>What is TKDL?</strong>
-                  <small>Traditional Knowledge Digital Library</small>
-                </div>
-              </button>
-
-              <button
-                onClick={() =>
-                  askExample(
-                    "What is defensive protection of traditional knowledge?"
-                  )
-                }
-              >
-                <span>🛡️</span>
-
-                <div>
-                  <strong>What is defensive protection?</strong>
-                  <small>Traditional knowledge & IPR</small>
-                </div>
-              </button>
-
-              <button
-                onClick={() =>
-                  askExample(
-                    "How does traditional knowledge affect patents?"
-                  )
-                }
-              >
-                <span>⚖️</span>
-
-                <div>
-                  <strong>TK and patents</strong>
-                  <small>Prior art & patent protection</small>
-                </div>
-              </button>
-            </div>
-          </section>
-        )}
-
-        {loading && (
-          <section className="answer-card loading-card">
-            <div className="answer-header">
-              <div className="answer-icon">🔎</div>
-
-              <div>
-                <span>AYURIP SAHAYAK</span>
-                <h3>Researching your question...</h3>
-              </div>
-            </div>
-
-            <div className="loading-lines">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </section>
-        )}
-
-        {error && !loading && (
-          <section className="answer-card error-card">
-            <div className="answer-header">
-              <div className="answer-icon">!</div>
-
-              <div>
-                <span>ERROR</span>
-                <h3>Unable to get an answer</h3>
-              </div>
-            </div>
-
-            <p>{error}</p>
-          </section>
-        )}
-
-        {answer && !loading && (
-          <section className="answer-card">
-            <div className="answer-header">
-              <div className="answer-icon">💡</div>
-
-              <div>
-                <span>AYURIP SAHAYAK</span>
-                <h3>Research Result</h3>
-              </div>
-            </div>
-
-            <div className="question-preview">
-              <span>You asked</span>
-              <p>{question}</p>
-            </div>
-
-            <div className="answer-content">
-              {answer.split("\n").map((line, index) => (
-                <p key={index}>{line || "\u00A0"}</p>
-              ))}
-            </div>
-
-            {sources.length > 0 && (
-              <div className="sources-section">
-                <div className="sources-heading">
-                  <span className="sources-icon">📖</span>
-
-                  <div>
-                    <h3>Sources</h3>
-                    <p>
-                      Retrieved from your AyurIP Sahayak knowledge base
-                    </p>
-                  </div>
-                </div>
-
-                <div className="sources-list">
-                  {sources.map((source, index) => (
-                    <div
-                      className="source-item"
-                      key={`${source.source}-${index}`}
-                    >
-                      <div className="source-number">{index + 1}</div>
-
-                      <div className="source-info">
-                        <strong>{source.source}</strong>
-
-                        <div className="source-meta">
-                          <span>Chunk {source.chunk_id}</span>
-                          <span>•</span>
-                          <span>
-                            Relevance {Number(source.score).toFixed(4)}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </section>
         )}
       </main>
 
-      <footer className="footer">
-        <span>AyurIP Sahayak</span>
-        <span>•</span>
-        <span>RAG-powered research assistant</span>
-      </footer>
+      <Composer
+        value={input}
+        onChange={setInput}
+        onSubmit={() => ask(input)}
+        onStop={stop}
+        busy={busy}
+      />
     </div>
   );
 }
