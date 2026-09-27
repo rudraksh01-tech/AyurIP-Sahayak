@@ -6,44 +6,42 @@
 
 **Retrieve first → Generate second.**
 
-[![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge\&logo=python\&logoColor=white)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge\&logo=fastapi\&logoColor=white)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge\&logo=react\&logoColor=black)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge\&logo=vite\&logoColor=white)](https://vitejs.dev/)
-[![Gemini](https://img.shields.io/badge/Google%20Gemini-LLM-4285F4?style=for-the-badge\&logo=google\&logoColor=white)]()
-[![RAG](https://img.shields.io/badge/AI-RAG-8E44AD?style=for-the-badge)]()
+[![CI](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml/badge.svg)](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Gemini](https://img.shields.io/badge/Google%20Gemini-LLM%20%2B%20Embeddings-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
+[![RAG](https://img.shields.io/badge/AI-RAG-8E44AD?style=for-the-badge)](#-how-it-works)
+
+**Live demo:** _add your Vercel URL here after deploying (see [Deploy for free](#-deploy-for-free-on-vercel))_
 
 </div>
 
----
+Ask a question in English, Hindi or Hinglish and get a streamed answer where every claim cites the exact page it came from.
 
-## ✨ What is AyurIP-Sahayak?
-
-**AyurIP-Sahayak** is a full-stack AI application that uses **Retrieval-Augmented Generation (RAG)** to make information discovery across **Ayurveda, Traditional Knowledge (TK), and Intellectual Property Rights (IPR)** documents easier.
-
-Instead of sending a question directly to an LLM, the application first searches its own document knowledge base using **semantic embeddings**, retrieves relevant document chunks, builds contextual information, and then sends that context to **Google Gemini** to generate a natural-language answer.
-
-```text
-User Question
-      ↓
-Query Embedding
-      ↓
-Semantic Search
-      ↓
-Relevant Document Chunks
-      ↓
-Context Construction
-      ↓
-Google Gemini
-      ↓
-Answer + Sources
-```
-
-> **The key idea:** the application searches its own knowledge base first and then uses AI to explain the retrieved information.
+![Answer with clickable citations and page-level sources](docs/screenshot-answer.png)
 
 ---
 
-# 🎯 Why I Built This
+## ✨ Features
+
+- **Cited answers.** Every statement links to a numbered source; clicking `[2]` opens the passage with its document, page number and section heading.
+- **Streaming.** The first words appear in about 3 seconds; sources show up after about 1 second, before the answer is written.
+- **English, Hindi and Hinglish.** Multilingual embeddings retrieve English passages for Hindi questions, and the answer comes back in the question's language.
+- **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
+- **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#-retrieval-evaluation)).
+- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 39 tests, CI, and a one-click free deployment.
+
+<p align="center">
+  <img src="docs/screenshot-home.png" alt="Home screen with example questions" width="64%" />
+  &nbsp;
+  <img src="docs/screenshot-mobile-dark.png" alt="Hindi question answered on mobile in dark mode" width="26%" />
+</p>
+
+---
+
+## 🎯 Why I Built This
 
 Information related to Ayurveda, Traditional Knowledge and IPR is often spread across lengthy documents.
 
@@ -59,680 +57,228 @@ AyurIP-Sahayak explores how **RAG can be used to solve this problem**.
 
 ---
 
-# 🧠 Core Concept
+## 🧠 How it works
 
-The project is intentionally **not** just:
-
-```text
-React → Gemini API → Answer
-```
-
-Instead, it implements a complete RAG workflow:
-
-```text
-                    ┌──────────────────────┐
-                    │       Documents      │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │   Text Extraction    │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │      Chunking        │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │     Embeddings       │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │ Semantic Retrieval   │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │ Context Construction │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │    Google Gemini     │
-                    └──────────┬───────────┘
-                               ↓
-                    ┌──────────────────────┐
-                    │   Answer + Sources   │
-                    └──────────────────────┘
-```
-
-This separation demonstrates the difference between **retrieval** and **generation**.
-
----
-
-# 🏗️ System Architecture
-
-```mermaid
-flowchart TD
-    A["👤 User"] --> B["⚛️ React + Vite UI"]
-
-    B -->|"HTTP Request"| C["⚡ FastAPI Backend"]
-
-    C --> D["🧠 RAG Pipeline"]
-
-    D --> E["Query Embedding"]
-    E --> F["all-MiniLM-L6-v2"]
-
-    D --> G["Processed Document Chunks"]
-
-    F --> H["Semantic Similarity Search"]
-    G --> H
-
-    H --> I["Top-K Relevant Chunks"]
-
-    I --> J["Context Builder"]
-
-    J --> K["✨ Google Gemini"]
-
-    K --> L["Answer + Sources"]
-
-    L --> B
-```
-
----
-
-# 🔄 How the RAG Pipeline Works
-
-## 1. Offline / Indexing Pipeline
-
-Documents are prepared before users start asking questions.
+The project is intentionally **not** just `React → Gemini API → Answer`. It searches its own knowledge base first, then uses the LLM to explain what it found, and shows where every claim came from.
 
 ```mermaid
 flowchart LR
-    A["Raw PDFs / Documents"]
-    --> B["Text Extraction"]
-    --> C["Text Cleaning"]
-    --> D["Chunking"]
-    --> E["Embedding Generation"]
-    --> F["all-MiniLM-L6-v2"]
-    --> G["Vector Representations"]
-    --> H["Processed Knowledge Base"]
+    subgraph Build["Index build (run once)"]
+        A[PDFs] --> B[Clean text<br/>drop running headers]
+        B --> C[Section-aware chunks<br/>page + heading metadata]
+        C --> D[Gemini embeddings<br/>768-d]
+        D --> E[(index.json<br/>embeddings.npy)]
+    end
+
+    subgraph Ask["Every question"]
+        Q[Question + recent turns] --> F[Embed query]
+        F --> G[Cosine search<br/>top 6 passages]
+        E --> G
+        G --> H[Numbered context prompt]
+        H --> I[Gemini flash-lite<br/>streamed]
+        I --> J[Answer with<br/>clickable citations]
+    end
 ```
 
-This is the **offline/indexing side** of the system.
+1. **Ingestion** (`backend/rag/ingestion/`): text is extracted page by page with `pypdf`. Lines that repeat on most pages (journal headers, "425 | Page" footers) are removed automatically. Section headings such as `3.5 How TKDL Helps Prevent Wrongful Patent Claims` are detected and attached to every chunk. Chunks are packed from whole sentences (up to 1,000 characters, overlapping by about 150), never cross a page boundary, and skip bibliographies.
+2. **Embedding**: each chunk is embedded with `gemini-embedding-001` (task type `RETRIEVAL_DOCUMENT`, with the document title and section heading as context) and stored as a normalised `float32` matrix of about 0.7 MB.
+3. **Retrieval** (`backend/rag/retrieval/`): the question is embedded (`RETRIEVAL_QUERY`) and matched by cosine similarity. BM25 and a hybrid BM25 + embeddings mode (Reciprocal Rank Fusion) are also implemented and evaluated.
+4. **Generation** (`backend/rag/generation/`): the top 6 passages are numbered and sent to Gemini with instructions to answer only from them, cite as `[n]`, and reply in the user's language. The answer streams to the browser as newline-delimited JSON.
+
+Retrieval and generation stay separate components, so either can change without touching the other.
 
 ---
 
-## 2. Online / Query Pipeline
+## 📊 Retrieval evaluation
 
-When a user asks a question:
+`backend/eval/questions.json` holds 33 questions, each labelled with the knowledge-base sections that answer it: 24 general questions, 4 in Hindi or Hinglish, and 5 exact-identifier queries such as patent numbers and "Section 3(p)". A hit means a passage from a correct section is in the top k.
 
-```mermaid
-flowchart LR
-    A["User Question"]
-    --> B["Query Embedding"]
-    --> C["Semantic Similarity Search"]
-    --> D["Top-K Relevant Chunks"]
-    --> E["Context Construction"]
-    --> F["Google Gemini"]
-    --> G["Grounded Answer"]
-    --> H["Sources"]
+| Retriever | Hit@1 | Hit@3 | Hit@6 | MRR |
+|---|---|---|---|---|
+| **Dense (Gemini embeddings)** | **0.97** | **1.00** | **1.00** | **0.98** |
+| Hybrid (BM25 + dense, RRF) | 0.88 | 1.00 | 1.00 | 0.93 |
+| BM25 (keywords) | 0.52 | 0.76 | 0.91 | 0.66 |
+
+By question type (MRR):
+
+| Retriever | General (24) | Hindi/Hinglish (4) | Identifiers (5) |
+|---|---|---|---|
+| Dense | 0.98 | 1.00 | 1.00 |
+| Hybrid | 0.95 | 1.00 | 0.80 |
+| BM25 | 0.72 | 0.25 | 0.67 |
+
+**Decision:** dense retrieval is the default. Hybrid search is often recommended for exact terms, but on this corpus Gemini embeddings already rank patent numbers and statute sections first, and fusing in BM25 only pushed correct passages from rank 1 to rank 2 or 3. BM25 cannot match Hindi questions against English documents at all. `RETRIEVAL_MODE=hybrid` switches modes; re-run the evaluation whenever the documents change.
+
+```bash
+python -m backend.eval.evaluate
 ```
-
-This is the **runtime/query side** of the RAG system.
 
 ---
 
-# 🔎 Semantic Retrieval
+## 🛠️ Engineering Challenges & Solutions
 
-The project uses:
+### Challenge 1 — Deployment memory
 
-* **sentence-transformers**
-* **all-MiniLM-L6-v2**
-* **NumPy**
+**Problem.** The first version embedded text locally with `sentence-transformers` (`all-MiniLM-L6-v2`). A Render deployment was attempted, but the free instance exceeded its **512 MiB memory limit**; PyTorch, Transformers and sentence-transformers were the main contributors. On Windows, Smart App Control also blocked PyTorch's DLLs, so the backend could not start locally either.
 
-The embedding model converts both document chunks and user queries into numerical vectors.
+**Solution.** Move embeddings to the Gemini embeddings API and do the vector search with NumPy. The runtime dependencies shrank to FastAPI, `google-genai`, NumPy and `python-dotenv`, the index went from a 3 MB JSON file to a 0.7 MB `.npy` matrix, and the whole app now fits Vercel's free tier.
 
-Example:
+> **Deployment constraints are not only about application logic; the runtime footprint of AI dependencies also matters.**
 
-```text
-"What is Traditional Knowledge?"
-              ↓
-       Embedding Model
-              ↓
-[0.021, -0.182, 0.441, ...]
-```
+### Challenge 2 — Choosing a retriever with evidence
 
-The same embedding model is used for:
+**Problem.** Hybrid (keyword + semantic) search is a common recommendation, but it was unclear whether it would help here.
 
-* Document chunks
-* User queries
+**Solution.** Build a labelled evaluation set and measure all three options. Dense retrieval won (MRR 0.98 vs 0.93 hybrid), so it is the default and the others remain as baselines.
 
-This allows both to be compared in the same vector space.
+### Challenge 3 — Slow answers
 
-### Retrieval flow
+**Problem.** `gemini-3.6-flash` took about 10–13 seconds per answer, which feels broken in a chat UI.
 
-```text
-Query
- ↓
-Query Vector
- ↓
-Compare with Document Vectors
- ↓
-Calculate Similarity
- ↓
-Sort by Similarity
- ↓
-Select Top-K
-```
+**Solution.** Stream answers token by token as NDJSON, send the sources before generation starts, and benchmark models: `gemini-3.5-flash-lite` with minimal thinking shows the first words in about 3 seconds with the same answer quality on this task.
 
-The current retrieval implementation uses **normalized embeddings** with **dot-product similarity**.
+### Challenge 4 — Trustworthy answers
 
-Because the vectors are normalized, the dot product corresponds to **cosine similarity**.
+**Problem.** An LLM answer is hard to trust if you cannot see where it came from.
 
-### Current default
+**Solution.** Number the retrieved passages, instruct the model to cite them as `[n]`, parse the citations, and render them as chips that open the exact page and section.
 
-```text
-top_k = 5
-```
+### Challenge 5 — Keeping secrets safe on a public demo
 
-Retrieved information includes:
+**Problem.** A public demo must not leak the API key or let one visitor exhaust the free quota.
 
-* Similarity score
-* Chunk ID
-* Source
-* Chunk text
+**Solution.** The key lives only in server-side environment variables (`.env` locally, Vercel settings in production) and is never sent to the browser. Each visitor is limited to 10 questions per minute, and inputs are validated.
 
 ---
 
-# 🤖 Generation Layer
+## 💻 Tech stack
 
-Google Gemini is responsible for the generation stage.
-
-The architecture deliberately keeps the two responsibilities separate:
-
-```text
-Retrieval
-   ↓
-Find relevant information
-
-Generation
-   ↓
-Explain the retrieved information
-```
-
-This makes the system modular and allows the retrieval and generation components to evolve independently.
+| Layer | Tools |
+|---|---|
+| Frontend | React 19, Vite, `react-markdown`, plain CSS with light/dark themes |
+| Backend | Python 3.12, FastAPI, streaming NDJSON responses |
+| AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
+| Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
+| Documents | `pypdf` text extraction, custom section-aware chunking |
+| Quality | pytest (39 tests), ESLint, GitHub Actions CI, retrieval evaluation harness |
+| Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---
 
-# 💻 Technology Stack
-
-| Layer       | Technology            | Purpose                      |
-| ----------- | --------------------- | ---------------------------- |
-| Frontend    | React                 | Interactive user interface   |
-| Frontend    | Vite                  | Development/build tooling    |
-| Frontend    | JavaScript            | Application logic            |
-| Frontend    | CSS                   | Styling                      |
-| Backend     | Python                | Backend & RAG implementation |
-| Backend     | FastAPI               | REST API layer               |
-| Backend     | Uvicorn               | ASGI server                  |
-| AI / RAG    | sentence-transformers | Text embeddings              |
-| AI / RAG    | all-MiniLM-L6-v2      | Embedding model              |
-| AI / RAG    | NumPy                 | Vector operations            |
-| AI / RAG    | Google Gemini API     | LLM generation               |
-| Documents   | pypdf                 | PDF text extraction          |
-| Development | Git / GitHub          | Version control              |
-| Development | VS Code               | Development environment      |
-
----
-
-# 📁 Project Structure
+## 📂 Project structure
 
 ```text
 AyurIP-Sahayak/
-│
 ├── backend/
-│   │
-│   ├── app/
-│   │   └── main.py
-│   │
+│   ├── app/main.py              # FastAPI app: /api/health, /api/ask, /api/ask/stream
 │   ├── rag/
-│   │   ├── ingestion/
-│   │   │
-│   │   ├── retrieval/
-│   │   │   ├── retrieval.py
-│   │   │   └── retriever.py
-│   │   │
-│   │   ├── generation/
-│   │   │
-│   │   └── rag_pipeline.py
-│   │
+│   │   ├── config.py            # models, paths, retrieval settings
+│   │   ├── gemini_client.py     # embeddings + streamed generation
+│   │   ├── ingestion/           # PDF cleaning, chunking, build_index.py
+│   │   ├── retrieval/           # dense / BM25 / hybrid retriever
+│   │   ├── generation/          # prompt + citation parsing
+│   │   └── rag_pipeline.py      # retrieval -> generation -> events
 │   ├── data/
-│   │   ├── raw/
-│   │   └── processed/
-│   │
-│   ├── requirements.txt
-│   └── .env
-│
-├── frontend/
-│   │
-│   ├── src/
-│   │   ├── App.jsx
-│   │   ├── App.css
-│   │   ├── index.css
-│   │   └── main.jsx
-│   │
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
-│
-└── README.md
+│   │   ├── raw/                 # source PDFs + sources.json (titles)
+│   │   └── processed/           # index.json + embeddings.npy
+│   ├── eval/                    # labelled questions + evaluate.py
+│   └── tests/
+├── frontend/                    # React + Vite chat UI
+├── pyproject.toml               # runtime deps + Vercel entrypoint
+├── requirements.txt             # same runtime deps, for pip
+├── requirements-dev.txt         # + pypdf, pytest
+└── vercel.json
 ```
-
-### Backend
-
-* `app/` — FastAPI application entry point.
-* `rag/ingestion/` — document preparation and indexing.
-* `rag/retrieval/` — semantic retrieval logic.
-* `rag/generation/` — LLM generation layer.
-* `rag/rag_pipeline.py` — connects retrieval and generation.
-* `data/raw/` — source documents.
-* `data/processed/` — processed knowledge-base data.
-
-### Frontend
-
-The React application provides the interface for:
-
-* Entering questions
-* Sending requests to the backend
-* Displaying generated answers
-* Displaying source information
 
 ---
 
-# 🔌 API Layer
+## ⚙️ Run locally
 
-FastAPI acts as the bridge between the frontend and the RAG system.
-
-```text
-React
-  │
-  │ HTTP
-  ▼
-FastAPI
-  │
-  ▼
-RAG Pipeline
-  ├── Retrieval
-  └── Gemini Generation
-  │
-  ▼
-FastAPI Response
-  │
-  ▼
-React
-```
-
-FastAPI also provides automatic interactive API documentation at:
-
-```text
-/docs
-```
-
-> Endpoint names are intentionally not listed here unless verified directly from `backend/app/main.py`.
-
----
-
-# ⚙️ Getting Started
-
-## Prerequisites
-
-Make sure the following are installed:
-
-* Python 3.x
-* Node.js
-* npm
-* Git
-* Google Gemini API key
-
----
-
-## 1. Clone the Repository
+You need Python 3.12+, Node.js 22+ and a free Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey).
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/rudraksh01-tech/AyurIP-Sahayak.git
 cd AyurIP-Sahayak
-```
 
----
-
-## 2. Create a Python Virtual Environment
-
-```bash
+# Backend
 python -m venv .venv
+# Windows: .\.venv\Scripts\Activate.ps1    macOS/Linux: source .venv/bin/activate
+pip install -r requirements-dev.txt
+
+cp .env.example .env        # Windows: copy .env.example .env
+# then put your key in .env: GEMINI_API_KEY=...
+
+uvicorn backend.app.main:app --reload --port 8001
 ```
 
-### Windows
-
-```powershell
-.venv\Scripts\activate
-```
-
-### macOS / Linux
-
-```bash
-source .venv/bin/activate
-```
-
----
-
-## 3. Install Backend Dependencies
-
-```bash
-cd backend
-pip install -r requirements.txt
-```
-
----
-
-## 4. Configure Environment Variables
-
-Create:
-
-```text
-backend/.env
-```
-
-Add:
-
-```env
-GEMINI_API_KEY=your_api_key_here
-```
-
-### 🔐 Security
-
-**Never expose your Gemini API key in frontend code or commit it to GitHub.**
-
-Add `.env` to `.gitignore`:
-
-```gitignore
-.env
-.venv/
-__pycache__/
-node_modules/
-```
-
----
-
-## 5. Install Frontend Dependencies
-
-Open another terminal:
+In a second terminal:
 
 ```bash
 cd frontend
 npm install
+npm run dev                 # http://localhost:5173 (proxies /api to port 8001)
 ```
 
----
+To try the production setup instead, run `npm run build` in `frontend/`; FastAPI then serves the built app at http://127.0.0.1:8001.
 
-# ▶️ Running the Application
+### Rebuild the knowledge base
 
-## Start the Backend
-
-From `backend/`:
+Put PDFs in `backend/data/raw/`, optionally add their titles to `sources.json`, then:
 
 ```bash
-uvicorn app.main:app --reload
+python -m backend.rag.ingestion.build_index --dry-run   # preview chunks, no API calls
+python -m backend.rag.ingestion.build_index             # chunk + embed
 ```
 
-FastAPI documentation:
-
-```text
-http://127.0.0.1:8000/docs
-```
-
----
-
-## Start the Frontend
-
-From `frontend/`:
+### Tests
 
 ```bash
-npm run dev
-```
-
-Vite will display the local development URL in the terminal.
-
----
-
-# 💬 Example User Journey
-
-Suppose a user asks:
-
-> **"What is TKDL?"**
-
-The application processes it like this:
-
-```text
-👤 User
-   │
-   ▼
-"What is TKDL?"
-   │
-   ▼
-⚛️ React UI
-   │
-   ▼
-⚡ FastAPI
-   │
-   ▼
-🔢 Query Embedding
-   │
-   ▼
-🔎 Semantic Search
-   │
-   ▼
-📚 Top Relevant Document Chunks
-   │
-   ▼
-🧩 Context Construction
-   │
-   ▼
-✨ Gemini
-   │
-   ▼
-💬 Readable Answer
-   │
-   ▼
-📖 Source Information
+pytest                        # backend (no API key needed)
+cd frontend && npm run lint   # frontend
 ```
 
 ---
 
-# 💡 Example Questions
+## 🚀 Deploy for free on Vercel
 
-```text
-What is Traditional Knowledge?
-```
+The whole app (React build and FastAPI API) deploys as one Vercel project on the free Hobby plan. `pyproject.toml` tells Vercel where the FastAPI app is, `vercel.json` builds the frontend, and FastAPI serves it from the same domain, so no CORS setup is needed.
 
-```text
-What is TKDL?
-```
+1. Push this repository to GitHub.
+2. Go to [vercel.com/new](https://vercel.com/new), sign in with GitHub and import the repository. Keep the root directory as the project root; Vercel should detect **FastAPI**.
+3. Under **Environment Variables**, add `GEMINI_API_KEY` (the free-tier key is enough).
+4. Click **Deploy**. Open the URL and ask a question.
 
-The quality of the response depends on whether the required information exists in the project's knowledge base and is successfully retrieved.
-
----
-
-# 🧩 Engineering Decisions
-
-### 1. RAG instead of direct LLM answering
-
-The system retrieves relevant source material before generation.
-
-```text
-Question
-   ↓
-Retrieve
-   ↓
-Generate
-```
-
-### 2. Separate retrieval from generation
-
-The embedding/retrieval system and Gemini generation are separate components.
-
-### 3. Local embeddings
-
-`all-MiniLM-L6-v2` was selected as a relatively lightweight embedding model for local development.
-
-### 4. FastAPI backend
-
-FastAPI provides a lightweight API layer between the frontend and RAG system.
-
-### 5. React frontend
-
-React provides an interactive interface while keeping AI logic inside the backend.
-
-### 6. Environment-based secrets
-
-API credentials are kept outside source code using environment variables.
+> Use an API key from a Google Cloud project **without billing enabled**. Then a public demo can hit the free-tier limit at worst; it can never cost money. The app also limits each visitor to 10 questions per minute.
 
 ---
 
-# 🛠️ Engineering Challenges & Solutions
+## 🔌 API
 
-## Challenge 1 — Retrieval Quality
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/api/health` | Status, model name and knowledge-base stats |
+| `POST` | `/api/ask` | `{"question": "...", "history": [...]}` → full answer, sources, timings |
+| `POST` | `/api/ask/stream` | Same input; streams NDJSON events: `sources`, `delta` (repeated), `done` |
 
-### Problem
+Interactive docs are available at `/docs` when the server is running.
 
-Keyword search can fail when users express the same idea using different words.
+## 🔧 Configuration
 
-### Solution
-
-Use semantic embeddings with:
-
-```text
-all-MiniLM-L6-v2
-```
-
-This allows the system to compare semantic representations rather than relying only on exact keyword matches.
-
----
-
-## Challenge 2 — Connecting Retrieval and Generation
-
-### Problem
-
-An LLM needs relevant context before it can generate a grounded answer from the project's documents.
-
-### Solution
-
-Build an explicit pipeline:
-
-```text
-Query
-  ↓
-Retrieval
-  ↓
-Context
-  ↓
-Gemini
-  ↓
-Answer
-```
+| Variable | Default | Purpose |
+|---|---|---|
+| `GEMINI_API_KEY` | (required) | Gemini API key |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite` | Answer model (`gemini-3.6-flash` is more capable but about 3× slower) |
+| `GEMINI_THINKING_LEVEL` | `minimal` | `minimal`, `low`, `medium` or `high` |
+| `RETRIEVAL_MODE` | `dense` | `dense`, `hybrid` or `bm25` |
+| `RATE_LIMIT_PER_MINUTE` | `10` | Questions per visitor per minute |
 
 ---
 
-## Challenge 3 — Deployment Memory
+## 🚀 Roadmap
 
-A Render deployment was attempted but the free instance exceeded its **512 MiB memory limit**.
+### Phase 1 — Core RAG
 
-The major contributor was the runtime footprint of the local embedding stack involving PyTorch, Transformers and sentence-transformers.
-
-This led to an important engineering lesson:
-
-> **Deployment constraints are not only about application logic; the runtime footprint of AI dependencies also matters.**
-
-Current status:
-
-```text
-Local execution       ✅
-Render free-tier      ❌
-Reason                Memory limit exceeded
-```
-
-The project therefore remains **local-first** in its current version.
-
----
-
-## Challenge 4 — Keeping Secrets Safe
-
-### Problem
-
-AI API keys should never be hard-coded into source code.
-
-### Solution
-
-```text
-.env
- +
-Environment Variables
- +
-.gitignore
-```
-
----
-
-# 📊 Evaluation
-
-The current version is evaluated primarily through **functional/manual testing**.
-
-No unsupported benchmark numbers are claimed.
-
-Future evaluation can measure:
-
-* Precision@K
-* Recall@K
-* Retrieval relevance
-* Answer faithfulness
-* Answer latency
-* Hallucination/failure cases
-* Source attribution quality
-
----
-
-# ☁️ Deployment Status
-
-### Current
-
-```text
-Local Development
-       ↓
-      ✅
-```
-
-### Render Free Tier
-
-```text
-Deployment Attempt
-       ↓
-      ❌
-       ↓
-512 MiB Memory Constraint
-```
-
-The application is intentionally **local-first** for the current version because:
-
-* The embedding model can run locally.
-* It avoids unnecessary hosting costs.
-* Development and experimentation are easier.
-* The current knowledge base is relatively small.
-
----
-
-# 🚀 Future Roadmap
-
-## Phase 1 — Core RAG
-
-* [x] Document ingestion
-* [x] Text extraction
+* [x] Document ingestion and text extraction
 * [x] Chunking
 * [x] Embedding generation
 * [x] Semantic retrieval
@@ -740,180 +286,78 @@ The application is intentionally **local-first** for the current version because
 * [x] FastAPI backend
 * [x] React frontend
 
-## Phase 2 — RAG Quality
+### Phase 2 — RAG quality
 
-* [ ] Retrieval evaluation
+* [x] Retrieval evaluation (Hit@k, MRR)
+* [x] Section-aware chunking with page metadata
+* [x] Improved source attribution (inline citations → page + section)
 * [ ] Reranking
-* [ ] Better chunking strategies
-* [ ] Query rewriting
-* [ ] Improved source attribution
+* [ ] Query rewriting for follow-up questions
 
-## Phase 3 — Multilingual
+### Phase 3 — Multilingual
 
-* [ ] Hindi queries
-* [ ] Multilingual retrieval
-* [ ] Hindi responses
-* [ ] Better Indian-language support
+* [x] Hindi and Hinglish queries
+* [x] Multilingual retrieval
+* [x] Answers in the question's language
+* [ ] More Indian languages
 
-## Phase 4 — Production
+### Phase 4 — Production
 
-* [ ] Lightweight/external embedding service
-* [ ] Vector database
-* [ ] Production deployment
-* [ ] Authentication
-* [ ] Conversation history
+* [x] Lightweight embedding service (Gemini API instead of local PyTorch)
+* [x] Free deployment setup (Vercel)
+* [x] Follow-up questions within a chat session
+* [x] Rate limiting, tests and CI
+* [ ] Vector database for a larger knowledge base
+* [ ] Authentication and saved conversations
 * [ ] Monitoring
 
-## Phase 5 — Advanced RAG
+### Phase 5 — Advanced RAG
 
-* [ ] Hybrid search
+* [x] Hybrid search (implemented and evaluated; dense kept as default)
 * [ ] Metadata filtering
 * [ ] Reranking models
+* [ ] Answer-quality evaluation (faithfulness, citation accuracy)
 * [ ] Evaluation dashboard
-* [ ] Retrieval analytics
 
 ---
 
-# 📸 Screenshots
+## 🧠 Skills demonstrated
 
-> Add actual screenshots of the running application here.
+**AI / Machine Learning:** Retrieval-Augmented Generation, semantic search, text embeddings, vector similarity, BM25 and rank fusion, retrieval evaluation (Hit@k, MRR), prompt design for grounded and cited answers, multilingual QA.
 
-### Main Interface
+**Backend:** Python, FastAPI, REST and streaming APIs, input validation, rate limiting, modular architecture, pytest.
 
-*Add your application screenshot here.*
+**Frontend:** React, Vite, streaming UI, API integration, state management, responsive and dark-mode design.
 
-### RAG Response + Sources
-
-*Add your response/source screenshot here.*
-
-### FastAPI Swagger Documentation
-
-*Add your `/docs` screenshot here.*
+**Engineering:** Git/GitHub, GitHub Actions CI, dependency management, debugging, deployment troubleshooting, resource optimisation, architecture decisions backed by measurements.
 
 ---
 
-# 🧠 Skills Demonstrated
+## ⚠️ Limitations
 
-### AI / Machine Learning
-
-* Retrieval-Augmented Generation
-* Semantic Search
-* Text Embeddings
-* Vector Similarity
-* LLM Integration
-* Context Grounding
-
-### Backend
-
-* Python
-* FastAPI
-* REST API development
-* Modular backend architecture
-
-### Frontend
-
-* React
-* Vite
-* JavaScript
-* API integration
-* State management
-* UI development
-
-### Engineering
-
-* Git / GitHub
-* Environment configuration
-* Dependency management
-* Debugging
-* Deployment troubleshooting
-* Resource optimization
-* Architecture design
+- The knowledge base is two documents (54 pages). Adding sources such as WIPO and CGPDTM documents is mostly a matter of dropping PDFs in and re-running `build_index`.
+- If the right passage is not retrieved, the answer will be incomplete; the app says so instead of guessing, but it cannot answer beyond its documents.
+- The rate limiter is in memory, so each serverless instance counts separately. A shared store such as Redis or Upstash would make it global.
+- Retrieval is evaluated; answer quality (faithfulness, citation accuracy) is not yet.
+- The journal PDF uses two columns, so some of its section labels are approximate. Page numbers are exact.
 
 ---
 
-# 💼 Why This Project Matters
+## 👨‍💻 About the Developer
 
-AyurIP-Sahayak demonstrates more than simple API integration.
-
-It shows hands-on implementation of an end-to-end AI application:
-
-```text
-Data
- ↓
-Processing
- ↓
-Embeddings
- ↓
-Retrieval
- ↓
-Context Engineering
- ↓
-LLM
- ↓
-API
- ↓
-Frontend
-```
-
-It also demonstrates practical engineering through:
-
-* Debugging
-* Dependency management
-* Git workflow
-* Deployment testing
-* Resource constraints
-* Security configuration
-* Architectural decision-making
-
-Most importantly:
-
-> **"I can build."**
-
-and
-
-> **"I understand why I built it this way."**
-
----
-
-# ⚠️ Limitations
-
-The current version has several known limitations:
-
-* Limited curated document knowledge base
-* Local embedding model dependency
-* No formal retrieval benchmark yet
-* No production deployment
-* Retrieval quality depends on chunking and document quality
-* If the correct information is not retrieved, generation quality may decrease
-* The application is not a substitute for professional legal, medical, patent, or Ayurvedic advice
-
----
-
-# 👨‍💻 About the Developer
-
-## Rudra Pratap Singh
+### Rudra Pratap Singh
 
 **AyurIP-Sahayak** is an independently developed personal project created from scratch to explore and implement **Retrieval-Augmented Generation for domain-specific knowledge discovery**.
 
 The goal was not simply to call a chatbot API, but to understand and implement the major components of a RAG system:
 
 ```text
-Documents
-   ↓
-Embeddings
-   ↓
-Retrieval
-   ↓
-Context
-   ↓
-LLM
-   ↓
-Application
+Documents → Embeddings → Retrieval → Context → LLM → Application
 ```
 
 ---
 
-# ⚖️ Disclaimer
+## ⚖️ Disclaimer
 
 AyurIP-Sahayak is an experimental/research-oriented software project.
 
@@ -928,7 +372,7 @@ Important information should be independently verified using authoritative sourc
 
 ---
 
-# 📄 License
+## 📄 License
 
 This project is currently intended as a personal/research portfolio project.
 

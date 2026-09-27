@@ -27,6 +27,9 @@ frontend/dist/
 # General build/output
 .dist/
 
+# Vercel CLI
+.vercel/
+
 # IDE
 .vscode/
 .idea/

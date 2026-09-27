@@ -1,22 +1,90 @@
-* {
-  box-sizing: border-box;
+:root {
+  --bg: #f4f7f2;
+  --bg-glow: rgba(94, 130, 82, 0.14);
+  --surface: #ffffff;
+  --surface-muted: #f1f6ef;
+  --border: #dde7da;
+  --border-strong: #c5d5c1;
+  --text: #1d2b22;
+  --text-muted: #56655a;
+  --text-faint: #86928a;
+  --primary: #2f5c3b;
+  --primary-hover: #234a2e;
+  --on-primary: #ffffff;
+  --primary-soft: #e4efe1;
+  --accent: #5f9366;
+  --cite-bg: #dcebd8;
+  --cite-text: #24502f;
+  --danger: #b4534c;
+  --danger-soft: #fbeceb;
+  --shadow: 0 12px 40px rgba(35, 70, 45, 0.08);
+  --shadow-sm: 0 2px 8px rgba(35, 70, 45, 0.06);
+
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1510;
+    --bg-glow: rgba(95, 147, 102, 0.12);
+    --surface: #151f18;
+    --surface-muted: #1a261d;
+    --border: #26362a;
+    --border-strong: #35493a;
+    --text: #e3ebe4;
+    --text-muted: #a4b2a7;
+    --text-faint: #75837a;
+    --primary: #86c092;
+    --primary-hover: #9dd0a8;
+    --on-primary: #0e1510;
+    --primary-soft: #1d3223;
+    --accent: #86c092;
+    --cite-bg: #24402c;
+    --cite-text: #bfe3c6;
+    --danger: #e38b83;
+    --danger-soft: #36201e;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+    color-scheme: dark;
   }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 html,
-body,
-#root {
-margin: 0;
-min-height: 100%;
-width: 100%;
+body {
+  margin: 0;
+  min-height: 100%;
 }
 
 body {
-font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-background: #f5f7f2;
-color: #1f2d24;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 button,
 textarea {
-font: inherit;
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
