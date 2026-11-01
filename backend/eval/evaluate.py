@@ -7,13 +7,7 @@ Run from the project root:
 
 A retrieved chunk counts as relevant when its section heading belongs to
 one of the question's expected sections ("5.3" matches "5.3 ..." and
-"5.3.1 ..."; "VI:" matches the journal's roman-numeral sections), or when
-it comes from one of the expected pages of a file ("pages": {file: [pages]}),
-for documents without numbered sections.
-
-Scores are reported for all questions, per question type, and per source
-document, so results on the knowledge base I wrote can be compared with
-results on a public document I didn't write.
+"5.3.1 ..."; "VI:" matches the journal's roman-numeral sections).
 Results are printed as a Markdown table and saved to backend/eval/results.json.
 """
 
@@ -41,16 +35,13 @@ def section_matches(section, expected):
     return number == expected or number.startswith(expected + ".")
 
 
-def is_relevant(result, item):
-    if any(section_matches(result["section"], expected) for expected in item.get("sections", [])):
-        return True
-
-    return result["page"] in item.get("pages", {}).get(result["file"], [])
+def is_relevant(result, expected_sections):
+    return any(section_matches(result["section"], expected) for expected in expected_sections)
 
 
-def first_relevant_rank(results, item):
+def first_relevant_rank(results, expected_sections):
     for rank, result in enumerate(results, start=1):
-        if is_relevant(result, item):
+        if is_relevant(result, expected_sections):
             return rank
 
     return None
@@ -78,15 +69,12 @@ def evaluate(questions, query_embeddings, retriever):
                 mode=mode,
                 query_embedding=embedding,
             )
-            ranks[mode].append(first_relevant_rank(results, item))
+            ranks[mode].append(first_relevant_rank(results, item["sections"]))
 
     groups = {"all": list(range(len(questions)))}
 
     for index, item in enumerate(questions):
         groups.setdefault(item.get("type", "general"), []).append(index)
-
-    for index, item in enumerate(questions):
-        groups.setdefault(f"source: {item.get('source', 'own')}", []).append(index)
 
     report = {}
 

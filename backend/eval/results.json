@@ -1,111 +1,6 @@
 {
   "top_k": 6,
   "all": {
-    "questions": 71,
-    "hybrid": {
-      "hit@1": 0.887,
-      "hit@3": 0.958,
-      "hit@6": 0.958,
-      "mrr": 0.92
-    },
-    "dense": {
-      "hit@1": 0.972,
-      "hit@3": 0.986,
-      "hit@6": 1.0,
-      "mrr": 0.981
-    },
-    "bm25": {
-      "hit@1": 0.676,
-      "hit@3": 0.845,
-      "hit@6": 0.887,
-      "mrr": 0.76
-    }
-  },
-  "general": {
-    "questions": 45,
-    "hybrid": {
-      "hit@1": 0.956,
-      "hit@3": 1.0,
-      "hit@6": 1.0,
-      "mrr": 0.974
-    },
-    "dense": {
-      "hit@1": 0.978,
-      "hit@3": 1.0,
-      "hit@6": 1.0,
-      "mrr": 0.989
-    },
-    "bm25": {
-      "hit@1": 0.756,
-      "hit@3": 0.978,
-      "hit@6": 1.0,
-      "mrr": 0.86
-    }
-  },
-  "multilingual": {
-    "questions": 9,
-    "hybrid": {
-      "hit@1": 1.0,
-      "hit@3": 1.0,
-      "hit@6": 1.0,
-      "mrr": 1.0
-    },
-    "dense": {
-      "hit@1": 1.0,
-      "hit@3": 1.0,
-      "hit@6": 1.0,
-      "mrr": 1.0
-    },
-    "bm25": {
-      "hit@1": 0.556,
-      "hit@3": 0.556,
-      "hit@6": 0.556,
-      "mrr": 0.556
-    }
-  },
-  "identifier": {
-    "questions": 7,
-    "hybrid": {
-      "hit@1": 0.714,
-      "hit@3": 1.0,
-      "hit@6": 1.0,
-      "mrr": 0.857
-    },
-    "dense": {
-      "hit@1": 1.0,
-      "hit@3": 1.0,
-      "hit@6": 1.0,
-      "mrr": 1.0
-    },
-    "bm25": {
-      "hit@1": 0.714,
-      "hit@3": 0.714,
-      "hit@6": 1.0,
-      "mrr": 0.771
-    }
-  },
-  "paraphrase": {
-    "questions": 10,
-    "hybrid": {
-      "hit@1": 0.6,
-      "hit@3": 0.7,
-      "hit@6": 0.7,
-      "mrr": 0.65
-    },
-    "dense": {
-      "hit@1": 0.9,
-      "hit@3": 0.9,
-      "hit@6": 1.0,
-      "mrr": 0.917
-    },
-    "bm25": {
-      "hit@1": 0.4,
-      "hit@3": 0.6,
-      "hit@6": 0.6,
-      "mrr": 0.483
-    }
-  },
-  "source: own": {
     "questions": 33,
     "hybrid": {
       "hit@1": 0.879,
@@ -120,49 +15,82 @@
       "mrr": 0.985
     },
     "bm25": {
-      "hit@1": 0.545,
-      "hit@3": 0.818,
+      "hit@1": 0.515,
+      "hit@3": 0.758,
       "hit@6": 0.909,
-      "mrr": 0.69
+      "mrr": 0.657
     }
   },
-  "source: wipo": {
-    "questions": 38,
+  "general": {
+    "questions": 24,
     "hybrid": {
-      "hit@1": 0.895,
-      "hit@3": 0.921,
-      "hit@6": 0.921,
-      "mrr": 0.908
+      "hit@1": 0.917,
+      "hit@3": 1.0,
+      "hit@6": 1.0,
+      "mrr": 0.951
     },
     "dense": {
-      "hit@1": 0.974,
-      "hit@3": 0.974,
+      "hit@1": 0.958,
+      "hit@3": 1.0,
       "hit@6": 1.0,
-      "mrr": 0.978
+      "mrr": 0.979
     },
     "bm25": {
-      "hit@1": 0.789,
-      "hit@3": 0.868,
-      "hit@6": 0.868,
-      "mrr": 0.82
+      "hit@1": 0.542,
+      "hit@3": 0.875,
+      "hit@6": 1.0,
+      "mrr": 0.722
+    }
+  },
+  "multilingual": {
+    "questions": 4,
+    "hybrid": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@6": 1.0,
+      "mrr": 1.0
+    },
+    "dense": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@6": 1.0,
+      "mrr": 1.0
+    },
+    "bm25": {
+      "hit@1": 0.25,
+      "hit@3": 0.25,
+      "hit@6": 0.25,
+      "mrr": 0.25
+    }
+  },
+  "identifier": {
+    "questions": 5,
+    "hybrid": {
+      "hit@1": 0.6,
+      "hit@3": 1.0,
+      "hit@6": 1.0,
+      "mrr": 0.8
+    },
+    "dense": {
+      "hit@1": 1.0,
+      "hit@3": 1.0,
+      "hit@6": 1.0,
+      "mrr": 1.0
+    },
+    "bm25": {
+      "hit@1": 0.6,
+      "hit@3": 0.6,
+      "hit@6": 1.0,
+      "mrr": 0.673
     }
   },
   "misses": {
-    "hybrid": [
-      "If someone uses our tribe's name as a brand for their product, can we stop it?",
-      "Once a design or story is out of copyright, who can use it?",
-      "Mere gaon ke log ek khaas tareeke se kambal bunte hain. Kya hum prove kar sakte hain ki product asli tareeke se bana hai?"
-    ],
+    "hybrid": [],
     "dense": [],
     "bm25": [
       "टीकेडीएल क्या है?",
       "हल्दी पेटेंट मामले में क्या हुआ था?",
-      "आयुर्वेद में तीन दोष कौन से हैं?",
-      "भौगोलिक संकेत क्या होता है?",
-      "Can a company get exclusive rights over a remedy my grandmother's village has used for centuries?",
-      "If someone uses our tribe's name as a brand for their product, can we stop it?",
-      "Once a design or story is out of copyright, who can use it?",
-      "Mere gaon ke log ek khaas tareeke se kambal bunte hain. Kya hum prove kar sakte hain ki product asli tareeke se bana hai?"
+      "आयुर्वेद में तीन दोष कौन से हैं?"
     ]
   }
 }

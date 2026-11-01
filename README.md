@@ -29,13 +29,12 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 
 | What | Result | How it was measured |
 |---|---|---|
-| Right passage ranked first | **97%** of questions (Hit@1 0.97, MRR 0.98) | 71 labelled questions over 3 documents in `backend/eval/` |
-| Questions that don't reuse the document's words | Hit@1 **0.90** dense vs 0.60 hybrid vs 0.40 keyword (BM25) | 10 paraphrased questions, e.g. "can we stop someone using our tribe's name as a brand?" |
-| Hindi and Hinglish questions | MRR **1.00** dense vs 0.56 keyword | 9 questions against English documents |
+| Right passage ranked first | **97%** of questions (Hit@1 0.97, MRR 0.98) | 33 labelled questions in `backend/eval/` |
+| Dense vs keyword search | Hit@1 **0.97 vs 0.52**; Hindi/Hinglish MRR **1.00 vs 0.25** | Same set, BM25 baseline written from scratch |
 | Speed on the live demo | Sources in **0.6–1.0 s**, first words in **1.4–1.8 s**, full answer in **1.6–3.0 s** | 5 questions on the deployed app, 1 Nov 2026 |
-| Vector search time | About **0.03 ms** per query (356 chunks × 768 dims) | 1,000 NumPy searches timed locally |
-| Deployment size | 5 runtime packages, 1.1 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
-| Tests | **47** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
+| Vector search time | About **0.03 ms** per query (229 chunks × 768 dims) | 1,000 NumPy searches timed locally |
+| Deployment size | 5 runtime packages, 0.7 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
+| Tests | **39** passing, run in GitHub Actions on every push | `pytest` |
 
 Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DECISIONS.md)**.
 
@@ -49,8 +48,8 @@ Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DEC
 - **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
 - **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
 - **Polished interface.** Glassmorphism cards over an emerald-and-gold palette, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
-- **Measured retrieval.** An evaluation harness compares three retrievers on 71 labelled questions (see [results](#retrieval-evaluation)).
-- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 47 tests, CI with a Docker build, and a one-click free deployment.
+- **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#retrieval-evaluation)).
+- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 39 tests, CI, and a one-click free deployment.
 
 <p align="center">
   <img src="docs/screenshot-home.png" alt="Home screen with search, suggestions and knowledge-base stats" width="64%" />
@@ -100,7 +99,7 @@ flowchart LR
 ```
 
 1. **Ingestion** (`backend/rag/ingestion/`): text is extracted page by page with `pypdf`. Lines that repeat on most pages (journal headers, "425 | Page" footers) are removed automatically. Section headings such as `3.5 How TKDL Helps Prevent Wrongful Patent Claims` are detected and attached to every chunk. Chunks are packed from whole sentences (up to 1,000 characters, overlapping by about 150), never cross a page boundary, and skip bibliographies.
-2. **Embedding**: each chunk is embedded with `gemini-embedding-001` (task type `RETRIEVAL_DOCUMENT`, with the document title and section heading as context) and stored as a normalised `float32` matrix of about 1.1 MB.
+2. **Embedding**: each chunk is embedded with `gemini-embedding-001` (task type `RETRIEVAL_DOCUMENT`, with the document title and section heading as context) and stored as a normalised `float32` matrix of about 0.7 MB.
 3. **Retrieval** (`backend/rag/retrieval/`): the question is embedded (`RETRIEVAL_QUERY`) and matched by cosine similarity. BM25 and a hybrid BM25 + embeddings mode (Reciprocal Rank Fusion) are also implemented and evaluated.
 4. **Generation** (`backend/rag/generation/`): the top 6 passages are numbered and sent to Gemini with instructions to answer only from them, cite as `[n]`, and reply in the user's language. The answer streams to the browser as newline-delimited JSON.
 
@@ -110,27 +109,23 @@ Retrieval and generation stay separate components, so either can change without 
 
 ## Retrieval evaluation
 
-`backend/eval/questions.json` holds 71 questions, each labelled with the passages that answer it: section numbers for the two documents that have them, and page numbers for the WIPO guide, which doesn't. A hit means a correct passage is in the top k.
-
-The first version had 33 questions, all about a knowledge base I wrote, and dense and hybrid both scored Hit@3 1.00, so the set couldn't tell them apart. I added a public document I didn't write (WIPO's 68-page guide, see [Sources](#knowledge-base-sources)) with 38 questions on it. My first 28 of those reused the guide's own words ("rooibos", "Kente") and turned out to be easy even for keyword search, so I added 10 **paraphrased** questions written the way a user would ask, without the document's terms. Those are the ones that separate the retrievers.
+`backend/eval/questions.json` holds 33 questions, each labelled with the knowledge-base sections that answer it: 24 general questions, 4 in Hindi or Hinglish, and 5 exact-identifier queries such as patent numbers and "Section 3(p)". A hit means a passage from a correct section is in the top k.
 
 | Retriever | Hit@1 | Hit@3 | Hit@6 | MRR |
 |---|---|---|---|---|
-| **Dense (Gemini embeddings)** | **0.97** | **0.99** | **1.00** | **0.98** |
-| Hybrid (BM25 + dense, RRF) | 0.89 | 0.96 | 0.96 | 0.92 |
-| BM25 (keywords) | 0.68 | 0.85 | 0.89 | 0.76 |
+| **Dense (Gemini embeddings)** | **0.97** | **1.00** | **1.00** | **0.98** |
+| Hybrid (BM25 + dense, RRF) | 0.88 | 1.00 | 1.00 | 0.93 |
+| BM25 (keywords) | 0.52 | 0.76 | 0.91 | 0.66 |
 
-By question group (MRR):
+By question type (MRR):
 
-| Retriever | General (45) | Paraphrased (10) | Hindi/Hinglish (9) | Identifiers (7) | My document (33) | WIPO guide (38) |
-|---|---|---|---|---|---|---|
-| Dense | 0.99 | **0.92** | 1.00 | 1.00 | 0.98 | 0.98 |
-| Hybrid | 0.97 | 0.65 | 1.00 | 0.86 | 0.93 | 0.91 |
-| BM25 | 0.86 | 0.48 | 0.56 | 0.77 | 0.69 | 0.82 |
+| Retriever | General (24) | Hindi/Hinglish (4) | Identifiers (5) |
+|---|---|---|---|
+| Dense | 0.98 | 1.00 | 1.00 |
+| Hybrid | 0.95 | 1.00 | 0.80 |
+| BM25 | 0.72 | 0.25 | 0.67 |
 
-**Decision:** dense retrieval is the default. Hybrid search is often recommended for exact terms, but here Gemini embeddings already rank patent numbers and statute sections first, and fusing in BM25 pushed correct passages down. The gap is widest on paraphrased questions (MRR 0.92 vs 0.65), where the user's words and the document's words differ. BM25 can't match Hindi questions against English text at all. Adding the 127-chunk WIPO guide left the scores on the original 33 questions unchanged, so the new chunks didn't crowd out the old ones. `RETRIEVAL_MODE=hybrid` switches modes; re-run the evaluation whenever the documents change.
-
-Dense misses one paraphrased question: "If someone uses our tribe's name as a brand, can we stop it?" ranks the guide's unfair-competition page above the trademark page I labelled. That page is about false claims of community origin, so the miss is arguably a labelling question.
+**Decision:** dense retrieval is the default. Hybrid search is often recommended for exact terms, but on this corpus Gemini embeddings already rank patent numbers and statute sections first, and fusing in BM25 only pushed correct passages from rank 1 to rank 2 or 3. BM25 cannot match Hindi questions against English documents at all. `RETRIEVAL_MODE=hybrid` switches modes; re-run the evaluation whenever the documents change.
 
 ```bash
 python -m backend.eval.evaluate
@@ -160,10 +155,6 @@ python -m backend.eval.evaluate
 **6. The UI said "Online" even when the backend was down.** The status label was hard-coded, and every error was shown as a connection problem.
 *Change:* the status now comes from `/api/health`, and the server's own error message is shown to the user.
 
-**7. My "harder" evaluation questions were still easy.** To make the evaluation fairer I added a public WIPO guide and 28 questions on it. Keyword search scored Hit@1 0.93 on them, because I had written each question with the guide's own names and terms in it.
-*Change:* added 10 paraphrased questions that describe the situation instead of naming it. On those, keyword search dropped to 0.40 and hybrid to 0.60, while dense held at 0.90.
-*Lesson:* an evaluation set written while reading the documents measures word overlap as much as understanding.
-
 ---
 
 ## Tech stack
@@ -175,7 +166,7 @@ python -m backend.eval.evaluate
 | AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
 | Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
 | Documents | `pypdf` text extraction, custom section-aware chunking |
-| Quality | pytest (47 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness |
+| Quality | pytest (39 tests), ESLint, GitHub Actions CI, retrieval evaluation harness |
 | Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---
@@ -359,22 +350,12 @@ Interactive docs are available at `/docs` when the server is running.
 
 ## Limitations
 
-- The knowledge base is three documents (122 pages, 356 chunks). Adding more, such as CGPDTM manuals, is a matter of dropping PDFs in and re-running `build_index`.
+- The knowledge base is two documents (54 pages). Adding sources such as WIPO and CGPDTM documents is mostly a matter of dropping PDFs in and re-running `build_index`.
 - If the right passage is not retrieved, the answer will be incomplete; the app says so instead of guessing, but it cannot answer beyond its documents.
 - The rate limiter is in memory, so each serverless instance counts separately. A shared store such as Redis or Upstash would make it global.
 - Retrieval is evaluated; answer quality (faithfulness, citation accuracy) is not yet.
-- The evaluation questions were written by the same person who chose the documents, after reading them. The paraphrased questions reduce that bias but don't remove it, and 10 questions is a small group.
-- The journal PDF uses two columns, so some of its section labels are approximate. The WIPO guide has no numbered headings, so its passages are cited by page only. Page numbers are exact.
-
----
-
-## Knowledge base sources
-
-| Document | Pages | Licence |
-|---|---|---|
-| *AyurIP Sahayak Knowledge Base: Ayurveda, Traditional Knowledge & Intellectual Property*, Rudra Pratap Singh | 47 | Written for this project |
-| Jadhavar & Nale (2026), *Integrating Intellectual Property Rights, Traditional Knowledge Systems, and the Evolution of Ayurveda*, J. Pharm. Sci. | 7 | Journal article |
-| World Intellectual Property Organization (WIPO) (2017) *Protect and Promote Your Culture: A Practical Guide to Intellectual Property for Indigenous Peoples and Local Communities*. WIPO: Geneva | 68 | [CC BY 3.0 IGO](https://creativecommons.org/licenses/by/3.0/igo/); included unchanged and split into passages for search |
+- The evaluation is small, and 199 of the 229 chunks come from a knowledge-base document I wrote myself, so the scores are likely higher than they would be on unseen documents. Hit@3 is already 1.00 for dense and hybrid, so the set is too easy to separate them at that depth.
+- The journal PDF uses two columns, so some of its section labels are approximate. Page numbers are exact.
 
 ---
 
