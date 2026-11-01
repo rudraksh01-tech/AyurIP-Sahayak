@@ -227,6 +227,15 @@ npm run dev                 # http://localhost:5173 (proxies /api to port 8001)
 
 To try the production setup instead, run `npm run build` in `frontend/`; FastAPI then serves the built app at http://127.0.0.1:8001.
 
+### Or run with Docker
+
+```bash
+docker build -t ayurip-sahayak .
+docker run -p 8000:8000 -e GEMINI_API_KEY=your-key ayurip-sahayak   # http://localhost:8000
+```
+
+The image builds the React app in a Node stage, then runs FastAPI on `python:3.12-slim` as a non-root user. The API key is passed at run time and never copied into the image. CI builds the image and checks that it starts and serves the app on every push.
+
 ### Rebuild the knowledge base
 
 Put PDFs in `backend/data/raw/`, optionally add their titles to `sources.json`, then:

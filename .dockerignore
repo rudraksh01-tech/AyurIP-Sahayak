@@ -1,0 +1,17 @@
+# Secrets never go into the image
+.env
+.env.*
+
+.git
+.github
+.venv*/
+**/__pycache__/
+.pytest_cache/
+frontend/node_modules/
+frontend/dist/
+backend/data/raw/
+backend/tests/
+backend/eval/
+docs/
+.vercel/
+.vscode/

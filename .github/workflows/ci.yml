@@ -41,3 +41,26 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+
+  docker:
+    name: Docker build & smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: docker build -t ayurip-sahayak .
+
+      # Health and the home page work without an API key
+      - name: Start the container and check it responds
+        run: |
+          docker run -d --name app -p 8000:8000 ayurip-sahayak
+          for i in $(seq 1 30); do
+            curl -fs http://localhost:8000/api/health && break
+            sleep 1
+          done
+          curl -fs http://localhost:8000/api/health | grep -q '"status":"healthy"'
+          curl -fs http://localhost:8000/ | grep -qi '<div id="root">'
+          docker images ayurip-sahayak --format 'Image size: {{.Size}}'
+
+      - if: failure()
+        run: docker logs app
