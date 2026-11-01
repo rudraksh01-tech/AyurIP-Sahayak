@@ -30,16 +30,16 @@ def get_client():
 
 
 def _with_retry(call, attempts=5):
-    """Retry on rate limits (HTTP 429) with exponential backoff."""
+    """Retry on rate limits (HTTP 429) and overload (503) with exponential backoff."""
     for attempt in range(attempts):
         try:
             return call()
         except errors.APIError as error:
-            if error.code != 429 or attempt == attempts - 1:
+            if error.code not in (429, 503) or attempt == attempts - 1:
                 raise
 
             wait_seconds = 2 ** attempt * 5
-            print(f"Rate limited by Gemini, retrying in {wait_seconds}s...")
+            print(f"Gemini returned {error.code}, retrying in {wait_seconds}s...")
             time.sleep(wait_seconds)
 
 
