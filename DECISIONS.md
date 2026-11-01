@@ -2,7 +2,7 @@
 
 The main technical choices in AyurIP-Sahayak: what I chose, why, what it cost, and what I would change. The [README](README.md) explains how everything works; this file explains why it works that way.
 
-Numbers come from `backend/eval/` (33 labelled questions) or from timing the live demo on 1 November 2026.
+Numbers come from `backend/eval/` (71 labelled questions over 3 documents) or from timing the live demo on 1 November 2026.
 
 ---
 
@@ -12,7 +12,7 @@ Numbers come from `backend/eval/` (33 labelled questions) or from timing the liv
 
 **Why.** A plain LLM call can't show where an answer came from, and in a legal or medical-adjacent domain an unsourced answer is not useful. With retrieval, every claim links to a page and section the user can check, and when nothing relevant is found the app says so instead of guessing.
 
-**Trade-off.** The app can't answer anything outside its two documents, and a bad retrieval means an incomplete answer.
+**Trade-off.** The app can't answer anything outside its three documents, and a bad retrieval means an incomplete answer.
 
 ---
 
@@ -28,9 +28,9 @@ Numbers come from `backend/eval/` (33 labelled questions) or from timing the liv
 
 ## 3. No vector database
 
-**Decision.** The index is a `229 × 768` `float32` matrix (0.7 MB, `embeddings.npy`) plus `index.json` for the text and metadata. Search is one NumPy matrix product and a sort.
+**Decision.** The index is a `356 × 768` `float32` matrix (1.1 MB, `embeddings.npy`) plus `index.json` for the text and metadata. Search is one NumPy matrix product and a sort.
 
-**Why.** At this size brute-force search is exact and takes about 0.03 ms per query on my laptop (1,000 searches in 28 ms). A vector database would add a service to run, an account and a network hop without making anything faster or more accurate.
+**Why.** At this size brute-force search is exact and takes about 0.03 ms per query on my laptop (1,000 searches in 34 ms). A vector database would add a service to run, an account and a network hop without making anything faster or more accurate.
 
 **Trade-off.** The whole matrix is loaded into memory on every cold start, and brute force grows linearly with the number of chunks.
 
@@ -44,15 +44,19 @@ Numbers come from `backend/eval/` (33 labelled questions) or from timing the liv
 
 **Why.** Hybrid search is the usual advice, especially for exact terms like patent numbers, so I expected it to win. I built a labelled evaluation set to check, and it didn't:
 
-| Retriever | Hit@1 | MRR | MRR on identifier queries (5) | MRR on Hindi/Hinglish (4) |
-|---|---|---|---|---|
-| Dense | 0.97 | 0.98 | 1.00 | 1.00 |
-| Hybrid | 0.88 | 0.93 | 0.80 | 1.00 |
-| BM25 | 0.52 | 0.66 | 0.67 | 0.25 |
+| Retriever | Hit@1 | MRR | Paraphrased (10) | Identifiers (7) | Hindi/Hinglish (9) |
+|---|---|---|---|---|---|
+| Dense | 0.97 | 0.98 | 0.92 | 1.00 | 1.00 |
+| Hybrid | 0.89 | 0.92 | 0.65 | 0.86 | 1.00 |
+| BM25 | 0.68 | 0.76 | 0.48 | 0.77 | 0.56 |
 
-Gemini embeddings already ranked statute sections and patent numbers first; fusing in BM25 pushed some correct passages from rank 1 to rank 2 or 3. BM25 can't match Hindi questions against English text at all.
+(MRR for the question groups; 71 questions in total.)
 
-**Trade-off.** The evaluation is small (33 questions) and most of the corpus is a document I wrote, so the result may not hold on other documents. That's why the mode is one environment variable away and the evaluation is one command to re-run.
+Gemini embeddings already ranked statute sections and patent numbers first; fusing in BM25 pushed some correct passages down. The difference is largest when a question doesn't use the document's words, which is how real users ask. BM25 can't match Hindi questions against English text at all.
+
+The first version of this table used 33 questions about a document I wrote, and dense and hybrid tied at Hit@3 1.00. Adding a public WIPO guide and paraphrased questions is what made the gap visible.
+
+**Trade-off.** The questions were still written by me after reading the documents, and the paraphrased group is only 10 questions. That's why the mode is one environment variable away and the evaluation is one command to re-run.
 
 ---
 
@@ -98,6 +102,6 @@ Gemini embeddings already ranked statute sections and patent numbers first; fusi
 
 ## What I'd do next
 
-1. **A fairer evaluation.** Add public documents I didn't write and grow the set to about 60 questions, so Hit@3 (1.00 for dense and hybrid today) can show differences.
-2. **Answer-quality evaluation.** Check faithfulness and citation accuracy with an LLM judge; today only retrieval is measured.
-3. **Docker**, built in CI, so the app runs the same way everywhere.
+1. **Answer-quality evaluation.** `backend/eval/answer_eval.py` is written: a judge from a different model family (`openai/gpt-oss-120b` on Groq) checks every claim in an answer against the retrieved passages, and is itself tested with planted false claims. It still has to be run and reported.
+2. **Questions from real users.** Log anonymised questions from the demo and label a sample, instead of only questions I wrote.
+3. **pgvector**, with a timing comparison against the NumPy index, once the corpus is large enough for it to matter.
