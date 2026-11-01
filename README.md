@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🌿 AyurIP-Sahayak
+# AyurIP-Sahayak
 
 ### AI-Powered RAG Assistant for Ayurveda, Traditional Knowledge & Intellectual Property Research
 
@@ -12,9 +12,10 @@
 [![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Gemini](https://img.shields.io/badge/Google%20Gemini-LLM%20%2B%20Embeddings-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![RAG](https://img.shields.io/badge/AI-RAG-8E44AD?style=for-the-badge)](#-how-it-works)
+[![RAG](https://img.shields.io/badge/AI-RAG-8E44AD?style=for-the-badge)](#how-it-works)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
-### 🔗 [Live demo → ayur-ip-sahayak.vercel.app](https://ayur-ip-sahayak.vercel.app)
+### [Live demo → ayur-ip-sahayak.vercel.app](https://ayur-ip-sahayak.vercel.app)
 
 </div>
 
@@ -24,15 +25,30 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 
 ---
 
-## ✨ Features
+## Results at a glance
+
+| What | Result | How it was measured |
+|---|---|---|
+| Right passage ranked first | **97%** of questions (Hit@1 0.97, MRR 0.98) | 33 labelled questions in `backend/eval/` |
+| Dense vs keyword search | Hit@1 **0.97 vs 0.52**; Hindi/Hinglish MRR **1.00 vs 0.25** | Same set, BM25 baseline written from scratch |
+| Speed on the live demo | Sources in **0.6–1.0 s**, first words in **1.4–1.8 s**, full answer in **1.6–3.0 s** | 5 questions on the deployed app, 1 Nov 2026 |
+| Vector search time | About **0.03 ms** per query (229 chunks × 768 dims) | 1,000 NumPy searches timed locally |
+| Deployment size | 5 runtime packages, 0.7 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
+| Tests | **39** passing, run in GitHub Actions on every push | `pytest` |
+
+Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DECISIONS.md)**.
+
+---
+
+## Features
 
 - **Cited answers.** Every statement links to a numbered source; clicking `[2]` opens the passage with its document, page number and section heading.
-- **Streaming.** The first words appear in about 3 seconds; sources show up after about 1 second, before the answer is written.
+- **Streaming.** Sources show up in under a second, before the answer is written, and the first words follow in about 1.5 seconds.
 - **English, Hindi and Hinglish.** Multilingual embeddings retrieve English passages for Hindi questions, and the answer comes back in the question's language.
 - **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
 - **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
 - **Polished interface.** Glassmorphism cards over an emerald-and-gold palette, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
-- **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#-retrieval-evaluation)).
+- **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#retrieval-evaluation)).
 - **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 39 tests, CI, and a one-click free deployment.
 
 <p align="center">
@@ -43,7 +59,7 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 
 ---
 
-## 🎯 Why I Built This
+## Why I built this
 
 Information related to Ayurveda, Traditional Knowledge and IPR is often spread across lengthy documents.
 
@@ -59,7 +75,7 @@ AyurIP-Sahayak explores how **RAG can be used to solve this problem**.
 
 ---
 
-## 🧠 How it works
+## How it works
 
 The project is intentionally **not** just `React → Gemini API → Answer`. It searches its own knowledge base first, then uses the LLM to explain what it found, and shows where every claim came from.
 
@@ -91,7 +107,7 @@ Retrieval and generation stay separate components, so either can change without 
 
 ---
 
-## 📊 Retrieval evaluation
+## Retrieval evaluation
 
 `backend/eval/questions.json` holds 33 questions, each labelled with the knowledge-base sections that answer it: 24 general questions, 4 in Hindi or Hinglish, and 5 exact-identifier queries such as patent numbers and "Section 3(p)". A hit means a passage from a correct section is in the top k.
 
@@ -117,43 +133,31 @@ python -m backend.eval.evaluate
 
 ---
 
-## 🛠️ Engineering Challenges & Solutions
+## What went wrong, and what I changed
 
-### Challenge 1 — Deployment memory
+**1. The first deployment ran out of memory.** Version 1 embedded text locally with `sentence-transformers` (`all-MiniLM-L6-v2`). On Render's free tier it went over the **512 MiB memory limit**, mostly because of PyTorch and Transformers. On my Windows laptop, Smart App Control also blocked PyTorch's DLLs, so the backend couldn't start locally either.
+*Change:* moved embeddings to the Gemini embeddings API and the vector search to NumPy. The runtime dependencies dropped to five small packages, the index went from a 3 MB JSON file to a 0.7 MB `.npy` matrix, and the app now runs on Vercel's free tier.
+*Lesson:* the size of AI dependencies is a deployment constraint, not just the code.
 
-**Problem.** The first version embedded text locally with `sentence-transformers` (`all-MiniLM-L6-v2`). A Render deployment was attempted, but the free instance exceeded its **512 MiB memory limit**; PyTorch, Transformers and sentence-transformers were the main contributors. On Windows, Smart App Control also blocked PyTorch's DLLs, so the backend could not start locally either.
+**2. A fresh clone didn't install or run.** `requirements.txt` was a UTF-16 `pip freeze` that pinned `torch==2.13.0+cpu`, a version pip couldn't resolve. Scripts loaded files relative to the folder you ran them from, and the README pointed to a different port than the code used.
+*Change:* replaced the freeze with a short UTF-8 list of direct dependencies, resolved every path from the file's own location, and matched the README to the code. A test now checks that `requirements.txt` and `pyproject.toml` list the same packages.
 
-**Solution.** Move embeddings to the Gemini embeddings API and do the vector search with NumPy. The runtime dependencies shrank to FastAPI, `google-genai`, NumPy and `python-dotenv`, the index went from a 3 MB JSON file to a 0.7 MB `.npy` matrix, and the whole app now fits Vercel's free tier.
+**3. I expected hybrid search to win, and it lost.** Hybrid (BM25 + embeddings) is the common advice for exact terms such as patent numbers. On my labelled questions it lowered MRR from 0.98 to 0.93, and on identifier queries from 1.00 to 0.80, because BM25 pushed correct passages down a rank or two.
+*Change:* made dense retrieval the default and kept hybrid and BM25 as measured baselines. Some of my own docs still said "hybrid" after this; I corrected them.
+*Lesson:* measure before following a best practice.
 
-> **Deployment constraints are not only about application logic; the runtime footprint of AI dependencies also matters.**
+**4. Answers took 10–13 seconds.** With `gemini-3.6-flash`, nothing appeared until the whole answer was ready, which feels broken in a chat UI.
+*Change:* stream the answer as NDJSON, send the sources before generation starts, and switch to `gemini-3.5-flash-lite` with minimal thinking. The first words now appear in 1.4–1.8 s on the live demo.
 
-### Challenge 2 — Choosing a retriever with evidence
+**5. The deployed app rejected a valid API key.** The key pasted into Vercel's dashboard had picked up surrounding whitespace, and Gemini treated it as invalid.
+*Change:* the key is stripped before use. It is only read on the server and never sent to the browser.
 
-**Problem.** Hybrid (keyword + semantic) search is a common recommendation, but it was unclear whether it would help here.
-
-**Solution.** Build a labelled evaluation set and measure all three options. Dense retrieval won (MRR 0.98 vs 0.93 hybrid), so it is the default and the others remain as baselines.
-
-### Challenge 3 — Slow answers
-
-**Problem.** `gemini-3.6-flash` took about 10–13 seconds per answer, which feels broken in a chat UI.
-
-**Solution.** Stream answers token by token as NDJSON, send the sources before generation starts, and benchmark models: `gemini-3.5-flash-lite` with minimal thinking shows the first words in about 3 seconds with the same answer quality on this task.
-
-### Challenge 4 — Trustworthy answers
-
-**Problem.** An LLM answer is hard to trust if you cannot see where it came from.
-
-**Solution.** Number the retrieved passages, instruct the model to cite them as `[n]`, parse the citations, and render them as chips that open the exact page and section.
-
-### Challenge 5 — Keeping secrets safe on a public demo
-
-**Problem.** A public demo must not leak the API key or let one visitor exhaust the free quota.
-
-**Solution.** The key lives only in server-side environment variables (`.env` locally, Vercel settings in production) and is never sent to the browser. Each visitor is limited to 10 questions per minute, and inputs are validated.
+**6. The UI said "Online" even when the backend was down.** The status label was hard-coded, and every error was shown as a connection problem.
+*Change:* the status now comes from `/api/health`, and the server's own error message is shown to the user.
 
 ---
 
-## 💻 Tech stack
+## Tech stack
 
 | Layer | Tools |
 |---|---|
@@ -167,7 +171,7 @@ python -m backend.eval.evaluate
 
 ---
 
-## 📂 Project structure
+## Project structure
 
 ```text
 AyurIP-Sahayak/
@@ -194,7 +198,7 @@ AyurIP-Sahayak/
 
 ---
 
-## ⚙️ Run locally
+## Run locally
 
 You need Python 3.12+, Node.js 22+ and a free Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey).
 
@@ -241,7 +245,7 @@ cd frontend && npm run lint   # frontend
 
 ---
 
-## 🚀 Deploy for free on Vercel
+## Deploy for free on Vercel
 
 The whole app (React build and FastAPI API) deploys as one Vercel project on the free Hobby plan. `pyproject.toml` tells Vercel where the FastAPI app is, `vercel.json` builds the frontend, and FastAPI serves it from the same domain, so no CORS setup is needed.
 
@@ -254,7 +258,7 @@ The whole app (React build and FastAPI API) deploys as one Vercel project on the
 
 ---
 
-## 🔌 API
+## API
 
 | Method | Path | Description |
 |---|---|---|
@@ -264,7 +268,7 @@ The whole app (React build and FastAPI API) deploys as one Vercel project on the
 
 Interactive docs are available at `/docs` when the server is running.
 
-## 🔧 Configuration
+## Configuration
 
 | Variable | Default | Purpose |
 |---|---|---|
@@ -276,7 +280,7 @@ Interactive docs are available at `/docs` when the server is running.
 
 ---
 
-## 🚀 Roadmap
+## Roadmap
 
 ### Phase 1 — Core RAG
 
@@ -323,7 +327,7 @@ Interactive docs are available at `/docs` when the server is running.
 
 ---
 
-## 🧠 Skills demonstrated
+## Skills demonstrated
 
 **AI / Machine Learning:** Retrieval-Augmented Generation, semantic search, text embeddings, vector similarity, BM25 and rank fusion, retrieval evaluation (Hit@k, MRR), prompt design for grounded and cited answers, multilingual QA.
 
@@ -335,17 +339,18 @@ Interactive docs are available at `/docs` when the server is running.
 
 ---
 
-## ⚠️ Limitations
+## Limitations
 
 - The knowledge base is two documents (54 pages). Adding sources such as WIPO and CGPDTM documents is mostly a matter of dropping PDFs in and re-running `build_index`.
 - If the right passage is not retrieved, the answer will be incomplete; the app says so instead of guessing, but it cannot answer beyond its documents.
 - The rate limiter is in memory, so each serverless instance counts separately. A shared store such as Redis or Upstash would make it global.
 - Retrieval is evaluated; answer quality (faithfulness, citation accuracy) is not yet.
+- The evaluation is small, and 199 of the 229 chunks come from a knowledge-base document I wrote myself, so the scores are likely higher than they would be on unseen documents. Hit@3 is already 1.00 for dense and hybrid, so the set is too easy to separate them at that depth.
 - The journal PDF uses two columns, so some of its section labels are approximate. Page numbers are exact.
 
 ---
 
-## 👨‍💻 About the Developer
+## About the Developer
 
 ### Rudra Pratap Singh
 
@@ -359,7 +364,7 @@ Documents → Embeddings → Retrieval → Context → LLM → Application
 
 ---
 
-## ⚖️ Disclaimer
+## Disclaimer
 
 AyurIP-Sahayak is an experimental/research-oriented software project.
 
@@ -374,17 +379,15 @@ Important information should be independently verified using authoritative sourc
 
 ---
 
-## 📄 License
+## License
 
-This project is currently intended as a personal/research portfolio project.
-
-A formal open-source license can be added when the repository's licensing terms are finalized.
+[MIT](LICENSE). The documents in `backend/data/raw/` keep their own authors' rights.
 
 ---
 
 <div align="center">
 
-### 🌿 AyurIP-Sahayak
+### AyurIP-Sahayak
 
 **Retrieve first. Generate second.**
 
