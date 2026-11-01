@@ -22,7 +22,7 @@ logger = logging.getLogger("uvicorn.error")
 app = FastAPI(
     title="AyurIP Sahayak API",
     description=(
-        "Hybrid-retrieval RAG assistant for Ayurveda, Traditional Knowledge "
+        "Dense-retrieval RAG assistant for Ayurveda, Traditional Knowledge "
         "and Intellectual Property Rights."
     ),
     version="2.0.0",

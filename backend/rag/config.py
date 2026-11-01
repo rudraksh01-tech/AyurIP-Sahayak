@@ -32,8 +32,9 @@ FRONTEND_DIST = PROJECT_ROOT / "frontend" / "dist"
 # MODELS
 # ---------------------------------------------------------
 
-# flash-lite with minimal thinking streams its first words in ~2s versus
-# ~8-10s for gemini-3.6-flash, with the same answer quality on this task.
+# flash-lite with minimal thinking streams its first words in ~1.5s on the
+# live demo; gemini-3.6-flash took 10-13s per answer, with the same answer
+# quality on this task.
 GENERATION_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 THINKING_LEVEL = os.getenv("GEMINI_THINKING_LEVEL", "minimal")
 

@@ -1,4 +1,4 @@
-"""End-to-end RAG: question -> hybrid retrieval -> streamed Gemini answer with citations."""
+"""End-to-end RAG: question -> retrieval (dense by default) -> streamed Gemini answer with citations."""
 
 import time
 
