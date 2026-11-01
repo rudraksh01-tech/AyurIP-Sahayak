@@ -34,7 +34,7 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 | Speed on the live demo | Sources in **0.6–1.0 s**, first words in **1.4–1.8 s**, full answer in **1.6–3.0 s** | 5 questions on the deployed app, 1 Nov 2026 |
 | Vector search time | About **0.03 ms** per query (229 chunks × 768 dims) | 1,000 NumPy searches timed locally |
 | Deployment size | 5 runtime packages, 0.7 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
-| Tests | **39** passing, run in GitHub Actions on every push | `pytest` |
+| Tests | **44** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
 
 Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DECISIONS.md)**.
 
@@ -49,7 +49,7 @@ Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DEC
 - **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
 - **Polished interface.** Glassmorphism cards over an emerald-and-gold palette, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
 - **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#retrieval-evaluation)).
-- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 39 tests, CI, and a one-click free deployment.
+- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 44 tests, CI with a Docker build, and a one-click free deployment.
 
 <p align="center">
   <img src="docs/screenshot-home.png" alt="Home screen with search, suggestions and knowledge-base stats" width="64%" />
@@ -166,7 +166,7 @@ python -m backend.eval.evaluate
 | AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
 | Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
 | Documents | `pypdf` text extraction, custom section-aware chunking |
-| Quality | pytest (39 tests), ESLint, GitHub Actions CI, retrieval evaluation harness |
+| Quality | pytest (44 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness |
 | Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---
