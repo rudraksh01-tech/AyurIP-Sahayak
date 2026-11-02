@@ -37,7 +37,7 @@ Ask a question in English, Hindi, Kannada or Hinglish and get a streamed answer 
 | Vector search time | About **0.03 ms** per query (229 chunks × 768 dims) | 1,000 NumPy searches timed locally |
 | Deployment size | 5 runtime packages, 0.7 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
 | Judge reliability | Caught **15 of 15** false sentences planted in real answers | Planted claims, see [Answer-quality evaluation](#answer-quality-evaluation) |
-| Tests | **46** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
+| Tests | **47** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
 
 Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DECISIONS.md)**.
 
@@ -52,7 +52,7 @@ Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DEC
 - **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
 - **Polished interface.** A restrained three-colour design (ink, ivory and a saffron accent) with serif headlines, hairline borders and monospaced numbers, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
 - **Measured retrieval and answers.** An evaluation harness compares three retrievers on 38 labelled questions (see [results](#retrieval-evaluation)), and an LLM judge checks every answer claim against its passages (see [answer quality](#answer-quality-evaluation)).
-- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 46 tests, CI with a Docker build, and a one-click free deployment.
+- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 47 tests, CI with a Docker build, and a one-click free deployment.
 
 <p align="center">
   <img src="docs/screenshot-home.png" alt="Home screen with search, suggested questions and measured answer quality" width="64%" />
@@ -184,6 +184,10 @@ python -m backend.eval.answer_eval   # needs GEMINI_API_KEY and GROQ_API_KEY
 *Change:* Devanagari and Kannada share one Unicode layout, 0x380 apart (क U+0915 → ಕ U+0C95), so for Kannada questions every Devanagari letter in the streamed answer is mapped to its Kannada twin. Over 15 fresh answers, mixed-script words went from 4 to 0. Two unit tests cover it.
 *Lesson:* look at the actual characters before blaming the font.
 
+**8. English questions got Kannada answers.** The Kannada example I put in the prompt pulled the model into Kannada even for English questions, Hinglish questions came back in Devanagari, and a Kannada turn in the history carried over to the next question. In a 10-answer check, every English and Hinglish answer was in the wrong language.
+*Change:* the code now picks the reply language from the question (Kannada or Devanagari letters, or common Hinglish words such as "kyun" and "hai"; otherwise English) and states it in the prompt as `ANSWER LANGUAGE`. The same check then gave 15 of 15 in the right language, and all 5 Kannada questions still came back in Kannada.
+*Lesson:* don't leave a choice to the model when the code can make it.
+
 ---
 
 ## Tech stack
@@ -195,7 +199,7 @@ python -m backend.eval.answer_eval   # needs GEMINI_API_KEY and GROQ_API_KEY
 | AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
 | Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
 | Documents | `pypdf` text extraction, custom section-aware chunking |
-| Quality | pytest (46 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness, LLM-judge answer evaluation |
+| Quality | pytest (47 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness, LLM-judge answer evaluation |
 | Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---

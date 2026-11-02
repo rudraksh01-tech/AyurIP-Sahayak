@@ -1,6 +1,12 @@
 from backend.rag import rag_pipeline
 from backend.rag.generation import generator
-from backend.rag.generation.generator import build_prompt, find_citations, stream_answer, to_kannada_script
+from backend.rag.generation.generator import (
+    answer_language,
+    build_prompt,
+    find_citations,
+    stream_answer,
+    to_kannada_script,
+)
 from backend.rag.rag_pipeline import ask_rag, build_search_query, stream_rag
 
 
@@ -24,7 +30,7 @@ def test_build_prompt_numbers_passages_with_location():
 
     assert "[1] Doc A, page 11 (3.5 TKDL)\nTKDL blocks patents." in prompt
     assert "[2] Doc B, page 3\nNeem was revoked." in prompt
-    assert prompt.rstrip().endswith("QUESTION:\nWhat is TKDL?")
+    assert prompt.rstrip().endswith("QUESTION:\nWhat is TKDL?\n\nANSWER LANGUAGE: English")
     assert "CONVERSATION SO FAR" not in prompt
 
 
@@ -49,6 +55,15 @@ def test_stream_answer_without_results_skips_gemini(monkeypatch):
     monkeypatch.setattr(generator, "generate_stream", lambda *args: (_ for _ in ()).throw(AssertionError))
 
     assert "couldn't find" in "".join(stream_answer("anything", []))
+
+
+def test_answer_language_comes_from_the_question_script_and_words():
+    assert answer_language("What is TKDL and how does it stop wrongful patents?") == "English"
+    assert answer_language("What is Section 3(p)?") == "English"
+    assert answer_language("आयुर्वेद में तीन दोष कौन से हैं?").startswith("Hindi")
+    assert answer_language("ಟಿಕೆಡಿಎಲ್ ಎಂದರೇನು?").startswith("Kannada")
+    assert answer_language("neem patent kyun cancel hua?").startswith("Hinglish")
+    assert answer_language("TKDL kya hai?").startswith("Hinglish")
 
 
 def test_to_kannada_script_fixes_devanagari_letters_inside_kannada_words():

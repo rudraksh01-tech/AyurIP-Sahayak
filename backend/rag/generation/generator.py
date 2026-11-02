@@ -12,8 +12,8 @@ Rules:
 - Answer ONLY from the numbered context passages. Do not add outside knowledge.
 - Cite the passages that support each statement with their numbers in square brackets, like [2] or [1][3]. Never cite a passage that does not support the statement.
 - If the passages do not contain the answer, say clearly that the documents do not cover it, and suggest a related question they can answer. Do not guess.
-- Reply in the language of the user's question: English, Hindi (Devanagari), Kannada (Kannada script) or Hinglish.
-- Write every word in one script. In a Kannada answer, use only Kannada letters (never Devanagari letters inside a Kannada word); an English term may follow in brackets, like ಪೂರ್ವ ಕಲೆ (prior art).
+- Write the whole answer in the ANSWER LANGUAGE given after the question, even if earlier turns used another language. Hinglish means Hindi written in English (Latin) letters.
+- Write every word in one script. A technical English term may follow in brackets.
 - Start with a direct answer in one or two sentences, then add short bullet points only if they help. Use Markdown bold and lists; no headings.
 - Do not add disclaimers or notes about legal or medical advice; the app already shows one below every answer."""
 
@@ -21,6 +21,13 @@ CITATION_PATTERN = re.compile(r"\[(\d+(?:\s*,\s*\d+)*)\]")
 
 # Devanagari and Kannada share one Unicode layout, 0x380 apart (क U+0915 -> ಕ U+0C95)
 DEVANAGARI_TO_KANNADA = 0x380
+
+# Common Hindi words written in Latin letters; two or more mark a question as Hinglish
+HINGLISH_WORDS = {
+    "kya", "kyun", "kyon", "kyu", "kaise", "kaun", "kab", "kahan", "kitna", "kitne",
+    "hai", "hain", "tha", "thi", "hua", "hui", "ka", "ki", "ke", "ko", "se", "mein", "me",
+    "aur", "nahi", "batao", "bataiye", "samjhao", "matlab", "wala", "wali", "karte", "karna",
+}
 
 MAX_HISTORY_TURNS = 6
 MAX_HISTORY_CHARS = 600
@@ -33,6 +40,22 @@ def format_passage(number, result):
         location += f" ({result['section']})"
 
     return f"[{number}] {location}\n{result['text']}"
+
+
+def answer_language(question):
+    """Pick the reply language from the question itself, not from the model's guess."""
+    if is_kannada(question):
+        return "Kannada (Kannada script)"
+
+    if any("ऀ" <= char <= "ॿ" for char in question):
+        return "Hindi (Devanagari script)"
+
+    words = re.findall(r"[a-z]+", question.lower())
+
+    if sum(word in HINGLISH_WORDS for word in words) >= 2:
+        return "Hinglish (Hindi in Latin letters)"
+
+    return "English"
 
 
 def build_prompt(question, results, history=None):
@@ -57,6 +80,7 @@ def build_prompt(question, results, history=None):
 
     parts.append(f"CONTEXT PASSAGES:\n{passages}")
     parts.append(f"QUESTION:\n{question}")
+    parts.append(f"ANSWER LANGUAGE: {answer_language(question)}")
 
     return "\n\n".join(parts)
 
