@@ -32,7 +32,12 @@ function SourceCard({ id, source, cited, active }) {
         </button>
 
         {source.similarity != null && (
-          <span className="source-score">Similarity {source.similarity.toFixed(2)}</span>
+          <span className="source-score" title="Cosine similarity to the question">
+            <span className="meter" aria-hidden="true">
+              <span style={{ width: `${Math.max(0, Math.min(1, source.similarity)) * 100}%` }} />
+            </span>
+            {source.similarity.toFixed(2)}
+          </span>
         )}
       </div>
     </li>

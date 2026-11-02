@@ -7,9 +7,9 @@ const STATUS_LABELS = {
   offline: "Offline",
 };
 
-export default function Header({ health, hasMessages, onNewChat, theme, onToggleTheme }) {
+export default function Header({ health, hasMessages, scrolled, onNewChat, theme, onToggleTheme }) {
   return (
-    <header className="header">
+    <header className={`header${scrolled || hasMessages ? " is-scrolled" : ""}`}>
       <div className="header-inner">
         <button className="brand" onClick={onNewChat} aria-label="AyurIP Sahayak home">
           <span className="brand-logo">

@@ -2,10 +2,10 @@
 // knowledge base, so each one has a grounded answer.
 
 export const SUGGESTIONS = [
-  "What is TKDL and how does it stop wrongful patents?",
-  "What happened in the turmeric patent case?",
-  "आयुर्वेद में तीन दोष कौन से हैं?",
-  "neem patent kyun cancel hua?",
+  { text: "What is TKDL and how does it stop wrongful patents?", lang: "EN" },
+  { text: "What happened in the turmeric patent case?", lang: "EN" },
+  { text: "आयुर्वेद में तीन दोष कौन से हैं?", lang: "हि" },
+  { text: "neem patent kyun cancel hua?", lang: "Hinglish" },
 ];
 
 export const TOPICS = [

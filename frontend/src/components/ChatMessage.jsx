@@ -59,10 +59,15 @@ function AssistantMessage({ message, onRetry }) {
 
       <div className="message-body">
         {status === "searching" && (
-          <p className="thinking">
-            <span className="dots" aria-hidden="true"><span /><span /><span /></span>
-            Searching the knowledge base…
-          </p>
+          <>
+            <p className="thinking">
+              <span className="dots" aria-hidden="true"><span /><span /><span /></span>
+              Searching the knowledge base…
+            </p>
+            <div className="skeleton" aria-hidden="true">
+              <span /><span /><span />
+            </div>
+          </>
         )}
 
         {status === "streaming" && !content && (

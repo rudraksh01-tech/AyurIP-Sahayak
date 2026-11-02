@@ -1,52 +1,43 @@
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens ----------
+   Three colours: Ink (text, dark background), Ivory (page) and Saffron (the
+   only accent). Everything else is a tint of these. */
 
 :root {
-  --bg: #f6f3ea;
-  --text: #10231a;
-  --text-muted: #4b5d52;
-  --text-faint: #7b8a80;
+  --ink: #14161b;
+  --ivory: #f7f5f0;
+  --saffron: #a84c17;
 
-  --primary: #0d6b4e;
-  --primary-strong: #0a553e;
-  --gold: #b7852a;
-  --on-primary: #ffffff;
+  --bg: var(--ivory);
+  --surface: #fffefb;
+  --surface-2: #efece4;
+  --border: #e2ddd2;
+  --border-strong: #cfc8ba;
 
-  --brand-gradient: linear-gradient(135deg, #0d6b4e 0%, #129368 55%, #c99a3a 100%);
-  --text-gradient: linear-gradient(100deg, #0d6b4e 0%, #139a6c 45%, #c18a26 100%);
-  --user-bubble: linear-gradient(135deg, #0d6b4e 0%, #13875f 100%);
-  --user-bubble-text: #ffffff;
+  --text: var(--ink);
+  --text-muted: #565a63;
+  --text-faint: #8a8c92;
 
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-strong: rgba(255, 255, 255, 0.78);
-  --glass-border: rgba(255, 255, 255, 0.85);
-  --glass-edge: rgba(16, 60, 40, 0.09);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  --surface-inset: rgba(255, 255, 255, 0.6);
+  --accent: var(--saffron);
+  --accent-hover: #8f3f12;
+  --accent-soft: rgba(168, 76, 23, 0.08);
+  --accent-line: rgba(168, 76, 23, 0.32);
+  --on-accent: #ffffff;
 
-  --shadow-sm: 0 1px 2px rgba(16, 40, 28, 0.05), 0 2px 8px rgba(16, 40, 28, 0.05);
-  --shadow-md: 0 12px 32px -12px rgba(16, 50, 34, 0.2);
-  --shadow-lg: 0 28px 64px -20px rgba(16, 50, 34, 0.3);
-  --ring: rgba(19, 154, 108, 0.28);
+  --user-bubble: #ebe7dd;
+  --glow: rgba(168, 76, 23, 0.1);
 
-  --orb-1: rgba(52, 195, 143, 0.34);
-  --orb-2: rgba(230, 180, 80, 0.34);
-  --orb-3: rgba(56, 160, 190, 0.2);
-  --grid-line: rgba(16, 60, 40, 0.055);
+  --shadow-sm: 0 1px 2px rgba(20, 22, 27, 0.04);
+  --shadow-md: 0 1px 2px rgba(20, 22, 27, 0.04), 0 8px 24px -12px rgba(20, 22, 27, 0.14);
+  --shadow-lg: 0 2px 4px rgba(20, 22, 27, 0.03), 0 24px 48px -20px rgba(20, 22, 27, 0.22);
+  --ring: rgba(168, 76, 23, 0.14);
 
-  --cite-bg: rgba(201, 154, 58, 0.17);
-  --cite-text: #7c5714;
-  --danger: #b4443c;
-  --danger-soft: rgba(180, 68, 60, 0.08);
+  --danger: #b03a2e;
+  --danger-soft: rgba(176, 58, 46, 0.07);
+  --success: #2f7a4f;
 
-  --tint-emerald: #0f8a60;
-  --tint-teal: #0f7f8c;
-  --tint-gold: #b07d1c;
-  --tint-copper: #b4602d;
-  --tint-blue: #2f6fb3;
-  --tint-violet: #6a55b5;
-
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 
   color-scheme: light;
 }
@@ -54,98 +45,66 @@
 /* Dark tokens: used when the visitor picked dark, or when the system is dark
    and no choice was saved. Keep both blocks identical. */
 :root[data-theme="dark"] {
-  --bg: #06110c;
-  --text: #e9f0ea;
-  --text-muted: #a2b2a7;
-  --text-faint: #6c7d72;
+  --bg: #0e1015;
+  --surface: #15181e;
+  --surface-2: #1c1f27;
+  --border: #262a33;
+  --border-strong: #353a45;
 
-  --primary: #3fd19b;
-  --primary-strong: #6ee7b7;
-  --gold: #e8bb5c;
-  --on-primary: #04130c;
+  --text: #ece9e2;
+  --text-muted: #a4a39e;
+  --text-faint: #6f7178;
 
-  --brand-gradient: linear-gradient(135deg, #1fae7c 0%, #3fd19b 50%, #e8bb5c 100%);
-  --text-gradient: linear-gradient(100deg, #7befc0 0%, #3fd19b 40%, #f2c86b 100%);
-  --user-bubble: linear-gradient(135deg, #137a56 0%, #1c9a6d 100%);
-  --user-bubble-text: #f2fbf6;
+  --accent: #e8894a;
+  --accent-hover: #f2a067;
+  --accent-soft: rgba(232, 137, 74, 0.1);
+  --accent-line: rgba(232, 137, 74, 0.35);
+  --on-accent: #1a0d05;
 
-  --glass-bg: rgba(255, 255, 255, 0.045);
-  --glass-bg-strong: rgba(16, 30, 23, 0.72);
-  --glass-border: rgba(255, 255, 255, 0.09);
-  --glass-edge: rgba(255, 255, 255, 0.07);
-  --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  --surface-inset: rgba(255, 255, 255, 0.035);
+  --user-bubble: #1f232c;
+  --glow: rgba(232, 137, 74, 0.08);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 14px 36px -14px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 30px 70px -20px rgba(0, 0, 0, 0.75);
-  --ring: rgba(63, 209, 155, 0.3);
+  --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.3), 0 28px 56px -20px rgba(0, 0, 0, 0.7);
+  --ring: rgba(232, 137, 74, 0.16);
 
-  --orb-1: rgba(22, 170, 115, 0.3);
-  --orb-2: rgba(226, 170, 70, 0.16);
-  --orb-3: rgba(40, 110, 170, 0.22);
-  --grid-line: rgba(255, 255, 255, 0.035);
-
-  --cite-bg: rgba(232, 187, 92, 0.14);
-  --cite-text: #f3cf82;
-  --danger: #f08a80;
-  --danger-soft: rgba(240, 138, 128, 0.1);
-
-  --tint-emerald: #4fd8a4;
-  --tint-teal: #4cc6d4;
-  --tint-gold: #eec46a;
-  --tint-copper: #f09a64;
-  --tint-blue: #7fb2f0;
-  --tint-violet: #a897f2;
+  --danger: #ef8a7e;
+  --danger-soft: rgba(239, 138, 126, 0.08);
+  --success: #6cc794;
 
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #06110c;
-    --text: #e9f0ea;
-    --text-muted: #a2b2a7;
-    --text-faint: #6c7d72;
+    --bg: #0e1015;
+    --surface: #15181e;
+    --surface-2: #1c1f27;
+    --border: #262a33;
+    --border-strong: #353a45;
 
-    --primary: #3fd19b;
-    --primary-strong: #6ee7b7;
-    --gold: #e8bb5c;
-    --on-primary: #04130c;
+    --text: #ece9e2;
+    --text-muted: #a4a39e;
+    --text-faint: #6f7178;
 
-    --brand-gradient: linear-gradient(135deg, #1fae7c 0%, #3fd19b 50%, #e8bb5c 100%);
-    --text-gradient: linear-gradient(100deg, #7befc0 0%, #3fd19b 40%, #f2c86b 100%);
-    --user-bubble: linear-gradient(135deg, #137a56 0%, #1c9a6d 100%);
-    --user-bubble-text: #f2fbf6;
+    --accent: #e8894a;
+    --accent-hover: #f2a067;
+    --accent-soft: rgba(232, 137, 74, 0.1);
+    --accent-line: rgba(232, 137, 74, 0.35);
+    --on-accent: #1a0d05;
 
-    --glass-bg: rgba(255, 255, 255, 0.045);
-    --glass-bg-strong: rgba(16, 30, 23, 0.72);
-    --glass-border: rgba(255, 255, 255, 0.09);
-    --glass-edge: rgba(255, 255, 255, 0.07);
-    --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    --surface-inset: rgba(255, 255, 255, 0.035);
+    --user-bubble: #1f232c;
+    --glow: rgba(232, 137, 74, 0.08);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 14px 36px -14px rgba(0, 0, 0, 0.6);
-    --shadow-lg: 0 30px 70px -20px rgba(0, 0, 0, 0.75);
-    --ring: rgba(63, 209, 155, 0.3);
+    --shadow-md: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.3), 0 28px 56px -20px rgba(0, 0, 0, 0.7);
+    --ring: rgba(232, 137, 74, 0.16);
 
-    --orb-1: rgba(22, 170, 115, 0.3);
-    --orb-2: rgba(226, 170, 70, 0.16);
-    --orb-3: rgba(40, 110, 170, 0.22);
-    --grid-line: rgba(255, 255, 255, 0.035);
-
-    --cite-bg: rgba(232, 187, 92, 0.14);
-    --cite-text: #f3cf82;
-    --danger: #f08a80;
-    --danger-soft: rgba(240, 138, 128, 0.1);
-
-    --tint-emerald: #4fd8a4;
-    --tint-teal: #4cc6d4;
-    --tint-gold: #eec46a;
-    --tint-copper: #f09a64;
-    --tint-blue: #7fb2f0;
-    --tint-violet: #a897f2;
+    --danger: #ef8a7e;
+    --danger-soft: rgba(239, 138, 126, 0.08);
+    --success: #6cc794;
 
     color-scheme: dark;
   }
@@ -169,28 +128,50 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
+  letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 button,
 textarea {
   font: inherit;
   color: inherit;
+  letter-spacing: inherit;
 }
 
 button {
   cursor: pointer;
 }
 
+/* Thin scrollbars that match the theme */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid var(--bg);
+  border-radius: 999px;
+  background: var(--border-strong);
+}
+
 ::selection {
-  background: var(--cite-bg);
+  background: var(--accent-soft);
+  color: var(--text);
 }
 
 :focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 

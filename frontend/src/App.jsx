@@ -23,6 +23,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [health, setHealth] = useState({ status: "checking" });
+  const [scrolled, setScrolled] = useState(false);
   const [theme, toggleTheme] = useTheme();
   const controllerRef = useRef(null);
   const endRef = useRef(null);
@@ -49,6 +50,7 @@ function App() {
   useEffect(() => {
     const onScroll = () => {
       followRef.current = isNearBottom();
+      setScrolled(window.scrollY > 4);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -160,15 +162,14 @@ function App() {
   return (
     <div className="app">
       <div className="backdrop" aria-hidden="true">
-        <span className="orb orb-1" />
-        <span className="orb orb-2" />
-        <span className="orb orb-3" />
-        <span className="grid-pattern" />
+        <span className="glow" />
+        <span className="grain" />
       </div>
 
       <Header
         health={health}
         hasMessages={!isHome}
+        scrolled={scrolled}
         onNewChat={newChat}
         theme={theme}
         onToggleTheme={toggleTheme}

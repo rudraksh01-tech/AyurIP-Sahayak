@@ -11,11 +11,37 @@ const MAX_LENGTH = 500;
 export default function Composer({ value, onChange, onSubmit, onStop, busy, variant = "dock" }) {
   const textareaRef = useRef(null);
 
-  // Grow with the text, up to the max-height set in CSS
+  // "/" focuses the box from anywhere on the page, as in GitHub or Linear
   useEffect(() => {
-    const textarea = textareaRef.current;
-    textarea.style.height = "auto";
-    textarea.style.height = `${textarea.scrollHeight}px`;
+    const onKeyDown = (event) => {
+      const tag = event.target.tagName;
+
+      if (event.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA" && !event.target.isContentEditable) {
+        event.preventDefault();
+        textareaRef.current.focus();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  // Grow with the text, up to the max-height set in CSS. Measure again once
+  // the web fonts load and on resize, since both change how the text wraps.
+  useEffect(() => {
+    const fit = () => {
+      const textarea = textareaRef.current;
+
+      if (textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = `${textarea.scrollHeight}px`;
+      }
+    };
+
+    fit();
+    document.fonts?.ready.then(fit);
+    window.addEventListener("resize", fit);
+    return () => window.removeEventListener("resize", fit);
   }, [value]);
 
   const handleKeyDown = (event) => {
@@ -49,6 +75,10 @@ export default function Composer({ value, onChange, onSubmit, onStop, busy, vari
         aria-label="Your question"
         autoFocus
       />
+
+      {variant === "hero" && !value && (
+        <kbd className="kbd" aria-hidden="true">/</kbd>
+      )}
 
       {busy ? (
         <button type="button" className="send-button" onClick={onStop} aria-label="Stop answering">

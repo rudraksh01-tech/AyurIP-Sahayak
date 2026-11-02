@@ -1,3 +1,6 @@
+import { useEffect, useRef } from "react";
+
+import { GITHUB_URL } from "../links.js";
 import { SUGGESTIONS, TOPICS } from "../topics.js";
 import {
   ArrowRightIcon,
@@ -11,7 +14,6 @@ import {
   ScaleIcon,
   SearchIcon,
   ShieldIcon,
-  SparkleIcon,
 } from "./Icons.jsx";
 
 const TOPIC_ICONS = {
@@ -23,70 +25,99 @@ const TOPIC_ICONS = {
   search: SearchIcon,
 };
 
-const PROMISES = [
+// From backend/eval (README "Results at a glance"); update after re-running the evals
+const METRICS = [
+  { value: "0.99", label: "Faithfulness", detail: "145 of 146 answer claims backed by the cited passage" },
+  { value: "97%", label: "Right passage first", detail: "Hit@1 on 33 labelled questions, incl. Hindi" },
+  { value: "5/5", label: "Off-topic refused", detail: "Says “not covered” instead of guessing" },
+  { value: "<2s", label: "To first words", detail: "Streaming on the live demo, sources first" },
+];
+
+const STEPS = [
+  {
+    icon: SearchIcon,
+    title: "Retrieve",
+    text: "Your question is embedded and matched against every passage in the knowledge base, in any of three languages.",
+  },
   {
     icon: QuoteIcon,
-    title: "Page-level citations",
-    text: "Every claim links to the document, page and section it came from.",
+    title: "Cite",
+    text: "The answer is written only from the top passages, and every claim links to its document, page and section.",
   },
   {
     icon: ShieldIcon,
-    title: "No guessing",
-    text: "If the sources don't cover a question, Sahayak says so instead of inventing an answer.",
-  },
-  {
-    icon: LanguagesIcon,
-    title: "English, हिन्दी, Hinglish",
-    text: "Ask in the language you think in; the answer comes back in the same one.",
+    title: "Refuse",
+    text: "If the passages don't cover the question, Sahayak says so instead of filling the gap from memory.",
   },
 ];
 
-function Stats({ health }) {
+// Fade sections in as they scroll into view
+function useReveal() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const items = ref.current.querySelectorAll(".reveal");
+
+    if (!("IntersectionObserver" in window)) {
+      items.forEach((item) => item.classList.add("is-visible"));
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px" }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
+function LiveIndex({ health }) {
   if (health.status !== "online" || !health.documents) {
     return null;
   }
 
   const pages = health.documents.reduce((total, document) => total + document.pages, 0);
 
-  const stats = [
-    [health.documents.length, "curated sources"],
-    [pages, "pages indexed"],
-    [health.chunks, "searchable passages"],
-  ];
-
   return (
-    <dl className="stats">
-      {stats.map(([value, label]) => (
-        <div key={label}>
-          <dt>{label}</dt>
-          <dd>{value}</dd>
-        </div>
-      ))}
-    </dl>
+    <p className="live-index">
+      <span className="live-dot" aria-hidden="true" />
+      Live index · {health.documents.length} sources · {pages} pages · {health.chunks} passages
+    </p>
   );
 }
 
-function TopicCard({ topic, onAsk }) {
+function TopicCard({ topic, index, onAsk }) {
   const Icon = TOPIC_ICONS[topic.icon];
 
   return (
-    <article className="topic-card glass">
+    <article className="topic-card">
       <div className="topic-head">
-        <span className={`topic-icon topic-icon-${topic.id}`}>
-          <Icon size={20} />
+        <span className="topic-icon">
+          <Icon size={18} />
         </span>
-        <div>
-          <h3>{topic.title}</h3>
-          <p>{topic.description}</p>
-        </div>
+        <span className="topic-index">{String(index + 1).padStart(2, "0")}</span>
       </div>
+
+      <h3>{topic.title}</h3>
+      <p>{topic.description}</p>
 
       <ul className="topic-questions">
         {topic.questions.map((question) => (
           <li key={question}>
             <button onClick={() => onAsk(question)}>
               <span>{question}</span>
-              <ArrowRightIcon size={15} />
+              <ArrowRightIcon size={14} />
             </button>
           </li>
         ))}
@@ -103,17 +134,17 @@ function SourceDocuments({ health }) {
   return (
     <div className="doc-list">
       {health.documents.map((document) => (
-        <article key={document.title} className="doc-card glass">
+        <article key={document.title} className="doc-card">
           <span className="doc-icon">
-            <FileIcon size={20} />
+            <FileIcon size={18} />
           </span>
           <div>
             <h3>{document.full_title || document.title}</h3>
             {document.author && <p className="doc-author">{document.author}</p>}
-            <p className="doc-meta">
-              {document.pages} pages · {document.chunks} passages
-            </p>
           </div>
+          <p className="doc-meta">
+            {document.pages} pp · {document.chunks} passages
+          </p>
         </article>
       ))}
     </div>
@@ -121,17 +152,19 @@ function SourceDocuments({ health }) {
 }
 
 export default function EmptyState({ health, onAsk, composer }) {
+  const homeRef = useReveal();
+
   return (
-    <div className="home">
+    <div className="home" ref={homeRef}>
       <section className="hero">
-        <span className="eyebrow glass">
-          <SparkleIcon size={14} />
-          AI research assistant for Indian knowledge &amp; IP
+        <span className="eyebrow">
+          <span className="eyebrow-tag">RAG</span>
+          Grounded answers on Ayurveda &amp; IP law
         </span>
 
         <h1>
-          Research Ayurveda &amp; IP law
-          <span className="gradient-text"> with answers you can verify.</span>
+          Research traditional knowledge,
+          <em> with answers you can verify.</em>
         </h1>
 
         <p className="hero-text">
@@ -142,50 +175,88 @@ export default function EmptyState({ health, onAsk, composer }) {
         <div className="hero-composer">{composer}</div>
 
         <div className="suggestions" aria-label="Suggested questions">
-          {SUGGESTIONS.map((question) => (
-            <button key={question} className="chip glass" onClick={() => onAsk(question)}>
-              {question}
+          <span className="suggestions-label">Try</span>
+          {SUGGESTIONS.map(({ text, lang }) => (
+            <button key={text} className="chip" onClick={() => onAsk(text)}>
+              <span className="chip-lang">{lang}</span>
+              {text}
             </button>
           ))}
         </div>
 
-        <Stats health={health} />
+        <LiveIndex health={health} />
+      </section>
+
+      <section className="metrics reveal" aria-labelledby="metrics-heading">
+        <div className="metrics-head">
+          <div>
+            <span className="kicker" id="metrics-heading">Measured, not claimed</span>
+            <p>33 labelled questions · answers checked by a judge model from another family</p>
+          </div>
+          <a
+            className="metrics-link"
+            href={`${GITHUB_URL}#answer-quality-evaluation`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Methodology
+            <ArrowRightIcon size={13} />
+          </a>
+        </div>
+
+        <dl className="metric-grid">
+          {METRICS.map((metric) => (
+            <div key={metric.label} className="metric">
+              <dt>{metric.label}</dt>
+              <dd>{metric.value}</dd>
+              <p>{metric.detail}</p>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <section className="section" aria-labelledby="topics-heading">
-        <div className="section-head">
+        <div className="section-head reveal">
           <span className="kicker">Explore</span>
           <h2 id="topics-heading">Start from a topic</h2>
-          <p>Pick a question to see how Sahayak answers. Every topic is covered by the sources.</p>
+          <p>Every question below is covered by the sources, so each one has a cited answer.</p>
         </div>
 
-        <div className="topic-grid">
-          {TOPICS.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} onAsk={onAsk} />
+        <div className="topic-grid reveal">
+          {TOPICS.map((topic, index) => (
+            <TopicCard key={topic.id} topic={topic} index={index} onAsk={onAsk} />
           ))}
         </div>
       </section>
 
-      <section className="section" aria-labelledby="sources-heading">
-        <div className="section-head">
-          <span className="kicker">Trust</span>
-          <h2 id="sources-heading">Grounded in real sources</h2>
-          <p>Answers are written only from these documents, never from the model's memory.</p>
+      <section className="section" aria-labelledby="how-heading">
+        <div className="section-head reveal">
+          <span className="kicker">How it works</span>
+          <h2 id="how-heading">Grounded in real sources</h2>
+          <p>Answers come only from these documents, never from the model's memory.</p>
         </div>
 
-        <SourceDocuments health={health} />
-
-        <div className="promise-grid">
-          {PROMISES.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="promise glass">
-              <span className="promise-icon">
-                <Icon size={18} />
-              </span>
+        <ol className="steps reveal">
+          {STEPS.map(({ icon: Icon, title, text }, index) => (
+            <li key={title} className="step">
+              <div className="step-head">
+                <span className="step-number">{String(index + 1).padStart(2, "0")}</span>
+                <Icon size={16} />
+              </div>
               <h3>{title}</h3>
               <p>{text}</p>
-            </div>
+            </li>
           ))}
+        </ol>
+
+        <div className="reveal">
+          <SourceDocuments health={health} />
         </div>
+
+        <p className="languages-note">
+          <LanguagesIcon size={15} />
+          Ask in the language you think in; the answer comes back in the same one.
+        </p>
       </section>
     </div>
   );
