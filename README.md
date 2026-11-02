@@ -6,13 +6,12 @@
 
 **Retrieve first → Generate second.**
 
-[![CI](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml/badge.svg)](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/rudraksh01-tech/AyurIP-Sahayak/ci.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=CI)](https://github.com/rudraksh01-tech/AyurIP-Sahayak/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![React](https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-Build%20Tool-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Gemini](https://img.shields.io/badge/Google%20Gemini-LLM%20%2B%20Embeddings-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![RAG](https://img.shields.io/badge/AI-RAG-8E44AD?style=for-the-badge)](#how-it-works)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)](Dockerfile)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 
 ### [Live demo → ayur-ip-sahayak.vercel.app](https://ayur-ip-sahayak.vercel.app)
@@ -30,10 +29,14 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 | What | Result | How it was measured |
 |---|---|---|
 | Right passage ranked first | **97%** of questions (Hit@1 0.97, MRR 0.98) | 33 labelled questions in `backend/eval/` |
+| Answers grounded in their passages | **145 of 146** claims supported (faithfulness 0.99); **32 of 33** answers fully faithful | LLM judge from another model family, every judgement read by hand |
+| Citations point to the right passage | Citation precision **0.98**, every claim cited | Same judge run |
+| Says "not covered" instead of guessing | **5 of 5** off-topic questions refused | `backend/eval/unanswerable.json` |
 | Dense vs keyword search | Hit@1 **0.97 vs 0.52**; Hindi/Hinglish MRR **1.00 vs 0.25** | Same set, BM25 baseline written from scratch |
 | Speed on the live demo | Sources in **0.6–1.0 s**, first words in **1.4–1.8 s**, full answer in **1.6–3.0 s** | 5 questions on the deployed app, 1 Nov 2026 |
 | Vector search time | About **0.03 ms** per query (229 chunks × 768 dims) | 1,000 NumPy searches timed locally |
 | Deployment size | 5 runtime packages, 0.7 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
+| Judge reliability | Caught **15 of 15** false sentences planted in real answers | Planted claims, see [Answer-quality evaluation](#answer-quality-evaluation) |
 | Tests | **44** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
 
 Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DECISIONS.md)**.
@@ -47,12 +50,12 @@ Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DEC
 - **English, Hindi and Hinglish.** Multilingual embeddings retrieve English passages for Hindi questions, and the answer comes back in the question's language.
 - **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
 - **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
-- **Polished interface.** Glassmorphism cards over an emerald-and-gold palette, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
-- **Measured retrieval.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#retrieval-evaluation)).
+- **Polished interface.** A restrained three-colour design (ink, ivory and a saffron accent) with serif headlines, hairline borders and monospaced numbers, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
+- **Measured retrieval and answers.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#retrieval-evaluation)), and an LLM judge checks every answer claim against its passages (see [answer quality](#answer-quality-evaluation)).
 - **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 44 tests, CI with a Docker build, and a one-click free deployment.
 
 <p align="center">
-  <img src="docs/screenshot-home.png" alt="Home screen with search, suggestions and knowledge-base stats" width="64%" />
+  <img src="docs/screenshot-home.png" alt="Home screen with search, suggested questions and measured answer quality" width="64%" />
   &nbsp;
   <img src="docs/screenshot-mobile-dark.png" alt="Hindi question answered on mobile in dark mode" width="26%" />
 </p>
@@ -133,6 +136,28 @@ python -m backend.eval.evaluate
 
 ---
 
+## Answer-quality evaluation
+
+Good retrieval doesn't guarantee a good answer, so `backend/eval/answer_eval.py` checks the answers too. The app answers all 33 questions as usual, then a judge model (`openai/gpt-oss-120b` on Groq, a different model family from the Gemini model that writes the answers) splits each answer into claims and checks every claim against the passages the app was given.
+
+| Metric | Result |
+|---|---|
+| Faithfulness (claims supported by the passages) | **0.99**: 145 of 146 claims; 32 of 33 answers fully faithful |
+| Citation precision (cited passage supports the claim) | **0.98** |
+| Citation coverage (claims with a citation) | **1.00** |
+| Off-topic questions correctly refused | **5 of 5** |
+| Planted false sentences caught by the judge | **15 of 15** |
+
+Two checks keep these numbers honest. Five questions the documents don't cover test whether the app refuses instead of guessing. And a false, cited sentence (for example "TKDL was set up by the WHO in 1975 [1]") was added to 15 real answers; the judge flagged all 15, so it isn't just approving everything.
+
+I read every judgement in `backend/eval/answer_results.json` by hand. The one unsupported claim was a real mistake: in the Basmati/RiceTec answer the model wrote the rice line "RT121", while the passage says "RT1121". The rest of that claim matched the passage.
+
+```bash
+python -m backend.eval.answer_eval   # needs GEMINI_API_KEY and GROQ_API_KEY
+```
+
+---
+
 ## What went wrong, and what I changed
 
 **1. The first deployment ran out of memory.** Version 1 embedded text locally with `sentence-transformers` (`all-MiniLM-L6-v2`). On Render's free tier it went over the **512 MiB memory limit**, mostly because of PyTorch and Transformers. On my Windows laptop, Smart App Control also blocked PyTorch's DLLs, so the backend couldn't start locally either.
@@ -161,12 +186,12 @@ python -m backend.eval.evaluate
 
 | Layer | Tools |
 |---|---|
-| Frontend | React 19, Vite, `react-markdown`, hand-written CSS design system (tokens, glassmorphism, light/dark) |
+| Frontend | React 19, Vite, `react-markdown`, hand-written CSS design system (three-colour tokens, light/dark) |
 | Backend | Python 3.12, FastAPI, streaming NDJSON responses |
 | AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
 | Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
 | Documents | `pypdf` text extraction, custom section-aware chunking |
-| Quality | pytest (44 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness |
+| Quality | pytest (44 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness, LLM-judge answer evaluation |
 | Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---
@@ -187,7 +212,7 @@ AyurIP-Sahayak/
 │   ├── data/
 │   │   ├── raw/                 # source PDFs + sources.json (titles)
 │   │   └── processed/           # index.json + embeddings.npy
-│   ├── eval/                    # labelled questions + evaluate.py
+│   ├── eval/                    # labelled questions, evaluate.py, answer_eval.py
 │   └── tests/
 ├── frontend/                    # React + Vite chat UI
 ├── pyproject.toml               # runtime deps + Vercel entrypoint
@@ -331,7 +356,7 @@ Interactive docs are available at `/docs` when the server is running.
 * [x] Hybrid search (implemented and evaluated; dense kept as default)
 * [ ] Metadata filtering
 * [ ] Reranking models
-* [ ] Answer-quality evaluation (faithfulness, citation accuracy)
+* [x] Answer-quality evaluation (faithfulness, citation accuracy)
 * [ ] Evaluation dashboard
 
 ---
@@ -353,7 +378,7 @@ Interactive docs are available at `/docs` when the server is running.
 - The knowledge base is two documents (54 pages). Adding sources such as WIPO and CGPDTM documents is mostly a matter of dropping PDFs in and re-running `build_index`.
 - If the right passage is not retrieved, the answer will be incomplete; the app says so instead of guessing, but it cannot answer beyond its documents.
 - The rate limiter is in memory, so each serverless instance counts separately. A shared store such as Redis or Upstash would make it global.
-- Retrieval is evaluated; answer quality (faithfulness, citation accuracy) is not yet.
+- Answer quality is judged by another LLM. The planted-error check shows it catches clear mistakes, but subtler errors could still slip past it, and 33 questions is a small set.
 - The evaluation is small, and 199 of the 229 chunks come from a knowledge-base document I wrote myself, so the scores are likely higher than they would be on unseen documents. Hit@3 is already 1.00 for dense and hybrid, so the set is too easy to separate them at that depth.
 - The journal PDF uses two columns, so some of its section labels are approximate. Page numbers are exact.
 

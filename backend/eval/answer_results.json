@@ -1,0 +1,4325 @@
+{
+  "judge_model": "openai/gpt-oss-120b",
+  "summary": {
+    "answerable": {
+      "questions": 33,
+      "answered": 33,
+      "refused": 0,
+      "answers_question": 33,
+      "faithfulness": 0.994,
+      "fully_faithful_answers": 32,
+      "citation_precision": 0.979,
+      "citation_coverage": 1.0,
+      "claims": 146
+    },
+    "unanswerable": {
+      "questions": 5,
+      "correctly_refused": 5
+    },
+    "judge_check": {
+      "false_claims_added": 15,
+      "caught": 15
+    }
+  },
+  "answerable": [
+    {
+      "question": "What is the Traditional Knowledge Digital Library?",
+      "type": "general",
+      "answer": "The Traditional Knowledge Digital Library (TKDL) is a digital, structured database established in 2001 by the Council of Scientific and Industrial Research (CSIR) and the Ministry of AYUSH to serve as a defensive prior-art tool for Indian systems of medicine [1, 2, 5]. It prevents the wrongful grant of patents on India's traditional knowledge by making classical texts accessible and searchable to international patent examiners [1, 2, 4].\n\n* **Content:** It converts publicly available information from classical and public-domain texts on Ayurveda, Unani, Siddha, Sowa-Rigpa, and Yoga into a searchable digital format [1].\n* **Classification and Translation:** The database uses a purpose-built classification system called the Traditional Knowledge Resource Classification (TKRC) and is translated into five languages (English, French, German, Spanish, and Japanese) [1].\n* **Access:** Through TKDL Access Agreements, patent offices worldwide can search the confidential database during their patent examination processes [2, 5].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "The Traditional Knowledge Digital Library (TKDL) is a digital, structured database established in 2001 by the Council of Scientific and Industrial Research (CSIR) and the Ministry of AYUSH to serve as a defensive prior‑art tool for Indian systems of medicine",
+            "cited": [
+              1,
+              2,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It prevents the wrongful grant of patents on India's traditional knowledge by making classical texts accessible and searchable to international patent examiners",
+            "cited": [
+              1,
+              2,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It converts publicly available information from classical and public‑domain texts on Ayurveda, Unani, Siddha, Sowa‑Rigpa, and Yoga into a searchable digital format",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The database uses a purpose‑built classification system called the Traditional Knowledge Resource Classification (TKRC) and is translated into five languages (English, French, German, Spanish, and Japanese)",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Through TKDL Access Agreements, patent offices worldwide can search the confidential database during their patent examination processes",
+            "cited": [
+              2,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.1 What is TKDL?"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.3 History and Purpose"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.9 TKDL"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 12,
+          "section": "3.8 Major Categories of Traditional Knowledge Documented in TKDL"
+        },
+        {
+          "number": 6,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "IV: Databases and Registers for Protecting TKS"
+        }
+      ]
+    },
+    {
+      "question": "Why was TKDL created?",
+      "type": "general",
+      "answer": "TKDL was created in direct response to patents being filed and granted abroad for uses of Indian medicinal plants like turmeric and neem that were already existing traditional knowledge in India [2]. It was designed to bridge the language and format gap for patent examiners so that this prior art could be found before a patent is granted, preventing the wrongful grant of patents on existing traditional knowledge [1][3].\n\n* To act as a defensive prior-art database containing structured and digitized traditional knowledge from Indian systems of medicine [3][4][5].\n* To make traditional knowledge accessible to international patent examiners by translating it into multiple languages (English, French, German, Spanish, and Japanese) and using a purpose-built classification system (TKRC) [4].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "TKDL was created in direct response to patents being filed and granted abroad for uses of Indian medicinal plants like turmeric and neem that were already existing traditional knowledge in India.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL was designed to bridge the language and format gap for patent examiners so that prior art could be found before a patent is granted.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL was designed to prevent the wrongful grant of patents on existing traditional knowledge.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL acts as a defensive prior‑art database containing structured and digitized traditional knowledge from Indian systems of medicine.",
+            "cited": [
+              3,
+              4,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL makes traditional knowledge accessible to international patent examiners by translating it into multiple languages (English, French, German, Spanish, and Japanese).",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL makes traditional knowledge accessible to international patent examiners by using a purpose‑built classification system (TKRC).",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 6,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.3 History and Purpose"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.1 What is TKDL?"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.9 TKDL"
+        },
+        {
+          "number": 6,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "IV: Databases and Registers for Protecting TKS"
+        }
+      ]
+    },
+    {
+      "question": "How does TKDL help stop wrongful patents on traditional knowledge?",
+      "type": "general",
+      "answer": "TKDL helps prevent wrongful patents by making India's traditional knowledge accessible as searchable prior art to patent examiners worldwide, allowing them to reject patent applications that lack novelty or an inventive step before they are granted [1][6]. This defensive protection approach closes the language and format gap that previously prevented examiners from finding pre-existing traditional knowledge written in traditional Indian languages [3][4][5].\n\n* Provides searchable prior art in a format and language that patent examiners can use during routine patent examinations [1][3][5].\n* Enables examiners to reject wrongful patent applications for lack of novelty or inventive step before a patent is ever granted [1].\n* Avoids the need for costly and multi-year opposition or re-examination proceedings, such as those required for turmeric and neem patents [1][3].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "TKDL helps prevent wrongful patents by making India's traditional knowledge accessible as searchable prior art to patent examiners worldwide, allowing them to reject patent applications that lack novelty or an inventive step before they are granted.",
+            "cited": [
+              1,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "This defensive protection approach closes the language and format gap that previously prevented examiners from finding pre-existing traditional knowledge written in traditional Indian languages.",
+            "cited": [
+              3,
+              4,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Provides searchable prior art in a format and language that patent examiners can use during routine patent examinations.",
+            "cited": [
+              1,
+              3,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Enables examiners to reject wrongful patent applications for lack of novelty or inventive step before a patent is ever granted.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Avoids the need for costly and multi-year opposition or re-examination proceedings, such as those required for turmeric and neem patents.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 11,
+          "section": "3.5 How TKDL Helps Prevent Wrongful Patent Claims"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 11,
+          "section": "3.6 Relationship Between TKDL and Patent Examination"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.5 How TKDL Helps Prevent Wrongful Patent Claims"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.3 History and Purpose"
+        }
+      ]
+    },
+    {
+      "question": "What are the three doshas in Ayurveda?",
+      "type": "general",
+      "answer": "The three doshas in Ayurveda are Vata, Pitta, and Kapha, which are fundamental physiological principles described in traditional theory to govern bodily and mental functions [1]. \n\n* **Vata**: Associated with movement, the nervous system, circulation, and elimination; traditionally linked to air and space/ether elements [1].\n* **Pitta**: Associated with metabolism, digestion, and transformation; traditionally linked to fire and water elements [1].\n* **Kapha**: Associated with structure, lubrication, and stability; traditionally linked to earth and water elements [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "The three doshas in Ayurveda are Vata, Pitta, and Kapha, which are fundamental physiological principles described in traditional theory to govern bodily and mental functions.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Vata is associated with movement, the nervous system, circulation, and elimination; traditionally linked to air and space/ether elements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Pitta is associated with metabolism, digestion, and transformation; traditionally linked to fire and water elements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Kapha is associated with structure, lubrication, and stability; traditionally linked to earth and water elements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4.1 Doshas: Vata, Pitta, Kapha"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 5,
+          "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.3 Major Classical Ayurveda Texts"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.1 What is Ayurveda?"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4 Basic Concepts of Ayurveda"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 4,
+          "section": "1.4.4 Prakriti"
+        }
+      ]
+    },
+    {
+      "question": "Which classical texts form the Brihat Trayi?",
+      "type": "general",
+      "answer": "The classical foundation of Ayurveda, known as the **Brihat Trayi** (the \"Great Triad\"), is formed by the following three texts:\n\n* **Charaka Samhita**: Focuses on internal medicine (Kayachikitsa), physiology, pharmacology, and ethics of practice [1].\n* **Sushruta Samhita**: Focuses on surgery (Shalya Tantra), anatomy, surgical instruments, procedures, and ophthalmology [1].\n* **Ashtanga Hridaya**: A concise synthesis covering all eight traditional branches of Ayurveda (Ashtanga Ayurveda) [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "The Brihat Trayi consists of Charaka Samhita, Sushruta Samhita, and Ashtanga Hridaya.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Charaka Samhita focuses on internal medicine (Kayachikitsa), physiology, pharmacology, and ethics of practice.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Sushruta Samhita focuses on surgery (Shalya Tantra), anatomy, surgical instruments, procedures, and ophthalmology.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Ashtanga Hridaya is a concise synthesis covering all eight traditional branches of Ayurveda (Ashtanga Ayurveda).",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.3 Major Classical Ayurveda Texts"
+        },
+        {
+          "number": 2,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.3 Major Classical Ayurveda Texts"
+        },
+        {
+          "number": 4,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 5,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 6,
+          "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation"
+        }
+      ]
+    },
+    {
+      "question": "What is Prakriti in Ayurveda?",
+      "type": "general",
+      "answer": "In Ayurveda, Prakriti refers to an individual's inherent constitutional type, which is determined at conception by the relative proportion of the three doshas and remains relatively fixed for life [1]. In traditional practice, the assessment of Prakriti is used to guide personalized dietary and lifestyle recommendations [1].\n\n* It is a traditional classificatory concept that should not be confused with modern genetic or genomic classification [1].\n* Along with dosha, dhatu, and mala, it serves as one of the foundational concepts upon which Ayurveda is built [4].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "In Ayurveda, Prakriti refers to an individual's inherent constitutional type, which is determined at conception by the relative proportion of the three doshas and remains relatively fixed for life",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "In traditional practice, the assessment of Prakriti is used to guide personalized dietary and lifestyle recommendations",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It is a traditional classificatory concept that should not be confused with modern genetic or genomic classification",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Along with dosha, dhatu, and mala, it serves as one of the foundational concepts upon which Ayurveda is built",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 4,
+          "section": "1.4.4 Prakriti"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4.1 Doshas: Vata, Pitta, Kapha"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4 Basic Concepts of Ayurveda"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 5,
+          "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.1 What is Ayurveda?"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 44,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "What happened in the turmeric patent case?",
+      "type": "general",
+      "answer": "In the turmeric patent case, a U.S. patent granted in 1995 for using turmeric in wound healing was challenged by India and ultimately revoked in 1997 because the use was already part of traditional prior art [1][2]. \n\n* The University of Mississippi Medical Center secured a U.S. patent covering the oral and topical use of turmeric powder for wound healing [1].\n* India's Council of Scientific and Industrial Research (CSIR) requested a re-examination at the USPTO in 1996, providing documented prior art from Sanskrit, Hindi/Urdu, and other traditional sources, including a 1953 paper [2].\n* The USPTO revoked all claims in late 1997 after finding that the claimed use lacked novelty and was obvious in light of prior art [2].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "In the turmeric patent case, a U.S. patent granted in 1995 for using turmeric in wound healing was challenged by India and ultimately revoked in 1997 because the use was already part of traditional prior art",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The University of Mississippi Medical Center secured a U.S. patent covering the oral and topical use of turmeric powder for wound healing",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "India's Council of Scientific and Industrial Research (CSIR) requested a re-examination at the USPTO in 1996, providing documented prior art from Sanskrit, Hindi/Urdu, and other traditional sources, including a 1953 paper",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The USPTO revoked all claims in late 1997 after finding that the claimed use lacked novelty and was obvious in light of prior art",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.7 Examples of Traditional Knowledge-Related Disputes"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 37,
+          "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        }
+      ]
+    },
+    {
+      "question": "Why was the European neem patent revoked?",
+      "type": "general",
+      "answer": "The European neem patent was revoked because it lacked novelty and an inventive step, as the fungicidal properties of neem-seed-derived extracts were already widely documented in Ayurvedic literature and long-standing Indian agricultural and medicinal practices [1, 2, 3].\n\n* Opponents argued the patent was not a genuine invention because neem's properties had been used in India for centuries [3].\n* The EPO's Opposition Division revoked the patent in May 2000, and the Technical Board of Appeal upheld the complete revocation in March 2005 based on ancient Ayurvedic texts, testimony, and prior scientific publications [1].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The European neem patent was revoked because it lacked novelty and an inventive step, as the fungicidal properties of neem‑seed‑derived extracts were already widely documented in Ayurvedic literature and long‑standing Indian agricultural and medicinal practices.",
+            "cited": [
+              1,
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Opponents argued the patent was not a genuine invention because neem's properties had been used in India for centuries.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The EPO's Opposition Division revoked the patent in May 2000, and the Technical Board of Appeal upheld the complete revocation in March 2005.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 37,
+          "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.7 Examples of Traditional Knowledge-Related Disputes"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        }
+      ]
+    },
+    {
+      "question": "What was the Basmati rice dispute with RiceTec about?",
+      "type": "general",
+      "answer": "Basmati rice dispute with RiceTec-related U.S. patent (No. 5,663,484) involved attempts by a U.S. company to secure patent rights over rice lines bred by cross-breeding traditional Basmati with American long-grain rice, raising concerns over patent novelty and the misuse of a traditional geographical name [1][2][3]. The original claims were broad enough to potentially cover hybrid Basmati rice grown outside the traditional Indo-Gangetic region in the Western Hemisphere [3][4].\n\n* **IP and Geographical Concerns:** The core issue questioned whether broad patent rights could be granted over a name and rice lines closely tied to traditional agricultural knowledge and practices of India and Pakistan [3].\n* **Outcome:** Following objections and re-examination, RiceTec withdrew many claims and had others cancelled, leaving it with a much narrower patent covering only its specific proprietary rice lines (such as Bas867, RT1117, and RT121) without general rights over the \"Basmati\" name [1][4].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Basmati rice dispute involved RiceTec's U.S. patent No. 5,663,484 attempting to secure patent rights over rice lines bred by cross‑breeding traditional Basmati with an American long‑grain variety.",
+            "cited": [
+              1,
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The dispute raised concerns about patent novelty and the misuse of a traditional geographical name.",
+            "cited": [
+              1,
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The original patent claims were broad enough to potentially cover hybrid Basmati rice grown outside the traditional Indo‑Gangetic region in the Western Hemisphere.",
+            "cited": [
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The core issue was whether broad patent rights could be granted over a name and rice lines closely tied to traditional agricultural knowledge and practices of India and Pakistan.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Following objections and re‑examination, RiceTec withdrew many claims and had others cancelled, leaving it with a narrower patent covering only its specific proprietary rice lines such as Bas867, RT1117, and RT121, without general rights over the \"Basmati\" name.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 0.8,
+        "citation_precision": 0.8,
+        "citation_coverage": 1.0,
+        "fully_faithful": false,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.7 Examples of Traditional Knowledge-Related Disputes"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 37,
+          "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing"
+        }
+      ]
+    },
+    {
+      "question": "How did the Kani tribe benefit from the Jeevani drug?",
+      "type": "general",
+      "answer": "The Kani tribe benefited through a formal benefit-sharing arrangement where TBGRI agreed to share half of the license fees (approximately Rs. 10 lakh) and royalties (approximately 2% of ex-factory sales) received from commercializing Jeevani through a dedicated trust [1][3][5]. However, subsequent reporting showed that the trust fund became financially strained over time, making the practical and long-term benefits to the community more limited and harder to sustain than initially envisioned [5].\n\n* TBGRI licensed the manufacturing and marketing rights of the polyherbal formulation to the Arya Vaidya Pharmacy (AVP) of Coimbatore [1][3].\n* The financial proceeds from the license fee and royalties were designated to be shared equally with the Kani community through a dedicated trust [3].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Kani tribe benefited through a formal benefit-sharing arrangement where TBGRI agreed to share half of the license fees (approximately Rs. 10 lakh) and royalties (approximately 2% of ex-factory sales) received from commercializing Jeevani through a dedicated trust.",
+            "cited": [
+              1,
+              3,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Subsequent reporting showed that the trust fund became financially strained over time, making the practical and long-term benefits to the community more limited and harder to sustain than initially envisioned.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TBGRI licensed the manufacturing and marketing rights of the polyherbal formulation to the Arya Vaidya Pharmacy (AVP) of Coimbatore.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The financial proceeds from the license fee and royalties were designated to be shared equally with the Kani community through a dedicated trust.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 36,
+          "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 36,
+          "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 46,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "What are the requirements for an invention to be patentable?",
+      "type": "general",
+      "answer": "To be patentable, an invention must satisfy core requirements including novelty, inventive step, industrial applicability, and a sufficiency-of-disclosure requirement [1][5]. \n\n* **Novelty:** The invention must not have been disclosed to the public anywhere in the world in any form before the application's filing or priority date [3].\n* **Inventive Step (Non-Obviousness):** The invention must not be obvious to a person skilled in the art based on existing prior art [2].\n* **Industrial Applicability (Utility):** The invention must have a practical, working application and be capable of being made or used in some kind of industry rather than being purely theoretical [6].\n* **Sufficiency of Disclosure:** The application must describe the invention clearly and completely enough for a person skilled in the art to reproduce it, along with claims defining the precise scope of protection [4].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "To be patentable, an invention must satisfy core requirements including novelty, inventive step, industrial applicability, and a sufficiency-of-disclosure requirement.",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The invention must not have been disclosed to the public anywhere in the world in any form before the application's filing or priority date.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The invention must not be obvious to a person skilled in the art based on existing prior art.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The invention must have a practical, working application and be capable of being made or used in some kind of industry rather than being purely theoretical.",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The application must describe the invention clearly and completely enough for a person skilled in the art to reproduce it, along with claims defining the precise scope of protection.",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3 Patentability Requirements"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.2 Inventive Step (Non-Obviousness)"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.1 Novelty"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.4 Sufficiency of Disclosure"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 20,
+          "section": "5.11 Patent Infringement Basics"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.3 Industrial Applicability (Utility)"
+        }
+      ]
+    },
+    {
+      "question": "What is prior art in patent law?",
+      "type": "general",
+      "answer": "Prior art is the body of all information made available to the public anywhere in any form before a patent application's filing or priority date, which is used to assess an invention's novelty and inventive step [1][4]. \n\n* It includes earlier patents, patent applications, scientific journal articles, books (such as classical texts if publicly available), and conference presentations [1].\n* Depending on the jurisdiction and evidentiary standard, it can also include product sales, public use, or oral disclosures [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "Prior art is the body of all information made available to the public anywhere in any form before a patent application's filing or priority date, which is used to assess an invention's novelty and inventive step.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Prior art includes earlier patents, patent applications, scientific journal articles, books (such as classical texts if publicly available), and conference presentations.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Depending on the jurisdiction and evidentiary standard, prior art can also include product sales, public use, or oral disclosures.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.6 Prior Art"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 29,
+          "section": "8.21 Prior-Art Documents"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.1 Novelty"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 24,
+          "section": "SEARCHING"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.2 Inventive Step (Non-Obviousness)"
+        }
+      ]
+    },
+    {
+      "question": "What is the difference between defensive and positive protection of traditional knowledge?",
+      "type": "general",
+      "answer": "Defensive protection aims to prevent third parties from obtaining wrongful patent rights over existing traditional knowledge without creating new proprietary rights, whereas positive protection creates actual enforceable rights and legal measures for traditional knowledge holders [1][2]. \n\n* **Defensive Protection:** Uses legal and administrative measures—such as the Traditional Knowledge Digital Library (TKDL)—to ensure that non-novel traditional knowledge can be cited as prior art to stop wrongful patents [2][4].\n* **Positive Protection:** Grants enforceable rights to communities, such as mandating benefit-sharing agreements under frameworks like the Biological Diversity Act, though it is legally and institutionally harder to design due to the collective and evolving nature of traditional knowledge [1].\n\nRelated question you can ask: *How does documented versus oral traditional knowledge impact defensive and positive protection?*",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "Defensive protection aims to prevent third parties from obtaining wrongful patent rights over existing traditional knowledge without creating new proprietary rights.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Positive protection creates actual enforceable rights and legal measures for traditional knowledge holders.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Defensive protection uses legal and administrative measures such as the Traditional Knowledge Digital Library (TKDL) to ensure that non‑novel traditional knowledge can be cited as prior art to stop wrongful patents.",
+            "cited": [
+              2,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Positive protection grants enforceable rights to communities, such as mandating benefit‑sharing agreements under frameworks like the Biological Diversity Act, and is legally and institutionally harder to design due to the collective and evolving nature of traditional knowledge.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 0.5,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 31,
+          "section": "9.8 Positive Protection"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 31,
+          "section": "9.7 Defensive Protection"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 7,
+          "section": "2.5 Oral and Documented Traditional Knowledge — Why the Distinction"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.5 How TKDL Helps Prevent Wrongful Patent Claims"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "9.9 How These Concepts Relate to Traditional Medicinal Knowledge"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.5 Traditional Knowledge Protection Discussions"
+        }
+      ]
+    },
+    {
+      "question": "What does the Nagoya Protocol cover?",
+      "type": "general",
+      "answer": "The Nagoya Protocol is a 2010 supplementary agreement to the Convention on Biological Diversity (CBD) that provides a detailed legal framework for the implementation of access and benefit-sharing (ABS) objectives [1][5]. It requires parties to establish clear domestic measures regarding genetic resources and associated traditional knowledge [1].\n\n* Provides a legal framework for access and benefit sharing (ABS) between resource users and providers [2]\n* Requires prior informed consent from the providing country or community [1][3]\n* Requires mutually agreed terms for access to genetic resources and associated traditional knowledge [1][3]\n* Ensures the fair sharing of benefits (both monetary, such as royalties, and non-monetary, such as capacity building and technology transfer) arising from subsequent use [3]",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Nagoya Protocol is a 2010 supplementary agreement to the Convention on Biological Diversity (CBD) that provides a detailed legal framework for the implementation of access and benefit-sharing (ABS) objectives",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It requires parties to establish clear domestic measures regarding genetic resources and associated traditional knowledge",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Provides a legal framework for access and benefit sharing (ABS) between resource users and providers",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Requires prior informed consent from the providing country or community",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Requires mutually agreed terms for access to genetic resources and associated traditional knowledge",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Ensures the fair sharing of benefits (both monetary, such as royalties, and non-monetary, such as capacity building and technology transfer) arising from subsequent use",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 6,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.4 Nagoya Protocol"
+        },
+        {
+          "number": 2,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "V: International Agreements and Institutions"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 31,
+          "section": "9.6 Access and Benefit Sharing (ABS)"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.3 Convention on Biological Diversity (CBD)"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 44,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 22,
+          "section": "6.6 National Biodiversity Authority (NBA)"
+        }
+      ]
+    },
+    {
+      "question": "What is access and benefit sharing?",
+      "type": "general",
+      "answer": "Access and Benefit Sharing (ABS) refers to the legal mechanisms and principles requiring that access to genetic resources and traditional knowledge be based on prior informed consent and mutually agreed terms, ensuring that resulting benefits are shared fairly with the providers [1]. \n\n* It is rooted in the Convention on Biological Diversity (CBD) and further elaborated by the Nagoya Protocol [1][2].\n* Benefits shared can be monetary, such as royalties, or non-monetary, such as capacity building and technology transfer [1].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "Access and Benefit Sharing (ABS) refers to the legal mechanisms and principles requiring that access to genetic resources and traditional knowledge be based on prior informed consent and mutually agreed terms, ensuring that resulting benefits are shared fairly with the providers.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "ABS is rooted in the Convention on Biological Diversity (CBD) and further elaborated by the Nagoya Protocol.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Benefits shared under ABS can be monetary, such as royalties, or non‑monetary, such as capacity building and technology transfer.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 31,
+          "section": "9.6 Access and Benefit Sharing (ABS)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.4 Nagoya Protocol"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.6.1 Biopiracy"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.3 Convention on Biological Diversity (CBD)"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 37,
+          "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.5 Biological Diversity Act (and Current Biodiversity Legislation)"
+        }
+      ]
+    },
+    {
+      "question": "What is a geographical indication?",
+      "type": "general",
+      "answer": "A Geographical Indication (GI) is an intellectual property right that protects a sign used on products originating from a specific geographical location whose qualities, reputation, or characteristics are essentially attributable to that origin [1][3][6]. \n\n* It protects place-linked product reputation rather than a new invention [4][6].\n* It requires a clear link between the product's characteristics and its geographical origin, and is typically applied for by an association or producer group rather than an individual [3].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "A Geographical Indication (GI) is an intellectual property right that protects a sign used on products originating from a specific geographical location whose qualities, reputation, or characteristics are essentially attributable to that origin.",
+            "cited": [
+              1,
+              3,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It protects place‑linked product reputation rather than a new invention.",
+            "cited": [
+              4,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It requires a clear link between the product's characteristics and its geographical origin, and is typically applied for by an association or producer group rather than an individual.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 13,
+          "section": "4.2.4 Geographical Indications (GIs)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 14,
+          "section": "4.3 Comparison Table: Forms of Intellectual Property"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 41,
+          "section": "12.2 Common Misconceptions Addressed"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 43,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "What role does the National Biodiversity Authority play?",
+      "type": "general",
+      "answer": "The National Biodiversity Authority (NBA) is a statutory body established under the Biological Diversity Act, 2002, responsible for regulating access to Indian biological resources and associated traditional knowledge [1][3]. It also advises the Central Government on biodiversity-related matters and matters involving intellectual property rights over inventions based on these resources [1].\n\n* Regulates access to Indian biological resources and associated traditional knowledge for research, commercial use, bio-survey, or bio-utilization, and approves access and benefit-sharing arrangements [1][2][3].\n* Ensures the fair and equitable sharing of benefits arising from the use of biological resources and associated knowledge [3].\n* Safeguards community rights, approves research involving biological resources, and promotes sustainable utilization [3][5].\n* Handles prior approvals required for foreign individuals, non-resident Indians, and non-qualifying entities, as well as registrations or approvals for Indian entities seeking intellectual property rights or commercialization [2].\n* Works alongside State Biodiversity Boards (SBBs) and local Biodiversity Management Committees (BMCs) [1][5].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "The National Biodiversity Authority (NBA) is a statutory body established under the Biological Diversity Act, 2002, responsible for regulating access to Indian biological resources and associated traditional knowledge.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The NBA also advises the Central Government on biodiversity-related matters and matters involving intellectual property rights over inventions based on these resources.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The NBA regulates access to Indian biological resources and associated traditional knowledge for research, commercial use, bio-survey, or bio-utilization, and approves access and benefit-sharing arrangements.",
+            "cited": [
+              1,
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The NBA ensures the fair and equitable sharing of benefits arising from the use of biological resources and associated knowledge.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The NBA safeguards community rights, approves research involving biological resources, and promotes sustainable utilization.",
+            "cited": [
+              3,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The NBA handles prior approvals required for foreign individuals, non-resident Indians, and non-qualifying entities, as well as registrations or approvals for Indian entities seeking intellectual property rights or commercialization.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The NBA works alongside State Biodiversity Boards (SBBs) and local Biodiversity Management Committees (BMCs).",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 7,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 22,
+          "section": "6.6 National Biodiversity Authority (NBA)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 22,
+          "section": "6.5 Biological Diversity Act (and Current Biodiversity Legislation)"
+        },
+        {
+          "number": 3,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 3,
+          "section": "III: Institutional Mechanisms for the Protection of"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.5 Biological Diversity Act (and Current Biodiversity Legislation)"
+        },
+        {
+          "number": 5,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 3,
+          "section": "III: Institutional Mechanisms for the Protection of"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.3 Convention on Biological Diversity (CBD)"
+        }
+      ]
+    },
+    {
+      "question": "Which provisions of Indian patent law exclude traditional knowledge from patent protection?",
+      "type": "general",
+      "answer": "India’s Patents Act, 1970 excludes traditional knowledge from patent protection primarily through **Section 3(p)**, along with other relevant provisions like Section 3(e) and Section 3(d) [1].\n\n* **Section 3(p):** Excludes inventions that, in effect, are traditional knowledge or represent an aggregation or duplication of known properties of a traditionally known component or components [1].\n* **Section 3(e):** Generally excludes a mere admixture resulting only in the aggregation of known properties of components without a new synergistic or unexpected effect [1].\n* **Section 3(d):** Restricts patents on the mere discovery of a new form, a new use, or a new property of a known substance that does not result in enhanced efficacy [1][2].\n\nWould you like to know more about how traditional knowledge prior art affects patent novelty or how patent opposition mechanisms work under Indian law?",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "India’s Patents Act, 1970 excludes traditional knowledge from patent protection primarily through Section 3(p), along with other relevant provisions like Section 3(e) and Section 3(d).",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(p) excludes inventions that are traditional knowledge or represent an aggregation or duplication of known properties of a traditionally known component or components.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(e) generally excludes a mere admixture resulting only in the aggregation of known properties of components without a new synergistic or unexpected effect.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(d) restricts patents on the mere discovery of a new form, a new use, or a new property of a known substance that does not result in enhanced efficacy.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.3 Patents Act, 1970 (as amended)"
+        },
+        {
+          "number": 4,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 3,
+          "section": "III: Institutional Mechanisms for the Protection of"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 20,
+          "section": "5.10 Patent Opposition"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.5 Why Traditional Knowledge Can Create Problems for Novelty"
+        }
+      ]
+    },
+    {
+      "question": "How can I check whether an Ayurvedic formulation already exists as prior art?",
+      "type": "general",
+      "answer": "You can check if an Ayurvedic formulation already exists as prior art by following a structured, step-by-step research workflow that includes searching for formulation names, ingredients, and synonyms across patent and traditional knowledge databases [1][2][5][6]. \n\n* **Define and Search Names:** Search for the classical or market name of the formulation as well as its individual ingredients in patent and Traditional Knowledge Digital Library (TKDL) prior art [2].\n* **Search Patent Databases:** Use ingredient names, synonyms, use-terms, and classification codes (IPC/CPC) across multiple jurisdictions such as India (InPASS), USPTO, EPO, and WIPO’s PATENTSCOPE [5][6].\n* **Analyze Discovered Documents:** Record the exact disclosures, forms, ingredients, use-claims, and dates for every document found to assess how closely they match your invention [4].\n* **Consult a Professional:** Involve a registered patent agent or attorney qualified in the relevant jurisdiction when proceeding with complex analysis or commercial decisions [5].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "You can check if an Ayurvedic formulation already exists as prior art by following a structured, step-by-step research workflow that includes searching for formulation names, ingredients, and synonyms across patent and traditional knowledge databases.",
+            "cited": [
+              1,
+              2,
+              5,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Search for the classical or market name of the formulation as well as its individual ingredients in patent and Traditional Knowledge Digital Library (TKDL) prior art.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Use ingredient names, synonyms, use-terms, and classification codes (IPC/CPC) across multiple jurisdictions such as India (InPASS), USPTO, EPO, and WIPO’s PATENTSCOPE.",
+            "cited": [
+              5,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Record the exact disclosures, forms, ingredients, use-claims, and dates for every document found to assess how closely they match your invention.",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Involve a registered patent agent or attorney qualified in the relevant jurisdiction when proceeding with complex analysis or commercial decisions.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 24,
+          "section": "SEARCHING"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 25,
+          "section": "7.6 Step 6 — Search Formulation Names"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.6 Prior Art"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 25,
+          "section": "7.9 Step 9 — Analyze Prior Art"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 26,
+          "section": "7.12 Step 12 — Consult a Qualified Patent Professional When Necessary"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 25,
+          "section": "7.7 Step 7 — Search Patent Databases"
+        }
+      ]
+    },
+    {
+      "question": "What is the TRIPS Agreement?",
+      "type": "general",
+      "answer": "The TRIPS Agreement is a World Trade Organization (WTO) agreement in force since 1995 that establishes minimum global standards for intellectual property (IP) protection, enforcement, patent terms, and patentable subject matter [1][3]. It also allows member countries to adopt measures to protect the public interest and prevent bio-piracy [2].\n\n* It is a WTO agreement that sets minimum standards for intellectual property protection and enforcement in national laws, such as a minimum 20-year patent term from filing [1].\n* While it strengthens patent regimes, it does not contain a dedicated regime for traditional knowledge protection [1].\n* India has utilized TRIPS flexibilities to safeguard public health and indigenous knowledge [2].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "The TRIPS Agreement is a World Trade Organization (WTO) agreement in force since 1995.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The TRIPS Agreement establishes minimum global standards for IP protection, enforcement, patent terms, and patentable subject matter.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The TRIPS Agreement allows member countries to adopt measures to protect the public interest and prevent bio-piracy.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The TRIPS Agreement sets minimum standards for IP protection and enforcement in national laws, including a minimum 20-year patent term from filing.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The TRIPS Agreement does not contain a dedicated regime for traditional knowledge protection.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "India has utilized TRIPS flexibilities to safeguard public health and indigenous knowledge.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 6,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 30,
+          "section": "9.2 TRIPS (Agreement on Trade-Related Aspects of Intellectual Property"
+        },
+        {
+          "number": 2,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "V: International Agreements and Institutions"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 46,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 31,
+          "section": "9.9 How These Concepts Relate to Traditional Medicinal Knowledge"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "9.9 How These Concepts Relate to Traditional Medicinal Knowledge"
+        },
+        {
+          "number": 6,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 1,
+          "section": "I: Intellectual Property Rights (IPR)"
+        }
+      ]
+    },
+    {
+      "question": "What does the Ministry of AYUSH do?",
+      "type": "general",
+      "answer": "The Ministry of AYUSH is responsible for the development, education, standardization, quality control, and research promotion of Ayurveda, Yoga and Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homoeopathy in India [1]. It also collaboratively runs the Traditional Knowledge Digital Library (TKDL) defensive prior-art database with CSIR [1][6].\n\n* Responsible for development, education, standardization, quality control, and research promotion of AYUSH systems [1].\n* Collaborates with CSIR on the Traditional Knowledge Digital Library (TKDL) [1][6].\n* Supports Ayurvedic pharmacopoeia standardization and licensing frameworks for Ayurvedic drug manufacturing [1].\n* Supports research bodies such as the Central Council for Research in Ayurvedic Sciences (CCRAS) [2].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "The Ministry of AYUSH is responsible for the development, education, standardization, quality control, and research promotion of Ayurveda, Yoga and Naturopathy, Unani, Siddha, Sowa-Rigpa, and Homoeopathy in India.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The Ministry of AYUSH collaboratively runs the Traditional Knowledge Digital Library (TKDL) defensive prior-art database with CSIR.",
+            "cited": [
+              1,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The Ministry of AYUSH supports Ayurvedic pharmacopoeia standardization and licensing frameworks for Ayurvedic drug manufacturing.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The Ministry of AYUSH supports research bodies such as the Central Council for Research in Ayurvedic Sciences (CCRAS).",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 22,
+          "section": "6.7 Ministry of AYUSH"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.7 Ministry of AYUSH"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.1 What is Ayurveda?"
+        },
+        {
+          "number": 4,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 5,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.2 Historical Background"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.9 TKDL"
+        }
+      ]
+    },
+    {
+      "question": "What are IPC and CPC patent classification codes?",
+      "type": "general",
+      "answer": "IPC (International Patent Classification) and CPC (Cooperative Patent Classification) are standardized systems used to categorize patent documents by their technical subject matter, enabling efficient searches by technology area [2][3]. \n\n* **IPC (International Patent Classification):** A hierarchical, internationally standardized system administered under a WIPO-linked agreement, used by patent offices worldwide to organize technology into sections, classes, subclasses, groups, and subgroups [2].\n* **CPC (Cooperative Patent Classification):** A more granular classification system based on the IPC, jointly developed by the European Patent Office and the USPTO, and used by several major patent offices [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "IPC and CPC are standardized systems used to categorize patent documents by technical subject matter, enabling efficient searches by technology area.",
+            "cited": [
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "IPC is a hierarchical, internationally standardized system administered under a WIPO-linked agreement, used by patent offices worldwide to organize technology into sections, classes, subclasses, groups, and subgroups.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "CPC is a more granular classification system based on the IPC, jointly developed by the European Patent Office and the USPTO, and used by several major patent offices.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 27,
+          "section": "8.7 CPC (Cooperative Patent Classification)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 27,
+          "section": "8.6 IPC (International Patent Classification)"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 27,
+          "section": "8.5 Classification Codes"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 29,
+          "section": "8.21 Prior-Art Documents"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 43,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 25,
+          "section": "7.7 Step 7 — Search Patent Databases"
+        }
+      ]
+    },
+    {
+      "question": "What is the Controller General of Patents, Designs and Trade Marks?",
+      "type": "general",
+      "answer": "The Controller General of Patents, Designs & Trade Marks (CGPDTM) is the senior administrative authority that oversees India’s patent, design, trademark, and geographical indication registries under the Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry [1]. \n\n* It functions under the Ministry of Commerce and Industry's Department for Promotion of Industry and Internal Trade (DPIIT) [1].\n* It issues practice manuals, guidelines (including those specifically for examining biotechnology and traditional-knowledge-related applications), and administers the overall IP registration infrastructure [1].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Controller General of Patents, Designs & Trade Marks (CGPDTM) is the senior administrative authority that oversees India’s patent, design, trademark, and geographical indication registries under the Department for Promotion of Industry and Internal Trade, Ministry of Commerce and Industry.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It functions under the Ministry of Commerce and Industry's Department for Promotion of Industry and Internal Trade (DPIIT).",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It issues practice manuals, guidelines (including those specifically for examining biotechnology and traditional-knowledge-related applications), and administers the overall IP registration infrastructure.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.2 Controller General of Patents, Designs & Trade Marks (CGPDTM)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.1 Indian Patent Office"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 44,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.10 WIPO"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.8 Council of Scientific and Industrial Research (CSIR)"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 16,
+          "section": "5.1 What is a Patent? (Simple explanation)"
+        }
+      ]
+    },
+    {
+      "question": "How did Ayurveda evolve from its Vedic origins?",
+      "type": "general",
+      "answer": "Ayurveda originated from the Vedic corpus, particularly the Atharvaveda, and evolved through systematic compilations, classical commentarial traditions, and modern institutional research [1]. \n\n* **Vedic Roots to Samhitas:** Early concepts of health, herbs, and diseases in Vedic hymns progressed into systematic compilations during the Samhita period, with foundational texts conventionally dated from the first millennium BCE through the early centuries CE [1][5].\n* **Foundational Schools:** Two classical schools shaped early Ayurveda—the Atreya school for internal medicine and the Dhanvantari school for surgery—which laid the groundwork for organized medical education in ancient India [1].\n* **Classical and Medieval Era:** The tradition expanded through extensive commentarial literature by commentators like Chakrapani, Dalhan, and Arunadatta, along with texts like the *Bṛhattrayī* and *Laghutrayī* [2][6].\n* **Contemporary Developments:** Modern evolution includes scientific validation, clinical research, pharmacopoeial standards, and integration into national health systems through government initiatives and the Ministry of AYUSH [1][3][4].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "Ayurveda originated from the Vedic corpus, particularly the Atharvaveda, and evolved through systematic compilations, classical commentarial traditions, and modern institutional research.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Early concepts of health, herbs, and diseases in Vedic hymns progressed into systematic compilations during the Samhita period, with foundational texts conventionally dated from the first millennium BCE through the early centuries CE.",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Two classical schools shaped early Ayurveda—the Atreya school for internal medicine and the Dhanvantari school for surgery—which laid the groundwork for organized medical education in ancient India.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The tradition expanded through extensive commentarial literature by commentators like Chakrapani, Dalhan, and Arunadatta, along with texts like the Bṛhattrayī and Laghutrayī.",
+            "cited": [
+              2,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Modern evolution includes scientific validation, clinical research, pharmacopoeial standards, and integration into national health systems through government initiatives and the Ministry of AYUSH.",
+            "cited": [
+              1,
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 2,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 3,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 5,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 4,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 5,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.2 Historical Background"
+        },
+        {
+          "number": 6,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "VI: Ayurveda —Origin, Evolution, and Textual"
+        }
+      ]
+    },
+    {
+      "question": "टीकेडीएल क्या है?",
+      "type": "multilingual",
+      "answer": "**ट्रेडिशनल नॉलेज डिजिटल लाइब्रेरी (TKDL)** भारत की पारंपरिक चिकित्सा पद्धतियों से जुड़ी सार्वजनिक रूप से उपलब्ध पारंपरिक जानकारी का एक डिजिटल और संरचित डेटाबेस है [2]। इसे सीएसआईआर (CSIR) और आयुष मंत्रालय द्वारा संयुक्त रूप से चलाया जाता है ताकि गलत तरीके से पारंपरिक ज्ञान पर पेटेंट दिए जाने को रोका जा सके [1][4]।\n\n* इसकी स्थापना 2001 में सीएसआईआर द्वारा आयुष मंत्रालय के सहयोग से की गई थी [1]।\n* यह आयुर्वेद, यूनानी, सिद्ध, सोवा-रिग्पा और योग के शास्त्रीय ग्रंथों की जानकारी को डिजिटल रूप में परिवर्तित करता है [2]।\n* इस डेटाबेस में जानकारी को पारंपरिक ज्ञान संसाधन वर्गीकरण (TKRC) प्रणाली द्वारा वर्गीकृत किया जाता है और इसे पाँच विदेशी भाषाओं में अनुवादित किया गया है ताकि वैश्विक पेटेंट परीक्षक इसे आसानी से खोज सकें [2]।\n* यह पेटेंट कार्यालयों को खोज योग्य पूर्व कला (prior art) के रूप में कार्य करता है, जिससे भारतीय पारंपरिक ज्ञान पर गलत पेटेंट रोके जाते हैं [1][6]।",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "Traditional Knowledge Digital Library (TKDL) is a digital and structured database of publicly available traditional information related to India's traditional medical systems.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It is jointly run by CSIR and the Ministry of AYUSH to prevent wrongful patents on traditional knowledge.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It was established in 2001 by CSIR with the collaboration of the Ministry of AYUSH.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It digitizes information from classical texts of Ayurveda, Unani, Siddha, Sowa‑Rigpa, and Yoga.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The database classifies information using the Traditional Knowledge Resource Classification (TKRC) system and translates it into five foreign languages.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It serves as searchable prior art for patent offices, helping to block wrongful patents on Indian traditional knowledge.",
+            "cited": [
+              1,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 6,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.3 History and Purpose"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.1 What is TKDL?"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.9 TKDL"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 12,
+          "section": "3.8 Major Categories of Traditional Knowledge Documented in TKDL"
+        }
+      ]
+    },
+    {
+      "question": "हल्दी पेटेंट मामले में क्या हुआ था?",
+      "type": "multilingual",
+      "answer": "हल्दी पेटेंट मामले में यूनिवर्सिटी ऑफ मिसिपी मेडिकल सेंटर को 1995 में घाव भरने के लिए हल्दी के उपयोग पर अमेरिकी पेटेंट (यू.एस. पेटेंट संख्या 5,401,504) मिला था, जिसे भारत के वैज्ञानिक और औद्योगिक अनुसंधान परिषद (CSIR) द्वारा चुनौती देने के बाद 1997 में रद्द कर दिया गया था [1][2]. \n\n* **चुनौती और साक्ष्य:** CSIR ने 1996 में USPTO में पुन: परीक्षा (re-examination) का अनुरोध किया और संस्कृत, हिंदी/उर्दू तथा 1953 के एक शोध पत्र सहित लगभग 32 संदर्भ प्रस्तुत किए जो यह साबित करते थे कि हल्दी का यह उपयोग पारंपरिक और प्रलेखित ज्ञान था [2].\n* **अंतिम परिणाम:** USPTO ने सभी दावों को खारिज कर दिया और पेटेंट को इस आधार पर औपचारिक रूप से रद्द कर दिया कि यह आविष्कार नया नहीं था बल्कि पहले से मौजूद पारंपरिक ज्ञान (prior art) का हिस्सा था [2].\n* **महत्व:** यह मामला इस बात का सबसे बड़ा उदाहरण बना कि यदि पारंपरिक ज्ञान को अच्छी तरह से प्रलेखित किया जाए, तो गलत तरीके से दिए गए पेटेंट को हराया जा सकता है [3].\n\nयदि आप इसके अलावा नीम पेटेंट मामले या टीकेडीएल (TKDL) के बारे में जानना चाहते हैं, तो कृपया पूछें।",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "University of Mississippi Medical Center received US Patent No. 5,401,504 in 1995 for turmeric wound healing, which was revoked in 1997 after CSIR challenged it.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "In 1996 CSIR filed a USPTO re‑examination request, submitting about 32 references including Sanskrit, Hindi/Urdu sources and a 1953 paper to show traditional use.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "USPTO rejected all claims and formally revoked the patent because the use was not novel but prior art.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The case is a leading example that well‑documented traditional knowledge can defeat a wrongly granted patent.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.7 Examples of Traditional Knowledge-Related Disputes"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 37,
+          "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        }
+      ]
+    },
+    {
+      "question": "आयुर्वेद में तीन दोष कौन से हैं?",
+      "type": "multilingual",
+      "answer": "आयुर्वेद में तीन मौलिक शारीरिक सिद्धांत या दोष **वात (Vata), पित्त (Pitta), और कफ (Kapha)** हैं [1]।\n\n* **वात (Vata):** गति, तंत्रिका तंत्र, परिसंचरण और मल-विसर्जन से जुड़ा हुआ है; पारंपरिक रूप से इसे वायु और आकाश/ईथर तत्वों से जोड़ा जाता है [1]।\n* **पित्त (Pitta):** चयापचय (metabolism), पाचन और परिवर्तन से जुड़ा हुआ है; पारंपरिक रूप से इसे अग्नि और जल तत्वों से जोड़ा जाता है [1]।\n* **कफ (Kapha):** संरचना, चिकनाई और स्थिरता से जुड़ा हुआ है; पारंपरिक रूप से इसे पृथ्वी और जल तत्वों से जोड़ा जाता है [1]।",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "आयुर्वेद में तीन मौलिक शारीरिक सिद्धांत या दोष वात, पित्त, और कफ हैं।",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "वात गति, तंत्रिका तंत्र, परिसंचरण और मल‑विसर्जन से जुड़ा है; पारंपरिक रूप से इसे वायु और आकाश/ईथर तत्वों से जोड़ा जाता है।",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "पित्त चयापचय, पाचन और परिवर्तन से जुड़ा है; पारंपरिक रूप से इसे अग्नि और जल तत्वों से जोड़ा जाता है।",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "कफ संरचना, चिकनाई और स्थिरता से जुड़ा है; पारंपरिक रूप से इसे पृथ्वी और जल तत्वों से जोड़ा जाता है।",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4.1 Doshas: Vata, Pitta, Kapha"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 5,
+          "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4 Basic Concepts of Ayurveda"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.3 Major Classical Ayurveda Texts"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.1 What is Ayurveda?"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 4,
+          "section": "1.4.4 Prakriti"
+        }
+      ]
+    },
+    {
+      "question": "neem patent kyun cancel hua tha?",
+      "type": "multilingual",
+      "answer": "Neem patent isiliye cancel hua tha kyunki European Patent Office (EPO) ne maana ki isme novelty aur inventive step ki kami thi, aur iski antifungal properties ka istemal pehle se hi Ayurveda aur bharatiya paramparik kheti mein hota aa raha tha [1][2].\n\n* **Paramparik Gyan (Traditional Knowledge):** Neem ke beejon se bane extracts ka antifungal aur pesticidal agent ke roop mein istemal sadiyon se purane Ayurvedic sahitya aur bharatiya krishi/chikitsa mein darj tha [2].\n* **Legal Opposition:** 1995 mein Vandana Shiva ke Research Foundation for Science, Technology and Ecology, IFOAM aur Magda Aelvoet dwara iske khilaf opposition file kiya gaya tha, jisme purane aivanjans aur Ayurvedic granthon ke hawale diye gaye the [1][3].\n* **Antim Nirnay:** EPO ki Opposition Division ne May 2000 mein ise radd kar diya, aur March 2005 mein Technical Board of Appeal ne bhi appeal kharij karte hue is patent ko poori tarah se radd karne ke faisle ko barkarar rakha [1].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The EPO cancelled the neem patent because it lacked novelty and inventive step, and the antifungal properties were already known in Ayurvedic and Indian traditional practice.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Traditional knowledge documented the use of neem seed extracts as an antifungal/pesticidal agent in Ayurvedic literature and Indian agriculture/medicine.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "A legal opposition was filed in 1995 by Vandana Shiva’s Research Foundation, IFOAM and Magda Aelvoet, citing prior traditional use.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The EPO Opposition Division revoked the patent in May 2000 and the Technical Board of Appeal upheld the revocation in March 2005.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 37,
+          "section": "10.5 Case Study — Hoodia Gordonii and the San Peoples’ Benefit-Sharing"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.7 Examples of Traditional Knowledge-Related Disputes"
+        }
+      ]
+    },
+    {
+      "question": "What is US Patent No. 5,401,504?",
+      "type": "identifier",
+      "answer": "US Patent No. 5,401,504 is a patent titled “Use of Turmeric in Wound Healing,” granted to the University of Mississippi Medical Center in March 1995, which was later revoked in 1997 following a challenge initiated by India [1].\n\n* It covered a method of promoting wound healing by administering turmeric powder orally and/or topically, along with associated exclusive commercial rights [1].\n* The patent became the subject of a dispute regarding novelty and obviousness because the use of turmeric for wound healing was already a widely documented traditional practice in Indian households and Ayurvedic literature [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "US Patent No. 5,401,504 is a patent titled “Use of Turmeric in Wound Healing.”",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was granted to the University of Mississippi Medical Center in March 1995.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was later revoked in 1997 following a challenge initiated by India.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It covered a method of promoting wound healing by administering turmeric powder orally and/or topically, along with associated exclusive commercial rights.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent became the subject of a dispute regarding novelty and obviousness because the use of turmeric for wound healing was already a widely documented traditional practice in Indian households and Ayurvedic literature.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 44,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 12,
+          "section": "4.2.1 Patents"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 16,
+          "section": "5.1 What is a Patent? (Simple explanation)"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 28,
+          "section": "8.19 Description"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 43,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "What was patent 5,663,484 about?",
+      "type": "identifier",
+      "answer": "U.S. Patent No. 5,663,484 was related to \"Basmati Rice Lines and Grains\" and was the subject of a dispute involving RiceTec Inc [1][2]. \n\n* It covered specific rice lines and grains associated with the name Basmati [1][2].\n* It led to a formal objection by India around the year 2000, resulting in the claims being subsequently narrowed [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "U.S. Patent No. 5,663,484 was related to \"Basmati Rice Lines and Grains\".",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was the subject of a dispute involving RiceTec Inc.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It covered specific rice lines and grains associated with the name Basmati.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It led to a formal objection by India around the year 2000, resulting in the claims being subsequently narrowed.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 2,
+          "section": "ABSTRACT"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 28,
+          "section": "8.19 Description"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 16,
+          "section": "5.2 What is a Patent? (Technical explanation)"
+        }
+      ]
+    },
+    {
+      "question": "European Patent No. 0436257",
+      "type": "identifier",
+      "answer": "European Patent No. 0436257 is a neem-seed-derived fungicide patent granted to the US Department of Agriculture and W.R. Grace & Co. (later assigned to Thermo Trilogy) by the European Patent Office, which was later revoked following an opposition challenge [1].\n\n* **Case Details:** Granted in 1994/1995, with an opposition filed in 1995, revoked by the EPO Opposition Division in 2000, and a final appeal decision in 2005 [1].\n* **Traditional Knowledge Involved:** The use of neem (*Azadirachta indica*) seed-derived extracts as an antifungal and pesticidal agent, which was widely documented in Ayurvedic literature and long-standing Indian practice [1].\n* **IP Issue:** The dispute focused on whether the claimed method of controlling fungi using a neem-oil formulation with defined hydrophobic-extract content was novel and involved an inventive step, given prior traditional and scientific records [1].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "European Patent No. 0436257 is a neem‑seed‑derived fungicide patent granted to the US Department of Agriculture and W.R. Grace & Co. (later assigned to Thermo Trilogy) by the European Patent Office.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was later revoked following an opposition challenge.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was granted in 1994/1995.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "An opposition was filed in 1995.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was revoked by the EPO Opposition Division in 2000.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "A final appeal decision occurred in 2005.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Traditional knowledge involved the use of neem seed‑derived extracts as an antifungal and pesticidal agent, documented in Ayurvedic literature and long‑standing Indian practice.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The IP issue was whether the claimed method of controlling fungi using a neem‑oil formulation with defined hydrophobic‑extract content was novel and involved an inventive step.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 8,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 27,
+          "section": "8.7 CPC (Cooperative Patent Classification)"
+        },
+        {
+          "number": 3,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 2,
+          "section": "ABSTRACT"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 12,
+          "section": "4.2.1 Patents"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 44,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 43,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "What does Section 3(p) of the Patents Act say?",
+      "type": "identifier",
+      "answer": "Section 3(p) of India's Patents Act excludes inventions that, in effect, constitute traditional knowledge or represent an aggregation or duplication of known properties of a traditionally known component or components [1][3].\n\n* **Traditional Knowledge Exclusion:** Any invention that is essentially traditional knowledge is not considered a patentable \"invention\" [1].\n* **Aggregation or Duplication:** It also bars patents on inventions that are merely an aggregation or duplication of the known properties of traditionally known components [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "Section 3(p) of India's Patents Act excludes inventions that are traditional knowledge or an aggregation or duplication of known properties of traditionally known components.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Any invention that is essentially traditional knowledge is not considered a patentable invention.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(p) bars patents on inventions that are merely an aggregation or duplication of the known properties of traditionally known components.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 20,
+          "section": "5.10 Patent Opposition"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 20,
+          "section": "5.11 Patent Infringement Basics"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.3 Patents Act, 1970 (as amended)"
+        }
+      ]
+    },
+    {
+      "question": "Section 3(d) Patents Act",
+      "type": "identifier",
+      "answer": "Section 3(d) of the Indian Patents Act is a provision that restricts patents on the mere discovery of a new form or a new use of a known substance that does not result in enhanced efficacy [1][3]. \n\n* It forms part of India's statutory patent exclusions relevant to traditional knowledge and known substances [2][6].\n* It restricts patents on new forms of known substances unless they result in enhanced efficacy, and applies to the discovery of new uses for already-known substances [1][2].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "Section 3(d) of the Indian Patents Act is a provision that restricts patents on the mere discovery of a new form or a new use of a known substance that does not result in enhanced efficacy.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It forms part of India's statutory patent exclusions relevant to traditional knowledge and known substances.",
+            "cited": [
+              2,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It restricts patents on new forms of known substances unless they result in enhanced efficacy, and applies to the discovery of new uses for already-known substances.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 3,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.4 Patent Exclusions Relevant to Traditional Knowledge (Indian Law)"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 25,
+          "section": "7.11 Step 11 — Evaluate Novelty"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 20,
+          "section": "5.11 Patent Infringement Basics"
+        }
+      ]
+    }
+  ],
+  "unanswerable": [
+    {
+      "question": "Who won the 2011 Cricket World Cup?",
+      "type": "general",
+      "answer": "The provided documents do not contain information about who won the 2011 Cricket World Cup. You can ask a related question about India's IPR framework, traditional knowledge case studies like the Neem patent or Kani tribe benefit-sharing model, or the AyurIP workflow.",
+      "judgement": {
+        "claims": [],
+        "refused": true,
+        "answers_question": false
+      },
+      "scores": {
+        "claims": 0,
+        "faithfulness": null,
+        "citation_precision": null,
+        "citation_coverage": null,
+        "fully_faithful": true,
+        "refused": true,
+        "answers_question": false
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 38,
+          "section": "11.1 Workflow Overview"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.4 Case Study — The Kani Tribe and the Jeevani Benefit-Sharing Model"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 40,
+          "section": "11.10 Stage 9 — Source/Citation Display"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 38,
+          "section": "11.2 Stage 1 — User Query"
+        },
+        {
+          "number": 6,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 2,
+          "section": "ABSTRACT"
+        }
+      ]
+    },
+    {
+      "question": "What is the current price of a gram of gold in Mumbai?",
+      "type": "general",
+      "answer": "The provided documents do not cover the current price of gold in Mumbai. \n\n* You can ask a related question about Indian patent office locations, the definition of a patent, or traditional Ayurvedic terms like Bhasma and Rasashastra covered in the knowledge base [1][2][4][6].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "The provided documents do not cover the current price of gold in Mumbai.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          },
+          {
+            "claim": "Indian patent office locations, the definition of a patent, and traditional Ayurvedic terms like Bhasma and Rasashastra are covered in the knowledge base.",
+            "cited": [
+              1,
+              2,
+              4,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": true,
+        "answers_question": false
+      },
+      "scores": {
+        "claims": 2,
+        "faithfulness": 0.5,
+        "citation_precision": 1.0,
+        "citation_coverage": 0.5,
+        "fully_faithful": false,
+        "refused": true,
+        "answers_question": false
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 21,
+          "section": "6.1 Indian Patent Office"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 16,
+          "section": "5.1 What is a Patent? (Simple explanation)"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 1,
+          "section": null
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 42,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 43,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "How do I file a trademark application in the United States?",
+      "type": "general",
+      "answer": "The provided documents do not contain information on how to file a trademark application in the United States. \n\nWould you like to know instead about what trademarks protect, their typical requirements, or relevant Indian frameworks like the Trade Marks Act, 1999? [1][2]",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "The provided documents do not contain information on how to file a trademark application in the United States.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": true,
+        "answers_question": false
+      },
+      "scores": {
+        "claims": 1,
+        "faithfulness": 0.0,
+        "citation_precision": null,
+        "citation_coverage": 0.0,
+        "fully_faithful": false,
+        "refused": true,
+        "answers_question": false
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 13,
+          "section": "4.2.2 Trademarks"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 14,
+          "section": "4.3 Comparison Table: Forms of Intellectual Property"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 19,
+          "section": "5.9 Patent Application Process in India (Simple Overview)"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 15,
+          "section": "4.4 Key Differences Between Forms of IP"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        }
+      ]
+    },
+    {
+      "question": "Python mein list ko sort kaise karte hain?",
+      "type": "general",
+      "answer": "Provided documents mein Python mein list ko sort karne ke baare mein koi jaankari nahi di gayi hai [1][2][3][4][5]. Kya aap Ayurveda, Traditional Knowledge, ya Indian IPR (jaise Patent Act ke sections ya search techniques) se juda koi prashn poochhna chahte hain?",
+      "judgement": {
+        "answers_question": false,
+        "claims": [
+          {
+            "claim": "Provided documents mein Python mein list ko sort karne ke baare mein koi jaankari nahi di gayi hai.",
+            "cited": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": true
+      },
+      "scores": {
+        "claims": 1,
+        "faithfulness": 0.0,
+        "citation_precision": 0.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": false,
+        "refused": true,
+        "answers_question": false
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 26,
+          "section": "8.4 AND / OR / NOT"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 24,
+          "section": "7.4 Step 4 — Search Synonyms"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 26,
+          "section": "8.3 Boolean Search"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 24,
+          "section": "7.5 Step 5 — Search Scientific Names of Plants"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 39,
+          "section": "11.7 Stage 6 — Evidence Ranking"
+        }
+      ]
+    },
+    {
+      "question": "Which Bollywood film won the most Filmfare awards?",
+      "type": "general",
+      "answer": "The provided documents do not contain information about Bollywood films or Filmfare awards. \n\nYou can ask me related questions such as:\n* What is the role of the Traditional Knowledge Digital Library (TKDL) in protecting Ayurveda and other traditional knowledge systems?\n* Which Indian laws form the backbone of the country's Intellectual Property Rights (IPR) framework related to biological resources and traditional knowledge?",
+      "judgement": {
+        "answers_question": false,
+        "claims": [
+          {
+            "claim": "The provided documents do not contain information about Bollywood films or Filmfare awards.",
+            "cited": [],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": true
+      },
+      "scores": {
+        "claims": 1,
+        "faithfulness": 0.0,
+        "citation_precision": null,
+        "citation_coverage": 0.0,
+        "fully_faithful": false,
+        "refused": true,
+        "answers_question": false
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 1,
+          "section": null
+        },
+        {
+          "number": 2,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 4,
+          "section": "IV: Databases and Registers for Protecting TKS"
+        },
+        {
+          "number": 3,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 3,
+          "section": "IV: Databases and Registers for Protecting TKS"
+        },
+        {
+          "number": 4,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 2,
+          "section": "ABSTRACT"
+        },
+        {
+          "number": 5,
+          "title": "Jadhavar & Nale (2026), J. Pharm. Sci.",
+          "page": 1,
+          "section": "ABSTRACT"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 12,
+          "section": "3.8 Major Categories of Traditional Knowledge Documented in TKDL"
+        }
+      ]
+    }
+  ],
+  "judge_check": [
+    {
+      "question": "What is the Traditional Knowledge Digital Library?",
+      "false_claim": "The Traditional Knowledge Digital Library was set up by the World Health Organization in 1975 [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "TKDL is a digital, structured database established in 2001 by CSIR and the Ministry of AYUSH as a defensive prior‑art tool for Indian systems of medicine.",
+            "cited": [
+              1,
+              2,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL prevents the wrongful grant of patents on India's traditional knowledge by making classical texts accessible and searchable to international patent examiners.",
+            "cited": [
+              1,
+              2,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL converts publicly available information from classical and public‑domain texts on Ayurveda, Unani, Siddha, Sowa‑Rigpa, and Yoga into a searchable digital format.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL uses the Traditional Knowledge Resource Classification (TKRC) system and is translated into five languages: English, French, German, Spanish, and Japanese.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Through TKDL Access Agreements, patent offices worldwide can search the confidential database during patent examination processes.",
+            "cited": [
+              2,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The Traditional Knowledge Digital Library was set up by the World Health Organization in 1975.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "Why was TKDL created?",
+      "false_claim": "The European Patent Office upheld the neem patent in full and it is still in force [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "TKDL was created in direct response to patents being filed and granted abroad for uses of Indian medicinal plants like turmeric and neem that were already existing traditional knowledge in India.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It was designed to bridge the language and format gap for patent examiners so that prior art could be found before a patent is granted, preventing wrongful grants of patents on existing traditional knowledge.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL acts as a defensive prior‑art database containing structured and digitized traditional knowledge from Indian systems of medicine.",
+            "cited": [
+              3,
+              4,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL makes traditional knowledge accessible to international patent examiners by translating it into multiple languages (English, French, German, Spanish, and Japanese) and using a purpose‑built classification system (TKRC).",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The European Patent Office upheld the neem patent in full and it is still in force.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "How does TKDL help stop wrongful patents on traditional knowledge?",
+      "false_claim": "Section 3(p) of the Indian Patents Act allows traditional knowledge to be patented without any restriction [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "TKDL helps prevent wrongful patents by making India's traditional knowledge accessible as searchable prior art to patent examiners worldwide, allowing them to reject patent applications that lack novelty or an inventive step before they are granted",
+            "cited": [
+              1,
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL's defensive protection approach closes the language and format gap that previously prevented examiners from finding pre-existing traditional knowledge written in traditional Indian languages",
+            "cited": [
+              3,
+              4,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL provides searchable prior art in a format and language that patent examiners can use during routine patent examinations",
+            "cited": [
+              1,
+              3,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL enables examiners to reject wrongful patent applications for lack of novelty or inventive step before a patent is ever granted",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL avoids the need for costly and multi-year opposition or re-examination proceedings, such as those required for turmeric and neem patents",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(p) of the Indian Patents Act allows traditional knowledge to be patented without any restriction",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What are the three doshas in Ayurveda?",
+      "false_claim": "The full TKDL database, including all its translations, is freely open to the general public [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The three doshas in Ayurveda are Vata, Pitta, and Kapha, which are fundamental physiological principles described in traditional theory to govern bodily and mental functions.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Vata is associated with movement, the nervous system, circulation, and elimination; traditionally linked to air and space/ether elements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Pitta is associated with metabolism, digestion, and transformation; traditionally linked to fire and water elements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Kapha is associated with structure, lubrication, and stability; traditionally linked to earth and water elements.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The full TKDL database, including all its translations, is freely open to the general public.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "Which classical texts form the Brihat Trayi?",
+      "false_claim": "Ayurveda originated in ancient Egypt and reached India in the 18th century [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "The Brihat Trayi consists of Charaka Samhita, Sushruta Samhita, and Ashtanga Hridaya.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Charaka Samhita focuses on internal medicine, physiology, pharmacology, and ethics of practice.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Sushruta Samhita focuses on surgery, anatomy, surgical instruments, procedures, and ophthalmology.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Ashtanga Hridaya is a concise synthesis covering all eight traditional branches of Ayurveda.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Ayurveda originated in ancient Egypt and reached India in the 18th century.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "What is Prakriti in Ayurveda?",
+      "false_claim": "The Traditional Knowledge Digital Library was set up by the World Health Organization in 1975 [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "In Ayurveda, Prakriti refers to an individual's inherent constitutional type, which is determined at conception by the relative proportion of the three doshas and remains relatively fixed for life.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "In traditional practice, the assessment of Prakriti is used to guide personalized dietary and lifestyle recommendations.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It is a traditional classificatory concept that should not be confused with modern genetic or genomic classification.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Along with dosha, dhatu, and mala, it serves as one of the foundational concepts upon which Ayurveda is built.",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The Traditional Knowledge Digital Library was set up by the World Health Organization in 1975.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What happened in the turmeric patent case?",
+      "false_claim": "The European Patent Office upheld the neem patent in full and it is still in force [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "A U.S. patent was granted in 1995 for using turmeric in wound healing.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The patent was challenged by India and ultimately revoked in 1997 because the use was already part of traditional prior art.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The University of Mississippi Medical Center secured a U.S. patent covering the oral and topical use of turmeric powder for wound healing.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "India's Council of Scientific and Industrial Research (CSIR) requested a re-examination at the USPTO in 1996, providing documented prior art from Sanskrit, Hindi/Urdu, and other traditional sources, including a 1953 paper.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The USPTO revoked all claims in late 1997 after finding that the claimed use lacked novelty and was obvious in light of prior art.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The European Patent Office upheld the neem patent in full and it is still in force.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ]
+      }
+    },
+    {
+      "question": "Why was the European neem patent revoked?",
+      "false_claim": "Section 3(p) of the Indian Patents Act allows traditional knowledge to be patented without any restriction [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The European neem patent was revoked because it lacked novelty and an inventive step, as the fungicidal properties of neem‑seed‑derived extracts were already widely documented in Ayurvedic literature and long‑standing Indian agricultural and medicinal practices.",
+            "cited": [
+              1,
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Opponents argued the patent was not a genuine invention because neem's properties had been used in India for centuries.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The EPO's Opposition Division revoked the patent in May 2000, and the Technical Board of Appeal upheld the complete revocation in March 2005 based on ancient Ayurvedic texts, testimony, and prior scientific publications.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(p) of the Indian Patents Act allows traditional knowledge to be patented without any restriction.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What was the Basmati rice dispute with RiceTec about?",
+      "false_claim": "The full TKDL database, including all its translations, is freely open to the general public [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Basmati rice dispute with RiceTec involved attempts by a U.S. company to secure patent rights over rice lines bred by cross‑breeding traditional Basmati with an American long‑grain variety, raising concerns over patent novelty and the misuse of a traditional geographical name.",
+            "cited": [
+              1,
+              2,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The original patent claims were broad enough to potentially cover hybrid Basmati rice grown outside the traditional Indo‑Gangetic region in the Western Hemisphere.",
+            "cited": [
+              3,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The core issue was whether broad patent rights could be granted over a name and rice lines closely tied to traditional agricultural knowledge and practices of India and Pakistan.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Following objections and re‑examination, RiceTec withdrew many claims and had others cancelled, leaving it with a much narrower patent covering only its specific proprietary rice lines (such as Bas867, RT1117, and RT121) without general rights over the “Basmati” name.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          },
+          {
+            "claim": "The full TKDL database, including all its translations, is freely open to the general public.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "How did the Kani tribe benefit from the Jeevani drug?",
+      "false_claim": "Ayurveda originated in ancient Egypt and reached India in the 18th century [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Kani tribe benefited through a formal benefit-sharing arrangement where TBGRI agreed to share half of the license fees (approximately Rs. 10 lakh) and royalties (approximately 2% of ex-factory sales) received from commercializing Jeevani through a dedicated trust.",
+            "cited": [
+              1,
+              3,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Subsequent reporting showed that the trust fund became financially strained over time, making the practical and long-term benefits to the community more limited and harder to sustain than initially envisioned.",
+            "cited": [
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TBGRI licensed the manufacturing and marketing rights of the polyherbal formulation to the Arya Vaidya Pharmacy (AVP) of Coimbatore.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The financial proceeds from the license fee and royalties were designated to be shared equally with the Kani community through a dedicated trust.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Ayurveda originated in ancient Egypt and reached India in the 18th century.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What are the requirements for an invention to be patentable?",
+      "false_claim": "The Traditional Knowledge Digital Library was set up by the World Health Organization in 1975 [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "To be patentable, an invention must satisfy core requirements including novelty, inventive step, industrial applicability, and a sufficiency-of-disclosure requirement",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Novelty: The invention must not have been disclosed to the public anywhere in the world in any form before the application's filing or priority date",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Inventive Step (Non-Obviousness): The invention must not be obvious to a person skilled in the art based on existing prior art",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Industrial Applicability (Utility): The invention must have a practical, working application and be capable of being made or used in some kind of industry rather than being purely theoretical",
+            "cited": [
+              6
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Sufficiency of Disclosure: The application must describe the invention clearly and completely enough for a person skilled in the art to reproduce it, along with claims defining the precise scope of protection",
+            "cited": [
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The Traditional Knowledge Digital Library was set up by the World Health Organization in 1975",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What is prior art in patent law?",
+      "false_claim": "The European Patent Office upheld the neem patent in full and it is still in force [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "Prior art is the body of all information made available to the public anywhere in any form before a patent application's filing or priority date, which is used to assess an invention's novelty and inventive step.",
+            "cited": [
+              1,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It includes earlier patents, patent applications, scientific journal articles, books (such as classical texts if publicly available), and conference presentations.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Depending on the jurisdiction and evidentiary standard, it can also include product sales, public use, or oral disclosures.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The European Patent Office upheld the neem patent in full and it is still in force.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What is the difference between defensive and positive protection of traditional knowledge?",
+      "false_claim": "Section 3(p) of the Indian Patents Act allows traditional knowledge to be patented without any restriction [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "Defensive protection aims to prevent third parties from obtaining wrongful patent rights over existing traditional knowledge without creating new proprietary rights, whereas positive protection creates actual enforceable rights and legal measures for traditional knowledge holders",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Defensive Protection uses legal and administrative measures—such as the Traditional Knowledge Digital Library (TKDL)—to ensure that non-novel traditional knowledge can be cited as prior art to stop wrongful patents",
+            "cited": [
+              2,
+              4
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Positive Protection grants enforceable rights to communities, such as mandating benefit-sharing agreements under frameworks like the Biological Diversity Act, though it is legally and institutionally harder to design due to the collective and evolving nature of traditional knowledge",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Section 3(p) of the Indian Patents Act allows traditional knowledge to be patented without any restriction",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What does the Nagoya Protocol cover?",
+      "false_claim": "The full TKDL database, including all its translations, is freely open to the general public [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "The Nagoya Protocol is a 2010 supplementary agreement to the Convention on Biological Diversity (CBD) that provides a detailed legal framework for the implementation of access and benefit-sharing (ABS) objectives.",
+            "cited": [
+              1,
+              5
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It requires parties to establish clear domestic measures regarding genetic resources and associated traditional knowledge.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It provides a legal framework for access and benefit sharing (ABS) between resource users and providers.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It requires prior informed consent from the providing country or community.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It requires mutually agreed terms for access to genetic resources and associated traditional knowledge.",
+            "cited": [
+              1,
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It ensures the fair sharing of benefits (both monetary, such as royalties, and non-monetary, such as capacity building and technology transfer) arising from subsequent use.",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The full TKDL database, including all its translations, is freely open to the general public.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ],
+        "refused": false
+      }
+    },
+    {
+      "question": "What is access and benefit sharing?",
+      "false_claim": "Ayurveda originated in ancient Egypt and reached India in the 18th century [1].",
+      "caught": true,
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "Access and Benefit Sharing (ABS) refers to the legal mechanisms and principles requiring that access to genetic resources and traditional knowledge be based on prior informed consent and mutually agreed terms, ensuring that resulting benefits are shared fairly with the providers.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It is rooted in the Convention on Biological Diversity (CBD) and further elaborated by the Nagoya Protocol.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Benefits shared can be monetary, such as royalties, or non-monetary, such as capacity building and technology transfer.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "Ayurveda originated in ancient Egypt and reached India in the 18th century.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": false,
+            "supported_by_any": false
+          }
+        ]
+      }
+    }
+  ]
+}

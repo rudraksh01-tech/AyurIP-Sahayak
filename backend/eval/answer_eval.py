@@ -138,7 +138,12 @@ def groq_json(system, prompt, attempts=6):
         request = urllib.request.Request(
             GROQ_URL,
             data=body,
-            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+                # Groq's firewall rejects urllib's default User-Agent (Cloudflare error 1010)
+                "User-Agent": "ayurip-sahayak-eval/1.0",
+            },
         )
 
         try:

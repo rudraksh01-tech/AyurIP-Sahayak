@@ -96,8 +96,18 @@ Gemini embeddings already ranked statute sections and patent numbers first; fusi
 
 ---
 
+## 9. An answer judge from a different model family
+
+**Decision.** Answers are written by Gemini and judged by `openai/gpt-oss-120b` on Groq. The judge splits each answer into claims and checks each one against the retrieved passages only, not its own knowledge.
+
+**Why.** A model judging its own family's output tends to approve its own style. Groq's free tier also allows far more requests than the larger Gemini models, whose free quota (20 requests) was too small for 38 answers. To check the judge itself, I planted a false, cited sentence in 15 answers; it flagged all 15.
+
+**Trade-off.** One more API key and provider. The free tier allows about one judge call every 20 seconds, so a full run takes around 15 minutes; answers and judgements are cached so a stopped run resumes. A judge can still miss subtle errors, so I read every judgement by hand.
+
+---
+
 ## What I'd do next
 
-1. **A fairer evaluation.** Add public documents I didn't write and grow the set to about 60 questions, so Hit@3 (1.00 for dense and hybrid today) can show differences.
-2. **Answer-quality evaluation.** Check faithfulness and citation accuracy with an LLM judge; today only retrieval is measured.
-3. **Docker**, built in CI, so the app runs the same way everywhere.
+1. **A harder evaluation.** Grow the question set to about 60, with more Hindi and Hinglish and more multi-part questions, so Hit@3 (1.00 for dense and hybrid today) can show differences.
+2. **pgvector** as an optional index, with a NumPy vs pgvector timing comparison, for when the corpus grows.
+3. **Tracing** (for example Langfuse) to see retrieval and generation time per request on the live app.
