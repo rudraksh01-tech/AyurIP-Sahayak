@@ -1,6 +1,6 @@
 from backend.rag import rag_pipeline
 from backend.rag.generation import generator
-from backend.rag.generation.generator import build_prompt, find_citations, stream_answer
+from backend.rag.generation.generator import build_prompt, find_citations, stream_answer, to_kannada_script
 from backend.rag.rag_pipeline import ask_rag, build_search_query, stream_rag
 
 
@@ -49,6 +49,21 @@ def test_stream_answer_without_results_skips_gemini(monkeypatch):
     monkeypatch.setattr(generator, "generate_stream", lambda *args: (_ for _ in ()).throw(AssertionError))
 
     assert "couldn't find" in "".join(stream_answer("anything", []))
+
+
+def test_to_kannada_script_fixes_devanagari_letters_inside_kannada_words():
+    # Real model output: "scientific" with a Devanagari "ि" and "फ"
+    assert to_kannada_script("ಸೈಂಟिफಿಕ್") == "ಸೈಂಟಿಫಿಕ್"
+    assert to_kannada_script("जोडಿಸಲ್ಪಟ್ಟಿದೆ") == "ಜೋಡಿಸಲ್ಪಟ್ಟಿದೆ"
+    # The danda has no Kannada letter, so it stays
+    assert to_kannada_script("ಸರಿ।") == "ಸರಿ।"
+
+
+def test_stream_answer_converts_script_only_for_kannada_questions(monkeypatch):
+    monkeypatch.setattr(generator, "generate_stream", lambda *args: iter(["ಸೈಂಟि", "फಿಕ್ [1]"]))
+
+    assert "".join(stream_answer("ಟಿಕೆಡಿಎಲ್ ಎಂದರೇನು?", RESULTS)) == "ಸೈಂಟಿಫಿಕ್ [1]"
+    assert "".join(stream_answer("टीकेडीएल क्या है?", RESULTS)) == "ಸೈಂಟिफಿಕ್ [1]"
 
 
 def test_build_search_query_adds_previous_question_to_short_follow_ups():

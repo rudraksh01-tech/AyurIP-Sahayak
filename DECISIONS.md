@@ -2,7 +2,7 @@
 
 The main technical choices in AyurIP-Sahayak: what I chose, why, what it cost, and what I would change. The [README](README.md) explains how everything works; this file explains why it works that way.
 
-Numbers come from `backend/eval/` (33 labelled questions) or from timing the live demo on 1 November 2026.
+Numbers come from `backend/eval/` (38 labelled questions) or from timing the live demo on 1 November 2026.
 
 ---
 
@@ -20,7 +20,7 @@ Numbers come from `backend/eval/` (33 labelled questions) or from timing the liv
 
 **Decision.** Embeddings come from `gemini-embedding-001` (768 dimensions). The first version used `sentence-transformers` (`all-MiniLM-L6-v2`) running locally.
 
-**Why.** The local model brought in PyTorch and Transformers. On Render's free tier the app went over the 512 MiB memory limit, and on my Windows laptop Smart App Control blocked PyTorch's DLLs, so it couldn't start locally either. Moving embeddings to an API cut the runtime dependencies to five packages (FastAPI, uvicorn, `google-genai`, NumPy, `python-dotenv`) and the whole app now runs on Vercel's free tier. Gemini's embeddings are also multilingual, which is what makes Hindi questions find English passages.
+**Why.** The local model brought in PyTorch and Transformers. On Render's free tier the app went over the 512 MiB memory limit, and on my Windows laptop Smart App Control blocked PyTorch's DLLs, so it couldn't start locally either. Moving embeddings to an API cut the runtime dependencies to five packages (FastAPI, uvicorn, `google-genai`, NumPy, `python-dotenv`) and the whole app now runs on Vercel's free tier. Gemini's embeddings are also multilingual, which is what makes Hindi and Kannada questions find English passages.
 
 **Trade-off.** Every question now needs a network call to embed it: retrieval takes 200–350 ms on the live demo, and almost all of that is the embedding call. The stored index is tied to this model, so changing models means re-embedding everything.
 
@@ -44,15 +44,15 @@ Numbers come from `backend/eval/` (33 labelled questions) or from timing the liv
 
 **Why.** Hybrid search is the usual advice, especially for exact terms like patent numbers, so I expected it to win. I built a labelled evaluation set to check, and it didn't:
 
-| Retriever | Hit@1 | MRR | MRR on identifier queries (5) | MRR on Hindi/Hinglish (4) |
-|---|---|---|---|---|
-| Dense | 0.97 | 0.98 | 1.00 | 1.00 |
-| Hybrid | 0.88 | 0.93 | 0.80 | 1.00 |
-| BM25 | 0.52 | 0.66 | 0.67 | 0.25 |
+| Retriever | Hit@1 | MRR | MRR on identifier queries (5) | MRR on Hindi/Hinglish (4) | MRR on Kannada (5) |
+|---|---|---|---|---|---|
+| Dense | 0.95 | 0.97 | 1.00 | 1.00 | 0.90 |
+| Hybrid | 0.87 | 0.93 | 0.80 | 1.00 | 0.90 |
+| BM25 | 0.47 | 0.60 | 0.67 | 0.25 | 0.20 |
 
-Gemini embeddings already ranked statute sections and patent numbers first; fusing in BM25 pushed some correct passages from rank 1 to rank 2 or 3. BM25 can't match Hindi questions against English text at all.
+Gemini embeddings already ranked statute sections and patent numbers first; fusing in BM25 pushed some correct passages from rank 1 to rank 2 or 3. BM25 can't match Hindi or Kannada questions against English text at all.
 
-**Trade-off.** The evaluation is small (33 questions) and most of the corpus is a document I wrote, so the result may not hold on other documents. That's why the mode is one environment variable away and the evaluation is one command to re-run.
+**Trade-off.** The evaluation is small (38 questions) and most of the corpus is a document I wrote, so the result may not hold on other documents. That's why the mode is one environment variable away and the evaluation is one command to re-run.
 
 ---
 

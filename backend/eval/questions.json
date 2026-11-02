@@ -31,5 +31,10 @@
   {"question": "What was patent 5,663,484 about?", "sections": ["10.3"], "type": "identifier"},
   {"question": "European Patent No. 0436257", "sections": ["10.2"], "type": "identifier"},
   {"question": "What does Section 3(p) of the Patents Act say?", "sections": ["5.4", "6.3"], "type": "identifier"},
-  {"question": "Section 3(d) Patents Act", "sections": ["5.4", "6.3"], "type": "identifier"}
+  {"question": "Section 3(d) Patents Act", "sections": ["5.4", "6.3"], "type": "identifier"},
+  {"question": "ಟಿಕೆಡಿಎಲ್ ಎಂದರೇನು?", "sections": ["3.1", "3.3", "6.9"], "type": "kannada"},
+  {"question": "ಅರಿಶಿನ ಪೇಟೆಂಟ್ ಪ್ರಕರಣದಲ್ಲಿ ಏನಾಯಿತು?", "sections": ["10.1"], "type": "kannada"},
+  {"question": "ಆಯುರ್ವೇದದಲ್ಲಿ ಮೂರು ದೋಷಗಳು ಯಾವುವು?", "sections": ["1.4.1"], "type": "kannada"},
+  {"question": "ಬೇವಿನ ಪೇಟೆಂಟ್ ಅನ್ನು ಏಕೆ ರದ್ದುಗೊಳಿಸಲಾಯಿತು?", "sections": ["10.2"], "type": "kannada"},
+  {"question": "ಪೇಟೆಂಟ್ ಕಾನೂನಿನಲ್ಲಿ ಪೂರ್ವ ಕಲೆ (prior art) ಎಂದರೇನು?", "sections": ["5.6", "8.21"], "type": "kannada"}
 ]

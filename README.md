@@ -18,7 +18,7 @@
 
 </div>
 
-Ask a question in English, Hindi or Hinglish and get a streamed answer where every claim cites the exact page it came from.
+Ask a question in English, Hindi, Kannada or Hinglish and get a streamed answer where every claim cites the exact page it came from.
 
 ![Streamed answer with clickable citations, in dark mode](docs/screenshot-answer.png)
 
@@ -28,16 +28,16 @@ Ask a question in English, Hindi or Hinglish and get a streamed answer where eve
 
 | What | Result | How it was measured |
 |---|---|---|
-| Right passage ranked first | **97%** of questions (Hit@1 0.97, MRR 0.98) | 33 labelled questions in `backend/eval/` |
-| Answers grounded in their passages | **145 of 146** claims supported (faithfulness 0.99); **32 of 33** answers fully faithful | LLM judge from another model family, every judgement read by hand |
+| Right passage ranked first | **95%** of questions (Hit@1 0.95, MRR 0.97) | 38 labelled questions in `backend/eval/`, in four languages |
+| Answers grounded in their passages | **166 of 167** claims supported (faithfulness 0.99); **37 of 38** answers fully faithful | LLM judge from another model family, every judgement read by hand |
 | Citations point to the right passage | Citation precision **0.98**, every claim cited | Same judge run |
 | Says "not covered" instead of guessing | **5 of 5** off-topic questions refused | `backend/eval/unanswerable.json` |
-| Dense vs keyword search | Hit@1 **0.97 vs 0.52**; Hindi/Hinglish MRR **1.00 vs 0.25** | Same set, BM25 baseline written from scratch |
+| Dense vs keyword search | Hit@1 **0.95 vs 0.47**; Hindi/Hinglish MRR **1.00 vs 0.25**; Kannada MRR **0.90 vs 0.20** | Same set, BM25 baseline written from scratch |
 | Speed on the live demo | Sources in **0.6–1.0 s**, first words in **1.4–1.8 s**, full answer in **1.6–3.0 s** | 5 questions on the deployed app, 1 Nov 2026 |
 | Vector search time | About **0.03 ms** per query (229 chunks × 768 dims) | 1,000 NumPy searches timed locally |
 | Deployment size | 5 runtime packages, 0.7 MB index, free tier | After replacing local PyTorch embeddings (see [What went wrong](#what-went-wrong-and-what-i-changed)) |
 | Judge reliability | Caught **15 of 15** false sentences planted in real answers | Planted claims, see [Answer-quality evaluation](#answer-quality-evaluation) |
-| Tests | **44** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
+| Tests | **46** passing, plus a Docker build and smoke test, on every push | `pytest`, GitHub Actions |
 
 Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DECISIONS.md)**.
 
@@ -47,12 +47,12 @@ Why each technical choice was made, and what it cost, is in **[DECISIONS.md](DEC
 
 - **Cited answers.** Every statement links to a numbered source; clicking `[2]` opens the passage with its document, page number and section heading.
 - **Streaming.** Sources show up in under a second, before the answer is written, and the first words follow in about 1.5 seconds.
-- **English, Hindi and Hinglish.** Multilingual embeddings retrieve English passages for Hindi questions, and the answer comes back in the question's language.
+- **English, Hindi, Kannada and Hinglish.** Multilingual embeddings retrieve English passages for Hindi and Kannada questions, and the answer comes back in the question's language.
 - **Follow-up questions.** Recent turns are sent with each question, so "and what about neem?" works.
 - **Topic explorer.** Six topic cards (Ayurveda foundations, TKDL, patent law, landmark cases, global frameworks, prior-art search) each offer questions the knowledge base is known to answer.
 - **Polished interface.** A restrained three-colour design (ink, ivory and a saffron accent) with serif headlines, hairline borders and monospaced numbers, a light/dark theme toggle that remembers your choice, and a layout that works down to phone width.
-- **Measured retrieval and answers.** An evaluation harness compares three retrievers on 33 labelled questions (see [results](#retrieval-evaluation)), and an LLM judge checks every answer claim against its passages (see [answer quality](#answer-quality-evaluation)).
-- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 44 tests, CI with a Docker build, and a one-click free deployment.
+- **Measured retrieval and answers.** An evaluation harness compares three retrievers on 38 labelled questions (see [results](#retrieval-evaluation)), and an LLM judge checks every answer claim against its passages (see [answer quality](#answer-quality-evaluation)).
+- **Production basics.** Input validation, per-visitor rate limiting to protect the free API quota, clear error messages, 46 tests, CI with a Docker build, and a one-click free deployment.
 
 <p align="center">
   <img src="docs/screenshot-home.png" alt="Home screen with search, suggested questions and measured answer quality" width="64%" />
@@ -112,23 +112,23 @@ Retrieval and generation stay separate components, so either can change without 
 
 ## Retrieval evaluation
 
-`backend/eval/questions.json` holds 33 questions, each labelled with the knowledge-base sections that answer it: 24 general questions, 4 in Hindi or Hinglish, and 5 exact-identifier queries such as patent numbers and "Section 3(p)". A hit means a passage from a correct section is in the top k.
+`backend/eval/questions.json` holds 38 questions, each labelled with the knowledge-base sections that answer it: 24 general questions, 4 in Hindi or Hinglish, 5 in Kannada, and 5 exact-identifier queries such as patent numbers and "Section 3(p)". A hit means a passage from a correct section is in the top k.
 
 | Retriever | Hit@1 | Hit@3 | Hit@6 | MRR |
 |---|---|---|---|---|
-| **Dense (Gemini embeddings)** | **0.97** | **1.00** | **1.00** | **0.98** |
-| Hybrid (BM25 + dense, RRF) | 0.88 | 1.00 | 1.00 | 0.93 |
-| BM25 (keywords) | 0.52 | 0.76 | 0.91 | 0.66 |
+| **Dense (Gemini embeddings)** | **0.95** | **1.00** | **1.00** | **0.97** |
+| Hybrid (BM25 + dense, RRF) | 0.87 | 1.00 | 1.00 | 0.93 |
+| BM25 (keywords) | 0.47 | 0.68 | 0.82 | 0.60 |
 
 By question type (MRR):
 
-| Retriever | General (24) | Hindi/Hinglish (4) | Identifiers (5) |
-|---|---|---|---|
-| Dense | 0.98 | 1.00 | 1.00 |
-| Hybrid | 0.95 | 1.00 | 0.80 |
-| BM25 | 0.72 | 0.25 | 0.67 |
+| Retriever | General (24) | Hindi/Hinglish (4) | Kannada (5) | Identifiers (5) |
+|---|---|---|---|---|
+| Dense | 0.98 | 1.00 | 0.90 | 1.00 |
+| Hybrid | 0.95 | 1.00 | 0.90 | 0.80 |
+| BM25 | 0.72 | 0.25 | 0.20 | 0.67 |
 
-**Decision:** dense retrieval is the default. Hybrid search is often recommended for exact terms, but on this corpus Gemini embeddings already rank patent numbers and statute sections first, and fusing in BM25 only pushed correct passages from rank 1 to rank 2 or 3. BM25 cannot match Hindi questions against English documents at all. `RETRIEVAL_MODE=hybrid` switches modes; re-run the evaluation whenever the documents change.
+**Decision:** dense retrieval is the default. Hybrid search is often recommended for exact terms, but on this corpus Gemini embeddings already rank patent numbers and statute sections first, and fusing in BM25 only pushed correct passages from rank 1 to rank 2 or 3. BM25 cannot match Hindi or Kannada questions against English documents at all. The one Kannada miss at rank 1 (neem) still had the right passage at rank 2, behind the similar turmeric case. `RETRIEVAL_MODE=hybrid` switches modes; re-run the evaluation whenever the documents change.
 
 ```bash
 python -m backend.eval.evaluate
@@ -138,11 +138,11 @@ python -m backend.eval.evaluate
 
 ## Answer-quality evaluation
 
-Good retrieval doesn't guarantee a good answer, so `backend/eval/answer_eval.py` checks the answers too. The app answers all 33 questions as usual, then a judge model (`openai/gpt-oss-120b` on Groq, a different model family from the Gemini model that writes the answers) splits each answer into claims and checks every claim against the passages the app was given.
+Good retrieval doesn't guarantee a good answer, so `backend/eval/answer_eval.py` checks the answers too. The app answers all 38 questions as usual, then a judge model (`openai/gpt-oss-120b` on Groq, a different model family from the Gemini model that writes the answers) splits each answer into claims and checks every claim against the passages the app was given.
 
 | Metric | Result |
 |---|---|
-| Faithfulness (claims supported by the passages) | **0.99**: 145 of 146 claims; 32 of 33 answers fully faithful |
+| Faithfulness (claims supported by the passages) | **0.99**: 166 of 167 claims; 37 of 38 answers fully faithful (all 5 Kannada answers) |
 | Citation precision (cited passage supports the claim) | **0.98** |
 | Citation coverage (claims with a citation) | **1.00** |
 | Off-topic questions correctly refused | **5 of 5** |
@@ -180,6 +180,10 @@ python -m backend.eval.answer_eval   # needs GEMINI_API_KEY and GROQ_API_KEY
 **6. The UI said "Online" even when the backend was down.** The status label was hard-coded, and every error was shown as a connection problem.
 *Change:* the status now comes from `/api/health`, and the server's own error message is shown to the user.
 
+**7. Kannada answers had broken letters.** After adding Kannada, some words showed a dotted circle. The font wasn't the problem: the model was putting Devanagari letters inside Kannada words (ಸೈಂಟिफಿಕ್ for "scientific"). 3 of the 5 cached Kannada answers had at least one such word, and a prompt rule alone still left 4 of 15.
+*Change:* Devanagari and Kannada share one Unicode layout, 0x380 apart (क U+0915 → ಕ U+0C95), so for Kannada questions every Devanagari letter in the streamed answer is mapped to its Kannada twin. Over 15 fresh answers, mixed-script words went from 4 to 0. Two unit tests cover it.
+*Lesson:* look at the actual characters before blaming the font.
+
 ---
 
 ## Tech stack
@@ -191,7 +195,7 @@ python -m backend.eval.answer_eval   # needs GEMINI_API_KEY and GROQ_API_KEY
 | AI | Gemini API: `gemini-embedding-001` for retrieval, `gemini-3.5-flash-lite` for answers |
 | Retrieval | NumPy cosine search, BM25 and RRF implemented from scratch |
 | Documents | `pypdf` text extraction, custom section-aware chunking |
-| Quality | pytest (44 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness, LLM-judge answer evaluation |
+| Quality | pytest (46 tests), ESLint, GitHub Actions CI with a Docker smoke test, retrieval evaluation harness, LLM-judge answer evaluation |
 | Hosting | Vercel (frontend and API from one deployment, free Hobby plan) |
 
 ---
@@ -337,6 +341,7 @@ Interactive docs are available at `/docs` when the server is running.
 ### Phase 3 — Multilingual
 
 * [x] Hindi and Hinglish queries
+* [x] Kannada queries
 * [x] Multilingual retrieval
 * [x] Answers in the question's language
 * [ ] More Indian languages
@@ -378,7 +383,8 @@ Interactive docs are available at `/docs` when the server is running.
 - The knowledge base is two documents (54 pages). Adding sources such as WIPO and CGPDTM documents is mostly a matter of dropping PDFs in and re-running `build_index`.
 - If the right passage is not retrieved, the answer will be incomplete; the app says so instead of guessing, but it cannot answer beyond its documents.
 - The rate limiter is in memory, so each serverless instance counts separately. A shared store such as Redis or Upstash would make it global.
-- Answer quality is judged by another LLM. The planted-error check shows it catches clear mistakes, but subtler errors could still slip past it, and 33 questions is a small set.
+- Answer quality is judged by another LLM. The planted-error check shows it catches clear mistakes, but subtler errors could still slip past it, and 38 questions is a small set.
+- Kannada answers are checked for script, citations and faithfulness, but not yet read by a native Kannada reader for fluency. The model can still occasionally put an English letter inside a Kannada word.
 - The evaluation is small, and 199 of the 229 chunks come from a knowledge-base document I wrote myself, so the scores are likely higher than they would be on unseen documents. Hit@3 is already 1.00 for dense and hybrid, so the set is too easy to separate them at that depth.
 - The journal PDF uses two columns, so some of its section labels are approximate. Page numbers are exact.
 

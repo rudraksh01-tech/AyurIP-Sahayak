@@ -27,8 +27,8 @@ const TOPIC_ICONS = {
 
 // From backend/eval (README "Results at a glance"); update after re-running the evals
 const METRICS = [
-  { value: "0.99", label: "Faithfulness", detail: "145 of 146 answer claims backed by the cited passage" },
-  { value: "97%", label: "Right passage first", detail: "Hit@1 on 33 labelled questions, incl. Hindi" },
+  { value: "0.99", label: "Faithfulness", detail: "166 of 167 answer claims backed by the cited passage" },
+  { value: "95%", label: "Right passage first", detail: "Hit@1 on 38 questions in English, Hindi and Kannada" },
   { value: "5/5", label: "Off-topic refused", detail: "Says “not covered” instead of guessing" },
   { value: "<2s", label: "To first words", detail: "Streaming on the live demo, sources first" },
 ];
@@ -37,7 +37,7 @@ const STEPS = [
   {
     icon: SearchIcon,
     title: "Retrieve",
-    text: "Your question is embedded and matched against every passage in the knowledge base, in any of three languages.",
+    text: "Your question is embedded and matched against every passage in the knowledge base, in English, Hindi, Kannada or Hinglish.",
   },
   {
     icon: QuoteIcon,
@@ -168,7 +168,7 @@ export default function EmptyState({ health, onAsk, composer }) {
         </h1>
 
         <p className="hero-text">
-          Ask in English, हिन्दी or Hinglish. Sahayak searches a curated knowledge
+          Ask in English, हिन्दी, ಕನ್ನಡ or Hinglish. Sahayak searches a curated knowledge
           base and cites the exact page behind every claim.
         </p>
 
@@ -191,7 +191,7 @@ export default function EmptyState({ health, onAsk, composer }) {
         <div className="metrics-head">
           <div>
             <span className="kicker" id="metrics-heading">Measured, not claimed</span>
-            <p>33 labelled questions · answers checked by a judge model from another family</p>
+            <p>38 labelled questions in four languages · answers checked by a judge model from another family</p>
           </div>
           <a
             className="metrics-link"

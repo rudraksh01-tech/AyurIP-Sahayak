@@ -3,8 +3,8 @@
 
 export const SUGGESTIONS = [
   { text: "What is TKDL and how does it stop wrongful patents?", lang: "EN" },
-  { text: "What happened in the turmeric patent case?", lang: "EN" },
   { text: "आयुर्वेद में तीन दोष कौन से हैं?", lang: "हि" },
+  { text: "ಅರಿಶಿನ ಪೇಟೆಂಟ್ ಪ್ರಕರಣದಲ್ಲಿ ಏನಾಯಿತು?", lang: "ಕ" },
   { text: "neem patent kyun cancel hua?", lang: "Hinglish" },
 ];
 

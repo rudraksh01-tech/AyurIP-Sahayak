@@ -2,15 +2,15 @@
   "judge_model": "openai/gpt-oss-120b",
   "summary": {
     "answerable": {
-      "questions": 33,
-      "answered": 33,
+      "questions": 38,
+      "answered": 38,
       "refused": 0,
-      "answers_question": 33,
-      "faithfulness": 0.994,
-      "fully_faithful_answers": 32,
-      "citation_precision": 0.979,
+      "answers_question": 38,
+      "faithfulness": 0.995,
+      "fully_faithful_answers": 37,
+      "citation_precision": 0.982,
       "citation_coverage": 1.0,
-      "claims": 146
+      "claims": 167
     },
     "unanswerable": {
       "questions": 5,
@@ -3170,6 +3170,466 @@
           "title": "AyurIP Knowledge Base",
           "page": 20,
           "section": "5.11 Patent Infringement Basics"
+        }
+      ]
+    },
+    {
+      "question": "ಟಿಕೆಡಿಎಲ್ ಎಂದರೇನು?",
+      "type": "kannada",
+      "answer": "ಟಿಕೆಡಿಎಲ್ (TKDL) ಎಂದರೆ ಭಾರತೀಯ ವೈದ್ಯಕೀಯ ಪದ್ಧತಿಗಳಿಗೆ ಸಂಬಂಧಿಸಿದ ಸಾರ್ವಜನಿಕವಾಗಿ ಲಭ್ಯವಿರುವ ಸಾಂಪ್ರದಾಯಿಕ ಜ್ಞಾನದ ಡಿಜಿಟಲ್ ಮತ್ತು ರಚನಾತ್ಮಕ ದತ್ತಾಂಶ ಸೌಲಭ್ಯವಾಗಿದೆ [2]. ಇದನ್ನು ಭಾರತೀಯ ಸಾಂಪ್ರದಾಯಿಕ ಜ್ಞಾನದ ಮೇಲಿನ ತಪ್ಪಾದ ಪೇಟೆಂಟ್‌ಗಳನ್ನು ತಡೆಯಲು ಸ್ಥಾಪಿಸಲಾಯಿತು [1].\n\n* ಇದನ್ನು 2001 ರಲ್ಲಿ ಸಿಎಸ್‌ಐಆರ್ (CSIR) ಮತ್ತು ಆಯುಷ್ ಸಚಿವಾಲಯದ ಸಹಯೋಗದಲ್ಲಿ ಸ್ಥಾಪಿಸಲಾಯಿತು [1].\n* ಇದು ಶಾಸ್ತ್ರೀಯ ಗ್ರಂಥಗಳಲ್ಲಿರುವ ಮಾಹಿತಿಯನ್ನು ಡಿಜಿಟಲ್ ರೂಪಕ್ಕೆ ಪರಿವರ್ತಿಸಿ, ಬಹುಭಾಷೆಗಳಿಗೆ ಅನುವಾದ ಮಾಡುತ್ತದೆ ಮತ್ತು ಪೇಟೆಂಟ್ ಪರೀಕ್ಷಕರಿಗೆ ಮುಂಚಿತವಾದ ಕಲೆಯಾಗಿ (prior art) ಹುಡುಕಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ [1][2].",
+      "judgement": {
+        "answers_question": true,
+        "refused": false,
+        "claims": [
+          {
+            "claim": "TKDL is a digital, structured database of publicly available traditional knowledge related to Indian medical systems.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL was created to prevent wrongful patents on Indian traditional knowledge.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL was established in 2001 by CSIR in collaboration with the Ministry of AYUSH.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "TKDL digitizes information from classical texts, translates it into multiple languages, and helps patent examiners use it as prior art.",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ]
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.3 History and Purpose"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.1 What is TKDL?"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 10,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 9,
+          "section": "3.2 Why TKDL Was Created"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 23,
+          "section": "6.9 TKDL"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 12,
+          "section": "3.8 Major Categories of Traditional Knowledge Documented in TKDL"
+        }
+      ]
+    },
+    {
+      "question": "ಅರಿಶಿನ ಪೇಟೆಂಟ್ ಪ್ರಕರಣದಲ್ಲಿ ಏನಾಯಿತು?",
+      "type": "kannada",
+      "answer": "ಅರಿಶಿನ ಪೇಟೆಂಟ್ ಪ್ರಕರಣದಲ್ಲಿ, ಭಾರತದ ಕೌನ್ಸಿಲ್ ಆಫ್ ಸೈಂಟिफಿಕ್ ಅಂಡ್ ಇಂಡಸ್ಟ್ರಿಯಲ್ ರಿಸರ್ಚ್ (CSIR) 1996 ರಲ್ಲಿ ಅಮೆರಿಕದ ಪೇಟೆಂಟ್ ಮತ್ತು ಟ್ರೇಡ್‌ಮಾರ್ಕ್ ಕಚೇರಿಯಲ್ಲಿ (USPTO) ಮರುಪರಿಶೀಲನೆಗೆ ಅರ್ಜಿ ಸಲ್ಲಿಸಿತು [2]. ಅಂತಿಮವಾಗಿ USPTO ಯು ಅರಿಶಿನದ ಗಾಯ ಮಾಯಿಸುವ ಬಳಕೆಯು ಮುಂಚಿನ ಕಲೆಯ ಮುಖಾಂತರ ತಿಳಿದಿದೆ ಮತ್ತು ಹೊಸದಲ್ಲ ಎಂಬ ಕಾರಣಕ್ಕಾಗಿ ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ತಿರಸ್ಕರಿಸಿ, 1997 ರಲ್ಲಿ ಆ ಪೇಟೆಂಟ್ ಅನ್ನು ಅಧಿಕೃತವಾಗಿ ರದ್ದುಗೊಳಿಸಿತು [1][2].\n\n* ಅಮೆರಿಕದ ಪೇಟೆಂಟ್ ಮತ್ತು ಟ್ರೇಡ್‌ಮಾರ್ಕ್ ಕಚೇರಿಯು 1995 ರಲ್ಲಿ ಮರುಪೂರಣ ಮತ್ತು ಸ್ಥಳೀಯವಾಗಿ ಅರಿಶಿನವನ್ನು ಗಾಯ ಮಾಯಿಸಲು ಬಳಸುವ ವಿಧಾನದ ಪೇಟೆಂಟ್ ಅನ್ನು ಯೂನಿವರ್ಸಿಟಿ ಆಫ್ ಮಿಸಿಸ್ಸಿಪಿ ಮೆಡಿಕಲ್ ಸೆಂಟರ್‌ಗೆ ನೀಡಿತ್ತು [1].\n* ಭಾರತವು ಸಂಸ್ಕೃತ, ಹಿಂದಿ/ಉರ್ದು ಮೂಲಗಳು ಮತ್ತು 1953 ರ ಜರ್ನಲ್ ಆಫ್ ಇಂಡಿಯನ್ ಮೆಡಿಕಲ್ ಅಸೋಸಿಯೇಷನ್ ಪ್ರಬಂಧ ಸೇರಿದಂತೆ ಸುಮಾರು 32 ಉಲ್ಲೇಖಗಳನ್ನು ಸಾಕ್ಷ್ಯವಾಗಿ ಸಲ್ಲಿಸಿತು [2].\n* ಈ ಪ್ರಕರಣವು ಸಾಂಪ್ರದಾಯಿಕ ಜ್ಞಾನವನ್ನು ಸರಿಯಾಗಿ ದಾಖಲಿಸಿದರೆ ತಪ್ಪಾಗಿ ನೀಡಲಾದ ಪೇಟೆಂಟ್ ಅನ್ನು ಹೇಗೆ ಸೋಲಿಸಬಹುದು ಎಂಬುದಕ್ಕೆ ಪ್ರಮುಖ ನಿದರ್ಶನವಾಯಿತು [3].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "India's CSIR filed a request for re-examination with the USPTO in 1996",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The USPTO rejected all claims and officially revoked the patent in 1997 because the use was known from prior art",
+            "cited": [
+              1,
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The USPTO granted the patent for the method of using turmeric for wound healing to the University of Mississippi Medical Center in 1995",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "India submitted about 32 references including Sanskrit, Hindi/Urdu sources and a 1953 paper as evidence",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "The case became an important example of how properly documented traditional knowledge can defeat a wrongly granted patent",
+            "cited": [
+              3
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 5,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 8,
+          "section": "2.7 Examples of Traditional Knowledge-Related Disputes"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 35,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        }
+      ]
+    },
+    {
+      "question": "ಆಯುರ್ವೇದದಲ್ಲಿ ಮೂರು ದೋಷಗಳು ಯಾವುವು?",
+      "type": "kannada",
+      "answer": "ಆಯುರ್ವೇದದಲ್ಲಿ ವಾತ, ಪಿತ್ತ ಮತ್ತು ಕಫ ಎಂಬ ಮೂರು ಮೂಲಭೂತ ಶಾರೀರಿಕ ತತ್ವಗಳನ್ನು 'ದೋಷಗಳು' ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ [1].\n\n* **ವಾತ:** ಚಲನೆ, ನರಮಂಡಲ, ರಕ್ತಸಂಚಾರ ಮತ್ತು ವಿಸರ್ಜನೆಗೆ ಸಂಬಂಧಿಸಿದೆ (ಗಾಳಿ ಮತ್ತು ಆಕಾಶ/ಇಥರ್ ಅಂಶಗಳೊಂದಿಗೆ ಸಾಂಪ್ರದಾಯಿಕವಾಗಿ जोडಿಸಲ್ಪಟ್ಟಿದೆ) [1].\n* **ಪಿತ್ತ:** ಚಯಾಪಚಯ, ಜೀರ್ಣಕ್ರಿಯೆ ಮತ್ತು ರೂಪಾಂತರಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ (ಬೆಂಕಿ ಮತ್ತು ನೀರಿನ ಅಂಶಗಳೊಂದಿಗೆ ಸಾಂಪ್ರದಾಯಿಕವಾಗಿ जोडಿಸಲ್ಪಟ್ಟಿದೆ) [1].\n* **ಕಫ:** ರಚನೆ, ನಯಗೊಳಿಸುವಿಕೆ ಮತ್ತು ಸ್ಥಿರತೆಗೆ ಸಂಬಂಧಿಸಿದೆ (ಭೂಮಿ ಮತ್ತು ನೀರಿನ ಅಂಶಗಳೊಂದಿಗೆ ಸಾಂಪ್ರದಾಯಿಕವಾಗಿ जोडಿಸಲ್ಪಟ್ಟಿದೆ) [1].",
+      "judgement": {
+        "claims": [
+          {
+            "claim": "ಆಯುರ್ವೇದದಲ್ಲಿ ವಾತ, ಪಿತ್ತ ಮತ್ತು ಕಫ ಎಂಬ ಮೂರು ಮೂಲಭೂತ ಶಾರೀರಿಕ ತತ್ವಗಳನ್ನು 'ದೋಷಗಳು' ಎಂದು ಕರೆಯಲಾಗುತ್ತದೆ.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "ವಾತ ಚಲನೆ, ನರಮಂಡಲ, ರಕ್ತಸಂಚಾರ ಮತ್ತು ವಿಸರ್ಜನೆಗೆ ಸಂಬಂಧಿಸಿದೆ ಮತ್ತು ಗಾಳಿ ಮತ್ತು ಆಕಾಶ/ಇಥರ್ ಅಂಶಗಳೊಂದಿಗೆ ಸಾಂಪ್ರದಾಯಿಕವಾಗಿ ಸಂಬಂಧಿಸಿದೆ.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "ಪಿತ್ತ ಚಯಾಪಚಯ, ಜೀರ್ಣಕ್ರಿಯೆ ಮತ್ತು ರೂಪಾಂತರಕ್ಕೆ ಸಂಬಂಧಿಸಿದೆ ಮತ್ತು ಬೆಂಕಿ ಮತ್ತು ನೀರಿನ ಅಂಶಗಳೊಂದಿಗೆ ಸಾಂಪ್ರದಾಯಿಕವಾಗಿ ಸಂಬಂಧಿಸಿದೆ.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "ಕಫ ರಚನೆ, ನಯಗೊಳಿಸುವಿಕೆ ಮತ್ತು ಸ್ಥಿರತೆಗೆ ಸಂಬಂಧಿಸಿದೆ ಮತ್ತು ಭೂಮಿ ಮತ್ತು ನೀರಿನ ಅಂಶಗಳೊಂದಿಗೆ ಸಾಂಪ್ರದಾಯಿಕವಾಗಿ ಸಂಬಂಧಿಸಿದೆ.",
+            "cited": [
+              1
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false,
+        "answers_question": true
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4.1 Doshas: Vata, Pitta, Kapha"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 5,
+          "section": "1.6 Common Ayurvedic Formulations and Traditional Preparation"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.4 Basic Concepts of Ayurveda"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 3,
+          "section": "1.3 Major Classical Ayurveda Texts"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 2,
+          "section": "1.1 What is Ayurveda?"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 4,
+          "section": "1.4.2 Dhatus"
+        }
+      ]
+    },
+    {
+      "question": "ಬೇವಿನ ಪೇಟೆಂಟ್ ಅನ್ನು ಏಕೆ ರದ್ದುಗೊಳಿಸಲಾಯಿತು?",
+      "type": "kannada",
+      "answer": "ಸಾಂಪ್ರದಾಯಿಕ ಜ್ಞಾನದ ಮುಂಚಿನ ಕೃತಿಗಳ (traditional-knowledge prior art) ಆಧಾರದ ಮೇಲೆ, ಆ ಪೇಟೆಂಟ್‌ಗೆ ಹೊಸತನ (novelty) ಮತ್ತು ಆವಿಷ್ಕಾರದ ಹೆಜ್ಜೆ (inventive step) ಇಲ್ಲದಿರುವುದು ಕಂಡುಬಂದಿದ್ದರಿಂದ ಬೇವಿನ ಪೇಟೆಂಟ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಲಾಯಿತು [2].\n\n* ಯುರೋಪಿಯನ್ ಪೇಟೆಂಟ್ ಆಫೀಸ್‌ನ (EPO) ವಿರೋಧ ವಿಭಾಗವು (Opposition Division) ಮೇ 2000 ರಲ್ಲಿ ಪೇಟೆಂಟ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಿತು [2].\n* ಬೇವಿನ ಆಂಟಿಫಂಗಲ್ (antifungal) ಪರಿಣಾಮಗಳ ಕುರಿತು ಪ್ರಾಚೀನ ಆಯುರ್ವೇದ ಗ್ರಂಥಗಳ ಉಲ್ಲೇಖಗಳು ಮತ್ತು ಹಿಂದಿನ ವೈಜ್ಞಾನಿಕ ಪ್ರಕಟಣೆಗಳನ್ನು ಸಾಕ್ಷ್ಯವಾಗಿ ಬಳಸಲಾಯಿತು [2].\n* ಪೇಟೆಂಟ್ ಹೊಂದಿದವರು ಮಾಡಿದ ಮೇಲ್ಮನವಿಯನ್ನು EPO ನ ತಾಂತ್ರಿಕ ಮೇಲ್ಮನವಿ ಮಂಡಳಿಯು ಮಾರ್ಚ್ 2005 ರಲ್ಲಿ ತಿರಸ್ಕರಿಸಿ, ಪೇಟೆಂಟ್ ರದ್ದತಿಯನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಎತ್ತಿಹಿಡಿಯಿತು [2].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "ಸಾಂಪ್ರದಾಯಿಕ ಜ್ಞಾನದ ಮುಂಚಿನ ಕೃತಿಗಳ ಆಧಾರದ ಮೇಲೆ, ಬೇವಿನ ಪೇಟೆಂಟ್‌ಗೆ ಹೊಸತನ ಮತ್ತು ಆವಿಷ್ಕಾರದ ಹೆಜ್ಜೆ ಇಲ್ಲದಿರುವುದರಿಂದ ರದ್ದುಗೊಳಿಸಲಾಯಿತು.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "ಯುರೋಪಿಯನ್ ಪೇಟೆಂಟ್ ಆಫೀಸ್‌ನ ವಿರೋಧ ವಿಭಾಗವು ಮೇ 2000 ರಲ್ಲಿ ಪೇಟೆಂಟ್ ಅನ್ನು ರದ್ದುಗೊಳಿಸಿತು.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "ಬೇವಿನ ಆಂಟಿಫಂಗಲ್ ಪರಿಣಾಮಗಳ ಕುರಿತು ಪ್ರಾಚೀನ ಆಯುರ್ವೇದ ಗ್ರಂಥಗಳ ಉಲ್ಲೇಖಗಳು ಮತ್ತು ಹಿಂದಿನ ವೈಜ್ಞಾನಿಕ ಪ್ರಕಟಣೆಗಳನ್ನು ಸಾಕ್ಷ್ಯವಾಗಿ ಬಳಸಲಾಯಿತು.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "EPO ನ ತಾಂತ್ರಿಕ ಮೇಲ್ಮನವಿ ಮಂಡಳಿಯು ಮಾರ್ಚ್ 2005 ರಲ್ಲಿ ಮೇಲ್ಮನವಿಯನ್ನು ತಿರಸ್ಕರಿಸಿ, ಪೇಟೆಂಟ್ ರದ್ದತಿಯನ್ನು ಸಂಪೂರ್ಣವಾಗಿ ಎತ್ತಿಹಿಡಿಯಿತು.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 33,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.2 Case Study — The Neem Patent Case"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 32,
+          "section": "10.1 Case Study — The Turmeric Patent Case"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 34,
+          "section": "10.3 Case Study — The Basmati Rice / RiceTec Dispute"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 28,
+          "section": "8.17 Legal Status"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 16,
+          "section": "5.1 What is a Patent? (Simple explanation)"
+        }
+      ]
+    },
+    {
+      "question": "ಪೇಟೆಂಟ್ ಕಾನೂನಿನಲ್ಲಿ ಪೂರ್ವ ಕಲೆ (prior art) ಎಂದರೇನು?",
+      "type": "kannada",
+      "answer": "ಪೇಟೆಂಟ್ ಕಾನೂನಿನಲ್ಲಿ, \"ಪೂರ್ವ ಕಲೆ\" (prior art) ಎಂದರೆ ಪೇಟೆಂಟ್ ಅರ್ಜಿಯ ಸಲ್ಲಿಕೆ ಅಥವಾ ಆದ್ಯತೆಯ ದಿನಾಂಕಕ್ಕಿಂತ ಮೊದಲು ಜಗತ್ತಿನ ಎಲ್ಲಿಯಾದರೂ, ಯಾವುದೇ ರೂಪದಲ್ಲಿ ಸಾರ್ವಜನಿಕರಿಗೆ ಲಭ್ಯವಾಗLಿರುವ ಎಲ್ಲಾ ಮಾಹಿತಿಯ ದೇಹವಾಗಿದೆ [2]. ಇದು ಒಂದು ಆವಿಷ್ಕಾರವು ಹೊಸದು (novel) ಮತ್ತು/ಅಥವಾ ಸೃಜನಶೀಲ ಹಂತವನ್ನು ಹೊಂದಿದೆಯೇ ಎಂದು ನಿರ್ಣಯಿಸಲು ಬಳಕೆಯಾಗುತ್ತದೆ [2].\n\n* ಇದು ಹಿಂದಿನ ಪೇಟೆಂಟ್‌ಗಳು ಮತ್ತು ಪೇಟೆಂಟ್ ಅರ್ಜಿಗಳು, ವೈಜ್ಞಾನಿಕ ಜರ್ನಲ್ ಲೇಖನಗಳು ಮತ್ತು ಪುಸ್ತಕಗಳನ್ನು (ಚರಕ ಸಂಹಿತೆಯಂತಹ ಶಾಸ್ತ್ರೀಯ ಗ್ರಂಥಗಳನ್ನು ಒಳಗೊಂಡಂತೆ) ಒಳಗೊಂಡಿರುತ್ತದೆ [2].\n* ಸಮ್ಮೇಳನದ ಪ್ರಸ್ತುತಿಗಳು, ಉತ್ಪನ್ನ ಮಾರಾಟಗಳು ಮತ್ತು ಸಾರ್ವಜನಿಕ ಬಳಕೆ ಅಥವಾ ಮೌಖಿಕ ಬಹಿರಂಗಪಡಿಸುವಿಕೆಗಳನ್ನು ಸಹ ಇದು ಒಳಗೊಳ್ಳಬಹುದು [2].",
+      "judgement": {
+        "answers_question": true,
+        "claims": [
+          {
+            "claim": "In patent law, \"prior art\" means the body of all information that was available to the public anywhere in the world, in any form, before the filing or priority date of a patent application.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It is used to determine whether an invention is novel and/or inventive.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It includes earlier patents and patent applications, scientific journal articles and books (including classical texts such as the Charaka Samhita).",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          },
+          {
+            "claim": "It also includes conference presentations, product sales, and public use or oral disclosures.",
+            "cited": [
+              2
+            ],
+            "supported_by_cited": true,
+            "supported_by_any": true
+          }
+        ],
+        "refused": false
+      },
+      "scores": {
+        "claims": 4,
+        "faithfulness": 1.0,
+        "citation_precision": 1.0,
+        "citation_coverage": 1.0,
+        "fully_faithful": true,
+        "refused": false,
+        "answers_question": true
+      },
+      "sources": [
+        {
+          "number": 1,
+          "title": "AyurIP Knowledge Base",
+          "page": 29,
+          "section": "8.21 Prior-Art Documents"
+        },
+        {
+          "number": 2,
+          "title": "AyurIP Knowledge Base",
+          "page": 18,
+          "section": "5.6 Prior Art"
+        },
+        {
+          "number": 3,
+          "title": "AyurIP Knowledge Base",
+          "page": 45,
+          "section": "GLOSSARY"
+        },
+        {
+          "number": 4,
+          "title": "AyurIP Knowledge Base",
+          "page": 17,
+          "section": "5.3.1 Novelty"
+        },
+        {
+          "number": 5,
+          "title": "AyurIP Knowledge Base",
+          "page": 24,
+          "section": "SEARCHING"
+        },
+        {
+          "number": 6,
+          "title": "AyurIP Knowledge Base",
+          "page": 46,
+          "section": "GLOSSARY"
         }
       ]
     }

@@ -35,7 +35,7 @@
   --danger-soft: rgba(176, 58, 46, 0.07);
   --success: #2f7a4f;
 
-  --font-body: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Geist", "Noto Sans Kannada", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-mono: "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 
